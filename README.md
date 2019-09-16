@@ -1,0 +1,1 @@
+Ce projet est le template des projets ECOM menés par les étudiants en derniere année de la formation d'ingénieur en informatique de Grenoble
