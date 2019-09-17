@@ -1,8 +1,9 @@
-
 Scénario Membre : consultation du matériel 2
 
 L'application requiere une banderole latéral « panier » complété au fur et à mesure des sélections de l'utilisateur.
 A la fin de toutes les sélections il faut ajouter une case a cocher pour savoir si l'utilisateur prend harnais et combinaison.
+
+Question : Comment gérer le stock de harnais/combinaison si on ne précise pas lequel est pris ?
 
 
 Scénario Membre : rendu du matériel 3
