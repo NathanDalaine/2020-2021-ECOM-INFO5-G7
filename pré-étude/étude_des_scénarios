@@ -1,3 +1,10 @@
+Scénario Membre : consultation du matériel 1
+
+En tant que membre du GUC Voile, je veux m'authentifier afin de pouvoir accéder à l'application (indiquer le nom de l'utilisateur pour s'authentifier ? nom + mdp ?)
+En tant que membre du GUC Voile, je veux pouvoir faire une recherche afin de de trouver du matériel que possède le GUC
+En tant que membre du GUC Voile, je veux pouvoir consulter une liste du matériel afin d'en sélectionner
+En tant que membre du GUC Voile, je veux sélectionner du matériel afin de le réserver (ajout au panier ?)
+
 Scénario Membre : consultation du matériel 2
 
 L'application requiere une banderole latéral « panier » complété au fur et à mesure des sélections de l'utilisateur.
