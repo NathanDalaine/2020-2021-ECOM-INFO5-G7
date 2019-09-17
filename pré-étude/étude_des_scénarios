@@ -20,3 +20,39 @@ Questions:
 -L'utilisateur peut-il rendre séparement son matériel ?
 -L'utilisateur peut-il rendre n'importe quand son matériel (ou seulement fin de journée)?
 -Pour un rendu classique (sans dommage), l'utilisateur doit-il recevoir des instructions ?
+
+SCENARIO 4 - RENOUVELLEMENT D'INSCRIPTION 
+
+ - Utilisation de l'application dans un tram -> Application sur mobile ??
+
+Procédure de renouvellement :
+
+ - Système présente les données sur l'utilisateur modifialble (nom, prénom, date de naissance, adresse, email, numéro de téléphone) 
+   non modifiable (niveau, date d'échéance de l'inscription)
+
+ - Validation des données affichées
+ 
+ - Paiement par carte bancaire de la cotisation
+
+ - Validation du paiement
+
+ - Rappel sur le chèque de caution à apporter au gestionnaire lors de la prochaine partie
+
+Première inscription ? 
+
+ On a besoin de savoir nom, prénom, date de naissance, adresse, email, numéro de téléphone
+ ainsi que le niveau (plusieurs proposition : débutant, amateur, intermédiaire, expert).
+
+ Paiement par carte bancaire
+
+ Rappel sur le chèque
+
+
+ Idées :
+
+ Indiquer les champs obligatoires dans le formulaires d'inscription, affichés une zone de texte où
+ l'on explique ce que l'on fait des données récoltés (droit d'auteur/ droit d'internet)
+ 
+ " Obligation d’informer les personnes objet du fichier : de la finalité du traitement, du caractère obligatoire ou facultatif des réponses, du destinataire des réponses, du responsable du fichier, de la durée de conservation des données, du droit d’accès et du droit d’opposition "
+
+ + Lien vers une charte sur le respect de la vie privée.
