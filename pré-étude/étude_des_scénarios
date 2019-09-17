@@ -1,5 +1,21 @@
 
-
 Scénario Membre : consultation du matériel 2
+
 L'application requiere une banderole latéral « panier » complété au fur et à mesure des sélections de l'utilisateur.
 A la fin de toutes les sélections il faut ajouter une case a cocher pour savoir si l'utilisateur prend harnais et combinaison.
+
+
+Scénario Membre : rendu du matériel 3
+
+Informations:
+-Listes des réservations
+-Un utilisateur doit pouvoir rendre ses réservations.
+	-Rendu classique.
+	-Rendu endommagé : description dommage, circonstances et email automatique aux gestionnaires du matériel. Et lui donne les instructions à suivre.
+
+Questions:
+-Il est indiqué que chacun doit trouver sa réservation dans l'ensemble des réservations, or on sait qu'il y a de l'identification. Est-ce qu'un membre peut rendre n'importe quelle réservation ?
+-Existe-il un historique de réservation ? Si oui, un membre peut il y accéder ?
+-L'utilisateur peut-il rendre séparement son matériel ?
+-L'utilisateur peut-il rendre n'importe quand son matériel (ou seulement fin de journée)?
+-Pour un rendu classique (sans dommage), l'utilisateur doit-il recevoir des instructions ?
