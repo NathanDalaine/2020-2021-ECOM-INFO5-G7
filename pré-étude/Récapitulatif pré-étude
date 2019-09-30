@@ -1,0 +1,30 @@
+Récapitulatif des informations de la pré-étude :
+
+- AUTHENTIFICATION
+Authentification rapide sans mot de passe, seulement avec un nom d'utilisateur ou un pseudo.
+
+- RESERVATION
+Un utilisateur peut réserver au maximum une planche, une voile, un harnais et une combinaison. 
+Les réservations sont visibles par tous.
+On ne peut rendre que sa propre réservation.
+Un historique des réservations peut être envisagé.
+Un récapitulatif de la réservation peut être utile, mais n'es tpas obligatoire.
+Le système indique les planches d'un niveau plus élevé que celui de l'utilisateur actuel afin de lui conseiller une autre planche.
+
+- RENDU DU MATERIEL
+Un utilisateur peut rendre à n'importe quel moment son matériel.
+Un utilisateur peut rendre une partie du matériel emprunté, emprunter du nouveau matériel et rendre ensuite la totalité du matériel emprunté.  
+A la fin de la journée tout le matériel doit être rendu.
+
+- RENDU DU MATERIEL ABIME
+Un utilisateur peut rendre du matériel en indiquant que celui-ci est abimé et en laissant une remarque sur le type de dégat. Un émail et alors automatiquement envoyé à un gestionnaire afin de signaler le dégat et le système indique à l'utilisateur où mettre sa planche.
+
+- RENOUVELLEMENT D'INSCRIPTION
+Au début de la procédure, le système présente tout ce qu'il sait sur l'utilisateur en question.
+L'utilisateur peut modifier les données non critique afin de les mettres à jour (adresse, email, numéro de téléphone...).
+Lorsque le paiment eest effectué, le système rappel que le chèque de caution est à apporter au gestionnaire
+
+- GESTIONNAIRE
+Mise en évidence du matériel endommagé lorsque on est un gestionnaire.
+Le gestionnaire à accès aux statistiques d'utilisation des différents matériels.
+Le gestionnaire peut mettre à jour les niveaux des membres, aoir accès à la liste de ceux-ci...
