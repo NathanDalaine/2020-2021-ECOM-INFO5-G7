@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Reservation.
+    -->
+    <changeSet id="20191001094335-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="voile_id"
+                                 baseTableName="reservation"
+                                 constraintName="fk_reservation_voile_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="voile"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="reservation"
+                                 constraintName="fk_reservation_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_profile"/>
+
+        <addForeignKeyConstraint baseColumnNames="combinaison_id"
+                                 baseTableName="reservation"
+                                 constraintName="fk_reservation_combinaison_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="combinaison"/>
+
+        <addForeignKeyConstraint baseColumnNames="harnais_id"
+                                 baseTableName="reservation"
+                                 constraintName="fk_reservation_harnais_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="harnais"/>
+
+        <addForeignKeyConstraint baseColumnNames="planche_id"
+                                 baseTableName="reservation"
+                                 constraintName="fk_reservation_planche_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="planche"/>
+
+    </changeSet>
+</databaseChangeLog>

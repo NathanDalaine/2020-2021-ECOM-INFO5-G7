@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="voile">
+            <h2><span jhiTranslate="eComGucApp.voile.detail.title">Voile</span> {{voile.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eComGucApp.voile.surface">Surface</span></dt>
+                <dd>
+                    <span>{{voile.surface}}</span>
+                </dd>
+                <dt><span jhiTranslate="eComGucApp.voile.marque">Marque</span></dt>
+                <dd>
+                    <span>{{voile.marque}}</span>
+                </dd>
+                <dt><span jhiTranslate="eComGucApp.voile.modele">Modele</span></dt>
+                <dd>
+                    <span>{{voile.modele}}</span>
+                </dd>
+                <dt><span jhiTranslate="eComGucApp.voile.numero">Numero</span></dt>
+                <dd>
+                    <span>{{voile.numero}}</span>
+                </dd>
+                <dt><span jhiTranslate="eComGucApp.voile.localisation">Localisation</span></dt>
+                <dd>
+                    <span>{{voile.localisation}}</span>
+                </dd>
+                <dt><span jhiTranslate="eComGucApp.voile.etat">Etat</span></dt>
+                <dd>
+                    <span>{{voile.etat}}</span>
+                </dd>
+                <dt><span jhiTranslate="eComGucApp.voile.libelle">Libelle</span></dt>
+                <dd>
+                    <span>{{voile.libelle}}</span>
+                </dd>
+                <dt><span jhiTranslate="eComGucApp.voile.gree">Gree</span></dt>
+                <dd>
+                    <span>{{voile.gree}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/voile', voile.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

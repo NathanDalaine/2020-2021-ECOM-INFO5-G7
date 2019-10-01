@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="combinaison">
+            <h2><span jhiTranslate="eComGucApp.combinaison.detail.title">Combinaison</span> {{combinaison.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eComGucApp.combinaison.taille">Taille</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'eComGucApp.Taille.' + combinaison.taille}}">{{combinaison.taille}}</span>
+                </dd>
+                <dt><span jhiTranslate="eComGucApp.combinaison.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{combinaison.nombre}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/combinaison', combinaison.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

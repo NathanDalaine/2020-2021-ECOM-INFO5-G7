@@ -1,0 +1,68 @@
+{
+    "name": "Reservation",
+    "fields": [
+        {
+            "fieldName": "dateReservation",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "dateRendu",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "remarques",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "voile",
+            "otherEntityRelationshipName": "reservation",
+            "relationshipName": "voile",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "userProfile",
+            "otherEntityRelationshipName": "reservation",
+            "relationshipName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "combinaison",
+            "otherEntityRelationshipName": "reservation",
+            "relationshipName": "combinaison",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "harnais",
+            "otherEntityRelationshipName": "reservation",
+            "relationshipName": "harnais",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "planche",
+            "otherEntityRelationshipName": "reservation",
+            "relationshipName": "planche",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20191001094335",
+    "entityTableName": "reservation",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

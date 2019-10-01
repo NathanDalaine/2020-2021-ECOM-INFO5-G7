@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="harnais">
+            <h2><span jhiTranslate="eComGucApp.harnais.detail.title">Harnais</span> {{harnais.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eComGucApp.harnais.taille">Taille</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'eComGucApp.Taille.' + harnais.taille}}">{{harnais.taille}}</span>
+                </dd>
+                <dt><span jhiTranslate="eComGucApp.harnais.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{harnais.nombre}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/harnais', harnais.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

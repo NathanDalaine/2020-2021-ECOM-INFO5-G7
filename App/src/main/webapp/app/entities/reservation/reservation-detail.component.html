@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="reservation">
+            <h2><span jhiTranslate="eComGucApp.reservation.detail.title">Reservation</span> {{reservation.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eComGucApp.reservation.dateReservation">Date Reservation</span></dt>
+                <dd>
+                    <span>{{reservation.dateReservation}}</span>
+                </dd>
+                <dt><span jhiTranslate="eComGucApp.reservation.dateRendu">Date Rendu</span></dt>
+                <dd>
+                    <span>{{reservation.dateRendu}}</span>
+                </dd>
+                <dt><span jhiTranslate="eComGucApp.reservation.remarques">Remarques</span></dt>
+                <dd>
+                    <span>{{reservation.remarques}}</span>
+                </dd>
+                <dt><span jhiTranslate="eComGucApp.reservation.voile">Voile</span></dt>
+                <dd>
+                    <div *ngIf="reservation.voileId">
+                        <a [routerLink]="['/voile', reservation.voileId, 'view']">{{reservation.voileId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eComGucApp.reservation.user">User</span></dt>
+                <dd>
+                    <div *ngIf="reservation.userId">
+                        <a [routerLink]="['/user-profile', reservation.userId, 'view']">{{reservation.userId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eComGucApp.reservation.combinaison">Combinaison</span></dt>
+                <dd>
+                    <div *ngIf="reservation.combinaisonId">
+                        <a [routerLink]="['/combinaison', reservation.combinaisonId, 'view']">{{reservation.combinaisonId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eComGucApp.reservation.harnais">Harnais</span></dt>
+                <dd>
+                    <div *ngIf="reservation.harnaisId">
+                        <a [routerLink]="['/harnais', reservation.harnaisId, 'view']">{{reservation.harnaisId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eComGucApp.reservation.planche">Planche</span></dt>
+                <dd>
+                    <div *ngIf="reservation.plancheId">
+                        <a [routerLink]="['/planche', reservation.plancheId, 'view']">{{reservation.plancheId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/reservation', reservation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

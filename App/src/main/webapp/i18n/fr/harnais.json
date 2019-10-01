@@ -1,0 +1,23 @@
+{
+  "eComGucApp": {
+    "harnais": {
+      "home": {
+        "title": "Harnais",
+        "createLabel": "Créer un nouveau Harnais",
+        "createOrEditLabel": "Créer ou éditer un Harnais",
+        "notFound": "Aucun Harnais trouvé"
+      },
+      "created": "Un nouveau Harnais a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Harnais avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Harnais avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Harnais {{ id }} ?"
+      },
+      "detail": {
+        "title": "Harnais"
+      },
+      "taille": "Taille",
+      "nombre": "Nombre"
+    }
+  }
+}

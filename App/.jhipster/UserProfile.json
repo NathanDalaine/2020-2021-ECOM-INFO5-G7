@@ -1,0 +1,62 @@
+{
+    "name": "UserProfile",
+    "fields": [
+        {
+            "fieldName": "localisation",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateEcheance",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "dateNaissance",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "dateAdhesion",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "prefTaille",
+            "fieldType": "Taille",
+            "fieldValues": "S,M,L,XL"
+        },
+        {
+            "fieldName": "adresse",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telephone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "typeAbonnement",
+            "fieldType": "TypeAbonnement",
+            "fieldValues": "JOURNALIER,ETUDIANT,ADULTE,FAMILLE"
+        },
+        {
+            "fieldName": "niveau",
+            "fieldType": "Niveau",
+            "fieldValues": "DEBUTANT,DUBUTANTPLUS,FUNBOARD,PERF"
+        },
+        {
+            "fieldName": "materielTechniqueAutorise",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "remarque",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191001094336",
+    "entityTableName": "user_profile",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

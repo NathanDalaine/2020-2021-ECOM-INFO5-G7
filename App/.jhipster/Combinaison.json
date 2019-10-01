@@ -1,0 +1,24 @@
+{
+    "name": "Combinaison",
+    "fields": [
+        {
+            "fieldName": "taille",
+            "fieldType": "Taille",
+            "fieldValues": "S,M,L,XL"
+        },
+        {
+            "fieldName": "nombre",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191001094331",
+    "entityTableName": "combinaison",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

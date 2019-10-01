@@ -1,0 +1,69 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="eComGucApp.planche.home.title">Planches</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-planche" [routerLink]="['/planche/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="eComGucApp.planche.home.createLabel">
+            Create a new Planche
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="planches?.length === 0">
+        <span jhiTranslate="eComGucApp.planche.home.notFound">No planches found</span>
+    </div>
+    <div class="table-responsive" *ngIf="planches?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="eComGucApp.planche.marque">Marque</span></th>
+            <th><span jhiTranslate="eComGucApp.planche.modele">Modele</span></th>
+            <th><span jhiTranslate="eComGucApp.planche.numero">Numero</span></th>
+            <th><span jhiTranslate="eComGucApp.planche.localisation">Localisation</span></th>
+            <th><span jhiTranslate="eComGucApp.planche.etat">Etat</span></th>
+            <th><span jhiTranslate="eComGucApp.planche.libelle">Libelle</span></th>
+            <th><span jhiTranslate="eComGucApp.planche.volume">Volume</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let planche of planches ;trackBy: trackId">
+                <td><a [routerLink]="['/planche', planche.id, 'view' ]">{{planche.id}}</a></td>
+                <td>{{planche.marque}}</td>
+                <td>{{planche.modele}}</td>
+                <td>{{planche.numero}}</td>
+                <td>{{planche.localisation}}</td>
+                <td>{{planche.etat}}</td>
+                <td>{{planche.libelle}}</td>
+                <td>{{planche.volume}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/planche', planche.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/planche', planche.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/planche', { outlets: { popup: planche.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
