@@ -1,0 +1,34 @@
+Détail des tâches du modèle de tâche
+
+Remarque ce document est en lien avec Modèle_de_tâche-Schéma.png.
+
+Requête utilisateur:
+-Consulte les réservations
+-Renouvelle son adhésion
+-Consulte le matériel
+-Réserve son matériel
+-Rend son matériel
+-Signale des dommages et reçoit une procédure à suivre
+-Met à jour ces informations personnelles
+-Paye sa cotisation
+
+Informations pour l’utilisateur:
+-Recommandation du matériel
+-Récapitule les choix
+-Consulte ses informations personnelles
+-Reçoit une notification indiquant qu’il faut déposer le chèque de caution
+
+Gestion des paiements:
+-paiement de l’adhésion
+
+Requête gestionnaire:
+-Gère le matériel dommages
+-Gère les membres et ses informations
+-modifie les informations des membres
+
+Informations pour le gestionnaire:
+-consulte des statistiques de matériel (combinaison et voiles)
+-consulte les informations des membres
+
+Alerte pour le gestionnaire:
+-Envoie un mail pour indiquer le matériel endommagé
