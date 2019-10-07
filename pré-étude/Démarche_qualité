@@ -2,11 +2,12 @@ Notre démarche qaulité se base sur la norme ISO 9001 de 2015 qui est résumé 
 
 
 - Domaine d’application
-    Nous visons a développer une application web disponible sur toute plateforme (PC, tablette, smatrphone) de E-Commerce
+    Nous visons a développer une application web avec BDD disponible sur toute plateforme (PC, tablette, smatrphone) de E-Commerce
 - Références normatives
-    Choix des technologies discuté en amont avec l'équipe entiere, choix en fonction des comptétence et des compatibilité
+    Choix des technologies discutées en amont avec l'équipe entiere, choix en fonction des comptétences et des compatibilités
+    Norme choisis au niveau de la structure, des noms et des commits
 - Termes et définitions
-    ???
+    
 - Contexte de l’organisme
     Ecole de voile a but non lucratif, etablissement avec utilisateur de confiance
 - Leadership
@@ -16,7 +17,7 @@ Notre démarche qaulité se base sur la norme ISO 9001 de 2015 qui est résumé 
 - Support
     Web browser
 - Réalisation des activités opérationnelles
-    ???
+    Azur, Mysql, JHipster, ...
 - Évaluation de la performance
     Jeu de test prévue a chaque étapes de developpement
 - Amélioration
