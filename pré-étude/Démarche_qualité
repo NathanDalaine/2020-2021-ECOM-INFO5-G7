@@ -2,23 +2,23 @@ Notre démarche qaulité se base sur la norme ISO 9001 de 2015 qui est résumé 
 
 
 - Domaine d’application
-    Nous visons a développer une application web avec BDD disponible sur toute plateforme (PC, tablette, smatrphone) de E-Commerce
+    Nous visons à développer une application web avec BDD disponible sur toute plateforme (PC, tablette, smartphone) de E-Commerce
 - Références normatives
     Choix des technologies discutées en amont avec l'équipe entiere, choix en fonction des comptétences et des compatibilités
     Norme choisis au niveau de la structure, des noms et des commits
 - Termes et définitions
-    
+    Assurance d'une ergonomie d'application
 - Contexte de l’organisme
     Ecole de voile a but non lucratif, etablissement avec utilisateur de confiance
 - Leadership
     Un scrum master et un leadership
 - Planification
-    Planning préétablie pour le developpement de l'application avec dead-line
+    Planning préétablie pour le développement de l'application avec deadline, organisation en sprint prédéfini.
 - Support
     Web browser
 - Réalisation des activités opérationnelles
     Azur, Mysql, JHipster, ...
 - Évaluation de la performance
-    Jeu de test prévue a chaque étapes de developpement
+    Jeu de test prévue a chaque étapes de développement
 - Amélioration
     Anticipation des features de l'application facultatives.
