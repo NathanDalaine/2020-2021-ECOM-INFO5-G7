@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="harnais">
+            <h2><span jhiTranslate="ecomgucvoileApp.harnais.detail.title">Harnais</span> {{harnais.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ecomgucvoileApp.harnais.taille">Taille</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'ecomgucvoileApp.Taille.' + harnais.taille}}">{{harnais.taille}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.harnais.etat">Etat</span></dt>
+                <dd>
+                    <span>{{harnais.etat}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.harnais.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{harnais.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.harnais.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{harnais.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.harnais.updatedAt">Updated At</span></dt>
+                <dd>
+                    <span>{{harnais.updatedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.harnais.updatedBy">Updated By</span></dt>
+                <dd>
+                    <span>{{harnais.updatedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.harnais.deletedAt">Deleted At</span></dt>
+                <dd>
+                    <span>{{harnais.deletedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.harnais.deletedBy">Deleted By</span></dt>
+                <dd>
+                    <span>{{harnais.deletedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.harnais.reservation">Reservation</span></dt>
+                <dd>
+                    <div *ngIf="harnais.reservationId">
+                        <a [routerLink]="['/reservation', harnais.reservationId, 'view']">{{harnais.reservationId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/harnais', harnais.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="combinaison">
+            <h2><span jhiTranslate="ecomgucvoileApp.combinaison.detail.title">Combinaison</span> {{combinaison.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ecomgucvoileApp.combinaison.taille">Taille</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'ecomgucvoileApp.Taille.' + combinaison.taille}}">{{combinaison.taille}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.combinaison.etat">Etat</span></dt>
+                <dd>
+                    <span>{{combinaison.etat}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.combinaison.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{combinaison.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.combinaison.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{combinaison.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.combinaison.updatedAt">Updated At</span></dt>
+                <dd>
+                    <span>{{combinaison.updatedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.combinaison.updatedBy">Updated By</span></dt>
+                <dd>
+                    <span>{{combinaison.updatedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.combinaison.deletedAt">Deleted At</span></dt>
+                <dd>
+                    <span>{{combinaison.deletedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.combinaison.deletedBy">Deleted By</span></dt>
+                <dd>
+                    <span>{{combinaison.deletedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.combinaison.reservation">Reservation</span></dt>
+                <dd>
+                    <div *ngIf="combinaison.reservationId">
+                        <a [routerLink]="['/reservation', combinaison.reservationId, 'view']">{{combinaison.reservationId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/combinaison', combinaison.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

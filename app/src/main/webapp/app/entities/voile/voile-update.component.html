@@ -1,0 +1,101 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-voile-heading" jhiTranslate="ecomgucvoileApp.voile.home.createOrEditLabel">Create or edit a Voile</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.voile.surface" for="field_surface">Surface</label>
+                    <input type="number" class="form-control" name="surface" id="field_surface"
+                           formControlName="surface"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.voile.marque" for="field_marque">Marque</label>
+                    <input type="text" class="form-control" name="marque" id="field_marque"
+                           formControlName="marque"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.voile.modele" for="field_modele">Modele</label>
+                    <input type="text" class="form-control" name="modele" id="field_modele"
+                           formControlName="modele"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.voile.numero" for="field_numero">Numero</label>
+                    <input type="text" class="form-control" name="numero" id="field_numero"
+                           formControlName="numero"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.voile.localisation" for="field_localisation">Localisation</label>
+                    <input type="text" class="form-control" name="localisation" id="field_localisation"
+                           formControlName="localisation"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.voile.etat" for="field_etat">Etat</label>
+                    <input type="text" class="form-control" name="etat" id="field_etat"
+                           formControlName="etat"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.voile.libelle" for="field_libelle">Libelle</label>
+                    <input type="text" class="form-control" name="libelle" id="field_libelle"
+                           formControlName="libelle"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.voile.gree" for="field_gree">Gree</label>
+                    <input type="checkbox" class="form-control" name="gree" id="field_gree"
+                           formControlName="gree"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.voile.createdAt" for="field_createdAt">Created At</label>
+                    <input type="text" class="form-control" name="createdAt" id="field_createdAt"
+                           formControlName="createdAt"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.voile.createdBy" for="field_createdBy">Created By</label>
+                    <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                           formControlName="createdBy"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.voile.updatedAt" for="field_updatedAt">Updated At</label>
+                    <input type="text" class="form-control" name="updatedAt" id="field_updatedAt"
+                           formControlName="updatedAt"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.voile.updatedBy" for="field_updatedBy">Updated By</label>
+                    <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
+                           formControlName="updatedBy"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.voile.deletedAt" for="field_deletedAt">Deleted At</label>
+                    <input type="text" class="form-control" name="deletedAt" id="field_deletedAt"
+                           formControlName="deletedAt"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.voile.deletedBy" for="field_deletedBy">Deleted By</label>
+                    <input type="text" class="form-control" name="deletedBy" id="field_deletedBy"
+                           formControlName="deletedBy"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.voile.reservation" for="field_reservation">Reservation</label>
+                    <select class="form-control" id="field_reservation" name="reservation" formControlName="reservationId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="reservationOption.id" *ngFor="let reservationOption of reservations; trackBy: trackReservationById">{{reservationOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

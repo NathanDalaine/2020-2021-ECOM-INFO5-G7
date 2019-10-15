@@ -1,0 +1,56 @@
+{
+    "name": "Harnais",
+    "fields": [
+        {
+            "fieldName": "taille",
+            "fieldType": "Taille",
+            "fieldValues": "S,M,L,XL"
+        },
+        {
+            "fieldName": "etat",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "deletedAt",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "deletedBy",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "reservation",
+            "otherEntityRelationshipName": "harnais",
+            "relationshipName": "reservation",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191015084204",
+    "entityTableName": "harnais",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

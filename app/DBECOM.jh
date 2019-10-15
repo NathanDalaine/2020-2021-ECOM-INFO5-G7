@@ -1,0 +1,117 @@
+entity Combinaison{
+	taille Taille,
+    etat String,
+    createdAt String,
+    createdBy String,
+    updatedAt String,
+    updatedBy String,
+    deletedAt String,
+    deletedBy String
+}
+
+entity Harnais{
+	taille Taille,
+    etat String
+    createdAt String,
+    createdBy String,
+    updatedAt String,
+    updatedBy String,
+    deletedAt String,
+    deletedBy String
+}
+
+enum Niveau {
+   DEBUTANT, DUBUTANTPLUS, FUNBOARD, PERF
+}
+
+enum TypeAbonnement {
+   JOURNALIER, ETUDIANT, ADULTE, FAMILLE
+}
+
+enum Taille {
+   S, M, L, XL
+}
+
+entity Planche{
+	marque String,
+    modele String,
+    numero String,
+    localisation String,
+    etat String,
+    libelle String,
+    volume Integer,
+    createdAt String,
+    createdBy String,
+    updatedAt String,
+    updatedBy String,
+    deletedAt String,
+    deletedBy String
+}
+
+entity Voile {
+    surface Float,
+    marque String,
+    modele String,
+    numero String,
+    localisation String,
+    etat String,
+    libelle String,
+    gree Boolean,
+    createdAt String,
+    createdBy String,
+    updatedAt String,
+    updatedBy String,
+    deletedAt String,
+    deletedBy String
+}
+
+entity Reservation{
+	dateReservation Instant,
+    dateRendu Instant,
+    remarques String,
+    createdAt String,
+    createdBy String,
+    updatedAt String,
+    updatedBy String,
+    deletedAt String,
+    deletedBy String
+}
+
+entity UserProfile{
+    localisation String,
+    dateEcheance Instant,
+    dateNaissance Instant,
+    dateAdhesion Instant,
+    prefTaille Taille,
+ 	adresse String,
+    telephone String,
+    typeAbonnement TypeAbonnement,
+    niveau Niveau,
+    materielTechniqueAutorise Boolean,
+    remarque String
+}
+
+relationship OneToMany {
+	Reservation{voile} to Voile{reservation}
+}
+
+relationship OneToMany {
+	Reservation{user} to UserProfile{reservation}
+}
+
+relationship OneToMany {
+	Reservation{combinaison} to Combinaison{reservation}
+}
+
+relationship OneToMany {
+	Reservation{harnais} to Harnais{reservation}
+}
+
+relationship OneToMany {
+	Reservation{planche} to Planche{reservation}
+}
+
+service * with serviceClass
+dto * with mapstruct
+
+

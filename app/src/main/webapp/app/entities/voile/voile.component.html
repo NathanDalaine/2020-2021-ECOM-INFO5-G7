@@ -1,0 +1,89 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="ecomgucvoileApp.voile.home.title">Voiles</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-voile" [routerLink]="['/voile/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="ecomgucvoileApp.voile.home.createLabel">
+            Create a new Voile
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="voiles?.length === 0">
+        <span jhiTranslate="ecomgucvoileApp.voile.home.notFound">No voiles found</span>
+    </div>
+    <div class="table-responsive" *ngIf="voiles?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.voile.surface">Surface</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.voile.marque">Marque</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.voile.modele">Modele</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.voile.numero">Numero</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.voile.localisation">Localisation</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.voile.etat">Etat</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.voile.libelle">Libelle</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.voile.gree">Gree</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.voile.createdAt">Created At</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.voile.createdBy">Created By</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.voile.updatedAt">Updated At</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.voile.updatedBy">Updated By</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.voile.deletedAt">Deleted At</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.voile.deletedBy">Deleted By</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.voile.reservation">Reservation</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let voile of voiles ;trackBy: trackId">
+                <td><a [routerLink]="['/voile', voile.id, 'view' ]">{{voile.id}}</a></td>
+                <td>{{voile.surface}}</td>
+                <td>{{voile.marque}}</td>
+                <td>{{voile.modele}}</td>
+                <td>{{voile.numero}}</td>
+                <td>{{voile.localisation}}</td>
+                <td>{{voile.etat}}</td>
+                <td>{{voile.libelle}}</td>
+                <td>{{voile.gree}}</td>
+                <td>{{voile.createdAt}}</td>
+                <td>{{voile.createdBy}}</td>
+                <td>{{voile.updatedAt}}</td>
+                <td>{{voile.updatedBy}}</td>
+                <td>{{voile.deletedAt}}</td>
+                <td>{{voile.deletedBy}}</td>
+                <td>
+                    <div *ngIf="voile.reservationId">
+                        <a [routerLink]="['/reservation', voile.reservationId , 'view' ]" >{{voile.reservationId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/voile', voile.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/voile', voile.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/voile', { outlets: { popup: voile.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

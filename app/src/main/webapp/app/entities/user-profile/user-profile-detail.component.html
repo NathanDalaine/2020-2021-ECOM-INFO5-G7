@@ -1,0 +1,73 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="userProfile">
+            <h2><span jhiTranslate="ecomgucvoileApp.userProfile.detail.title">User Profile</span> {{userProfile.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.localisation">Localisation</span></dt>
+                <dd>
+                    <span>{{userProfile.localisation}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.dateEcheance">Date Echeance</span></dt>
+                <dd>
+                    <span>{{userProfile.dateEcheance}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.dateNaissance">Date Naissance</span></dt>
+                <dd>
+                    <span>{{userProfile.dateNaissance}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.dateAdhesion">Date Adhesion</span></dt>
+                <dd>
+                    <span>{{userProfile.dateAdhesion}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.prefTaille">Pref Taille</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'ecomgucvoileApp.Taille.' + userProfile.prefTaille}}">{{userProfile.prefTaille}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.adresse">Adresse</span></dt>
+                <dd>
+                    <span>{{userProfile.adresse}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.telephone">Telephone</span></dt>
+                <dd>
+                    <span>{{userProfile.telephone}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.typeAbonnement">Type Abonnement</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'ecomgucvoileApp.TypeAbonnement.' + userProfile.typeAbonnement}}">{{userProfile.typeAbonnement}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.niveau">Niveau</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'ecomgucvoileApp.Niveau.' + userProfile.niveau}}">{{userProfile.niveau}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.materielTechniqueAutorise">Materiel Technique Autorise</span></dt>
+                <dd>
+                    <span>{{userProfile.materielTechniqueAutorise}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.remarque">Remarque</span></dt>
+                <dd>
+                    <span>{{userProfile.remarque}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.reservation">Reservation</span></dt>
+                <dd>
+                    <div *ngIf="userProfile.reservationId">
+                        <a [routerLink]="['/reservation', userProfile.reservationId, 'view']">{{userProfile.reservationId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/user-profile', userProfile.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
