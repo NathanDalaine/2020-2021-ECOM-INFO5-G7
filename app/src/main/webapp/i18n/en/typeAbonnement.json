@@ -1,0 +1,11 @@
+{
+  "ecomgucvoileApp": {
+    "TypeAbonnement": {
+      "null": "",
+      "JOURNALIER": "JOURNALIER",
+      "ETUDIANT": "ETUDIANT",
+      "ADULTE": "ADULTE",
+      "FAMILLE": "FAMILLE"
+    }
+  }
+}

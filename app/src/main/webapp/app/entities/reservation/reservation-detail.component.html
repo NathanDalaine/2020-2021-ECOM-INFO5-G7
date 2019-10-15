@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="reservation">
+            <h2><span jhiTranslate="ecomgucvoileApp.reservation.detail.title">Reservation</span> {{reservation.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></dt>
+                <dd>
+                    <span>{{reservation.dateReservation}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.dateRendu">Date Rendu</span></dt>
+                <dd>
+                    <span>{{reservation.dateRendu}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.remarques">Remarques</span></dt>
+                <dd>
+                    <span>{{reservation.remarques}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{reservation.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{reservation.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.updatedAt">Updated At</span></dt>
+                <dd>
+                    <span>{{reservation.updatedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.updatedBy">Updated By</span></dt>
+                <dd>
+                    <span>{{reservation.updatedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.deletedAt">Deleted At</span></dt>
+                <dd>
+                    <span>{{reservation.deletedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.deletedBy">Deleted By</span></dt>
+                <dd>
+                    <span>{{reservation.deletedBy}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/reservation', reservation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

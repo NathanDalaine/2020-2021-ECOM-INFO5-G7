@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-harnais-heading" jhiTranslate="ecomgucvoileApp.harnais.home.createOrEditLabel">Create or edit a Harnais</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.harnais.taille" for="field_taille">Taille</label>
+                    <select class="form-control" name="taille" formControlName="taille" id="field_taille">
+                        <option value="S">{{'ecomgucvoileApp.Taille.S' | translate}}</option>
+                        <option value="M">{{'ecomgucvoileApp.Taille.M' | translate}}</option>
+                        <option value="L">{{'ecomgucvoileApp.Taille.L' | translate}}</option>
+                        <option value="XL">{{'ecomgucvoileApp.Taille.XL' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.harnais.etat" for="field_etat">Etat</label>
+                    <input type="text" class="form-control" name="etat" id="field_etat"
+                           formControlName="etat"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.harnais.createdAt" for="field_createdAt">Created At</label>
+                    <input type="text" class="form-control" name="createdAt" id="field_createdAt"
+                           formControlName="createdAt"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.harnais.createdBy" for="field_createdBy">Created By</label>
+                    <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                           formControlName="createdBy"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.harnais.updatedAt" for="field_updatedAt">Updated At</label>
+                    <input type="text" class="form-control" name="updatedAt" id="field_updatedAt"
+                           formControlName="updatedAt"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.harnais.updatedBy" for="field_updatedBy">Updated By</label>
+                    <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
+                           formControlName="updatedBy"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.harnais.deletedAt" for="field_deletedAt">Deleted At</label>
+                    <input type="text" class="form-control" name="deletedAt" id="field_deletedAt"
+                           formControlName="deletedAt"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.harnais.deletedBy" for="field_deletedBy">Deleted By</label>
+                    <input type="text" class="form-control" name="deletedBy" id="field_deletedBy"
+                           formControlName="deletedBy"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.harnais.reservation" for="field_reservation">Reservation</label>
+                    <select class="form-control" id="field_reservation" name="reservation" formControlName="reservationId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="reservationOption.id" *ngFor="let reservationOption of reservations; trackBy: trackReservationById">{{reservationOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

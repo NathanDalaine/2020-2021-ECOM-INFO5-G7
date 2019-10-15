@@ -1,0 +1,30 @@
+{
+  "ecomgucvoileApp": {
+    "combinaison": {
+      "home": {
+        "title": "Combinaisons",
+        "createLabel": "Create a new Combinaison",
+        "createOrEditLabel": "Create or edit a Combinaison",
+        "notFound": "No Combinaisons found"
+      },
+      "created": "A new Combinaison is created with identifier {{ param }}",
+      "updated": "A Combinaison is updated with identifier {{ param }}",
+      "deleted": "A Combinaison is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Combinaison {{ id }}?"
+      },
+      "detail": {
+        "title": "Combinaison"
+      },
+      "taille": "Taille",
+      "etat": "Etat",
+      "createdAt": "Created At",
+      "createdBy": "Created By",
+      "updatedAt": "Updated At",
+      "updatedBy": "Updated By",
+      "deletedAt": "Deleted At",
+      "deletedBy": "Deleted By",
+      "reservation": "Reservation"
+    }
+  }
+}

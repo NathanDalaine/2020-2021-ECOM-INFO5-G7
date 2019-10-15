@@ -1,0 +1,6 @@
+export const enum Niveau {
+  DEBUTANT = 'DEBUTANT',
+  DUBUTANTPLUS = 'DUBUTANTPLUS',
+  FUNBOARD = 'FUNBOARD',
+  PERF = 'PERF'
+}

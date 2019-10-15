@@ -1,0 +1,36 @@
+{
+  "ecomgucvoileApp": {
+    "voile": {
+      "home": {
+        "title": "Voiles",
+        "createLabel": "Créer un nouveau Voile",
+        "createOrEditLabel": "Créer ou éditer un Voile",
+        "notFound": "Aucun Voile trouvé"
+      },
+      "created": "Un nouveau Voile a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Voile avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Voile avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Voile {{ id }} ?"
+      },
+      "detail": {
+        "title": "Voile"
+      },
+      "surface": "Surface",
+      "marque": "Marque",
+      "modele": "Modele",
+      "numero": "Numero",
+      "localisation": "Localisation",
+      "etat": "Etat",
+      "libelle": "Libelle",
+      "gree": "Gree",
+      "createdAt": "Created At",
+      "createdBy": "Created By",
+      "updatedAt": "Updated At",
+      "updatedBy": "Updated By",
+      "deletedAt": "Deleted At",
+      "deletedBy": "Deleted By",
+      "reservation": "Reservation"
+    }
+  }
+}
