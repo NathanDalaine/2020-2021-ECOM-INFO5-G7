@@ -3,25 +3,31 @@
     <div class="alert alert-warning" *ngIf="reservations?.length === 0">
         <span jhiTranslate="ecomgucvoileApp.reservation.home.notFound">No reservations found</span>
     </div>
-    <div class="table-responsive" *ngIf="reservations?.length > 0">
-        <table class="table table-striped" aria-describedby="page-heading">
-            <thead>
-            <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></th>
-            <th><span jhiTranslate="ecomgucvoileApp.reservation.dateRendu">Date Rendu</span></th>
-            <th><span jhiTranslate="ecomgucvoileApp.reservation.remarques">Remarques</span></th>
-            <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let reservation of reservations ;trackBy: trackDate">
-                <td><a [routerLink]="['/reservation', reservation.id, 'view' ]">{{reservation.id}}</a></td>
-                <td>{{reservation.dateReservation | date:'medium'}}</td>
-                <td>{{reservation.dateRendu | date:'medium'}}</td>
-                <td>{{reservation.remarques}}</td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive" *ngIf="reservations?.length > 0">
+            <table class="table table-striped" aria-describedby="page-heading">
+                <thead>
+                <tr>
+                <th><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></th>
+                <th><span jhiTranslate="ecomgucvoileApp.reservation.user">Utilisateur</span></th>
+                <th><span jhiTranslate="ecomgucvoileApp.reservation.voile">Voile</span></th>
+                <th><span jhiTranslate="ecomgucvoileApp.reservation.planche">Planche</span></th>
+                <th><span jhiTranslate="ecomgucvoileApp.reservation.combinaison">Combinaison</span></th>
+                <th><span jhiTranslate="ecomgucvoileApp.reservation.harnais">Harnais</span></th>
+                <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let reservation of (reservations | value) ;trackBy: trackDate " >
+                        <td>{{reservation.dateReservation | date:'medium'}}</td>
+                        <td>{{reservation.users | date:'medium'}}</td>
+                        <td>{{reservation.voiles | date:'medium'}}</td>
+                        <td>{{reservation.planches | date:'medium'}}</td>
+                        <td>{{reservation.combinaisons | date:'medium'}}</td>
+                        <td>{{reservation.harnais | date:'medium'}}</td>
+                        
+                </tr>
+                </tbody>
+            </table>
+    
     </div>
 </div>

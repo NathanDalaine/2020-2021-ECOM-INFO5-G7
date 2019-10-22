@@ -6,8 +6,6 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
 import { IReservation } from 'app/shared/model/reservation.model';
 
-
-
 @Component({
   selector: 'jhi-reservationlist',
   templateUrl: './reservationList.component.html',
@@ -34,6 +32,7 @@ export class ReservationListComponent implements OnInit, OnDestroy {
     this.loadAll();
   }
 
+
   loadAll() {
     this.reservationService
       .query()
@@ -50,7 +49,7 @@ export class ReservationListComponent implements OnInit, OnDestroy {
   }
 
   trackDate(index: number, item: IReservation) {
-    return item.dateReservation;
+      return item.dateReservation;
   }
 
   protected onError(errorMessage: string) {
