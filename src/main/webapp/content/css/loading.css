@@ -1,3 +1,4 @@
+/*
 @keyframes lds-pacman-1 {
   0% {
     -webkit-transform: rotate(0deg);
@@ -53,47 +54,22 @@
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
   }
-}
-@keyframes lds-pacman-3 {
-  0% {
-    -webkit-transform: translate(190px, 0);
-    transform: translate(190px, 0);
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: translate(70px, 0);
-    transform: translate(70px, 0);
-    opacity: 1;
-  }
-}
-@-webkit-keyframes lds-pacman-3 {
-  0% {
-    -webkit-transform: translate(190px, 0);
-    transform: translate(190px, 0);
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: translate(70px, 0);
-    transform: translate(70px, 0);
-    opacity: 1;
-  }
-}
+}*/
 
 .app-loading {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  position: relative;
+  position: absolute;
+  margin-left: 40%;
+  margin-top: 15%;
+  width: 240px;
+  height: 240px;
+  background-image: url('../images/loading.gif');
+  background-size: contain;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  top: 10em;
 }
+
 .app-loading p {
   display: block;
   font-size: 1.17em;
@@ -101,7 +77,7 @@
   margin-inline-end: 0px;
   font-weight: normal;
 }
-
+/*
 .app-loading .lds-pacman {
   position: relative;
   margin: auto;
@@ -150,3 +126,4 @@
   -webkit-animation-delay: 0s;
   animation-delay: 0s;
 }
+*/
