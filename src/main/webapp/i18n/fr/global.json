@@ -60,7 +60,9 @@
         },
         "register": {
           "noaccount": "Vous n'avez pas encore de compte ?",
-          "link": "Créer un compte"
+          "alreadyaccount": "Vous souhaitez vous connecter a votre compte ?",
+          "link": "Créer un compte",
+          "connect": "Connectez-vous"
         }
       },
       "error": {
@@ -137,5 +139,5 @@
     "idexists": "Une nouvelle entité {{entityName}} ne peut pas avoir d'ID !",
     "idnull": "Invalid ID"
   },
-  "footer": "Ceci est votre pied de page"
+  "footer": "Site réalisé en 2019 a Polytech-Grenoble, Promotion RICM5 RIVOIRE Antoine - MASSON Jeremy - SOLVERY Tom - DALAINE Nathan - BRES Maxence - BETEND Baptiste "
 }
