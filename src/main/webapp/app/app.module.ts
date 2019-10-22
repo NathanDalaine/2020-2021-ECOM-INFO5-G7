@@ -11,6 +11,7 @@ import { EcomgucvoileSharedModule } from 'app/shared/shared.module';
 import { EcomgucvoileCoreModule } from 'app/core/core.module';
 import { EcomgucvoileAppRoutingModule } from './app-routing.module';
 import { EcomgucvoileHomeModule } from './home/home.module';
+import { EcomgucvoileReservationListModule } from './pages/reservationList/reservationList.module';
 import { EcomgucvoileEntityModule } from './entities/entity.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent } from './layouts/main/main.component';
@@ -28,7 +29,8 @@ import { ErrorComponent } from './layouts/error/error.component';
     EcomgucvoileHomeModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     EcomgucvoileEntityModule,
-    EcomgucvoileAppRoutingModule
+    EcomgucvoileAppRoutingModule,
+    EcomgucvoileReservationListModule
   ],
   declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   providers: [
