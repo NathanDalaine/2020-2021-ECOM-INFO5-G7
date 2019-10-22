@@ -1,0 +1,18 @@
+{
+  "home": {
+    "title": "Bienvenue sur GUC Voile !",
+    "subtitle": "Voici notre page d'accueil",
+    "logged": {
+      "message": "Vous êtes connecté en tant que \"{{username}}\"."
+    },
+    "question": "Sur notre site vous pouvez :",
+    "link": {
+      "voiles": "Voir la liste des voiles",
+      "planches": "Voir la liste des planches",
+      "reservation": "Emprunter du materiel",
+      "rendu": "Rendre votre materiel emprunté",
+      "follow": "Suivez nous sur Facebook, Instagram et Snapchat"
+    },
+    "like": "Si vous aimez GUC Voile, donnez nous une étoile sur"
+  }
+}
