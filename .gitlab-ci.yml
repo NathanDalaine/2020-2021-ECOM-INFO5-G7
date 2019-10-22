@@ -1,3 +1,4 @@
+image: openjdk:8-alpine
 
 cache:
     key: "$CI_COMMIT_REF_NAME"
