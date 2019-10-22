@@ -7,15 +7,13 @@
        <table class="table table-striped" aria-describedby="page-heading">
            <thead>
            <tr>
-           <th><span jhiTranslate="global.field.id">ID</span></th>
            <th><span jhiTranslate="ecomgucvoileApp.voile.libelle">Libelle</span></th>
            <th></th>
            </tr>
            </thead>
            <tbody>
            <tr *ngFor="let voile of voiles ;trackBy: trackIdVoile">
-               <td><a [routerLink]="['/voile', voile.id, 'view' ]">{{voile.id}}</a></td>
-               <td>{{voile.libelle}}</td>
+               <td><a [routerLink]="['/voile', voile.id, 'view' ]">{{voile.libelle}}</a></td>
            </tr>
            </tbody>
        </table>
@@ -28,15 +26,13 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.planche.libelle">Libelle</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let planche of planches ;trackBy: trackIdPlanche">
-                <td><a [routerLink]="['/planche', planche.id, 'view' ]">{{planche.id}}</a></td>
-                <td>{{planche.libelle}}</td>
+                <td><a [routerLink]="['/planche', planche.id, 'view' ]">{{planche.libelle}}</a></td>
             </tr>
             </tbody>
         </table>
