@@ -1,3 +1,8 @@
+.job_template: &job_definition
+  only:
+    - master
+    - dev
+
 image: openjdk:8
 
 cache:
@@ -19,6 +24,7 @@ before_script:
     - ./mvnw com.github.eirslett:frontend-maven-plugin:npm -Dmaven.repo.local=$MAVEN_USER_HOME
 
 maven-compile:
+    <<: *job_definition
     stage: build
     script:
         - ./mvnw compile -Dmaven.repo.local=$MAVEN_USER_HOME
@@ -29,6 +35,7 @@ maven-compile:
         expire_in: 1 day
 
 maven-test:
+    <<: *job_definition
     stage: test
     script:
         - ./mvnw verify -Dmaven.repo.local=$MAVEN_USER_HOME
@@ -41,6 +48,7 @@ maven-test:
         expire_in: 1 day
 
 frontend-test:
+    <<: *job_definition
     stage: test
     script:
         - ./mvnw com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test' -Dmaven.repo.local=$MAVEN_USER_HOME
@@ -53,6 +61,7 @@ frontend-test:
         expire_in: 1 day
 
 maven-package:
+    <<: *job_definition
     stage: package
     script:
         - ./mvnw verify -Pprod -DskipTests -Dmaven.repo.local=$MAVEN_USER_HOME
