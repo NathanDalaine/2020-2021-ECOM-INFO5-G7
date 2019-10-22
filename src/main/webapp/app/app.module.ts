@@ -27,10 +27,11 @@ import { ErrorComponent } from './layouts/error/error.component';
     EcomgucvoileSharedModule,
     EcomgucvoileCoreModule,
     EcomgucvoileHomeModule,
+    EcomgucvoileReservationListModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     EcomgucvoileEntityModule,
     EcomgucvoileAppRoutingModule,
-    EcomgucvoileReservationListModule
+    
   ],
   declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   providers: [

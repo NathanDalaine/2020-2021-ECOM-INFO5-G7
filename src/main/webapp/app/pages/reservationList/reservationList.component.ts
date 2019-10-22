@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
-
-import { LoginModalService } from 'app/core/login/login-modal.service';
 import { AccountService } from 'app/core/auth/account.service';
-import { Account } from 'app/core/user/account.model';
+import { JhiAlertService } from 'ng-jhipster';
+import { ReservationService } from '../../entities/reservation/reservation.service';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { filter, map } from 'rxjs/operators';
+import { IReservation } from 'app/shared/model/reservation.model';
+
+
 
 @Component({
   selector: 'jhi-reservationlist',
@@ -13,22 +14,50 @@ import { Account } from 'app/core/user/account.model';
   styleUrls: ['reservationList.scss']
 })
 export class ReservationListComponent implements OnInit, OnDestroy {
-  account: Account;
-  authSubscription: Subscription;
-  modalRef: NgbModalRef;
+  currentAccount: any;
+    reservations: IReservation[];
 
-  constructor(private accountService: AccountService, private eventManager: JhiEventManager) {}
+
+  constructor(
+    protected accountService: AccountService,
+    protected reservationService: ReservationService,
+    protected jhiAlertService: JhiAlertService
+
+   
+  ) {}
 
   ngOnInit() {
-    this.accountService.identity().then((account: Account) => {
-      this.account = account;
+
+    this.accountService.identity().then(account => {
+      this.currentAccount = account;
     });
-    //this.registerAuthenticationSuccess();
+    this.loadAll();
+  }
+
+  loadAll() {
+    this.reservationService
+      .query()
+      .pipe(
+        filter((res: HttpResponse<IReservation[]>) => res.ok),
+        map((res: HttpResponse<IReservation[]>) => res.body)
+      )
+      .subscribe(
+        (res: IReservation[]) => {
+          this.reservations = res;
+        },
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
+  }
+
+  trackDate(index: number, item: IReservation) {
+    return item.dateReservation;
+  }
+
+  protected onError(errorMessage: string) {
+    this.jhiAlertService.error(errorMessage, null, null);
   }
 
   ngOnDestroy() {
-    if (this.authSubscription) {
-      this.eventManager.destroy(this.authSubscription);
-    }
   }
+
 }

@@ -1,25 +1,27 @@
 <div class="row">
-    <div class="col-md-3">
-        <span class="hipster img-fluid rounded"></span>
+    <br/>
+    <div class="alert alert-warning" *ngIf="reservations?.length === 0">
+        <span jhiTranslate="ecomgucvoileApp.reservation.home.notFound">No reservations found</span>
     </div>
-    <div class="col-md-9">
-        <h1 class="display-4" jhiTranslate="reservationList.title">Welcome, Java Hipster!</h1>
-        <p class="lead" jhiTranslate="reservationList.subtitle">This is your homepage</p>
-
-        <p jhiTranslate="reservationList.question">
-            If you have any question on JHipster:
-        </p>
-
-        <ul>
-            <li><a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.homepage">JHipster homepage</a></li>
-            <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.stackoverflow">JHipster on Stack Overflow</a></li>
-            <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.bugtracker">JHipster bug tracker</a></li>
-            <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.chat">JHipster public chat room</a></li>
-            <li><a href="https://twitter.com/java_hipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.follow">follow @java_hipster on Twitter</a></li>
-        </ul>
-
-        <p>
-            <span jhiTranslate="reservationList.like">If you like JHipster, don't forget to give us a star on</span> <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.github">GitHub</a>!
-        </p>
+    <div class="table-responsive" *ngIf="reservations?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.reservation.dateRendu">Date Rendu</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.reservation.remarques">Remarques</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let reservation of reservations ;trackBy: trackDate">
+                <td><a [routerLink]="['/reservation', reservation.id, 'view' ]">{{reservation.id}}</a></td>
+                <td>{{reservation.dateReservation | date:'medium'}}</td>
+                <td>{{reservation.dateRendu | date:'medium'}}</td>
+                <td>{{reservation.remarques}}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
