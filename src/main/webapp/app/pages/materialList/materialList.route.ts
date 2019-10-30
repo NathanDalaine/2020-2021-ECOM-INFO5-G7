@@ -7,6 +7,6 @@ export const MATERIAL_LIST_ROUTE: Route = {
   component: MaterialListComponent,
   data: {
     authorities: [],
-    pageTitle: 'materialList.title'
+    pageTitle: 'ecomgucvoileApp.materialList.home.title'
   }
 };
