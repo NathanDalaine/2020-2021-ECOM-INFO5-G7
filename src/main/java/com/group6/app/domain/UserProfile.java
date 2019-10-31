@@ -29,6 +29,10 @@ public class UserProfile implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
     @Column(name = "localisation")
     private String localisation;
 
@@ -76,6 +80,14 @@ public class UserProfile implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public User getUser(){
+        return this.user;
+    }
+
+    public void setUser(User user){
+        this.user = user;
     }
 
     public String getLocalisation() {

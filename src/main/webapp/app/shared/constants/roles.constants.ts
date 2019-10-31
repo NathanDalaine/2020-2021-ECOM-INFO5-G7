@@ -1,0 +1,3 @@
+export const MEMBRE = "ROLE_USER";
+export const GESTIONNAIRE = "ROLE_GESTIONNAIRE";
+export const ADMINISTRATEUR = "ROLE_ADMIN";
