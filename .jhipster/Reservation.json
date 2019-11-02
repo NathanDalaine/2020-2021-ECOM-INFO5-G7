@@ -1,43 +1,6 @@
 {
-    "name": "Reservation",
-    "fields": [
-        {
-            "fieldName": "dateReservation",
-            "fieldType": "Instant"
-        },
-        {
-            "fieldName": "dateRendu",
-            "fieldType": "Instant"
-        },
-        {
-            "fieldName": "remarques",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdAt",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "updatedAt",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "updatedBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "deletedAt",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "deletedBy",
-            "fieldType": "String"
-        }
-    ],
+    "fluentMethods": true,
+    "clientRootFolder": "",
     "relationships": [
         {
             "relationshipType": "one-to-many",
@@ -70,13 +33,50 @@
             "relationshipName": "planche"
         }
     ],
+    "fields": [
+        {
+            "fieldName": "dateReservation",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "dateRendu",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "remarques",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "deletedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "deletedAt",
+            "fieldType": "Instant"
+        }
+    ],
     "changelogDate": "20191015084207",
-    "entityTableName": "reservation",
     "dto": "mapstruct",
-    "pagination": "no",
+    "searchEngine": false,
     "service": "serviceClass",
+    "entityTableName": "reservation",
+    "databaseType": "sql",
     "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "applications": "*"
+    "pagination": "no"
 }

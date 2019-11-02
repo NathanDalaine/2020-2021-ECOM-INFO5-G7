@@ -6,6 +6,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
+import * as moment from 'moment';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { IPlanche, Planche } from 'app/shared/model/planche.model';
 import { PlancheService } from './planche.service';
@@ -30,12 +32,12 @@ export class PlancheUpdateComponent implements OnInit {
     etat: [],
     libelle: [],
     volume: [],
-    createdAt: [],
     createdBy: [],
-    updatedAt: [],
     updatedBy: [],
-    deletedAt: [],
     deletedBy: [],
+    createdAt: [],
+    updatedAt: [],
+    deletedAt: [],
     reservationId: []
   });
 
@@ -71,12 +73,12 @@ export class PlancheUpdateComponent implements OnInit {
       etat: planche.etat,
       libelle: planche.libelle,
       volume: planche.volume,
-      createdAt: planche.createdAt,
       createdBy: planche.createdBy,
-      updatedAt: planche.updatedAt,
       updatedBy: planche.updatedBy,
-      deletedAt: planche.deletedAt,
       deletedBy: planche.deletedBy,
+      createdAt: planche.createdAt != null ? planche.createdAt.format(DATE_TIME_FORMAT) : null,
+      updatedAt: planche.updatedAt != null ? planche.updatedAt.format(DATE_TIME_FORMAT) : null,
+      deletedAt: planche.deletedAt != null ? planche.deletedAt.format(DATE_TIME_FORMAT) : null,
       reservationId: planche.reservationId
     });
   }
@@ -106,12 +108,15 @@ export class PlancheUpdateComponent implements OnInit {
       etat: this.editForm.get(['etat']).value,
       libelle: this.editForm.get(['libelle']).value,
       volume: this.editForm.get(['volume']).value,
-      createdAt: this.editForm.get(['createdAt']).value,
       createdBy: this.editForm.get(['createdBy']).value,
-      updatedAt: this.editForm.get(['updatedAt']).value,
       updatedBy: this.editForm.get(['updatedBy']).value,
-      deletedAt: this.editForm.get(['deletedAt']).value,
       deletedBy: this.editForm.get(['deletedBy']).value,
+      createdAt:
+        this.editForm.get(['createdAt']).value != null ? moment(this.editForm.get(['createdAt']).value, DATE_TIME_FORMAT) : undefined,
+      updatedAt:
+        this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
+      deletedAt:
+        this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
       reservationId: this.editForm.get(['reservationId']).value
     };
   }

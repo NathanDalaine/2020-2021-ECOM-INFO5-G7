@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { browser, ExpectedConditions as ec, promise } from 'protractor';
+import { browser, ExpectedConditions as ec, protractor, promise } from 'protractor';
 import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -43,21 +43,30 @@ describe('Harnais e2e test', () => {
     await promise.all([
       harnaisUpdatePage.tailleSelectLastOption(),
       harnaisUpdatePage.setEtatInput('etat'),
-      harnaisUpdatePage.setCreatedAtInput('createdAt'),
       harnaisUpdatePage.setCreatedByInput('createdBy'),
-      harnaisUpdatePage.setUpdatedAtInput('updatedAt'),
       harnaisUpdatePage.setUpdatedByInput('updatedBy'),
-      harnaisUpdatePage.setDeletedAtInput('deletedAt'),
       harnaisUpdatePage.setDeletedByInput('deletedBy'),
+      harnaisUpdatePage.setCreatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
+      harnaisUpdatePage.setUpdatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
+      harnaisUpdatePage.setDeletedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
       harnaisUpdatePage.reservationSelectLastOption()
     ]);
     expect(await harnaisUpdatePage.getEtatInput()).to.eq('etat', 'Expected Etat value to be equals to etat');
-    expect(await harnaisUpdatePage.getCreatedAtInput()).to.eq('createdAt', 'Expected CreatedAt value to be equals to createdAt');
     expect(await harnaisUpdatePage.getCreatedByInput()).to.eq('createdBy', 'Expected CreatedBy value to be equals to createdBy');
-    expect(await harnaisUpdatePage.getUpdatedAtInput()).to.eq('updatedAt', 'Expected UpdatedAt value to be equals to updatedAt');
     expect(await harnaisUpdatePage.getUpdatedByInput()).to.eq('updatedBy', 'Expected UpdatedBy value to be equals to updatedBy');
-    expect(await harnaisUpdatePage.getDeletedAtInput()).to.eq('deletedAt', 'Expected DeletedAt value to be equals to deletedAt');
     expect(await harnaisUpdatePage.getDeletedByInput()).to.eq('deletedBy', 'Expected DeletedBy value to be equals to deletedBy');
+    expect(await harnaisUpdatePage.getCreatedAtInput()).to.contain(
+      '2001-01-01T02:30',
+      'Expected createdAt value to be equals to 2000-12-31'
+    );
+    expect(await harnaisUpdatePage.getUpdatedAtInput()).to.contain(
+      '2001-01-01T02:30',
+      'Expected updatedAt value to be equals to 2000-12-31'
+    );
+    expect(await harnaisUpdatePage.getDeletedAtInput()).to.contain(
+      '2001-01-01T02:30',
+      'Expected deletedAt value to be equals to 2000-12-31'
+    );
     await harnaisUpdatePage.save();
     expect(await harnaisUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
 

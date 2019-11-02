@@ -10,12 +10,12 @@ export interface IReservation {
   dateReservation?: Moment;
   dateRendu?: Moment;
   remarques?: string;
-  createdAt?: string;
   createdBy?: string;
-  updatedAt?: string;
   updatedBy?: string;
-  deletedAt?: string;
   deletedBy?: string;
+  createdAt?: Moment;
+  updatedAt?: Moment;
+  deletedAt?: Moment;
   voiles?: IVoile[];
   users?: IUserProfile[];
   combinaisons?: ICombinaison[];
@@ -29,12 +29,12 @@ export class Reservation implements IReservation {
     public dateReservation?: Moment,
     public dateRendu?: Moment,
     public remarques?: string,
-    public createdAt?: string,
     public createdBy?: string,
-    public updatedAt?: string,
     public updatedBy?: string,
-    public deletedAt?: string,
     public deletedBy?: string,
+    public createdAt?: Moment,
+    public updatedAt?: Moment,
+    public deletedAt?: Moment,
     public voiles?: IVoile[],
     public users?: IUserProfile[],
     public combinaisons?: ICombinaison[],

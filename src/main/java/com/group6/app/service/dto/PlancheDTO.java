@@ -1,4 +1,5 @@
 package com.group6.app.service.dto;
+import java.time.Instant;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -23,17 +24,17 @@ public class PlancheDTO implements Serializable {
 
     private Integer volume;
 
-    private String createdAt;
-
     private String createdBy;
-
-    private String updatedAt;
 
     private String updatedBy;
 
-    private String deletedAt;
-
     private String deletedBy;
+
+    private Instant createdAt;
+
+    private Instant updatedAt;
+
+    private Instant deletedAt;
 
 
     private Long reservationId;
@@ -102,28 +103,12 @@ public class PlancheDTO implements Serializable {
         this.volume = volume;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
     public String getCreatedBy() {
         return createdBy;
     }
 
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     public String getUpdatedBy() {
@@ -134,20 +119,36 @@ public class PlancheDTO implements Serializable {
         this.updatedBy = updatedBy;
     }
 
-    public String getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(String deletedAt) {
-        this.deletedAt = deletedAt;
-    }
-
     public String getDeletedBy() {
         return deletedBy;
     }
 
     public void setDeletedBy(String deletedBy) {
         this.deletedBy = deletedBy;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Instant getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Instant getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt(Instant deletedAt) {
+        this.deletedAt = deletedAt;
     }
 
     public Long getReservationId() {
@@ -190,12 +191,12 @@ public class PlancheDTO implements Serializable {
             ", etat='" + getEtat() + "'" +
             ", libelle='" + getLibelle() + "'" +
             ", volume=" + getVolume() +
-            ", createdAt='" + getCreatedAt() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
-            ", updatedAt='" + getUpdatedAt() + "'" +
             ", updatedBy='" + getUpdatedBy() + "'" +
-            ", deletedAt='" + getDeletedAt() + "'" +
             ", deletedBy='" + getDeletedBy() + "'" +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", updatedAt='" + getUpdatedAt() + "'" +
+            ", deletedAt='" + getDeletedAt() + "'" +
             ", reservation=" + getReservationId() +
             "}";
     }

@@ -5,10 +5,6 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.localisation">Localisation</span></dt>
-                <dd>
-                    <span>{{userProfile.localisation}}</span>
-                </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.userProfile.dateEcheance">Date Echeance</span></dt>
                 <dd>
                     <span>{{userProfile.dateEcheance}}</span>
@@ -20,10 +16,6 @@
                 <dt><span jhiTranslate="ecomgucvoileApp.userProfile.dateAdhesion">Date Adhesion</span></dt>
                 <dd>
                     <span>{{userProfile.dateAdhesion}}</span>
-                </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.prefTaille">Pref Taille</span></dt>
-                <dd>
-                    <span jhiTranslate="{{'ecomgucvoileApp.Taille.' + userProfile.prefTaille}}">{{userProfile.prefTaille}}</span>
                 </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.userProfile.adresse">Adresse</span></dt>
                 <dd>
@@ -48,6 +40,14 @@
                 <dt><span jhiTranslate="ecomgucvoileApp.userProfile.remarque">Remarque</span></dt>
                 <dd>
                     <span>{{userProfile.remarque}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.tailleHarnais">Taille Harnais</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'ecomgucvoileApp.Taille.' + userProfile.tailleHarnais}}">{{userProfile.tailleHarnais}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.tailleCombinaison">Taille Combinaison</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'ecomgucvoileApp.Taille.' + userProfile.tailleCombinaison}}">{{userProfile.tailleCombinaison}}</span>
                 </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.userProfile.reservation">Reservation</span></dt>
                 <dd>

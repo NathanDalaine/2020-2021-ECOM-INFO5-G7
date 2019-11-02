@@ -80,12 +80,12 @@ class VoileGatlingTest extends Simulation {
                 , "etat":"SAMPLE_TEXT"
                 , "libelle":"SAMPLE_TEXT"
                 , "gree":null
-                , "createdAt":"SAMPLE_TEXT"
                 , "createdBy":"SAMPLE_TEXT"
-                , "updatedAt":"SAMPLE_TEXT"
                 , "updatedBy":"SAMPLE_TEXT"
-                , "deletedAt":"SAMPLE_TEXT"
                 , "deletedBy":"SAMPLE_TEXT"
+                , "createdAt":"2020-01-01T00:00:00.000Z"
+                , "updatedAt":"2020-01-01T00:00:00.000Z"
+                , "deletedAt":"2020-01-01T00:00:00.000Z"
                 }""")).asJson
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_voile_url"))).exitHereIfFailed
