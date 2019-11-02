@@ -26,29 +26,21 @@ export class UserProfileUpdatePage {
   pageTitle = element(by.id('jhi-user-profile-heading'));
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
-  localisationInput = element(by.id('field_localisation'));
   dateEcheanceInput = element(by.id('field_dateEcheance'));
   dateNaissanceInput = element(by.id('field_dateNaissance'));
   dateAdhesionInput = element(by.id('field_dateAdhesion'));
-  prefTailleSelect = element(by.id('field_prefTaille'));
   adresseInput = element(by.id('field_adresse'));
   telephoneInput = element(by.id('field_telephone'));
   typeAbonnementSelect = element(by.id('field_typeAbonnement'));
   niveauSelect = element(by.id('field_niveau'));
   materielTechniqueAutoriseInput = element(by.id('field_materielTechniqueAutorise'));
   remarqueInput = element(by.id('field_remarque'));
+  tailleHarnaisSelect = element(by.id('field_tailleHarnais'));
+  tailleCombinaisonSelect = element(by.id('field_tailleCombinaison'));
   reservationSelect = element(by.id('field_reservation'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
-  }
-
-  async setLocalisationInput(localisation) {
-    await this.localisationInput.sendKeys(localisation);
-  }
-
-  async getLocalisationInput() {
-    return await this.localisationInput.getAttribute('value');
   }
 
   async setDateEcheanceInput(dateEcheance) {
@@ -73,21 +65,6 @@ export class UserProfileUpdatePage {
 
   async getDateAdhesionInput() {
     return await this.dateAdhesionInput.getAttribute('value');
-  }
-
-  async setPrefTailleSelect(prefTaille) {
-    await this.prefTailleSelect.sendKeys(prefTaille);
-  }
-
-  async getPrefTailleSelect() {
-    return await this.prefTailleSelect.element(by.css('option:checked')).getText();
-  }
-
-  async prefTailleSelectLastOption(timeout?: number) {
-    await this.prefTailleSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
   }
 
   async setAdresseInput(adresse) {
@@ -145,6 +122,36 @@ export class UserProfileUpdatePage {
 
   async getRemarqueInput() {
     return await this.remarqueInput.getAttribute('value');
+  }
+
+  async setTailleHarnaisSelect(tailleHarnais) {
+    await this.tailleHarnaisSelect.sendKeys(tailleHarnais);
+  }
+
+  async getTailleHarnaisSelect() {
+    return await this.tailleHarnaisSelect.element(by.css('option:checked')).getText();
+  }
+
+  async tailleHarnaisSelectLastOption(timeout?: number) {
+    await this.tailleHarnaisSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async setTailleCombinaisonSelect(tailleCombinaison) {
+    await this.tailleCombinaisonSelect.sendKeys(tailleCombinaison);
+  }
+
+  async getTailleCombinaisonSelect() {
+    return await this.tailleCombinaisonSelect.element(by.css('option:checked')).getText();
+  }
+
+  async tailleCombinaisonSelectLastOption(timeout?: number) {
+    await this.tailleCombinaisonSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
   }
 
   async reservationSelectLastOption(timeout?: number) {

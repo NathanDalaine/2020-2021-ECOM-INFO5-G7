@@ -2,9 +2,9 @@ package com.group6.app.service.dto;
 import java.time.Instant;
 import java.io.Serializable;
 import java.util.Objects;
-import com.group6.app.domain.enumeration.Taille;
 import com.group6.app.domain.enumeration.TypeAbonnement;
 import com.group6.app.domain.enumeration.Niveau;
+import com.group6.app.domain.enumeration.Taille;
 
 /**
  * A DTO for the {@link com.group6.app.domain.UserProfile} entity.
@@ -13,15 +13,11 @@ public class UserProfileDTO implements Serializable {
 
     private Long id;
 
-    private String localisation;
-
     private Instant dateEcheance;
 
     private Instant dateNaissance;
 
     private Instant dateAdhesion;
-
-    private Taille prefTaille;
 
     private String adresse;
 
@@ -35,6 +31,10 @@ public class UserProfileDTO implements Serializable {
 
     private String remarque;
 
+    private Taille tailleHarnais;
+
+    private Taille tailleCombinaison;
+
 
     private Long reservationId;
 
@@ -44,14 +44,6 @@ public class UserProfileDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getLocalisation() {
-        return localisation;
-    }
-
-    public void setLocalisation(String localisation) {
-        this.localisation = localisation;
     }
 
     public Instant getDateEcheance() {
@@ -76,14 +68,6 @@ public class UserProfileDTO implements Serializable {
 
     public void setDateAdhesion(Instant dateAdhesion) {
         this.dateAdhesion = dateAdhesion;
-    }
-
-    public Taille getPrefTaille() {
-        return prefTaille;
-    }
-
-    public void setPrefTaille(Taille prefTaille) {
-        this.prefTaille = prefTaille;
     }
 
     public String getAdresse() {
@@ -134,6 +118,22 @@ public class UserProfileDTO implements Serializable {
         this.remarque = remarque;
     }
 
+    public Taille getTailleHarnais() {
+        return tailleHarnais;
+    }
+
+    public void setTailleHarnais(Taille tailleHarnais) {
+        this.tailleHarnais = tailleHarnais;
+    }
+
+    public Taille getTailleCombinaison() {
+        return tailleCombinaison;
+    }
+
+    public void setTailleCombinaison(Taille tailleCombinaison) {
+        this.tailleCombinaison = tailleCombinaison;
+    }
+
     public Long getReservationId() {
         return reservationId;
     }
@@ -167,17 +167,17 @@ public class UserProfileDTO implements Serializable {
     public String toString() {
         return "UserProfileDTO{" +
             "id=" + getId() +
-            ", localisation='" + getLocalisation() + "'" +
             ", dateEcheance='" + getDateEcheance() + "'" +
             ", dateNaissance='" + getDateNaissance() + "'" +
             ", dateAdhesion='" + getDateAdhesion() + "'" +
-            ", prefTaille='" + getPrefTaille() + "'" +
             ", adresse='" + getAdresse() + "'" +
             ", telephone='" + getTelephone() + "'" +
             ", typeAbonnement='" + getTypeAbonnement() + "'" +
             ", niveau='" + getNiveau() + "'" +
             ", materielTechniqueAutorise='" + isMaterielTechniqueAutorise() + "'" +
             ", remarque='" + getRemarque() + "'" +
+            ", tailleHarnais='" + getTailleHarnais() + "'" +
+            ", tailleCombinaison='" + getTailleCombinaison() + "'" +
             ", reservation=" + getReservationId() +
             "}";
     }

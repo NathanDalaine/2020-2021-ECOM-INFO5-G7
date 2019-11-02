@@ -8,11 +8,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
 
-import com.group6.app.domain.enumeration.Taille;
-
 import com.group6.app.domain.enumeration.TypeAbonnement;
 
 import com.group6.app.domain.enumeration.Niveau;
+
+import com.group6.app.domain.enumeration.Taille;
 
 /**
  * A UserProfile.
@@ -29,9 +29,6 @@ public class UserProfile implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "localisation")
-    private String localisation;
-
     @Column(name = "date_echeance")
     private Instant dateEcheance;
 
@@ -40,10 +37,6 @@ public class UserProfile implements Serializable {
 
     @Column(name = "date_adhesion")
     private Instant dateAdhesion;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "pref_taille")
-    private Taille prefTaille;
 
     @Column(name = "adresse")
     private String adresse;
@@ -65,6 +58,14 @@ public class UserProfile implements Serializable {
     @Column(name = "remarque")
     private String remarque;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "taille_harnais")
+    private Taille tailleHarnais;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "taille_combinaison")
+    private Taille tailleCombinaison;
+
     @ManyToOne
     @JsonIgnoreProperties("users")
     private Reservation reservation;
@@ -76,19 +77,6 @@ public class UserProfile implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getLocalisation() {
-        return localisation;
-    }
-
-    public UserProfile localisation(String localisation) {
-        this.localisation = localisation;
-        return this;
-    }
-
-    public void setLocalisation(String localisation) {
-        this.localisation = localisation;
     }
 
     public Instant getDateEcheance() {
@@ -128,19 +116,6 @@ public class UserProfile implements Serializable {
 
     public void setDateAdhesion(Instant dateAdhesion) {
         this.dateAdhesion = dateAdhesion;
-    }
-
-    public Taille getPrefTaille() {
-        return prefTaille;
-    }
-
-    public UserProfile prefTaille(Taille prefTaille) {
-        this.prefTaille = prefTaille;
-        return this;
-    }
-
-    public void setPrefTaille(Taille prefTaille) {
-        this.prefTaille = prefTaille;
     }
 
     public String getAdresse() {
@@ -221,6 +196,32 @@ public class UserProfile implements Serializable {
         this.remarque = remarque;
     }
 
+    public Taille getTailleHarnais() {
+        return tailleHarnais;
+    }
+
+    public UserProfile tailleHarnais(Taille tailleHarnais) {
+        this.tailleHarnais = tailleHarnais;
+        return this;
+    }
+
+    public void setTailleHarnais(Taille tailleHarnais) {
+        this.tailleHarnais = tailleHarnais;
+    }
+
+    public Taille getTailleCombinaison() {
+        return tailleCombinaison;
+    }
+
+    public UserProfile tailleCombinaison(Taille tailleCombinaison) {
+        this.tailleCombinaison = tailleCombinaison;
+        return this;
+    }
+
+    public void setTailleCombinaison(Taille tailleCombinaison) {
+        this.tailleCombinaison = tailleCombinaison;
+    }
+
     public Reservation getReservation() {
         return reservation;
     }
@@ -255,17 +256,17 @@ public class UserProfile implements Serializable {
     public String toString() {
         return "UserProfile{" +
             "id=" + getId() +
-            ", localisation='" + getLocalisation() + "'" +
             ", dateEcheance='" + getDateEcheance() + "'" +
             ", dateNaissance='" + getDateNaissance() + "'" +
             ", dateAdhesion='" + getDateAdhesion() + "'" +
-            ", prefTaille='" + getPrefTaille() + "'" +
             ", adresse='" + getAdresse() + "'" +
             ", telephone='" + getTelephone() + "'" +
             ", typeAbonnement='" + getTypeAbonnement() + "'" +
             ", niveau='" + getNiveau() + "'" +
             ", materielTechniqueAutorise='" + isMaterielTechniqueAutorise() + "'" +
             ", remarque='" + getRemarque() + "'" +
+            ", tailleHarnais='" + getTailleHarnais() + "'" +
+            ", tailleCombinaison='" + getTailleCombinaison() + "'" +
             "}";
     }
 }

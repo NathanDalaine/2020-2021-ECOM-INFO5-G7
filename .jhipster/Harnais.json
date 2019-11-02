@@ -1,5 +1,15 @@
 {
-    "name": "Harnais",
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "reservation",
+            "otherEntityRelationshipName": "harnais",
+            "relationshipName": "reservation",
+            "otherEntityField": "id"
+        }
+    ],
     "fields": [
         {
             "fieldName": "taille",
@@ -11,15 +21,7 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "createdAt",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "createdBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "updatedAt",
             "fieldType": "String"
         },
         {
@@ -27,30 +29,28 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "deletedAt",
+            "fieldName": "deletedBy",
             "fieldType": "String"
         },
         {
-            "fieldName": "deletedBy",
-            "fieldType": "String"
-        }
-    ],
-    "relationships": [
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
         {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "reservation",
-            "otherEntityRelationshipName": "harnais",
-            "relationshipName": "reservation",
-            "otherEntityField": "id"
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "deletedAt",
+            "fieldType": "Instant"
         }
     ],
     "changelogDate": "20191015084204",
-    "entityTableName": "harnais",
     "dto": "mapstruct",
-    "pagination": "no",
+    "searchEngine": false,
     "service": "serviceClass",
+    "entityTableName": "harnais",
+    "databaseType": "sql",
     "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "applications": "*"
+    "pagination": "no"
 }

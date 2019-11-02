@@ -6,6 +6,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.Instant;
 
 /**
  * A Planche.
@@ -43,23 +44,23 @@ public class Planche implements Serializable {
     @Column(name = "volume")
     private Integer volume;
 
-    @Column(name = "created_at")
-    private String createdAt;
-
     @Column(name = "created_by")
     private String createdBy;
-
-    @Column(name = "updated_at")
-    private String updatedAt;
 
     @Column(name = "updated_by")
     private String updatedBy;
 
-    @Column(name = "deleted_at")
-    private String deletedAt;
-
     @Column(name = "deleted_by")
     private String deletedBy;
+
+    @Column(name = "created_at")
+    private Instant createdAt;
+
+    @Column(name = "updated_at")
+    private Instant updatedAt;
+
+    @Column(name = "deleted_at")
+    private Instant deletedAt;
 
     @ManyToOne
     @JsonIgnoreProperties("planches")
@@ -165,19 +166,6 @@ public class Planche implements Serializable {
         this.volume = volume;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public Planche createdAt(String createdAt) {
-        this.createdAt = createdAt;
-        return this;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
     public String getCreatedBy() {
         return createdBy;
     }
@@ -189,19 +177,6 @@ public class Planche implements Serializable {
 
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public Planche updatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-        return this;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     public String getUpdatedBy() {
@@ -217,19 +192,6 @@ public class Planche implements Serializable {
         this.updatedBy = updatedBy;
     }
 
-    public String getDeletedAt() {
-        return deletedAt;
-    }
-
-    public Planche deletedAt(String deletedAt) {
-        this.deletedAt = deletedAt;
-        return this;
-    }
-
-    public void setDeletedAt(String deletedAt) {
-        this.deletedAt = deletedAt;
-    }
-
     public String getDeletedBy() {
         return deletedBy;
     }
@@ -241,6 +203,45 @@ public class Planche implements Serializable {
 
     public void setDeletedBy(String deletedBy) {
         this.deletedBy = deletedBy;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public Planche createdAt(Instant createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Instant getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public Planche updatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
+        return this;
+    }
+
+    public void setUpdatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Instant getDeletedAt() {
+        return deletedAt;
+    }
+
+    public Planche deletedAt(Instant deletedAt) {
+        this.deletedAt = deletedAt;
+        return this;
+    }
+
+    public void setDeletedAt(Instant deletedAt) {
+        this.deletedAt = deletedAt;
     }
 
     public Reservation getReservation() {
@@ -284,12 +285,12 @@ public class Planche implements Serializable {
             ", etat='" + getEtat() + "'" +
             ", libelle='" + getLibelle() + "'" +
             ", volume=" + getVolume() +
-            ", createdAt='" + getCreatedAt() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
-            ", updatedAt='" + getUpdatedAt() + "'" +
             ", updatedBy='" + getUpdatedBy() + "'" +
-            ", deletedAt='" + getDeletedAt() + "'" +
             ", deletedBy='" + getDeletedBy() + "'" +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", updatedAt='" + getUpdatedAt() + "'" +
+            ", deletedAt='" + getDeletedAt() + "'" +
             "}";
     }
 }

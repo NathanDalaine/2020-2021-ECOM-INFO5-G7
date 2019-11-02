@@ -1,5 +1,15 @@
 {
-    "name": "Voile",
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "reservation",
+            "otherEntityRelationshipName": "voile",
+            "relationshipName": "reservation",
+            "otherEntityField": "id"
+        }
+    ],
     "fields": [
         {
             "fieldName": "surface",
@@ -34,15 +44,7 @@
             "fieldType": "Boolean"
         },
         {
-            "fieldName": "createdAt",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "createdBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "updatedAt",
             "fieldType": "String"
         },
         {
@@ -50,30 +52,28 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "deletedAt",
+            "fieldName": "deletedBy",
             "fieldType": "String"
         },
         {
-            "fieldName": "deletedBy",
-            "fieldType": "String"
-        }
-    ],
-    "relationships": [
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
         {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "reservation",
-            "otherEntityRelationshipName": "voile",
-            "relationshipName": "reservation",
-            "otherEntityField": "id"
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "deletedAt",
+            "fieldType": "Instant"
         }
     ],
     "changelogDate": "20191015084206",
-    "entityTableName": "voile",
     "dto": "mapstruct",
-    "pagination": "no",
+    "searchEngine": false,
     "service": "serviceClass",
+    "entityTableName": "voile",
+    "databaseType": "sql",
     "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "applications": "*"
+    "pagination": "no"
 }

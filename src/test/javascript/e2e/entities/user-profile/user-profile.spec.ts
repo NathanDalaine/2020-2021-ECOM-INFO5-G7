@@ -41,22 +41,18 @@ describe('UserProfile e2e test', () => {
 
     await userProfileComponentsPage.clickOnCreateButton();
     await promise.all([
-      userProfileUpdatePage.setLocalisationInput('localisation'),
       userProfileUpdatePage.setDateEcheanceInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
       userProfileUpdatePage.setDateNaissanceInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
       userProfileUpdatePage.setDateAdhesionInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
-      userProfileUpdatePage.prefTailleSelectLastOption(),
       userProfileUpdatePage.setAdresseInput('adresse'),
       userProfileUpdatePage.setTelephoneInput('telephone'),
       userProfileUpdatePage.typeAbonnementSelectLastOption(),
       userProfileUpdatePage.niveauSelectLastOption(),
       userProfileUpdatePage.setRemarqueInput('remarque'),
+      userProfileUpdatePage.tailleHarnaisSelectLastOption(),
+      userProfileUpdatePage.tailleCombinaisonSelectLastOption(),
       userProfileUpdatePage.reservationSelectLastOption()
     ]);
-    expect(await userProfileUpdatePage.getLocalisationInput()).to.eq(
-      'localisation',
-      'Expected Localisation value to be equals to localisation'
-    );
     expect(await userProfileUpdatePage.getDateEcheanceInput()).to.contain(
       '2001-01-01T02:30',
       'Expected dateEcheance value to be equals to 2000-12-31'

@@ -1,5 +1,15 @@
 {
-    "name": "Planche",
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "reservation",
+            "otherEntityRelationshipName": "planche",
+            "relationshipName": "reservation",
+            "otherEntityField": "id"
+        }
+    ],
     "fields": [
         {
             "fieldName": "marque",
@@ -30,15 +40,7 @@
             "fieldType": "Integer"
         },
         {
-            "fieldName": "createdAt",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "createdBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "updatedAt",
             "fieldType": "String"
         },
         {
@@ -46,30 +48,28 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "deletedAt",
+            "fieldName": "deletedBy",
             "fieldType": "String"
         },
         {
-            "fieldName": "deletedBy",
-            "fieldType": "String"
-        }
-    ],
-    "relationships": [
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
         {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "reservation",
-            "otherEntityRelationshipName": "planche",
-            "relationshipName": "reservation",
-            "otherEntityField": "id"
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "deletedAt",
+            "fieldType": "Instant"
         }
     ],
     "changelogDate": "20191015084205",
-    "entityTableName": "planche",
     "dto": "mapstruct",
-    "pagination": "no",
+    "searchEngine": false,
     "service": "serviceClass",
+    "entityTableName": "planche",
+    "databaseType": "sql",
     "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "applications": "*"
+    "pagination": "no"
 }

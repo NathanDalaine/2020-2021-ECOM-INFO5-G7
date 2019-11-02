@@ -29,12 +29,12 @@ export class ReservationUpdatePage {
   dateReservationInput = element(by.id('field_dateReservation'));
   dateRenduInput = element(by.id('field_dateRendu'));
   remarquesInput = element(by.id('field_remarques'));
-  createdAtInput = element(by.id('field_createdAt'));
   createdByInput = element(by.id('field_createdBy'));
-  updatedAtInput = element(by.id('field_updatedAt'));
   updatedByInput = element(by.id('field_updatedBy'));
-  deletedAtInput = element(by.id('field_deletedAt'));
   deletedByInput = element(by.id('field_deletedBy'));
+  createdAtInput = element(by.id('field_createdAt'));
+  updatedAtInput = element(by.id('field_updatedAt'));
+  deletedAtInput = element(by.id('field_deletedAt'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -64,28 +64,12 @@ export class ReservationUpdatePage {
     return await this.remarquesInput.getAttribute('value');
   }
 
-  async setCreatedAtInput(createdAt) {
-    await this.createdAtInput.sendKeys(createdAt);
-  }
-
-  async getCreatedAtInput() {
-    return await this.createdAtInput.getAttribute('value');
-  }
-
   async setCreatedByInput(createdBy) {
     await this.createdByInput.sendKeys(createdBy);
   }
 
   async getCreatedByInput() {
     return await this.createdByInput.getAttribute('value');
-  }
-
-  async setUpdatedAtInput(updatedAt) {
-    await this.updatedAtInput.sendKeys(updatedAt);
-  }
-
-  async getUpdatedAtInput() {
-    return await this.updatedAtInput.getAttribute('value');
   }
 
   async setUpdatedByInput(updatedBy) {
@@ -96,20 +80,36 @@ export class ReservationUpdatePage {
     return await this.updatedByInput.getAttribute('value');
   }
 
-  async setDeletedAtInput(deletedAt) {
-    await this.deletedAtInput.sendKeys(deletedAt);
-  }
-
-  async getDeletedAtInput() {
-    return await this.deletedAtInput.getAttribute('value');
-  }
-
   async setDeletedByInput(deletedBy) {
     await this.deletedByInput.sendKeys(deletedBy);
   }
 
   async getDeletedByInput() {
     return await this.deletedByInput.getAttribute('value');
+  }
+
+  async setCreatedAtInput(createdAt) {
+    await this.createdAtInput.sendKeys(createdAt);
+  }
+
+  async getCreatedAtInput() {
+    return await this.createdAtInput.getAttribute('value');
+  }
+
+  async setUpdatedAtInput(updatedAt) {
+    await this.updatedAtInput.sendKeys(updatedAt);
+  }
+
+  async getUpdatedAtInput() {
+    return await this.updatedAtInput.getAttribute('value');
+  }
+
+  async setDeletedAtInput(deletedAt) {
+    await this.deletedAtInput.sendKeys(deletedAt);
+  }
+
+  async getDeletedAtInput() {
+    return await this.deletedAtInput.getAttribute('value');
   }
 
   async save(timeout?: number) {

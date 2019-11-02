@@ -22,12 +22,12 @@ export class ReservationUpdateComponent implements OnInit {
     dateReservation: [],
     dateRendu: [],
     remarques: [],
-    createdAt: [],
     createdBy: [],
-    updatedAt: [],
     updatedBy: [],
-    deletedAt: [],
-    deletedBy: []
+    deletedBy: [],
+    createdAt: [],
+    updatedAt: [],
+    deletedAt: []
   });
 
   constructor(protected reservationService: ReservationService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -45,12 +45,12 @@ export class ReservationUpdateComponent implements OnInit {
       dateReservation: reservation.dateReservation != null ? reservation.dateReservation.format(DATE_TIME_FORMAT) : null,
       dateRendu: reservation.dateRendu != null ? reservation.dateRendu.format(DATE_TIME_FORMAT) : null,
       remarques: reservation.remarques,
-      createdAt: reservation.createdAt,
       createdBy: reservation.createdBy,
-      updatedAt: reservation.updatedAt,
       updatedBy: reservation.updatedBy,
-      deletedAt: reservation.deletedAt,
-      deletedBy: reservation.deletedBy
+      deletedBy: reservation.deletedBy,
+      createdAt: reservation.createdAt != null ? reservation.createdAt.format(DATE_TIME_FORMAT) : null,
+      updatedAt: reservation.updatedAt != null ? reservation.updatedAt.format(DATE_TIME_FORMAT) : null,
+      deletedAt: reservation.deletedAt != null ? reservation.deletedAt.format(DATE_TIME_FORMAT) : null
     });
   }
 
@@ -79,12 +79,15 @@ export class ReservationUpdateComponent implements OnInit {
       dateRendu:
         this.editForm.get(['dateRendu']).value != null ? moment(this.editForm.get(['dateRendu']).value, DATE_TIME_FORMAT) : undefined,
       remarques: this.editForm.get(['remarques']).value,
-      createdAt: this.editForm.get(['createdAt']).value,
       createdBy: this.editForm.get(['createdBy']).value,
-      updatedAt: this.editForm.get(['updatedAt']).value,
       updatedBy: this.editForm.get(['updatedBy']).value,
-      deletedAt: this.editForm.get(['deletedAt']).value,
-      deletedBy: this.editForm.get(['deletedBy']).value
+      deletedBy: this.editForm.get(['deletedBy']).value,
+      createdAt:
+        this.editForm.get(['createdAt']).value != null ? moment(this.editForm.get(['createdAt']).value, DATE_TIME_FORMAT) : undefined,
+      updatedAt:
+        this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
+      deletedAt:
+        this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined
     };
   }
 

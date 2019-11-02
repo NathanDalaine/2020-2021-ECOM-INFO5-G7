@@ -1,3 +1,5 @@
+import { Moment } from 'moment';
+
 export interface IPlanche {
   id?: number;
   marque?: string;
@@ -7,12 +9,12 @@ export interface IPlanche {
   etat?: string;
   libelle?: string;
   volume?: number;
-  createdAt?: string;
   createdBy?: string;
-  updatedAt?: string;
   updatedBy?: string;
-  deletedAt?: string;
   deletedBy?: string;
+  createdAt?: Moment;
+  updatedAt?: Moment;
+  deletedAt?: Moment;
   reservationId?: number;
 }
 
@@ -26,12 +28,12 @@ export class Planche implements IPlanche {
     public etat?: string,
     public libelle?: string,
     public volume?: number,
-    public createdAt?: string,
     public createdBy?: string,
-    public updatedAt?: string,
     public updatedBy?: string,
-    public deletedAt?: string,
     public deletedBy?: string,
+    public createdAt?: Moment,
+    public updatedAt?: Moment,
+    public deletedAt?: Moment,
     public reservationId?: number
   ) {}
 }
