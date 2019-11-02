@@ -7,6 +7,8 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.group6.app.domain.enumeration.TypeAbonnement;
 
@@ -69,6 +71,10 @@ public class UserProfile implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("users")
     private Reservation reservation;
+
+    @OneToMany(mappedBy = "userProfile")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Reservation> reservations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -233,6 +239,31 @@ public class UserProfile implements Serializable {
 
     public void setReservation(Reservation reservation) {
         this.reservation = reservation;
+    }
+
+    public Set<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public UserProfile reservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
+        return this;
+    }
+
+    public UserProfile addReservation(Reservation reservation) {
+        this.reservations.add(reservation);
+        reservation.setUserProfile(this);
+        return this;
+    }
+
+    public UserProfile removeReservation(Reservation reservation) {
+        this.reservations.remove(reservation);
+        reservation.setUserProfile(null);
+        return this;
+    }
+
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

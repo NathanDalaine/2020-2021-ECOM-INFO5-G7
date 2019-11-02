@@ -35,6 +35,11 @@ export class ReservationUpdatePage {
   createdAtInput = element(by.id('field_createdAt'));
   updatedAtInput = element(by.id('field_updatedAt'));
   deletedAtInput = element(by.id('field_deletedAt'));
+  voileSelect = element(by.id('field_voile'));
+  userProfileSelect = element(by.id('field_userProfile'));
+  combinaisonSelect = element(by.id('field_combinaison'));
+  harnaisSelect = element(by.id('field_harnais'));
+  plancheSelect = element(by.id('field_planche'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -110,6 +115,101 @@ export class ReservationUpdatePage {
 
   async getDeletedAtInput() {
     return await this.deletedAtInput.getAttribute('value');
+  }
+
+  async voileSelectLastOption(timeout?: number) {
+    await this.voileSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async voileSelectOption(option) {
+    await this.voileSelect.sendKeys(option);
+  }
+
+  getVoileSelect(): ElementFinder {
+    return this.voileSelect;
+  }
+
+  async getVoileSelectedOption() {
+    return await this.voileSelect.element(by.css('option:checked')).getText();
+  }
+
+  async userProfileSelectLastOption(timeout?: number) {
+    await this.userProfileSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async userProfileSelectOption(option) {
+    await this.userProfileSelect.sendKeys(option);
+  }
+
+  getUserProfileSelect(): ElementFinder {
+    return this.userProfileSelect;
+  }
+
+  async getUserProfileSelectedOption() {
+    return await this.userProfileSelect.element(by.css('option:checked')).getText();
+  }
+
+  async combinaisonSelectLastOption(timeout?: number) {
+    await this.combinaisonSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async combinaisonSelectOption(option) {
+    await this.combinaisonSelect.sendKeys(option);
+  }
+
+  getCombinaisonSelect(): ElementFinder {
+    return this.combinaisonSelect;
+  }
+
+  async getCombinaisonSelectedOption() {
+    return await this.combinaisonSelect.element(by.css('option:checked')).getText();
+  }
+
+  async harnaisSelectLastOption(timeout?: number) {
+    await this.harnaisSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async harnaisSelectOption(option) {
+    await this.harnaisSelect.sendKeys(option);
+  }
+
+  getHarnaisSelect(): ElementFinder {
+    return this.harnaisSelect;
+  }
+
+  async getHarnaisSelectedOption() {
+    return await this.harnaisSelect.element(by.css('option:checked')).getText();
+  }
+
+  async plancheSelectLastOption(timeout?: number) {
+    await this.plancheSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async plancheSelectOption(option) {
+    await this.plancheSelect.sendKeys(option);
+  }
+
+  getPlancheSelect(): ElementFinder {
+    return this.plancheSelect;
+  }
+
+  async getPlancheSelectedOption() {
+    return await this.plancheSelect.element(by.css('option:checked')).getText();
   }
 
   async save(timeout?: number) {

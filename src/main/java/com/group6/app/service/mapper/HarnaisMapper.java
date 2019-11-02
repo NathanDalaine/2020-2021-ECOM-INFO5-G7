@@ -15,6 +15,8 @@ public interface HarnaisMapper extends EntityMapper<HarnaisDTO, Harnais> {
     HarnaisDTO toDto(Harnais harnais);
 
     @Mapping(source = "reservationId", target = "reservation")
+    @Mapping(target = "reservations", ignore = true)
+    @Mapping(target = "removeReservation", ignore = true)
     Harnais toEntity(HarnaisDTO harnaisDTO);
 
     default Harnais fromId(Long id) {

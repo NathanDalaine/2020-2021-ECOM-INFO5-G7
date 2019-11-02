@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IReservation } from 'app/shared/model/reservation.model';
 
 export interface IPlanche {
   id?: number;
@@ -16,6 +17,7 @@ export interface IPlanche {
   updatedAt?: Moment;
   deletedAt?: Moment;
   reservationId?: number;
+  reservations?: IReservation[];
 }
 
 export class Planche implements IPlanche {
@@ -34,6 +36,7 @@ export class Planche implements IPlanche {
     public createdAt?: Moment,
     public updatedAt?: Moment,
     public deletedAt?: Moment,
-    public reservationId?: number
+    public reservationId?: number,
+    public reservations?: IReservation[]
   ) {}
 }

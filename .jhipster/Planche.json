@@ -8,6 +8,12 @@
             "otherEntityRelationshipName": "planche",
             "relationshipName": "reservation",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "reservation",
+            "otherEntityName": "reservation",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "planche"
         }
     ],
     "fields": [

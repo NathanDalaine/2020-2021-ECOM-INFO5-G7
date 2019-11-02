@@ -15,6 +15,8 @@ public interface CombinaisonMapper extends EntityMapper<CombinaisonDTO, Combinai
     CombinaisonDTO toDto(Combinaison combinaison);
 
     @Mapping(source = "reservationId", target = "reservation")
+    @Mapping(target = "reservations", ignore = true)
+    @Mapping(target = "removeReservation", ignore = true)
     Combinaison toEntity(CombinaisonDTO combinaisonDTO);
 
     default Combinaison fromId(Long id) {

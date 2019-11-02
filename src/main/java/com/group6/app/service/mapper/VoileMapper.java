@@ -15,6 +15,8 @@ public interface VoileMapper extends EntityMapper<VoileDTO, Voile> {
     VoileDTO toDto(Voile voile);
 
     @Mapping(source = "reservationId", target = "reservation")
+    @Mapping(target = "reservations", ignore = true)
+    @Mapping(target = "removeReservation", ignore = true)
     Voile toEntity(VoileDTO voileDTO);
 
     default Voile fromId(Long id) {

@@ -15,6 +15,8 @@ public interface PlancheMapper extends EntityMapper<PlancheDTO, Planche> {
     PlancheDTO toDto(Planche planche);
 
     @Mapping(source = "reservationId", target = "reservation")
+    @Mapping(target = "reservations", ignore = true)
+    @Mapping(target = "removeReservation", ignore = true)
     Planche toEntity(PlancheDTO plancheDTO);
 
     default Planche fromId(Long id) {

@@ -8,6 +8,12 @@
             "otherEntityRelationshipName": "harnais",
             "relationshipName": "reservation",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "reservation",
+            "otherEntityName": "reservation",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "harnais"
         }
     ],
     "fields": [

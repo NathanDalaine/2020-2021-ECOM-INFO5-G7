@@ -29,6 +29,16 @@ public class ReservationDTO implements Serializable {
     private Instant deletedAt;
 
 
+    private Long voileId;
+
+    private Long userProfileId;
+
+    private Long combinaisonId;
+
+    private Long harnaisId;
+
+    private Long plancheId;
+
     public Long getId() {
         return id;
     }
@@ -109,6 +119,46 @@ public class ReservationDTO implements Serializable {
         this.deletedAt = deletedAt;
     }
 
+    public Long getVoileId() {
+        return voileId;
+    }
+
+    public void setVoileId(Long voileId) {
+        this.voileId = voileId;
+    }
+
+    public Long getUserProfileId() {
+        return userProfileId;
+    }
+
+    public void setUserProfileId(Long userProfileId) {
+        this.userProfileId = userProfileId;
+    }
+
+    public Long getCombinaisonId() {
+        return combinaisonId;
+    }
+
+    public void setCombinaisonId(Long combinaisonId) {
+        this.combinaisonId = combinaisonId;
+    }
+
+    public Long getHarnaisId() {
+        return harnaisId;
+    }
+
+    public void setHarnaisId(Long harnaisId) {
+        this.harnaisId = harnaisId;
+    }
+
+    public Long getPlancheId() {
+        return plancheId;
+    }
+
+    public void setPlancheId(Long plancheId) {
+        this.plancheId = plancheId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -143,6 +193,11 @@ public class ReservationDTO implements Serializable {
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
+            ", voile=" + getVoileId() +
+            ", userProfile=" + getUserProfileId() +
+            ", combinaison=" + getCombinaisonId() +
+            ", harnais=" + getHarnaisId() +
+            ", planche=" + getPlancheId() +
             "}";
     }
 }

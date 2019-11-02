@@ -7,6 +7,8 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A Voile.
@@ -68,6 +70,10 @@ public class Voile implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("voiles")
     private Reservation reservation;
+
+    @OneToMany(mappedBy = "voile")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Reservation> reservations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -271,6 +277,31 @@ public class Voile implements Serializable {
 
     public void setReservation(Reservation reservation) {
         this.reservation = reservation;
+    }
+
+    public Set<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public Voile reservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
+        return this;
+    }
+
+    public Voile addReservation(Reservation reservation) {
+        this.reservations.add(reservation);
+        reservation.setVoile(this);
+        return this;
+    }
+
+    public Voile removeReservation(Reservation reservation) {
+        this.reservations.remove(reservation);
+        reservation.setVoile(null);
+        return this;
+    }
+
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

@@ -15,6 +15,8 @@ public interface UserProfileMapper extends EntityMapper<UserProfileDTO, UserProf
     UserProfileDTO toDto(UserProfile userProfile);
 
     @Mapping(source = "reservationId", target = "reservation")
+    @Mapping(target = "reservations", ignore = true)
+    @Mapping(target = "removeReservation", ignore = true)
     UserProfile toEntity(UserProfileDTO userProfileDTO);
 
     default UserProfile fromId(Long id) {

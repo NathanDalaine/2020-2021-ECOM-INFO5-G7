@@ -52,6 +52,26 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="voile_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="user_profile_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="combinaison_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="harnais_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="planche_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
 

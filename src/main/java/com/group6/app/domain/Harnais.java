@@ -7,6 +7,8 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.group6.app.domain.enumeration.Taille;
 
@@ -53,6 +55,10 @@ public class Harnais implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("harnais")
     private Reservation reservation;
+
+    @OneToMany(mappedBy = "harnais")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Reservation> reservations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -178,6 +184,31 @@ public class Harnais implements Serializable {
 
     public void setReservation(Reservation reservation) {
         this.reservation = reservation;
+    }
+
+    public Set<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public Harnais reservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
+        return this;
+    }
+
+    public Harnais addReservation(Reservation reservation) {
+        this.reservations.add(reservation);
+        reservation.setHarnais(this);
+        return this;
+    }
+
+    public Harnais removeReservation(Reservation reservation) {
+        this.reservations.remove(reservation);
+        reservation.setHarnais(null);
+        return this;
+    }
+
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

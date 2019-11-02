@@ -8,6 +8,12 @@
             "otherEntityRelationshipName": "combinaison",
             "relationshipName": "reservation",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "reservation",
+            "otherEntityName": "reservation",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "combinaison"
         }
     ],
     "fields": [

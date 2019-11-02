@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IReservation } from 'app/shared/model/reservation.model';
 import { TypeAbonnement } from 'app/shared/model/enumerations/type-abonnement.model';
 import { Niveau } from 'app/shared/model/enumerations/niveau.model';
 import { Taille } from 'app/shared/model/enumerations/taille.model';
@@ -17,6 +18,7 @@ export interface IUserProfile {
   tailleHarnais?: Taille;
   tailleCombinaison?: Taille;
   reservationId?: number;
+  reservations?: IReservation[];
 }
 
 export class UserProfile implements IUserProfile {
@@ -33,7 +35,8 @@ export class UserProfile implements IUserProfile {
     public remarque?: string,
     public tailleHarnais?: Taille,
     public tailleCombinaison?: Taille,
-    public reservationId?: number
+    public reservationId?: number,
+    public reservations?: IReservation[]
   ) {
     this.materielTechniqueAutorise = this.materielTechniqueAutorise || false;
   }

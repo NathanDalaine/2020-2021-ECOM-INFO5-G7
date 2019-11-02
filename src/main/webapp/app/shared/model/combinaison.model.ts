@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IReservation } from 'app/shared/model/reservation.model';
 import { Taille } from 'app/shared/model/enumerations/taille.model';
 
 export interface ICombinaison {
@@ -12,6 +13,7 @@ export interface ICombinaison {
   updatedAt?: Moment;
   deletedAt?: Moment;
   reservationId?: number;
+  reservations?: IReservation[];
 }
 
 export class Combinaison implements ICombinaison {
@@ -25,6 +27,7 @@ export class Combinaison implements ICombinaison {
     public createdAt?: Moment,
     public updatedAt?: Moment,
     public deletedAt?: Moment,
-    public reservationId?: number
+    public reservationId?: number,
+    public reservations?: IReservation[]
   ) {}
 }
