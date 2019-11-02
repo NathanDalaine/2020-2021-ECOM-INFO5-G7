@@ -4,11 +4,13 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
-import { IVoile } from 'app/shared/model/voile.model';
-import { IPlanche } from 'app/shared/model/planche.model';
+import {IVoile} from 'app/shared/model/voile.model';
+import {IPlanche} from 'app/shared/model/planche.model';
 import { VoileService } from '../../entities/voile/voile.service';
 import { PlancheService } from '../../entities/planche/planche.service';
-
+import {FormBuilder} from "@angular/forms";
+import {ReservationService} from "app/entities/reservation/reservation.service";
+import {IReservation} from "app/shared/model/reservation.model";
 
 @Component({
   selector: 'jhi-materiallist',
@@ -16,18 +18,45 @@ import { PlancheService } from '../../entities/planche/planche.service';
   styleUrls: ['materialList.scss']
 })
 export class MaterialListComponent implements OnInit, OnDestroy {
- 
+  success: boolean;
   voiles: IVoile[];
   planches: IPlanche[];
   currentAccount: any;
+  registerForm = this.fb.group({
+    voile: [''],
+    planche: [''],
+    harnais: [false],
+    combinaison: [false]
+  });
+
 
   constructor(
     protected voileService: VoileService,
     protected plancheService: PlancheService,
+    protected reservationService: ReservationService,
     protected jhiAlertService: JhiAlertService,
     protected eventManager: JhiEventManager,
+    private fb: FormBuilder,
     protected accountService: AccountService
   ) {}
+
+  selectVoile(voile:IVoile){
+    if(this.registerForm.get("voile").value === voile){
+      this.registerForm.controls["voile"].setValue(null);
+    }else{
+      this.registerForm.controls["voile"].setValue(voile);
+    }
+  }
+
+  reserver(reservation : IReservation){
+    this.success = true; //pour les tests à sup
+    this.reservationService.create(reservation).subscribe(
+      () => {
+        this.success = true;
+      },
+      response => this.processError(response)
+    );
+  }
 
   loadAll() {
     this.voileService
@@ -75,7 +104,9 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     return item.id;
   }
 
-  
+  private processError(response: HttpErrorResponse) {
+
+  }
 
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);

@@ -1,40 +1,68 @@
-<div>
-   <div class="alert alert-warning" *ngIf="voiles?.length === 0">
-       <span jhiTranslate="ecomgucvoileApp.voile.home.notFound">No voiles found</span>
-   </div>
-   <span>Les Voiles</span>
-   <div class="table-responsive" *ngIf="voiles?.length > 0">
-       <table class="table table-striped" aria-describedby="page-heading">
-           <thead>
-           <tr>
-           <th><span jhiTranslate="ecomgucvoileApp.voile.libelle">Libelle</span></th>
-           <th></th>
-           </tr>
-           </thead>
-           <tbody>
-           <tr *ngFor="let voile of voiles ;trackBy: trackIdVoile">
-               <td><a [routerLink]="['/voile', voile.id, 'view' ]">{{voile.libelle}}</a></td>
-           </tr>
-           </tbody>
-       </table>
-   </div>
-   <div class="alert alert-warning" *ngIf="planches?.length === 0">
-         <span jhiTranslate="ecomgucvoileApp.planche.home.notFound">No planches found</span>
+<form name="form" role="form" (ngSubmit)="reserver(registerForm.value)" [formGroup]="registerForm" *ngIf="!success">
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2%">
+        <div fxFlex="50%">
+            <div class="alert alert-warning" *ngIf="voiles?.length === 0">
+                <span jhiTranslate="ecomgucvoileApp.voile.home.notFound">No voiles found</span>
+            </div>
+            <span>Les Voiles</span>
+            <div class="table-responsive" *ngIf="voiles?.length > 0">
+                <table class="table table-striped" aria-describedby="page-heading">
+                    <thead>
+                    <tr>
+                        <th style="width:5%;"></th>
+                        <th><span jhiTranslate="ecomgucvoileApp.voile.libelle">Libelle</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let voile of voiles ;trackBy: trackIdVoile">
+                        <td>
+                            <input [checked]="this.registerForm.get('voile').value == voile"
+                                   (click)="selectVoile(voile)" type="checkbox">
+                        </td>
+                        <td><a [routerLink]="['/voile', voile.id, 'view' ]">{{voile.libelle}}</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div fxFlex>
+            <div class="alert alert-warning" *ngIf="planches?.length === 0">
+                <span jhiTranslate="ecomgucvoileApp.planche.home.notFound">No planches found</span>
+            </div>
+            <span>Les Planches</span>
+            <div class="table-responsive" *ngIf="planches?.length > 0">
+                <table class="table table-striped" aria-describedby="page-heading">
+                    <thead>
+                    <tr>
+                        <th style="width:5%;"></th>
+                        <th><span jhiTranslate="ecomgucvoileApp.planche.libelle">Libelle</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let planche of planches ;trackBy: trackIdPlanche">
+                        <td>
+                            <input type="checkbox">
+                        </td>
+                        <td><a [routerLink]="['/planche', planche.id, 'view' ]">{{planche.libelle}}</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <span>Les Planches</span>
-    <div class="table-responsive" *ngIf="planches?.length > 0">
-        <table class="table table-striped" aria-describedby="page-heading">
-            <thead>
-            <tr>
-            <th><span jhiTranslate="ecomgucvoileApp.planche.libelle">Libelle</span></th>
-            <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let planche of planches ;trackBy: trackIdPlanche">
-                <td><a [routerLink]="['/planche', planche.id, 'view' ]">{{planche.libelle}}</a></td>
-            </tr>
-            </tbody>
-        </table>
+    <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="2%">
+        <div>
+            <label class="form-control-label" jhiTranslate="ecomgucvoileApp.reservation.harnais">Harness</label>
+            <input formControlName="harnais" type="checkbox">
+        </div>
+        <div>
+            <label class="form-control-label" jhiTranslate="ecomgucvoileApp.reservation.combinaison">Wetsuit</label>
+            <input formControlName="combinaison" type="checkbox">
+        </div>
     </div>
-</div>
+    <div fxLayoutAlign="end center">
+        <button type="submit" class="btn btn-primary" jhiTranslate="ecomgucvoileApp.reservation.reserve">
+            Register
+        </button>
+    </div>
+</form>

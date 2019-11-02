@@ -34,7 +34,7 @@ public class Reservation implements Serializable {
     private String remarques;
 
     @Column(name = "created_at")
-    private String createdAt;
+    private Instant createdAt;
 
     @Column(name = "created_by")
     private String createdBy;
@@ -119,16 +119,16 @@ public class Reservation implements Serializable {
         this.remarques = remarques;
     }
 
-    public String getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public Reservation createdAt(String createdAt) {
+    public Reservation createdAt(Instant createdAt) {
         this.createdAt = createdAt;
         return this;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 
