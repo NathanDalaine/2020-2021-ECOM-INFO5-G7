@@ -5,14 +5,10 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
-import { JhiAlertService } from 'ng-jhipster';
 import { IUserProfile, UserProfile } from 'app/shared/model/user-profile.model';
 import { UserProfileService } from './user-profile.service';
-import { IReservation } from 'app/shared/model/reservation.model';
-import { ReservationService } from 'app/entities/reservation/reservation.service';
 
 @Component({
   selector: 'jhi-user-profile-update',
@@ -20,8 +16,6 @@ import { ReservationService } from 'app/entities/reservation/reservation.service
 })
 export class UserProfileUpdateComponent implements OnInit {
   isSaving: boolean;
-
-  reservations: IReservation[];
 
   editForm = this.fb.group({
     id: [],
@@ -35,30 +29,16 @@ export class UserProfileUpdateComponent implements OnInit {
     materielTechniqueAutorise: [],
     remarque: [],
     tailleHarnais: [],
-    tailleCombinaison: [],
-    reservationId: []
+    tailleCombinaison: []
   });
 
-  constructor(
-    protected jhiAlertService: JhiAlertService,
-    protected userProfileService: UserProfileService,
-    protected reservationService: ReservationService,
-    protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+  constructor(protected userProfileService: UserProfileService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ userProfile }) => {
       this.updateForm(userProfile);
     });
-    this.reservationService
-      .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<IReservation[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IReservation[]>) => response.body)
-      )
-      .subscribe((res: IReservation[]) => (this.reservations = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(userProfile: IUserProfile) {
@@ -74,8 +54,7 @@ export class UserProfileUpdateComponent implements OnInit {
       materielTechniqueAutorise: userProfile.materielTechniqueAutorise,
       remarque: userProfile.remarque,
       tailleHarnais: userProfile.tailleHarnais,
-      tailleCombinaison: userProfile.tailleCombinaison,
-      reservationId: userProfile.reservationId
+      tailleCombinaison: userProfile.tailleCombinaison
     });
   }
 
@@ -112,8 +91,7 @@ export class UserProfileUpdateComponent implements OnInit {
       materielTechniqueAutorise: this.editForm.get(['materielTechniqueAutorise']).value,
       remarque: this.editForm.get(['remarque']).value,
       tailleHarnais: this.editForm.get(['tailleHarnais']).value,
-      tailleCombinaison: this.editForm.get(['tailleCombinaison']).value,
-      reservationId: this.editForm.get(['reservationId']).value
+      tailleCombinaison: this.editForm.get(['tailleCombinaison']).value
     };
   }
 
@@ -128,12 +106,5 @@ export class UserProfileUpdateComponent implements OnInit {
 
   protected onSaveError() {
     this.isSaving = false;
-  }
-  protected onError(errorMessage: string) {
-    this.jhiAlertService.error(errorMessage, null, null);
-  }
-
-  trackReservationById(index: number, item: IReservation) {
-    return item.id;
   }
 }

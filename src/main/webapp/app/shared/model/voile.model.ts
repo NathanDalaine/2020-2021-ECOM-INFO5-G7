@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IReservation } from 'app/shared/model/reservation.model';
 
 export interface IVoile {
   id?: number;
@@ -16,7 +17,7 @@ export interface IVoile {
   createdAt?: Moment;
   updatedAt?: Moment;
   deletedAt?: Moment;
-  reservationId?: number;
+  reservations?: IReservation[];
 }
 
 export class Voile implements IVoile {
@@ -36,7 +37,7 @@ export class Voile implements IVoile {
     public createdAt?: Moment,
     public updatedAt?: Moment,
     public deletedAt?: Moment,
-    public reservationId?: number
+    public reservations?: IReservation[]
   ) {
     this.gree = this.gree || false;
   }

@@ -3,11 +3,10 @@
     "clientRootFolder": "",
     "relationships": [
         {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "reservation",
-            "otherEntityRelationshipName": "voile",
             "relationshipName": "reservation",
-            "otherEntityField": "id"
+            "otherEntityName": "reservation",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "voile"
         }
     ],
     "fields": [

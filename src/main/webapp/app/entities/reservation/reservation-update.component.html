@@ -60,6 +60,41 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.reservation.voile" for="field_voile">Voile</label>
+                    <select class="form-control" id="field_voile" name="voile" formControlName="voileId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="voileOption.id" *ngFor="let voileOption of voiles; trackBy: trackVoileById">{{voileOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.reservation.userProfile" for="field_userProfile">User Profile</label>
+                    <select class="form-control" id="field_userProfile" name="userProfile" formControlName="userProfileId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userProfileOption.id" *ngFor="let userProfileOption of userprofiles; trackBy: trackUserProfileById">{{userProfileOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.reservation.combinaison" for="field_combinaison">Combinaison</label>
+                    <select class="form-control" id="field_combinaison" name="combinaison" formControlName="combinaisonId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="combinaisonOption.id" *ngFor="let combinaisonOption of combinaisons; trackBy: trackCombinaisonById">{{combinaisonOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.reservation.harnais" for="field_harnais">Harnais</label>
+                    <select class="form-control" id="field_harnais" name="harnais" formControlName="harnaisId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="harnaisOption.id" *ngFor="let harnaisOption of harnais; trackBy: trackHarnaisById">{{harnaisOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.reservation.planche" for="field_planche">Planche</label>
+                    <select class="form-control" id="field_planche" name="planche" formControlName="plancheId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="plancheOption.id" *ngFor="let plancheOption of planches; trackBy: trackPlancheById">{{plancheOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

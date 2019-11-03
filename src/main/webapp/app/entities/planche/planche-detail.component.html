@@ -57,12 +57,6 @@
                 <dd>
                     <span>{{planche.deletedAt}}</span>
                 </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.planche.reservation">Reservation</span></dt>
-                <dd>
-                    <div *ngIf="planche.reservationId">
-                        <a [routerLink]="['/reservation', planche.reservationId, 'view']">{{planche.reservationId}}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

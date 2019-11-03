@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IReservation } from 'app/shared/model/reservation.model';
 import { Taille } from 'app/shared/model/enumerations/taille.model';
 
 export interface IHarnais {
@@ -11,7 +12,7 @@ export interface IHarnais {
   createdAt?: Moment;
   updatedAt?: Moment;
   deletedAt?: Moment;
-  reservationId?: number;
+  reservations?: IReservation[];
 }
 
 export class Harnais implements IHarnais {
@@ -25,6 +26,6 @@ export class Harnais implements IHarnais {
     public createdAt?: Moment,
     public updatedAt?: Moment,
     public deletedAt?: Moment,
-    public reservationId?: number
+    public reservations?: IReservation[]
   ) {}
 }

@@ -3,34 +3,39 @@
     "clientRootFolder": "",
     "relationships": [
         {
-            "relationshipType": "one-to-many",
+            "relationshipName": "voile",
             "otherEntityName": "voile",
-            "otherEntityRelationshipName": "reservation",
-            "relationshipName": "voile"
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "reservation"
         },
         {
-            "relationshipType": "one-to-many",
+            "relationshipName": "userProfile",
             "otherEntityName": "userProfile",
-            "otherEntityRelationshipName": "reservation",
-            "relationshipName": "user"
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "reservation"
         },
         {
-            "relationshipType": "one-to-many",
+            "relationshipName": "combinaison",
             "otherEntityName": "combinaison",
-            "otherEntityRelationshipName": "reservation",
-            "relationshipName": "combinaison"
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "reservation"
         },
         {
-            "relationshipType": "one-to-many",
+            "relationshipName": "harnais",
             "otherEntityName": "harnais",
-            "otherEntityRelationshipName": "reservation",
-            "relationshipName": "harnais"
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "reservation"
         },
         {
-            "relationshipType": "one-to-many",
+            "relationshipName": "planche",
             "otherEntityName": "planche",
-            "otherEntityRelationshipName": "reservation",
-            "relationshipName": "planche"
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "reservation"
         }
     ],
     "fields": [

@@ -37,8 +37,6 @@ public class PlancheDTO implements Serializable {
     private Instant deletedAt;
 
 
-    private Long reservationId;
-
     public Long getId() {
         return id;
     }
@@ -151,14 +149,6 @@ public class PlancheDTO implements Serializable {
         this.deletedAt = deletedAt;
     }
 
-    public Long getReservationId() {
-        return reservationId;
-    }
-
-    public void setReservationId(Long reservationId) {
-        this.reservationId = reservationId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -197,7 +187,6 @@ public class PlancheDTO implements Serializable {
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
-            ", reservation=" + getReservationId() +
             "}";
     }
 }

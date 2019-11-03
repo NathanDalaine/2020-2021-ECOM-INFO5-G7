@@ -49,7 +49,12 @@ describe('Reservation e2e test', () => {
       reservationUpdatePage.setDeletedByInput('deletedBy'),
       reservationUpdatePage.setCreatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
       reservationUpdatePage.setUpdatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
-      reservationUpdatePage.setDeletedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM')
+      reservationUpdatePage.setDeletedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
+      reservationUpdatePage.voileSelectLastOption(),
+      reservationUpdatePage.userProfileSelectLastOption(),
+      reservationUpdatePage.combinaisonSelectLastOption(),
+      reservationUpdatePage.harnaisSelectLastOption(),
+      reservationUpdatePage.plancheSelectLastOption()
     ]);
     expect(await reservationUpdatePage.getDateReservationInput()).to.contain(
       '2001-01-01T02:30',

@@ -1,4 +1,5 @@
 package com.group6.app.domain;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -6,8 +7,6 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A Reservation.
@@ -51,25 +50,25 @@ public class Reservation implements Serializable {
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
-    @OneToMany(mappedBy = "reservation")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Voile> voiles = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties("reservations")
+    private Voile voile;
 
-    @OneToMany(mappedBy = "reservation")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<UserProfile> users = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties("reservations")
+    private UserProfile userProfile;
 
-    @OneToMany(mappedBy = "reservation")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Combinaison> combinaisons = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties("reservations")
+    private Combinaison combinaison;
 
-    @OneToMany(mappedBy = "reservation")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Harnais> harnais = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties("reservations")
+    private Harnais harnais;
 
-    @OneToMany(mappedBy = "reservation")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Planche> planches = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties("reservations")
+    private Planche planche;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -197,129 +196,69 @@ public class Reservation implements Serializable {
         this.deletedAt = deletedAt;
     }
 
-    public Set<Voile> getVoiles() {
-        return voiles;
+    public Voile getVoile() {
+        return voile;
     }
 
-    public Reservation voiles(Set<Voile> voiles) {
-        this.voiles = voiles;
+    public Reservation voile(Voile voile) {
+        this.voile = voile;
         return this;
     }
 
-    public Reservation addVoile(Voile voile) {
-        this.voiles.add(voile);
-        voile.setReservation(this);
+    public void setVoile(Voile voile) {
+        this.voile = voile;
+    }
+
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public Reservation userProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
         return this;
     }
 
-    public Reservation removeVoile(Voile voile) {
-        this.voiles.remove(voile);
-        voile.setReservation(null);
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
+    }
+
+    public Combinaison getCombinaison() {
+        return combinaison;
+    }
+
+    public Reservation combinaison(Combinaison combinaison) {
+        this.combinaison = combinaison;
         return this;
     }
 
-    public void setVoiles(Set<Voile> voiles) {
-        this.voiles = voiles;
+    public void setCombinaison(Combinaison combinaison) {
+        this.combinaison = combinaison;
     }
 
-    public Set<UserProfile> getUsers() {
-        return users;
-    }
-
-    public Reservation users(Set<UserProfile> userProfiles) {
-        this.users = userProfiles;
-        return this;
-    }
-
-    public Reservation addUser(UserProfile userProfile) {
-        this.users.add(userProfile);
-        userProfile.setReservation(this);
-        return this;
-    }
-
-    public Reservation removeUser(UserProfile userProfile) {
-        this.users.remove(userProfile);
-        userProfile.setReservation(null);
-        return this;
-    }
-
-    public void setUsers(Set<UserProfile> userProfiles) {
-        this.users = userProfiles;
-    }
-
-    public Set<Combinaison> getCombinaisons() {
-        return combinaisons;
-    }
-
-    public Reservation combinaisons(Set<Combinaison> combinaisons) {
-        this.combinaisons = combinaisons;
-        return this;
-    }
-
-    public Reservation addCombinaison(Combinaison combinaison) {
-        this.combinaisons.add(combinaison);
-        combinaison.setReservation(this);
-        return this;
-    }
-
-    public Reservation removeCombinaison(Combinaison combinaison) {
-        this.combinaisons.remove(combinaison);
-        combinaison.setReservation(null);
-        return this;
-    }
-
-    public void setCombinaisons(Set<Combinaison> combinaisons) {
-        this.combinaisons = combinaisons;
-    }
-
-    public Set<Harnais> getHarnais() {
+    public Harnais getHarnais() {
         return harnais;
     }
 
-    public Reservation harnais(Set<Harnais> harnais) {
+    public Reservation harnais(Harnais harnais) {
         this.harnais = harnais;
         return this;
     }
 
-    public Reservation addHarnais(Harnais harnais) {
-        this.harnais.add(harnais);
-        harnais.setReservation(this);
-        return this;
-    }
-
-    public Reservation removeHarnais(Harnais harnais) {
-        this.harnais.remove(harnais);
-        harnais.setReservation(null);
-        return this;
-    }
-
-    public void setHarnais(Set<Harnais> harnais) {
+    public void setHarnais(Harnais harnais) {
         this.harnais = harnais;
     }
 
-    public Set<Planche> getPlanches() {
-        return planches;
+    public Planche getPlanche() {
+        return planche;
     }
 
-    public Reservation planches(Set<Planche> planches) {
-        this.planches = planches;
+    public Reservation planche(Planche planche) {
+        this.planche = planche;
         return this;
     }
 
-    public Reservation addPlanche(Planche planche) {
-        this.planches.add(planche);
-        planche.setReservation(this);
-        return this;
-    }
-
-    public Reservation removePlanche(Planche planche) {
-        this.planches.remove(planche);
-        planche.setReservation(null);
-        return this;
-    }
-
-    public void setPlanches(Set<Planche> planches) {
-        this.planches = planches;
+    public void setPlanche(Planche planche) {
+        this.planche = planche;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

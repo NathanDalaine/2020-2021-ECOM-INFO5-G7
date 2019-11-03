@@ -26,7 +26,6 @@
             <th><span jhiTranslate="ecomgucvoileApp.combinaison.createdAt">Created At</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.combinaison.updatedAt">Updated At</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.combinaison.deletedAt">Deleted At</span></th>
-            <th><span jhiTranslate="ecomgucvoileApp.combinaison.reservation">Reservation</span></th>
             <th></th>
             </tr>
             </thead>
@@ -41,11 +40,6 @@
                 <td>{{combinaison.createdAt | date:'medium'}}</td>
                 <td>{{combinaison.updatedAt | date:'medium'}}</td>
                 <td>{{combinaison.deletedAt | date:'medium'}}</td>
-                <td>
-                    <div *ngIf="combinaison.reservationId">
-                        <a [routerLink]="['/reservation', combinaison.reservationId , 'view' ]" >{{combinaison.reservationId}}</a>
-                    </div>
-                </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

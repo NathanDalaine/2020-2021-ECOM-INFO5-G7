@@ -3,11 +3,10 @@
     "clientRootFolder": "",
     "relationships": [
         {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "reservation",
-            "otherEntityRelationshipName": "harnais",
             "relationshipName": "reservation",
-            "otherEntityField": "id"
+            "otherEntityName": "reservation",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "harnais"
         }
     ],
     "fields": [
