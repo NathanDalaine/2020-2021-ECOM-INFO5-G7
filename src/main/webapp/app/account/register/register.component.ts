@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     niveau: ['',Validators.required],
     firstName: [''],
     lastName: [''],
-    dateNaissance: [''],
+    dateNaissance: [],
     adresse: [''],
     activated: [false],
     materielTechniqueAutorise: [false]

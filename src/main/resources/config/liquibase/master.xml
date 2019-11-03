@@ -13,20 +13,7 @@
     <property name="clobType" value="clob" dbms="mysql, oracle, mssql, mariadb, postgresql"/>
     <property name="uuidType" value="uuid" dbms="h2, postgresql"/>
 
-    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20191015084203_added_entity_Combinaison.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20191015084204_added_entity_Harnais.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20191015084205_added_entity_Planche.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20191015084206_added_entity_Voile.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20191015084207_added_entity_Reservation.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20191015084208_added_entity_UserProfile.xml" relativeToChangelogFile="false"/>
-    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <include file="config/liquibase/changelog/20191015084203_added_entity_constraints_Combinaison.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20191015084204_added_entity_constraints_Harnais.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20191015084205_added_entity_constraints_Planche.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20191015084206_added_entity_constraints_Voile.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20191015084208_added_entity_constraints_UserProfile.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20191015084207_added_entity_constraints_Reservation.xml" relativeToChangelogFile="false"/>
+
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <includeAll path="config/liquibase/changelog" relativeToChangelogFile="false"/>
 </databaseChangeLog>
