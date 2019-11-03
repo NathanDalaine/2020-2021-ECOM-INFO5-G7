@@ -20,13 +20,12 @@
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.combinaison.taille">Taille</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.combinaison.etat">Etat</span></th>
-            <th><span jhiTranslate="ecomgucvoileApp.combinaison.createdAt">Created At</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.combinaison.createdBy">Created By</span></th>
-            <th><span jhiTranslate="ecomgucvoileApp.combinaison.updatedAt">Updated At</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.combinaison.updatedBy">Updated By</span></th>
-            <th><span jhiTranslate="ecomgucvoileApp.combinaison.deletedAt">Deleted At</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.combinaison.deletedBy">Deleted By</span></th>
-            <th><span jhiTranslate="ecomgucvoileApp.combinaison.reservation">Reservation</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.combinaison.createdAt">Created At</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.combinaison.updatedAt">Updated At</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.combinaison.deletedAt">Deleted At</span></th>
             <th></th>
             </tr>
             </thead>
@@ -35,17 +34,12 @@
                 <td><a [routerLink]="['/combinaison', combinaison.id, 'view' ]">{{combinaison.id}}</a></td>
                 <td jhiTranslate="{{'ecomgucvoileApp.Taille.' + combinaison.taille}}">{{combinaison.taille}}</td>
                 <td>{{combinaison.etat}}</td>
-                <td>{{combinaison.createdAt}}</td>
                 <td>{{combinaison.createdBy}}</td>
-                <td>{{combinaison.updatedAt}}</td>
                 <td>{{combinaison.updatedBy}}</td>
-                <td>{{combinaison.deletedAt}}</td>
                 <td>{{combinaison.deletedBy}}</td>
-                <td>
-                    <div *ngIf="combinaison.reservationId">
-                        <a [routerLink]="['/reservation', combinaison.reservationId , 'view' ]" >{{combinaison.reservationId}}</a>
-                    </div>
-                </td>
+                <td>{{combinaison.createdAt | date:'medium'}}</td>
+                <td>{{combinaison.updatedAt | date:'medium'}}</td>
+                <td>{{combinaison.deletedAt | date:'medium'}}</td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

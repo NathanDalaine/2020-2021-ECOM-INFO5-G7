@@ -1,6 +1,8 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { take, map } from 'rxjs/operators';
+import * as moment from 'moment';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { CombinaisonService } from 'app/entities/combinaison/combinaison.service';
 import { ICombinaison, Combinaison } from 'app/shared/model/combinaison.model';
 import { Taille } from 'app/shared/model/enumerations/taille.model';
@@ -12,6 +14,7 @@ describe('Service Tests', () => {
     let httpMock: HttpTestingController;
     let elemDefault: ICombinaison;
     let expectedResult;
+    let currentDate: moment.Moment;
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [HttpClientTestingModule]
@@ -20,13 +23,21 @@ describe('Service Tests', () => {
       injector = getTestBed();
       service = injector.get(CombinaisonService);
       httpMock = injector.get(HttpTestingController);
+      currentDate = moment();
 
-      elemDefault = new Combinaison(0, Taille.S, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new Combinaison(0, Taille.S, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate, currentDate, currentDate);
     });
 
     describe('Service methods', () => {
       it('should find an element', () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+        const returnedFromService = Object.assign(
+          {
+            createdAt: currentDate.format(DATE_TIME_FORMAT),
+            updatedAt: currentDate.format(DATE_TIME_FORMAT),
+            deletedAt: currentDate.format(DATE_TIME_FORMAT)
+          },
+          elemDefault
+        );
         service
           .find(123)
           .pipe(take(1))
@@ -40,11 +51,21 @@ describe('Service Tests', () => {
       it('should create a Combinaison', () => {
         const returnedFromService = Object.assign(
           {
-            id: 0
+            id: 0,
+            createdAt: currentDate.format(DATE_TIME_FORMAT),
+            updatedAt: currentDate.format(DATE_TIME_FORMAT),
+            deletedAt: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            createdAt: currentDate,
+            updatedAt: currentDate,
+            deletedAt: currentDate
+          },
+          returnedFromService
+        );
         service
           .create(new Combinaison(null))
           .pipe(take(1))
@@ -59,17 +80,24 @@ describe('Service Tests', () => {
           {
             taille: 'BBBBBB',
             etat: 'BBBBBB',
-            createdAt: 'BBBBBB',
             createdBy: 'BBBBBB',
-            updatedAt: 'BBBBBB',
             updatedBy: 'BBBBBB',
-            deletedAt: 'BBBBBB',
-            deletedBy: 'BBBBBB'
+            deletedBy: 'BBBBBB',
+            createdAt: currentDate.format(DATE_TIME_FORMAT),
+            updatedAt: currentDate.format(DATE_TIME_FORMAT),
+            deletedAt: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
 
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            createdAt: currentDate,
+            updatedAt: currentDate,
+            deletedAt: currentDate
+          },
+          returnedFromService
+        );
         service
           .update(expected)
           .pipe(take(1))
@@ -84,16 +112,23 @@ describe('Service Tests', () => {
           {
             taille: 'BBBBBB',
             etat: 'BBBBBB',
-            createdAt: 'BBBBBB',
             createdBy: 'BBBBBB',
-            updatedAt: 'BBBBBB',
             updatedBy: 'BBBBBB',
-            deletedAt: 'BBBBBB',
-            deletedBy: 'BBBBBB'
+            deletedBy: 'BBBBBB',
+            createdAt: currentDate.format(DATE_TIME_FORMAT),
+            updatedAt: currentDate.format(DATE_TIME_FORMAT),
+            deletedAt: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            createdAt: currentDate,
+            updatedAt: currentDate,
+            deletedAt: currentDate
+          },
+          returnedFromService
+        );
         service
           .query(expected)
           .pipe(

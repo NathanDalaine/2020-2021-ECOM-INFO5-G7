@@ -2,9 +2,12 @@ package com.group6.app.service.dto;
 import java.time.Instant;
 import java.io.Serializable;
 import java.util.Objects;
-import com.group6.app.domain.enumeration.Taille;
 import com.group6.app.domain.enumeration.TypeAbonnement;
 import com.group6.app.domain.enumeration.Niveau;
+import com.group6.app.domain.enumeration.Taille;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 
 /**
  * A DTO for the {@link com.group6.app.domain.UserProfile} entity.
@@ -13,15 +16,19 @@ public class UserProfileDTO implements Serializable {
 
     private Long id;
 
-    private String localisation;
+    private String login;
+    private String firstName;
+    private String lastName;
+    private boolean activated;
+    @Email
+    @Size(min = 5, max = 254)
+    private String email;
 
     private Instant dateEcheance;
 
     private Instant dateNaissance;
 
     private Instant dateAdhesion;
-
-    private Taille prefTaille;
 
     private String adresse;
 
@@ -35,8 +42,10 @@ public class UserProfileDTO implements Serializable {
 
     private String remarque;
 
+    private Taille tailleHarnais;
 
-    private Long reservationId;
+    private Taille tailleCombinaison;
+
 
     public Long getId() {
         return id;
@@ -46,12 +55,43 @@ public class UserProfileDTO implements Serializable {
         this.id = id;
     }
 
-    public String getLocalisation() {
-        return localisation;
+    public boolean getActivated(){
+        return this.activated;
     }
 
-    public void setLocalisation(String localisation) {
-        this.localisation = localisation;
+    public void setActivated(boolean activated){
+        this.activated = activated;
+    }
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Instant getDateEcheance() {
@@ -76,14 +116,6 @@ public class UserProfileDTO implements Serializable {
 
     public void setDateAdhesion(Instant dateAdhesion) {
         this.dateAdhesion = dateAdhesion;
-    }
-
-    public Taille getPrefTaille() {
-        return prefTaille;
-    }
-
-    public void setPrefTaille(Taille prefTaille) {
-        this.prefTaille = prefTaille;
     }
 
     public String getAdresse() {
@@ -134,12 +166,20 @@ public class UserProfileDTO implements Serializable {
         this.remarque = remarque;
     }
 
-    public Long getReservationId() {
-        return reservationId;
+    public Taille getTailleHarnais() {
+        return tailleHarnais;
     }
 
-    public void setReservationId(Long reservationId) {
-        this.reservationId = reservationId;
+    public void setTailleHarnais(Taille tailleHarnais) {
+        this.tailleHarnais = tailleHarnais;
+    }
+
+    public Taille getTailleCombinaison() {
+        return tailleCombinaison;
+    }
+
+    public void setTailleCombinaison(Taille tailleCombinaison) {
+        this.tailleCombinaison = tailleCombinaison;
     }
 
     @Override
@@ -167,18 +207,17 @@ public class UserProfileDTO implements Serializable {
     public String toString() {
         return "UserProfileDTO{" +
             "id=" + getId() +
-            ", localisation='" + getLocalisation() + "'" +
             ", dateEcheance='" + getDateEcheance() + "'" +
             ", dateNaissance='" + getDateNaissance() + "'" +
             ", dateAdhesion='" + getDateAdhesion() + "'" +
-            ", prefTaille='" + getPrefTaille() + "'" +
             ", adresse='" + getAdresse() + "'" +
             ", telephone='" + getTelephone() + "'" +
             ", typeAbonnement='" + getTypeAbonnement() + "'" +
             ", niveau='" + getNiveau() + "'" +
             ", materielTechniqueAutorise='" + isMaterielTechniqueAutorise() + "'" +
             ", remarque='" + getRemarque() + "'" +
-            ", reservation=" + getReservationId() +
+            ", tailleHarnais='" + getTailleHarnais() + "'" +
+            ", tailleCombinaison='" + getTailleCombinaison() + "'" +
             "}";
     }
 }

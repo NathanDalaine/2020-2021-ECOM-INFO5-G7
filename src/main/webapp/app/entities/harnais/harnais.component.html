@@ -20,13 +20,12 @@
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.harnais.taille">Taille</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.harnais.etat">Etat</span></th>
-            <th><span jhiTranslate="ecomgucvoileApp.harnais.createdAt">Created At</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.harnais.createdBy">Created By</span></th>
-            <th><span jhiTranslate="ecomgucvoileApp.harnais.updatedAt">Updated At</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.harnais.updatedBy">Updated By</span></th>
-            <th><span jhiTranslate="ecomgucvoileApp.harnais.deletedAt">Deleted At</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.harnais.deletedBy">Deleted By</span></th>
-            <th><span jhiTranslate="ecomgucvoileApp.harnais.reservation">Reservation</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.harnais.createdAt">Created At</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.harnais.updatedAt">Updated At</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.harnais.deletedAt">Deleted At</span></th>
             <th></th>
             </tr>
             </thead>
@@ -35,17 +34,12 @@
                 <td><a [routerLink]="['/harnais', harnais.id, 'view' ]">{{harnais.id}}</a></td>
                 <td jhiTranslate="{{'ecomgucvoileApp.Taille.' + harnais.taille}}">{{harnais.taille}}</td>
                 <td>{{harnais.etat}}</td>
-                <td>{{harnais.createdAt}}</td>
                 <td>{{harnais.createdBy}}</td>
-                <td>{{harnais.updatedAt}}</td>
                 <td>{{harnais.updatedBy}}</td>
-                <td>{{harnais.deletedAt}}</td>
                 <td>{{harnais.deletedBy}}</td>
-                <td>
-                    <div *ngIf="harnais.reservationId">
-                        <a [routerLink]="['/reservation', harnais.reservationId , 'view' ]" >{{harnais.reservationId}}</a>
-                    </div>
-                </td>
+                <td>{{harnais.createdAt | date:'medium'}}</td>
+                <td>{{harnais.updatedAt | date:'medium'}}</td>
+                <td>{{harnais.deletedAt | date:'medium'}}</td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

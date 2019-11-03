@@ -17,29 +17,59 @@
                 <dd>
                     <span>{{reservation.remarques}}</span>
                 </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.reservation.createdAt">Created At</span></dt>
-                <dd>
-                    <span>{{reservation.createdAt}}</span>
-                </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.reservation.createdBy">Created By</span></dt>
                 <dd>
                     <span>{{reservation.createdBy}}</span>
-                </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.reservation.updatedAt">Updated At</span></dt>
-                <dd>
-                    <span>{{reservation.updatedAt}}</span>
                 </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.reservation.updatedBy">Updated By</span></dt>
                 <dd>
                     <span>{{reservation.updatedBy}}</span>
                 </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.deletedBy">Deleted By</span></dt>
+                <dd>
+                    <span>{{reservation.deletedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{reservation.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.updatedAt">Updated At</span></dt>
+                <dd>
+                    <span>{{reservation.updatedAt}}</span>
+                </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.reservation.deletedAt">Deleted At</span></dt>
                 <dd>
                     <span>{{reservation.deletedAt}}</span>
                 </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.reservation.deletedBy">Deleted By</span></dt>
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.voile">Voile</span></dt>
                 <dd>
-                    <span>{{reservation.deletedBy}}</span>
+                    <div *ngIf="reservation.voileId">
+                        <a [routerLink]="['/voile', reservation.voileId, 'view']">{{reservation.voileId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.userProfile">User Profile</span></dt>
+                <dd>
+                    <div *ngIf="reservation.userProfileId">
+                        <a [routerLink]="['/user-profile', reservation.userProfileId, 'view']">{{reservation.userProfileId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.combinaison">Combinaison</span></dt>
+                <dd>
+                    <div *ngIf="reservation.combinaisonId">
+                        <a [routerLink]="['/combinaison', reservation.combinaisonId, 'view']">{{reservation.combinaisonId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.harnais">Harnais</span></dt>
+                <dd>
+                    <div *ngIf="reservation.harnaisId">
+                        <a [routerLink]="['/harnais', reservation.harnaisId, 'view']">{{reservation.harnaisId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.planche">Planche</span></dt>
+                <dd>
+                    <div *ngIf="reservation.plancheId">
+                        <a [routerLink]="['/planche', reservation.plancheId, 'view']">{{reservation.plancheId}}</a>
+                    </div>
                 </dd>
             </dl>
 

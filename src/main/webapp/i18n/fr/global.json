@@ -4,6 +4,7 @@
     "browsehappy": "Vous utilisez un <strong>ancien</strong> navigateur. Veuillez <a href=\"http://browsehappy.com/?locale=fr\">mettre à jour votre navigateur</a> pour une meilleure expérience.",
     "menu": {
       "home": "Accueil",
+      "materialList": "Liste du matériel",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entités",
@@ -49,7 +50,26 @@
       "confirmpassword.label": "Confirmation du nouveau mot de passe",
       "confirmpassword.placeholder": "Confirmation du nouveau mot de passe",
       "email.label": "Email",
-      "email.placeholder": "Votre email"
+      "email.placeholder": "Votre email",
+      "taillecombinaison.label": "Taille de combinaison",
+      "taillecombinaison.placeholder": "Choisir la taille de combinaison",
+      "tailleharnais.label": "Taille de harnais",
+      "tailleharnais.placeholder": "Choisir la taille de harnais",
+      "telephone.label": "Numéro de telephone",
+      "telephone.placeholder": "Telephone",
+      "email.label": "Email",
+      "email.placeholder": "Email",
+      "firstname.label": "Prenom",
+      "lastname.label": "Nom",
+      "activated.label": "Activer",
+      "address.label": "Adresse",
+      "remark.label": "Remarque",
+      "subscription.label": "Abonnement",
+      "subscription.placeholder": "Selectionner l'abonnement",
+      "level.label": "Niveau",
+      "role.label": "Role",
+      "level.placeholder":"Selectionner le niveau",
+      "technicalMaterialAutorization.label": "Materiel technique autorise"
     },
     "messages": {
       "info": {
@@ -60,7 +80,9 @@
         },
         "register": {
           "noaccount": "Vous n'avez pas encore de compte ?",
-          "link": "Créer un compte"
+          "alreadyaccount": "Vous souhaitez vous connecter a votre compte ?",
+          "link": "Créer un compte",
+          "connect": "Connectez-vous"
         }
       },
       "error": {
@@ -83,6 +105,22 @@
           "minlength": "Votre email doit comporter au moins 5 caractères.",
           "maxlength": "Votre email ne doit pas comporter plus de 50 caractères.",
           "invalid": "Votre email n'est pas valide."
+        },
+        "wetsuit": {
+          "required" : "Une taille de combinaison est requise"
+        },
+        "harness": {
+          "required" : "Une taille de harnais est requise"
+        },
+        "level": {
+          "required" : "Un niveau est requis"
+        },
+        "typeAbonnement": {
+          "required" : "Un type d'abonnement est requis"
+        },
+        "phone": {
+          "required": "Votre numero de telephone est requis",
+          "invalid": "Votre numero de telephone n'est pas valide"
         }
       }
     },
@@ -137,5 +175,5 @@
     "idexists": "Une nouvelle entité {{entityName}} ne peut pas avoir d'ID !",
     "idnull": "Invalid ID"
   },
-  "footer": "Ceci est votre pied de page"
+  "footer": "RIVOIRE Antoine - MASSON Jeremy - SOLVERY Tom - DALAINE Nathan - BRES Maxence - BETEND Baptiste  <br> Site réalisé en 2019 a Polytech-Grenoble, Promotion RICM5"
 }
