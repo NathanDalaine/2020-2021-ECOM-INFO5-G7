@@ -54,10 +54,7 @@ export class ReservationService {
     const copy: IReservation = Object.assign({}, reservation, {
       dateReservation:
         reservation.dateReservation != null && reservation.dateReservation.isValid() ? reservation.dateReservation.toJSON() : null,
-      dateRendu: reservation.dateRendu != null && reservation.dateRendu.isValid() ? reservation.dateRendu.toJSON() : null,
-      createdAt: reservation.createdAt != null && reservation.createdAt.isValid() ? reservation.createdAt.toJSON() : null,
-      updatedAt: reservation.updatedAt != null && reservation.updatedAt.isValid() ? reservation.updatedAt.toJSON() : null,
-      deletedAt: reservation.deletedAt != null && reservation.deletedAt.isValid() ? reservation.deletedAt.toJSON() : null
+      dateRendu: reservation.dateRendu != null && reservation.dateRendu.isValid() ? reservation.dateRendu.toJSON() : null
     });
     return copy;
   }
@@ -66,9 +63,6 @@ export class ReservationService {
     if (res.body) {
       res.body.dateReservation = res.body.dateReservation != null ? moment(res.body.dateReservation) : null;
       res.body.dateRendu = res.body.dateRendu != null ? moment(res.body.dateRendu) : null;
-      res.body.createdAt = res.body.createdAt != null ? moment(res.body.createdAt) : null;
-      res.body.updatedAt = res.body.updatedAt != null ? moment(res.body.updatedAt) : null;
-      res.body.deletedAt = res.body.deletedAt != null ? moment(res.body.deletedAt) : null;
     }
     return res;
   }
@@ -78,9 +72,6 @@ export class ReservationService {
       res.body.forEach((reservation: IReservation) => {
         reservation.dateReservation = reservation.dateReservation != null ? moment(reservation.dateReservation) : null;
         reservation.dateRendu = reservation.dateRendu != null ? moment(reservation.dateRendu) : null;
-        reservation.createdAt = reservation.createdAt != null ? moment(reservation.createdAt) : null;
-        reservation.updatedAt = reservation.updatedAt != null ? moment(reservation.updatedAt) : null;
-        reservation.deletedAt = reservation.deletedAt != null ? moment(reservation.deletedAt) : null;
       });
     }
     return res;

@@ -8,12 +8,13 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link UserProfile} and its DTO {@link UserProfileDTO}.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {ReservationMapper.class})
 public interface UserProfileMapper extends EntityMapper<UserProfileDTO, UserProfile> {
 
+    @Mapping(source = "reservation.id", target = "reservationId")
+    UserProfileDTO toDto(UserProfile userProfile);
 
-    @Mapping(target = "reservations", ignore = true)
-    @Mapping(target = "removeReservation", ignore = true)
+    @Mapping(source = "reservationId", target = "reservation")
     UserProfile toEntity(UserProfileDTO userProfileDTO);
 
     default UserProfile fromId(Long id) {

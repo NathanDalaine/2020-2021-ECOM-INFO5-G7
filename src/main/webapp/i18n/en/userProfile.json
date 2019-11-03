@@ -16,17 +16,17 @@
       "detail": {
         "title": "User Profile"
       },
+      "localisation": "Localisation",
       "dateEcheance": "Date Echeance",
       "dateNaissance": "Date Naissance",
       "dateAdhesion": "Date Adhesion",
+      "prefTaille": "Pref Taille",
       "adresse": "Adresse",
       "telephone": "Telephone",
       "typeAbonnement": "Type Abonnement",
       "niveau": "Niveau",
       "materielTechniqueAutorise": "Materiel Technique Autorise",
       "remarque": "Remarque",
-      "tailleHarnais": "Taille Harnais",
-      "tailleCombinaison": "Taille Combinaison",
       "reservation": "Reservation"
     }
   }

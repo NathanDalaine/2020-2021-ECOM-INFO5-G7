@@ -1,43 +1,5 @@
 {
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "relationships": [
-        {
-            "relationshipName": "voile",
-            "otherEntityName": "voile",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id",
-            "otherEntityRelationshipName": "reservation"
-        },
-        {
-            "relationshipName": "userProfile",
-            "otherEntityName": "userProfile",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id",
-            "otherEntityRelationshipName": "reservation"
-        },
-        {
-            "relationshipName": "combinaison",
-            "otherEntityName": "combinaison",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id",
-            "otherEntityRelationshipName": "reservation"
-        },
-        {
-            "relationshipName": "harnais",
-            "otherEntityName": "harnais",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id",
-            "otherEntityRelationshipName": "reservation"
-        },
-        {
-            "relationshipName": "planche",
-            "otherEntityName": "planche",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id",
-            "otherEntityRelationshipName": "reservation"
-        }
-    ],
+    "name": "Reservation",
     "fields": [
         {
             "fieldName": "dateReservation",
@@ -52,7 +14,15 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "createdAt",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedAt",
             "fieldType": "String"
         },
         {
@@ -60,28 +30,53 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "deletedBy",
+            "fieldName": "deletedAt",
             "fieldType": "String"
         },
         {
-            "fieldName": "createdAt",
-            "fieldType": "Instant"
+            "fieldName": "deletedBy",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "voile",
+            "otherEntityRelationshipName": "reservation",
+            "relationshipName": "voile"
         },
         {
-            "fieldName": "updatedAt",
-            "fieldType": "Instant"
+            "relationshipType": "one-to-many",
+            "otherEntityName": "userProfile",
+            "otherEntityRelationshipName": "reservation",
+            "relationshipName": "user"
         },
         {
-            "fieldName": "deletedAt",
-            "fieldType": "Instant"
+            "relationshipType": "one-to-many",
+            "otherEntityName": "combinaison",
+            "otherEntityRelationshipName": "reservation",
+            "relationshipName": "combinaison"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "harnais",
+            "otherEntityRelationshipName": "reservation",
+            "relationshipName": "harnais"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "planche",
+            "otherEntityRelationshipName": "reservation",
+            "relationshipName": "planche"
         }
     ],
     "changelogDate": "20191015084207",
-    "dto": "mapstruct",
-    "searchEngine": false,
-    "service": "serviceClass",
     "entityTableName": "reservation",
-    "databaseType": "sql",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
     "jpaMetamodelFiltering": false,
-    "pagination": "no"
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
 }

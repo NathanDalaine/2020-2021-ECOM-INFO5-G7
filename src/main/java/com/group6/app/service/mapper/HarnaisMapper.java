@@ -8,12 +8,13 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Harnais} and its DTO {@link HarnaisDTO}.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {ReservationMapper.class})
 public interface HarnaisMapper extends EntityMapper<HarnaisDTO, Harnais> {
 
+    @Mapping(source = "reservation.id", target = "reservationId")
+    HarnaisDTO toDto(Harnais harnais);
 
-    @Mapping(target = "reservations", ignore = true)
-    @Mapping(target = "removeReservation", ignore = true)
+    @Mapping(source = "reservationId", target = "reservation")
     Harnais toEntity(HarnaisDTO harnaisDTO);
 
     default Harnais fromId(Long id) {

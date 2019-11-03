@@ -1,15 +1,10 @@
 {
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "relationships": [
-        {
-            "relationshipName": "reservation",
-            "otherEntityName": "reservation",
-            "relationshipType": "one-to-many",
-            "otherEntityRelationshipName": "userProfile"
-        }
-    ],
+    "name": "UserProfile",
     "fields": [
+        {
+            "fieldName": "localisation",
+            "fieldType": "String"
+        },
         {
             "fieldName": "dateEcheance",
             "fieldType": "Instant"
@@ -21,6 +16,11 @@
         {
             "fieldName": "dateAdhesion",
             "fieldType": "Instant"
+        },
+        {
+            "fieldName": "prefTaille",
+            "fieldType": "Taille",
+            "fieldValues": "S,M,L,XL"
         },
         {
             "fieldName": "adresse",
@@ -47,24 +47,24 @@
         {
             "fieldName": "remarque",
             "fieldType": "String"
-        },
+        }
+    ],
+    "relationships": [
         {
-            "fieldName": "tailleHarnais",
-            "fieldType": "Taille",
-            "fieldValues": "S,M,L,XL"
-        },
-        {
-            "fieldName": "tailleCombinaison",
-            "fieldType": "Taille",
-            "fieldValues": "S,M,L,XL"
+            "relationshipType": "many-to-one",
+            "otherEntityName": "reservation",
+            "otherEntityRelationshipName": "user",
+            "relationshipName": "reservation",
+            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20191015084208",
-    "dto": "mapstruct",
-    "searchEngine": false,
-    "service": "serviceClass",
     "entityTableName": "user_profile",
-    "databaseType": "sql",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
     "jpaMetamodelFiltering": false,
-    "pagination": "no"
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
 }

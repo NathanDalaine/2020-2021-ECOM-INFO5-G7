@@ -75,12 +75,12 @@ class ReservationGatlingTest extends Simulation {
                 , "dateReservation":"2020-01-01T00:00:00.000Z"
                 , "dateRendu":"2020-01-01T00:00:00.000Z"
                 , "remarques":"SAMPLE_TEXT"
+                , "createdAt":"SAMPLE_TEXT"
                 , "createdBy":"SAMPLE_TEXT"
+                , "updatedAt":"SAMPLE_TEXT"
                 , "updatedBy":"SAMPLE_TEXT"
+                , "deletedAt":"SAMPLE_TEXT"
                 , "deletedBy":"SAMPLE_TEXT"
-                , "createdAt":"2020-01-01T00:00:00.000Z"
-                , "updatedAt":"2020-01-01T00:00:00.000Z"
-                , "deletedAt":"2020-01-01T00:00:00.000Z"
                 }""")).asJson
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_reservation_url"))).exitHereIfFailed

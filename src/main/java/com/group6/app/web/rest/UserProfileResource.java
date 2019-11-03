@@ -1,7 +1,6 @@
 package com.group6.app.web.rest;
 
 import com.group6.app.service.UserProfileService;
-import com.group6.app.service.dto.UserProfileVMDTO;
 import com.group6.app.web.rest.errors.BadRequestAlertException;
 import com.group6.app.service.dto.UserProfileDTO;
 
@@ -47,12 +46,12 @@ public class UserProfileResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/user-profiles")
-    public ResponseEntity<UserProfileDTO> createUserProfile(@RequestBody UserProfileVMDTO userProfileDTO) throws URISyntaxException {
+    public ResponseEntity<UserProfileDTO> createUserProfile(@RequestBody UserProfileDTO userProfileDTO) throws URISyntaxException {
         log.debug("REST request to save UserProfile : {}", userProfileDTO);
         if (userProfileDTO.getId() != null) {
             throw new BadRequestAlertException("A new userProfile cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        UserProfileDTO result = userProfileService.register(userProfileDTO,userProfileDTO.getPassword());
+        UserProfileDTO result = userProfileService.save(userProfileDTO);
         return ResponseEntity.created(new URI("/api/user-profiles/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);

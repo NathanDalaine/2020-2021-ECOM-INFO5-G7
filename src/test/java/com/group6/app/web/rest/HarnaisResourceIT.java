@@ -22,8 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static com.group6.app.web.rest.TestUtil.createFormattingConversionService;
@@ -45,26 +43,23 @@ public class HarnaisResourceIT {
     private static final String DEFAULT_ETAT = "AAAAAAAAAA";
     private static final String UPDATED_ETAT = "BBBBBBBBBB";
 
+    private static final String DEFAULT_CREATED_AT = "AAAAAAAAAA";
+    private static final String UPDATED_CREATED_AT = "BBBBBBBBBB";
+
     private static final String DEFAULT_CREATED_BY = "AAAAAAAAAA";
     private static final String UPDATED_CREATED_BY = "BBBBBBBBBB";
+
+    private static final String DEFAULT_UPDATED_AT = "AAAAAAAAAA";
+    private static final String UPDATED_UPDATED_AT = "BBBBBBBBBB";
 
     private static final String DEFAULT_UPDATED_BY = "AAAAAAAAAA";
     private static final String UPDATED_UPDATED_BY = "BBBBBBBBBB";
 
+    private static final String DEFAULT_DELETED_AT = "AAAAAAAAAA";
+    private static final String UPDATED_DELETED_AT = "BBBBBBBBBB";
+
     private static final String DEFAULT_DELETED_BY = "AAAAAAAAAA";
     private static final String UPDATED_DELETED_BY = "BBBBBBBBBB";
-
-    private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_CREATED_AT = Instant.ofEpochMilli(-1L);
-
-    private static final Instant DEFAULT_UPDATED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_UPDATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_UPDATED_AT = Instant.ofEpochMilli(-1L);
-
-    private static final Instant DEFAULT_DELETED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_DELETED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_DELETED_AT = Instant.ofEpochMilli(-1L);
 
     @Autowired
     private HarnaisRepository harnaisRepository;
@@ -116,12 +111,12 @@ public class HarnaisResourceIT {
         Harnais harnais = new Harnais()
             .taille(DEFAULT_TAILLE)
             .etat(DEFAULT_ETAT)
-            .createdBy(DEFAULT_CREATED_BY)
-            .updatedBy(DEFAULT_UPDATED_BY)
-            .deletedBy(DEFAULT_DELETED_BY)
             .createdAt(DEFAULT_CREATED_AT)
+            .createdBy(DEFAULT_CREATED_BY)
             .updatedAt(DEFAULT_UPDATED_AT)
-            .deletedAt(DEFAULT_DELETED_AT);
+            .updatedBy(DEFAULT_UPDATED_BY)
+            .deletedAt(DEFAULT_DELETED_AT)
+            .deletedBy(DEFAULT_DELETED_BY);
         return harnais;
     }
     /**
@@ -134,12 +129,12 @@ public class HarnaisResourceIT {
         Harnais harnais = new Harnais()
             .taille(UPDATED_TAILLE)
             .etat(UPDATED_ETAT)
-            .createdBy(UPDATED_CREATED_BY)
-            .updatedBy(UPDATED_UPDATED_BY)
-            .deletedBy(UPDATED_DELETED_BY)
             .createdAt(UPDATED_CREATED_AT)
+            .createdBy(UPDATED_CREATED_BY)
             .updatedAt(UPDATED_UPDATED_AT)
-            .deletedAt(UPDATED_DELETED_AT);
+            .updatedBy(UPDATED_UPDATED_BY)
+            .deletedAt(UPDATED_DELETED_AT)
+            .deletedBy(UPDATED_DELETED_BY);
         return harnais;
     }
 
@@ -166,12 +161,12 @@ public class HarnaisResourceIT {
         Harnais testHarnais = harnaisList.get(harnaisList.size() - 1);
         assertThat(testHarnais.getTaille()).isEqualTo(DEFAULT_TAILLE);
         assertThat(testHarnais.getEtat()).isEqualTo(DEFAULT_ETAT);
-        assertThat(testHarnais.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
-        assertThat(testHarnais.getUpdatedBy()).isEqualTo(DEFAULT_UPDATED_BY);
-        assertThat(testHarnais.getDeletedBy()).isEqualTo(DEFAULT_DELETED_BY);
         assertThat(testHarnais.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
+        assertThat(testHarnais.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
         assertThat(testHarnais.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
+        assertThat(testHarnais.getUpdatedBy()).isEqualTo(DEFAULT_UPDATED_BY);
         assertThat(testHarnais.getDeletedAt()).isEqualTo(DEFAULT_DELETED_AT);
+        assertThat(testHarnais.getDeletedBy()).isEqualTo(DEFAULT_DELETED_BY);
     }
 
     @Test
@@ -208,12 +203,12 @@ public class HarnaisResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(harnais.getId().intValue())))
             .andExpect(jsonPath("$.[*].taille").value(hasItem(DEFAULT_TAILLE.toString())))
             .andExpect(jsonPath("$.[*].etat").value(hasItem(DEFAULT_ETAT.toString())))
-            .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY.toString())))
-            .andExpect(jsonPath("$.[*].updatedBy").value(hasItem(DEFAULT_UPDATED_BY.toString())))
-            .andExpect(jsonPath("$.[*].deletedBy").value(hasItem(DEFAULT_DELETED_BY.toString())))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
+            .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
-            .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())));
+            .andExpect(jsonPath("$.[*].updatedBy").value(hasItem(DEFAULT_UPDATED_BY.toString())))
+            .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())))
+            .andExpect(jsonPath("$.[*].deletedBy").value(hasItem(DEFAULT_DELETED_BY.toString())));
     }
     
     @Test
@@ -229,12 +224,12 @@ public class HarnaisResourceIT {
             .andExpect(jsonPath("$.id").value(harnais.getId().intValue()))
             .andExpect(jsonPath("$.taille").value(DEFAULT_TAILLE.toString()))
             .andExpect(jsonPath("$.etat").value(DEFAULT_ETAT.toString()))
-            .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY.toString()))
-            .andExpect(jsonPath("$.updatedBy").value(DEFAULT_UPDATED_BY.toString()))
-            .andExpect(jsonPath("$.deletedBy").value(DEFAULT_DELETED_BY.toString()))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
+            .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
-            .andExpect(jsonPath("$.deletedAt").value(DEFAULT_DELETED_AT.toString()));
+            .andExpect(jsonPath("$.updatedBy").value(DEFAULT_UPDATED_BY.toString()))
+            .andExpect(jsonPath("$.deletedAt").value(DEFAULT_DELETED_AT.toString()))
+            .andExpect(jsonPath("$.deletedBy").value(DEFAULT_DELETED_BY.toString()));
     }
 
     @Test
@@ -260,12 +255,12 @@ public class HarnaisResourceIT {
         updatedHarnais
             .taille(UPDATED_TAILLE)
             .etat(UPDATED_ETAT)
-            .createdBy(UPDATED_CREATED_BY)
-            .updatedBy(UPDATED_UPDATED_BY)
-            .deletedBy(UPDATED_DELETED_BY)
             .createdAt(UPDATED_CREATED_AT)
+            .createdBy(UPDATED_CREATED_BY)
             .updatedAt(UPDATED_UPDATED_AT)
-            .deletedAt(UPDATED_DELETED_AT);
+            .updatedBy(UPDATED_UPDATED_BY)
+            .deletedAt(UPDATED_DELETED_AT)
+            .deletedBy(UPDATED_DELETED_BY);
         HarnaisDTO harnaisDTO = harnaisMapper.toDto(updatedHarnais);
 
         restHarnaisMockMvc.perform(put("/api/harnais")
@@ -279,12 +274,12 @@ public class HarnaisResourceIT {
         Harnais testHarnais = harnaisList.get(harnaisList.size() - 1);
         assertThat(testHarnais.getTaille()).isEqualTo(UPDATED_TAILLE);
         assertThat(testHarnais.getEtat()).isEqualTo(UPDATED_ETAT);
-        assertThat(testHarnais.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
-        assertThat(testHarnais.getUpdatedBy()).isEqualTo(UPDATED_UPDATED_BY);
-        assertThat(testHarnais.getDeletedBy()).isEqualTo(UPDATED_DELETED_BY);
         assertThat(testHarnais.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testHarnais.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
         assertThat(testHarnais.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
+        assertThat(testHarnais.getUpdatedBy()).isEqualTo(UPDATED_UPDATED_BY);
         assertThat(testHarnais.getDeletedAt()).isEqualTo(UPDATED_DELETED_AT);
+        assertThat(testHarnais.getDeletedBy()).isEqualTo(UPDATED_DELETED_BY);
     }
 
     @Test

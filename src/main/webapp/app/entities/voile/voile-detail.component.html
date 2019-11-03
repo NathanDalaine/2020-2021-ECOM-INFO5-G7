@@ -37,29 +37,35 @@
                 <dd>
                     <span>{{voile.gree}}</span>
                 </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.voile.createdBy">Created By</span></dt>
-                <dd>
-                    <span>{{voile.createdBy}}</span>
-                </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.voile.updatedBy">Updated By</span></dt>
-                <dd>
-                    <span>{{voile.updatedBy}}</span>
-                </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.voile.deletedBy">Deleted By</span></dt>
-                <dd>
-                    <span>{{voile.deletedBy}}</span>
-                </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.voile.createdAt">Created At</span></dt>
                 <dd>
                     <span>{{voile.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.voile.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{voile.createdBy}}</span>
                 </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.voile.updatedAt">Updated At</span></dt>
                 <dd>
                     <span>{{voile.updatedAt}}</span>
                 </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.voile.updatedBy">Updated By</span></dt>
+                <dd>
+                    <span>{{voile.updatedBy}}</span>
+                </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.voile.deletedAt">Deleted At</span></dt>
                 <dd>
                     <span>{{voile.deletedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.voile.deletedBy">Deleted By</span></dt>
+                <dd>
+                    <span>{{voile.deletedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.voile.reservation">Reservation</span></dt>
+                <dd>
+                    <div *ngIf="voile.reservationId">
+                        <a [routerLink]="['/reservation', voile.reservationId, 'view']">{{voile.reservationId}}</a>
+                    </div>
                 </dd>
             </dl>
 

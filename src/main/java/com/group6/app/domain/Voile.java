@@ -1,13 +1,11 @@
 package com.group6.app.domain;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.Instant;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A Voile.
@@ -48,27 +46,27 @@ public class Voile implements Serializable {
     @Column(name = "gree")
     private Boolean gree;
 
+    @Column(name = "created_at")
+    private String createdAt;
+
     @Column(name = "created_by")
     private String createdBy;
+
+    @Column(name = "updated_at")
+    private String updatedAt;
 
     @Column(name = "updated_by")
     private String updatedBy;
 
+    @Column(name = "deleted_at")
+    private String deletedAt;
+
     @Column(name = "deleted_by")
     private String deletedBy;
 
-    @Column(name = "created_at")
-    private Instant createdAt;
-
-    @Column(name = "updated_at")
-    private Instant updatedAt;
-
-    @Column(name = "deleted_at")
-    private Instant deletedAt;
-
-    @OneToMany(mappedBy = "voile")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Reservation> reservations = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties("voiles")
+    private Reservation reservation;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -183,6 +181,19 @@ public class Voile implements Serializable {
         this.gree = gree;
     }
 
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public Voile createdAt(String createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
     public String getCreatedBy() {
         return createdBy;
     }
@@ -194,6 +205,19 @@ public class Voile implements Serializable {
 
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public Voile updatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+        return this;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public String getUpdatedBy() {
@@ -209,6 +233,19 @@ public class Voile implements Serializable {
         this.updatedBy = updatedBy;
     }
 
+    public String getDeletedAt() {
+        return deletedAt;
+    }
+
+    public Voile deletedAt(String deletedAt) {
+        this.deletedAt = deletedAt;
+        return this;
+    }
+
+    public void setDeletedAt(String deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
     public String getDeletedBy() {
         return deletedBy;
     }
@@ -222,68 +259,17 @@ public class Voile implements Serializable {
         this.deletedBy = deletedBy;
     }
 
-    public Instant getCreatedAt() {
-        return createdAt;
+    public Reservation getReservation() {
+        return reservation;
     }
 
-    public Voile createdAt(Instant createdAt) {
-        this.createdAt = createdAt;
+    public Voile reservation(Reservation reservation) {
+        this.reservation = reservation;
         return this;
     }
 
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Instant getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public Voile updatedAt(Instant updatedAt) {
-        this.updatedAt = updatedAt;
-        return this;
-    }
-
-    public void setUpdatedAt(Instant updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Instant getDeletedAt() {
-        return deletedAt;
-    }
-
-    public Voile deletedAt(Instant deletedAt) {
-        this.deletedAt = deletedAt;
-        return this;
-    }
-
-    public void setDeletedAt(Instant deletedAt) {
-        this.deletedAt = deletedAt;
-    }
-
-    public Set<Reservation> getReservations() {
-        return reservations;
-    }
-
-    public Voile reservations(Set<Reservation> reservations) {
-        this.reservations = reservations;
-        return this;
-    }
-
-    public Voile addReservation(Reservation reservation) {
-        this.reservations.add(reservation);
-        reservation.setVoile(this);
-        return this;
-    }
-
-    public Voile removeReservation(Reservation reservation) {
-        this.reservations.remove(reservation);
-        reservation.setVoile(null);
-        return this;
-    }
-
-    public void setReservations(Set<Reservation> reservations) {
-        this.reservations = reservations;
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -315,12 +301,12 @@ public class Voile implements Serializable {
             ", etat='" + getEtat() + "'" +
             ", libelle='" + getLibelle() + "'" +
             ", gree='" + isGree() + "'" +
-            ", createdBy='" + getCreatedBy() + "'" +
-            ", updatedBy='" + getUpdatedBy() + "'" +
-            ", deletedBy='" + getDeletedBy() + "'" +
             ", createdAt='" + getCreatedAt() + "'" +
+            ", createdBy='" + getCreatedBy() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
+            ", updatedBy='" + getUpdatedBy() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
+            ", deletedBy='" + getDeletedBy() + "'" +
             "}";
     }
 }

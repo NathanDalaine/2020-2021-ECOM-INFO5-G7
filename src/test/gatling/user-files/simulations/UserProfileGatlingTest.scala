@@ -72,17 +72,17 @@ class UserProfileGatlingTest extends Simulation {
             .headers(headers_http_authenticated)
             .body(StringBody("""{
                 "id":null
+                , "localisation":"SAMPLE_TEXT"
                 , "dateEcheance":"2020-01-01T00:00:00.000Z"
                 , "dateNaissance":"2020-01-01T00:00:00.000Z"
                 , "dateAdhesion":"2020-01-01T00:00:00.000Z"
+                , "prefTaille":"S"
                 , "adresse":"SAMPLE_TEXT"
                 , "telephone":"SAMPLE_TEXT"
                 , "typeAbonnement":"JOURNALIER"
                 , "niveau":"DEBUTANT"
                 , "materielTechniqueAutorise":null
                 , "remarque":"SAMPLE_TEXT"
-                , "tailleHarnais":"S"
-                , "tailleCombinaison":"S"
                 }""")).asJson
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_userProfile_url"))).exitHereIfFailed

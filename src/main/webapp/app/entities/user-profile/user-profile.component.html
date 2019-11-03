@@ -18,34 +18,40 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.userProfile.localisation">Localisation</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.userProfile.dateEcheance">Date Echeance</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.userProfile.dateNaissance">Date Naissance</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.userProfile.dateAdhesion">Date Adhesion</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.userProfile.prefTaille">Pref Taille</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.userProfile.adresse">Adresse</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.userProfile.telephone">Telephone</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.userProfile.typeAbonnement">Type Abonnement</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.userProfile.niveau">Niveau</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.userProfile.materielTechniqueAutorise">Materiel Technique Autorise</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.userProfile.remarque">Remarque</span></th>
-            <th><span jhiTranslate="ecomgucvoileApp.userProfile.tailleHarnais">Taille Harnais</span></th>
-            <th><span jhiTranslate="ecomgucvoileApp.userProfile.tailleCombinaison">Taille Combinaison</span></th>
+            <th><span jhiTranslate="ecomgucvoileApp.userProfile.reservation">Reservation</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let userProfile of userProfiles ;trackBy: trackId">
                 <td><a [routerLink]="['/user-profile', userProfile.id, 'view' ]">{{userProfile.id}}</a></td>
+                <td>{{userProfile.localisation}}</td>
                 <td>{{userProfile.dateEcheance | date:'medium'}}</td>
                 <td>{{userProfile.dateNaissance | date:'medium'}}</td>
                 <td>{{userProfile.dateAdhesion | date:'medium'}}</td>
+                <td jhiTranslate="{{'ecomgucvoileApp.Taille.' + userProfile.prefTaille}}">{{userProfile.prefTaille}}</td>
                 <td>{{userProfile.adresse}}</td>
                 <td>{{userProfile.telephone}}</td>
                 <td jhiTranslate="{{'ecomgucvoileApp.TypeAbonnement.' + userProfile.typeAbonnement}}">{{userProfile.typeAbonnement}}</td>
                 <td jhiTranslate="{{'ecomgucvoileApp.Niveau.' + userProfile.niveau}}">{{userProfile.niveau}}</td>
                 <td>{{userProfile.materielTechniqueAutorise}}</td>
                 <td>{{userProfile.remarque}}</td>
-                <td jhiTranslate="{{'ecomgucvoileApp.Taille.' + userProfile.tailleHarnais}}">{{userProfile.tailleHarnais}}</td>
-                <td jhiTranslate="{{'ecomgucvoileApp.Taille.' + userProfile.tailleCombinaison}}">{{userProfile.tailleCombinaison}}</td>
+                <td>
+                    <div *ngIf="userProfile.reservationId">
+                        <a [routerLink]="['/reservation', userProfile.reservationId , 'view' ]" >{{userProfile.reservationId}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

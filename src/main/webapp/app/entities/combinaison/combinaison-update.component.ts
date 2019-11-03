@@ -5,10 +5,12 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import * as moment from 'moment';
-import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
+import { filter, map } from 'rxjs/operators';
+import { JhiAlertService } from 'ng-jhipster';
 import { ICombinaison, Combinaison } from 'app/shared/model/combinaison.model';
 import { CombinaisonService } from './combinaison.service';
+import { IReservation } from 'app/shared/model/reservation.model';
+import { ReservationService } from 'app/entities/reservation/reservation.service';
 
 @Component({
   selector: 'jhi-combinaison-update',
@@ -17,25 +19,41 @@ import { CombinaisonService } from './combinaison.service';
 export class CombinaisonUpdateComponent implements OnInit {
   isSaving: boolean;
 
+  reservations: IReservation[];
+
   editForm = this.fb.group({
     id: [],
     taille: [],
     etat: [],
-    createdBy: [],
-    updatedBy: [],
-    deletedBy: [],
     createdAt: [],
+    createdBy: [],
     updatedAt: [],
-    deletedAt: []
+    updatedBy: [],
+    deletedAt: [],
+    deletedBy: [],
+    reservationId: []
   });
 
-  constructor(protected combinaisonService: CombinaisonService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected jhiAlertService: JhiAlertService,
+    protected combinaisonService: CombinaisonService,
+    protected reservationService: ReservationService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit() {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ combinaison }) => {
       this.updateForm(combinaison);
     });
+    this.reservationService
+      .query()
+      .pipe(
+        filter((mayBeOk: HttpResponse<IReservation[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IReservation[]>) => response.body)
+      )
+      .subscribe((res: IReservation[]) => (this.reservations = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(combinaison: ICombinaison) {
@@ -43,12 +61,13 @@ export class CombinaisonUpdateComponent implements OnInit {
       id: combinaison.id,
       taille: combinaison.taille,
       etat: combinaison.etat,
+      createdAt: combinaison.createdAt,
       createdBy: combinaison.createdBy,
+      updatedAt: combinaison.updatedAt,
       updatedBy: combinaison.updatedBy,
+      deletedAt: combinaison.deletedAt,
       deletedBy: combinaison.deletedBy,
-      createdAt: combinaison.createdAt != null ? combinaison.createdAt.format(DATE_TIME_FORMAT) : null,
-      updatedAt: combinaison.updatedAt != null ? combinaison.updatedAt.format(DATE_TIME_FORMAT) : null,
-      deletedAt: combinaison.deletedAt != null ? combinaison.deletedAt.format(DATE_TIME_FORMAT) : null
+      reservationId: combinaison.reservationId
     });
   }
 
@@ -72,15 +91,13 @@ export class CombinaisonUpdateComponent implements OnInit {
       id: this.editForm.get(['id']).value,
       taille: this.editForm.get(['taille']).value,
       etat: this.editForm.get(['etat']).value,
+      createdAt: this.editForm.get(['createdAt']).value,
       createdBy: this.editForm.get(['createdBy']).value,
+      updatedAt: this.editForm.get(['updatedAt']).value,
       updatedBy: this.editForm.get(['updatedBy']).value,
+      deletedAt: this.editForm.get(['deletedAt']).value,
       deletedBy: this.editForm.get(['deletedBy']).value,
-      createdAt:
-        this.editForm.get(['createdAt']).value != null ? moment(this.editForm.get(['createdAt']).value, DATE_TIME_FORMAT) : undefined,
-      updatedAt:
-        this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
-      deletedAt:
-        this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined
+      reservationId: this.editForm.get(['reservationId']).value
     };
   }
 
@@ -95,5 +112,12 @@ export class CombinaisonUpdateComponent implements OnInit {
 
   protected onSaveError() {
     this.isSaving = false;
+  }
+  protected onError(errorMessage: string) {
+    this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  trackReservationById(index: number, item: IReservation) {
+    return item.id;
   }
 }

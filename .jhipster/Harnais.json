@@ -1,14 +1,5 @@
 {
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "relationships": [
-        {
-            "relationshipName": "reservation",
-            "otherEntityName": "reservation",
-            "relationshipType": "one-to-many",
-            "otherEntityRelationshipName": "harnais"
-        }
-    ],
+    "name": "Harnais",
     "fields": [
         {
             "fieldName": "taille",
@@ -20,7 +11,15 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "createdAt",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedAt",
             "fieldType": "String"
         },
         {
@@ -28,28 +27,30 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "deletedBy",
+            "fieldName": "deletedAt",
             "fieldType": "String"
         },
         {
-            "fieldName": "createdAt",
-            "fieldType": "Instant"
-        },
+            "fieldName": "deletedBy",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
         {
-            "fieldName": "updatedAt",
-            "fieldType": "Instant"
-        },
-        {
-            "fieldName": "deletedAt",
-            "fieldType": "Instant"
+            "relationshipType": "many-to-one",
+            "otherEntityName": "reservation",
+            "otherEntityRelationshipName": "harnais",
+            "relationshipName": "reservation",
+            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20191015084204",
-    "dto": "mapstruct",
-    "searchEngine": false,
-    "service": "serviceClass",
     "entityTableName": "harnais",
-    "databaseType": "sql",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
     "jpaMetamodelFiltering": false,
-    "pagination": "no"
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
 }

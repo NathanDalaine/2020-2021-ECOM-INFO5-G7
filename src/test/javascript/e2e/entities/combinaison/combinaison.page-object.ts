@@ -28,12 +28,13 @@ export class CombinaisonUpdatePage {
   cancelButton = element(by.id('cancel-save'));
   tailleSelect = element(by.id('field_taille'));
   etatInput = element(by.id('field_etat'));
-  createdByInput = element(by.id('field_createdBy'));
-  updatedByInput = element(by.id('field_updatedBy'));
-  deletedByInput = element(by.id('field_deletedBy'));
   createdAtInput = element(by.id('field_createdAt'));
+  createdByInput = element(by.id('field_createdBy'));
   updatedAtInput = element(by.id('field_updatedAt'));
+  updatedByInput = element(by.id('field_updatedBy'));
   deletedAtInput = element(by.id('field_deletedAt'));
+  deletedByInput = element(by.id('field_deletedBy'));
+  reservationSelect = element(by.id('field_reservation'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -62,36 +63,20 @@ export class CombinaisonUpdatePage {
     return await this.etatInput.getAttribute('value');
   }
 
-  async setCreatedByInput(createdBy) {
-    await this.createdByInput.sendKeys(createdBy);
-  }
-
-  async getCreatedByInput() {
-    return await this.createdByInput.getAttribute('value');
-  }
-
-  async setUpdatedByInput(updatedBy) {
-    await this.updatedByInput.sendKeys(updatedBy);
-  }
-
-  async getUpdatedByInput() {
-    return await this.updatedByInput.getAttribute('value');
-  }
-
-  async setDeletedByInput(deletedBy) {
-    await this.deletedByInput.sendKeys(deletedBy);
-  }
-
-  async getDeletedByInput() {
-    return await this.deletedByInput.getAttribute('value');
-  }
-
   async setCreatedAtInput(createdAt) {
     await this.createdAtInput.sendKeys(createdAt);
   }
 
   async getCreatedAtInput() {
     return await this.createdAtInput.getAttribute('value');
+  }
+
+  async setCreatedByInput(createdBy) {
+    await this.createdByInput.sendKeys(createdBy);
+  }
+
+  async getCreatedByInput() {
+    return await this.createdByInput.getAttribute('value');
   }
 
   async setUpdatedAtInput(updatedAt) {
@@ -102,12 +87,47 @@ export class CombinaisonUpdatePage {
     return await this.updatedAtInput.getAttribute('value');
   }
 
+  async setUpdatedByInput(updatedBy) {
+    await this.updatedByInput.sendKeys(updatedBy);
+  }
+
+  async getUpdatedByInput() {
+    return await this.updatedByInput.getAttribute('value');
+  }
+
   async setDeletedAtInput(deletedAt) {
     await this.deletedAtInput.sendKeys(deletedAt);
   }
 
   async getDeletedAtInput() {
     return await this.deletedAtInput.getAttribute('value');
+  }
+
+  async setDeletedByInput(deletedBy) {
+    await this.deletedByInput.sendKeys(deletedBy);
+  }
+
+  async getDeletedByInput() {
+    return await this.deletedByInput.getAttribute('value');
+  }
+
+  async reservationSelectLastOption(timeout?: number) {
+    await this.reservationSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async reservationSelectOption(option) {
+    await this.reservationSelect.sendKeys(option);
+  }
+
+  getReservationSelect(): ElementFinder {
+    return this.reservationSelect;
+  }
+
+  async getReservationSelectedOption() {
+    return await this.reservationSelect.element(by.css('option:checked')).getText();
   }
 
   async save(timeout?: number) {
