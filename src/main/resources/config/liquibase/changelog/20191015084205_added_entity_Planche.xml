@@ -44,7 +44,15 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="created_at" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="created_by" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="updated_at" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
@@ -52,28 +60,21 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="deleted_at" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="deleted_by" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="created_at" type="datetime">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="updated_at" type="datetime">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="deleted_at" type="datetime">
+            <column name="reservation_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
 
-        <dropDefaultValue tableName="planche" columnName="created_at" columnDataType="datetime"/>
-        <dropDefaultValue tableName="planche" columnName="updated_at" columnDataType="datetime"/>
-        <dropDefaultValue tableName="planche" columnName="deleted_at" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20191015084205-1-relations" author="jhipster">
@@ -102,12 +103,12 @@
             <column name="etat" type="string"/>
             <column name="libelle" type="string"/>
             <column name="volume" type="numeric"/>
+            <column name="created_at" type="string"/>
             <column name="created_by" type="string"/>
+            <column name="updated_at" type="string"/>
             <column name="updated_by" type="string"/>
+            <column name="deleted_at" type="string"/>
             <column name="deleted_by" type="string"/>
-            <column name="created_at" type="datetime"/>
-            <column name="updated_at" type="datetime"/>
-            <column name="deleted_at" type="datetime"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

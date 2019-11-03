@@ -29,17 +29,12 @@ export class ReservationUpdatePage {
   dateReservationInput = element(by.id('field_dateReservation'));
   dateRenduInput = element(by.id('field_dateRendu'));
   remarquesInput = element(by.id('field_remarques'));
-  createdByInput = element(by.id('field_createdBy'));
-  updatedByInput = element(by.id('field_updatedBy'));
-  deletedByInput = element(by.id('field_deletedBy'));
   createdAtInput = element(by.id('field_createdAt'));
+  createdByInput = element(by.id('field_createdBy'));
   updatedAtInput = element(by.id('field_updatedAt'));
+  updatedByInput = element(by.id('field_updatedBy'));
   deletedAtInput = element(by.id('field_deletedAt'));
-  voileSelect = element(by.id('field_voile'));
-  userProfileSelect = element(by.id('field_userProfile'));
-  combinaisonSelect = element(by.id('field_combinaison'));
-  harnaisSelect = element(by.id('field_harnais'));
-  plancheSelect = element(by.id('field_planche'));
+  deletedByInput = element(by.id('field_deletedBy'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -69,36 +64,20 @@ export class ReservationUpdatePage {
     return await this.remarquesInput.getAttribute('value');
   }
 
-  async setCreatedByInput(createdBy) {
-    await this.createdByInput.sendKeys(createdBy);
-  }
-
-  async getCreatedByInput() {
-    return await this.createdByInput.getAttribute('value');
-  }
-
-  async setUpdatedByInput(updatedBy) {
-    await this.updatedByInput.sendKeys(updatedBy);
-  }
-
-  async getUpdatedByInput() {
-    return await this.updatedByInput.getAttribute('value');
-  }
-
-  async setDeletedByInput(deletedBy) {
-    await this.deletedByInput.sendKeys(deletedBy);
-  }
-
-  async getDeletedByInput() {
-    return await this.deletedByInput.getAttribute('value');
-  }
-
   async setCreatedAtInput(createdAt) {
     await this.createdAtInput.sendKeys(createdAt);
   }
 
   async getCreatedAtInput() {
     return await this.createdAtInput.getAttribute('value');
+  }
+
+  async setCreatedByInput(createdBy) {
+    await this.createdByInput.sendKeys(createdBy);
+  }
+
+  async getCreatedByInput() {
+    return await this.createdByInput.getAttribute('value');
   }
 
   async setUpdatedAtInput(updatedAt) {
@@ -109,6 +88,14 @@ export class ReservationUpdatePage {
     return await this.updatedAtInput.getAttribute('value');
   }
 
+  async setUpdatedByInput(updatedBy) {
+    await this.updatedByInput.sendKeys(updatedBy);
+  }
+
+  async getUpdatedByInput() {
+    return await this.updatedByInput.getAttribute('value');
+  }
+
   async setDeletedAtInput(deletedAt) {
     await this.deletedAtInput.sendKeys(deletedAt);
   }
@@ -117,99 +104,12 @@ export class ReservationUpdatePage {
     return await this.deletedAtInput.getAttribute('value');
   }
 
-  async voileSelectLastOption(timeout?: number) {
-    await this.voileSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
+  async setDeletedByInput(deletedBy) {
+    await this.deletedByInput.sendKeys(deletedBy);
   }
 
-  async voileSelectOption(option) {
-    await this.voileSelect.sendKeys(option);
-  }
-
-  getVoileSelect(): ElementFinder {
-    return this.voileSelect;
-  }
-
-  async getVoileSelectedOption() {
-    return await this.voileSelect.element(by.css('option:checked')).getText();
-  }
-
-  async userProfileSelectLastOption(timeout?: number) {
-    await this.userProfileSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
-  }
-
-  async userProfileSelectOption(option) {
-    await this.userProfileSelect.sendKeys(option);
-  }
-
-  getUserProfileSelect(): ElementFinder {
-    return this.userProfileSelect;
-  }
-
-  async getUserProfileSelectedOption() {
-    return await this.userProfileSelect.element(by.css('option:checked')).getText();
-  }
-
-  async combinaisonSelectLastOption(timeout?: number) {
-    await this.combinaisonSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
-  }
-
-  async combinaisonSelectOption(option) {
-    await this.combinaisonSelect.sendKeys(option);
-  }
-
-  getCombinaisonSelect(): ElementFinder {
-    return this.combinaisonSelect;
-  }
-
-  async getCombinaisonSelectedOption() {
-    return await this.combinaisonSelect.element(by.css('option:checked')).getText();
-  }
-
-  async harnaisSelectLastOption(timeout?: number) {
-    await this.harnaisSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
-  }
-
-  async harnaisSelectOption(option) {
-    await this.harnaisSelect.sendKeys(option);
-  }
-
-  getHarnaisSelect(): ElementFinder {
-    return this.harnaisSelect;
-  }
-
-  async getHarnaisSelectedOption() {
-    return await this.harnaisSelect.element(by.css('option:checked')).getText();
-  }
-
-  async plancheSelectLastOption(timeout?: number) {
-    await this.plancheSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
-  }
-
-  async plancheSelectOption(option) {
-    await this.plancheSelect.sendKeys(option);
-  }
-
-  getPlancheSelect(): ElementFinder {
-    return this.plancheSelect;
-  }
-
-  async getPlancheSelectedOption() {
-    return await this.plancheSelect.element(by.css('option:checked')).getText();
+  async getDeletedByInput() {
+    return await this.deletedByInput.getAttribute('value');
   }
 
   async save(timeout?: number) {

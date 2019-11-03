@@ -5,9 +5,9 @@ import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
 import { IUserProfile, UserProfile } from 'app/shared/model/user-profile.model';
+import { Taille } from 'app/shared/model/enumerations/taille.model';
 import { TypeAbonnement } from 'app/shared/model/enumerations/type-abonnement.model';
 import { Niveau } from 'app/shared/model/enumerations/niveau.model';
-import { Taille } from 'app/shared/model/enumerations/taille.model';
 
 describe('Service Tests', () => {
   describe('UserProfile Service', () => {
@@ -29,17 +29,17 @@ describe('Service Tests', () => {
 
       elemDefault = new UserProfile(
         0,
+        'AAAAAAA',
         currentDate,
         currentDate,
         currentDate,
+        Taille.S,
         'AAAAAAA',
         'AAAAAAA',
         TypeAbonnement.JOURNALIER,
         Niveau.DEBUTANT,
         false,
-        'AAAAAAA',
-        Taille.S,
-        Taille.S
+        'AAAAAAA'
       );
     });
 
@@ -93,17 +93,17 @@ describe('Service Tests', () => {
       it('should update a UserProfile', () => {
         const returnedFromService = Object.assign(
           {
+            localisation: 'BBBBBB',
             dateEcheance: currentDate.format(DATE_TIME_FORMAT),
             dateNaissance: currentDate.format(DATE_TIME_FORMAT),
             dateAdhesion: currentDate.format(DATE_TIME_FORMAT),
+            prefTaille: 'BBBBBB',
             adresse: 'BBBBBB',
             telephone: 'BBBBBB',
             typeAbonnement: 'BBBBBB',
             niveau: 'BBBBBB',
             materielTechniqueAutorise: true,
-            remarque: 'BBBBBB',
-            tailleHarnais: 'BBBBBB',
-            tailleCombinaison: 'BBBBBB'
+            remarque: 'BBBBBB'
           },
           elemDefault
         );
@@ -128,17 +128,17 @@ describe('Service Tests', () => {
       it('should return a list of UserProfile', () => {
         const returnedFromService = Object.assign(
           {
+            localisation: 'BBBBBB',
             dateEcheance: currentDate.format(DATE_TIME_FORMAT),
             dateNaissance: currentDate.format(DATE_TIME_FORMAT),
             dateAdhesion: currentDate.format(DATE_TIME_FORMAT),
+            prefTaille: 'BBBBBB',
             adresse: 'BBBBBB',
             telephone: 'BBBBBB',
             typeAbonnement: 'BBBBBB',
             niveau: 'BBBBBB',
             materielTechniqueAutorise: true,
-            remarque: 'BBBBBB',
-            tailleHarnais: 'BBBBBB',
-            tailleCombinaison: 'BBBBBB'
+            remarque: 'BBBBBB'
           },
           elemDefault
         );

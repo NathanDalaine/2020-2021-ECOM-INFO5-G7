@@ -13,29 +13,35 @@
                 <dd>
                     <span>{{harnais.etat}}</span>
                 </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.harnais.createdBy">Created By</span></dt>
-                <dd>
-                    <span>{{harnais.createdBy}}</span>
-                </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.harnais.updatedBy">Updated By</span></dt>
-                <dd>
-                    <span>{{harnais.updatedBy}}</span>
-                </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.harnais.deletedBy">Deleted By</span></dt>
-                <dd>
-                    <span>{{harnais.deletedBy}}</span>
-                </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.harnais.createdAt">Created At</span></dt>
                 <dd>
                     <span>{{harnais.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.harnais.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{harnais.createdBy}}</span>
                 </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.harnais.updatedAt">Updated At</span></dt>
                 <dd>
                     <span>{{harnais.updatedAt}}</span>
                 </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.harnais.updatedBy">Updated By</span></dt>
+                <dd>
+                    <span>{{harnais.updatedBy}}</span>
+                </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.harnais.deletedAt">Deleted At</span></dt>
                 <dd>
                     <span>{{harnais.deletedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.harnais.deletedBy">Deleted By</span></dt>
+                <dd>
+                    <span>{{harnais.deletedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.harnais.reservation">Reservation</span></dt>
+                <dd>
+                    <div *ngIf="harnais.reservationId">
+                        <a [routerLink]="['/reservation', harnais.reservationId, 'view']">{{harnais.reservationId}}</a>
+                    </div>
                 </dd>
             </dl>
 

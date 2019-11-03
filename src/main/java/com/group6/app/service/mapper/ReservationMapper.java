@@ -8,21 +8,20 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Reservation} and its DTO {@link ReservationDTO}.
  */
-@Mapper(componentModel = "spring", uses = {VoileMapper.class, UserProfileMapper.class, CombinaisonMapper.class, HarnaisMapper.class, PlancheMapper.class})
+@Mapper(componentModel = "spring", uses = {})
 public interface ReservationMapper extends EntityMapper<ReservationDTO, Reservation> {
 
-    @Mapping(source = "voile.id", target = "voileId")
-    @Mapping(source = "userProfile.id", target = "userProfileId")
-    @Mapping(source = "combinaison.id", target = "combinaisonId")
-    @Mapping(source = "harnais.id", target = "harnaisId")
-    @Mapping(source = "planche.id", target = "plancheId")
-    ReservationDTO toDto(Reservation reservation);
 
-    @Mapping(source = "voileId", target = "voile")
-    @Mapping(source = "userProfileId", target = "userProfile")
-    @Mapping(source = "combinaisonId", target = "combinaison")
-    @Mapping(source = "harnaisId", target = "harnais")
-    @Mapping(source = "plancheId", target = "planche")
+    @Mapping(target = "voiles", ignore = true)
+    @Mapping(target = "removeVoile", ignore = true)
+    @Mapping(target = "users", ignore = true)
+    @Mapping(target = "removeUser", ignore = true)
+    @Mapping(target = "combinaisons", ignore = true)
+    @Mapping(target = "removeCombinaison", ignore = true)
+    @Mapping(target = "harnais", ignore = true)
+    @Mapping(target = "removeHarnais", ignore = true)
+    @Mapping(target = "planches", ignore = true)
+    @Mapping(target = "removePlanche", ignore = true)
     Reservation toEntity(ReservationDTO reservationDTO);
 
     default Reservation fromId(Long id) {

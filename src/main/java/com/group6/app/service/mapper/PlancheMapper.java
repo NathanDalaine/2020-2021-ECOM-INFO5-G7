@@ -8,12 +8,13 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Planche} and its DTO {@link PlancheDTO}.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {ReservationMapper.class})
 public interface PlancheMapper extends EntityMapper<PlancheDTO, Planche> {
 
+    @Mapping(source = "reservation.id", target = "reservationId")
+    PlancheDTO toDto(Planche planche);
 
-    @Mapping(target = "reservations", ignore = true)
-    @Mapping(target = "removeReservation", ignore = true)
+    @Mapping(source = "reservationId", target = "reservation")
     Planche toEntity(PlancheDTO plancheDTO);
 
     default Planche fromId(Long id) {
