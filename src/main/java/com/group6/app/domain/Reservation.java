@@ -44,9 +44,6 @@ public class Reservation implements Serializable {
     @Column(name = "deleted_by")
     private String deletedBy;
 
-    @Column(name = "created_at")
-    private Instant createdAt;
-
     @Column(name = "updated_at")
     private Instant updatedAt;
 
@@ -173,18 +170,6 @@ public class Reservation implements Serializable {
         this.deletedBy = deletedBy;
     }
 
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public Reservation createdAt(Instant createdAt) {
-        this.createdAt = createdAt;
-        return this;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
 
     public Instant getUpdatedAt() {
         return updatedAt;

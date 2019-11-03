@@ -30,7 +30,8 @@
       "combinaison": "Combinaison",
       "harnais": "Harnais",
       "planche": "Planche",
-      "reserve": "Reserver"
+      "reserve": "Reserver",
+      "reservationSuccess" : "Votre réservation a été effectué avec succès."
     }
   }
 }

@@ -23,8 +23,8 @@ export class MaterialListComponent implements OnInit, OnDestroy {
   planches: IPlanche[];
   currentAccount: any;
   registerForm = this.fb.group({
-    voile: [''],
-    planche: [''],
+    voileId: [null],
+    plancheId: [null],
     harnais: [false],
     combinaison: [false]
   });
@@ -40,15 +40,26 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     protected accountService: AccountService
   ) {}
 
-  selectVoile(voile:IVoile){
-    if(this.registerForm.get("voile").value === voile){
-      this.registerForm.controls["voile"].setValue(null);
+  selectVoile(voileId:number){
+    if(this.registerForm.get("voileId").value === voileId){
+      this.registerForm.controls["voileId"].setValue(null);
     }else{
-      this.registerForm.controls["voile"].setValue(voile);
+      this.registerForm.controls["voileId"].setValue(voileId);
+    }
+  }
+
+  selectPlanche(plancheId:number){
+    if(this.registerForm.get("plancheId").value === plancheId){
+      this.registerForm.controls["plancheId"].setValue(null);
+    }else{
+      this.registerForm.controls["plancheId"].setValue(plancheId);
     }
   }
 
   reserver(reservation : IReservation){
+    /* eslint-disable no-console */
+    console.log(reservation);
+    /* eslint-enable no-console */
     this.success = true; //pour les tests à sup
     this.reservationService.create(reservation).subscribe(
       () => {
@@ -88,6 +99,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadAll();
+    this.success = false;
     this.accountService.identity().then(account => {
       this.currentAccount = account;
     });
