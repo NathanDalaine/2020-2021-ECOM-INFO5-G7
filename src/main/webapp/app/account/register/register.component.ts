@@ -28,7 +28,6 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   tailles: SelectItem[];
   abonnements: SelectItem[];
   niveaux : SelectItem[];
-  private membre: String = MEMBRE;
 
   registerForm = this.fb.group({
     role: [MEMBRE],
@@ -44,6 +43,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     niveau: ['',Validators.required],
     firstName: [''],
     lastName: [''],
+    dateNaissance: [],
     adresse: [''],
     activated: [false],
     materielTechniqueAutorise: [false]

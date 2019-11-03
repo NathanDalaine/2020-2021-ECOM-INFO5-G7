@@ -1,3 +1,6 @@
+import { Moment } from 'moment';
+import { IReservation } from 'app/shared/model/reservation.model';
+
 export interface IPlanche {
   id?: number;
   marque?: string;
@@ -7,13 +10,13 @@ export interface IPlanche {
   etat?: string;
   libelle?: string;
   volume?: number;
-  createdAt?: string;
   createdBy?: string;
-  updatedAt?: string;
   updatedBy?: string;
-  deletedAt?: string;
   deletedBy?: string;
-  reservationId?: number;
+  createdAt?: Moment;
+  updatedAt?: Moment;
+  deletedAt?: Moment;
+  reservations?: IReservation[];
 }
 
 export class Planche implements IPlanche {
@@ -26,12 +29,12 @@ export class Planche implements IPlanche {
     public etat?: string,
     public libelle?: string,
     public volume?: number,
-    public createdAt?: string,
     public createdBy?: string,
-    public updatedAt?: string,
     public updatedBy?: string,
-    public deletedAt?: string,
     public deletedBy?: string,
-    public reservationId?: number
+    public createdAt?: Moment,
+    public updatedAt?: Moment,
+    public deletedAt?: Moment,
+    public reservations?: IReservation[]
   ) {}
 }

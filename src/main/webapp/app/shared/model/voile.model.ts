@@ -1,3 +1,6 @@
+import { Moment } from 'moment';
+import { IReservation } from 'app/shared/model/reservation.model';
+
 export interface IVoile {
   id?: number;
   surface?: number;
@@ -8,13 +11,13 @@ export interface IVoile {
   etat?: string;
   libelle?: string;
   gree?: boolean;
-  createdAt?: string;
   createdBy?: string;
-  updatedAt?: string;
   updatedBy?: string;
-  deletedAt?: string;
   deletedBy?: string;
-  reservationId?: number;
+  createdAt?: Moment;
+  updatedAt?: Moment;
+  deletedAt?: Moment;
+  reservations?: IReservation[];
 }
 
 export class Voile implements IVoile {
@@ -28,13 +31,13 @@ export class Voile implements IVoile {
     public etat?: string,
     public libelle?: string,
     public gree?: boolean,
-    public createdAt?: string,
     public createdBy?: string,
-    public updatedAt?: string,
     public updatedBy?: string,
-    public deletedAt?: string,
     public deletedBy?: string,
-    public reservationId?: number
+    public createdAt?: Moment,
+    public updatedAt?: Moment,
+    public deletedAt?: Moment,
+    public reservations?: IReservation[]
   ) {
     this.gree = this.gree || false;
   }

@@ -73,17 +73,17 @@ export class MaterialListComponent implements OnInit, OnDestroy {
       );
 
     this.plancheService
-    .query()
-    .pipe(
-      filter((res: HttpResponse<IVoile[]>) => res.ok),
-      map((res: HttpResponse<IVoile[]>) => res.body)
-    )
-    .subscribe(
-      (res: IPlanche[]) => {
-        this.planches = res;
-      },
-      (res: HttpErrorResponse) => this.onError(res.message)
-    );
+      .query()
+      .pipe(
+        filter((res: HttpResponse<IPlanche[]>) => res.ok),
+        map((res: HttpResponse<IPlanche[]>) => res.body)
+      )
+      .subscribe(
+        (res: IPlanche[]) => {
+          this.planches = res;
+        },
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
   }
 
   ngOnInit() {
@@ -93,8 +93,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
-  }
+  ngOnDestroy() {}
 
   trackIdVoile(index: number, item: IVoile) {
     return item.id;
@@ -112,4 +111,3 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     this.jhiAlertService.error(errorMessage, null, null);
   }
 }
-

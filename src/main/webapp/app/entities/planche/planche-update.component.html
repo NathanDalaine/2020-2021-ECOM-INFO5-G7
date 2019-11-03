@@ -45,19 +45,9 @@
                            formControlName="volume"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.planche.createdAt" for="field_createdAt">Created At</label>
-                    <input type="text" class="form-control" name="createdAt" id="field_createdAt"
-                           formControlName="createdAt"/>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ecomgucvoileApp.planche.createdBy" for="field_createdBy">Created By</label>
                     <input type="text" class="form-control" name="createdBy" id="field_createdBy"
                            formControlName="createdBy"/>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.planche.updatedAt" for="field_updatedAt">Updated At</label>
-                    <input type="text" class="form-control" name="updatedAt" id="field_updatedAt"
-                           formControlName="updatedAt"/>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ecomgucvoileApp.planche.updatedBy" for="field_updatedBy">Updated By</label>
@@ -65,23 +55,29 @@
                            formControlName="updatedBy"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.planche.deletedAt" for="field_deletedAt">Deleted At</label>
-                    <input type="text" class="form-control" name="deletedAt" id="field_deletedAt"
-                           formControlName="deletedAt"/>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ecomgucvoileApp.planche.deletedBy" for="field_deletedBy">Deleted By</label>
                     <input type="text" class="form-control" name="deletedBy" id="field_deletedBy"
                            formControlName="deletedBy"/>
                 </div>
-
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.planche.reservation" for="field_reservation">Reservation</label>
-                    <select class="form-control" id="field_reservation" name="reservation" formControlName="reservationId">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="reservationOption.id" *ngFor="let reservationOption of reservations; trackBy: trackReservationById">{{reservationOption.id}}</option>
-                    </select>
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.planche.createdAt" for="field_createdAt">Created At</label>
+                    <div class="d-flex">
+                        <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" formControlName="createdAt" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.planche.updatedAt" for="field_updatedAt">Updated At</label>
+                    <div class="d-flex">
+                        <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" formControlName="updatedAt" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.planche.deletedAt" for="field_deletedAt">Deleted At</label>
+                    <div class="d-flex">
+                        <input id="field_deletedAt" type="datetime-local" class="form-control" name="deletedAt" formControlName="deletedAt" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
