@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { AccountService } from 'app/core/auth/account.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+
 
 import { IVoile } from 'app/shared/model/voile.model';
 import { IPlanche } from 'app/shared/model/planche.model';
@@ -15,9 +16,12 @@ import { PlancheService } from '../../entities/planche/planche.service';
   styleUrls: ['materialList.scss']
 })
 export class MaterialListComponent implements OnInit, OnDestroy {
+
   voiles: IVoile[];
   planches: IPlanche[];
   currentAccount: any;
+  searchTextPlanche: string ;
+  searchTextVoile: string ;
 
   constructor(
     protected voileService: VoileService,
@@ -26,6 +30,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     protected eventManager: JhiEventManager,
     protected accountService: AccountService
   ) {}
+
 
   loadAll() {
     this.voileService
@@ -74,5 +79,27 @@ export class MaterialListComponent implements OnInit, OnDestroy {
 
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  searchPlanche() {
+    if(this.searchTextPlanche !== ""){
+      this.planches = this.planches.filter(res=>{
+        return res.libelle.toLocaleLowerCase().match(this.searchTextPlanche.toLocaleLowerCase());
+      });
+    } else {
+      this.ngOnInit();
+    }
+
+  }
+
+  searchVoile() {
+    if(this.searchTextVoile !== ""){
+      this.voiles = this.voiles.filter(res=>{
+        return res.libelle.toLocaleLowerCase().match(this.searchTextVoile.toLocaleLowerCase());
+      });
+    } else {
+      this.ngOnInit();
+    }
+
   }
 }
