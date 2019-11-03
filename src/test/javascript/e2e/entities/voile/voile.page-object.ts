@@ -40,7 +40,6 @@ export class VoileUpdatePage {
   createdAtInput = element(by.id('field_createdAt'));
   updatedAtInput = element(by.id('field_updatedAt'));
   deletedAtInput = element(by.id('field_deletedAt'));
-  reservationSelect = element(by.id('field_reservation'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -151,25 +150,6 @@ export class VoileUpdatePage {
 
   async getDeletedAtInput() {
     return await this.deletedAtInput.getAttribute('value');
-  }
-
-  async reservationSelectLastOption(timeout?: number) {
-    await this.reservationSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
-  }
-
-  async reservationSelectOption(option) {
-    await this.reservationSelect.sendKeys(option);
-  }
-
-  getReservationSelect(): ElementFinder {
-    return this.reservationSelect;
-  }
-
-  async getReservationSelectedOption() {
-    return await this.reservationSelect.element(by.css('option:checked')).getText();
   }
 
   async save(timeout?: number) {

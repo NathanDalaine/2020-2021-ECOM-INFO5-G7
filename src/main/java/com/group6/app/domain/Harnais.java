@@ -1,5 +1,4 @@
 package com.group6.app.domain;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -51,10 +50,6 @@ public class Harnais implements Serializable {
 
     @Column(name = "deleted_at")
     private Instant deletedAt;
-
-    @ManyToOne
-    @JsonIgnoreProperties("harnais")
-    private Reservation reservation;
 
     @OneToMany(mappedBy = "harnais")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -171,19 +166,6 @@ public class Harnais implements Serializable {
 
     public void setDeletedAt(Instant deletedAt) {
         this.deletedAt = deletedAt;
-    }
-
-    public Reservation getReservation() {
-        return reservation;
-    }
-
-    public Harnais reservation(Reservation reservation) {
-        this.reservation = reservation;
-        return this;
-    }
-
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
     }
 
     public Set<Reservation> getReservations() {

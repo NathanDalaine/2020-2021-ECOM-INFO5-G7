@@ -5,14 +5,10 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
-import { JhiAlertService } from 'ng-jhipster';
 import { IHarnais, Harnais } from 'app/shared/model/harnais.model';
 import { HarnaisService } from './harnais.service';
-import { IReservation } from 'app/shared/model/reservation.model';
-import { ReservationService } from 'app/entities/reservation/reservation.service';
 
 @Component({
   selector: 'jhi-harnais-update',
@@ -20,8 +16,6 @@ import { ReservationService } from 'app/entities/reservation/reservation.service
 })
 export class HarnaisUpdateComponent implements OnInit {
   isSaving: boolean;
-
-  reservations: IReservation[];
 
   editForm = this.fb.group({
     id: [],
@@ -32,30 +26,16 @@ export class HarnaisUpdateComponent implements OnInit {
     deletedBy: [],
     createdAt: [],
     updatedAt: [],
-    deletedAt: [],
-    reservationId: []
+    deletedAt: []
   });
 
-  constructor(
-    protected jhiAlertService: JhiAlertService,
-    protected harnaisService: HarnaisService,
-    protected reservationService: ReservationService,
-    protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+  constructor(protected harnaisService: HarnaisService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ harnais }) => {
       this.updateForm(harnais);
     });
-    this.reservationService
-      .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<IReservation[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IReservation[]>) => response.body)
-      )
-      .subscribe((res: IReservation[]) => (this.reservations = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(harnais: IHarnais) {
@@ -68,8 +48,7 @@ export class HarnaisUpdateComponent implements OnInit {
       deletedBy: harnais.deletedBy,
       createdAt: harnais.createdAt != null ? harnais.createdAt.format(DATE_TIME_FORMAT) : null,
       updatedAt: harnais.updatedAt != null ? harnais.updatedAt.format(DATE_TIME_FORMAT) : null,
-      deletedAt: harnais.deletedAt != null ? harnais.deletedAt.format(DATE_TIME_FORMAT) : null,
-      reservationId: harnais.reservationId
+      deletedAt: harnais.deletedAt != null ? harnais.deletedAt.format(DATE_TIME_FORMAT) : null
     });
   }
 
@@ -101,8 +80,7 @@ export class HarnaisUpdateComponent implements OnInit {
       updatedAt:
         this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
       deletedAt:
-        this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
-      reservationId: this.editForm.get(['reservationId']).value
+        this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined
     };
   }
 
@@ -117,12 +95,5 @@ export class HarnaisUpdateComponent implements OnInit {
 
   protected onSaveError() {
     this.isSaving = false;
-  }
-  protected onError(errorMessage: string) {
-    this.jhiAlertService.error(errorMessage, null, null);
-  }
-
-  trackReservationById(index: number, item: IReservation) {
-    return item.id;
   }
 }

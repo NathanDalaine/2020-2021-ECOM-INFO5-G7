@@ -48,8 +48,7 @@ describe('Combinaison e2e test', () => {
       combinaisonUpdatePage.setDeletedByInput('deletedBy'),
       combinaisonUpdatePage.setCreatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
       combinaisonUpdatePage.setUpdatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
-      combinaisonUpdatePage.setDeletedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
-      combinaisonUpdatePage.reservationSelectLastOption()
+      combinaisonUpdatePage.setDeletedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM')
     ]);
     expect(await combinaisonUpdatePage.getEtatInput()).to.eq('etat', 'Expected Etat value to be equals to etat');
     expect(await combinaisonUpdatePage.getCreatedByInput()).to.eq('createdBy', 'Expected CreatedBy value to be equals to createdBy');

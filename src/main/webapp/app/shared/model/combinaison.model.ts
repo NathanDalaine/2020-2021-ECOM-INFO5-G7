@@ -12,7 +12,6 @@ export interface ICombinaison {
   createdAt?: Moment;
   updatedAt?: Moment;
   deletedAt?: Moment;
-  reservationId?: number;
   reservations?: IReservation[];
 }
 
@@ -27,7 +26,6 @@ export class Combinaison implements ICombinaison {
     public createdAt?: Moment,
     public updatedAt?: Moment,
     public deletedAt?: Moment,
-    public reservationId?: number,
     public reservations?: IReservation[]
   ) {}
 }

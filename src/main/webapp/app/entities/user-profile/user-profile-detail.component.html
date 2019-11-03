@@ -49,12 +49,6 @@
                 <dd>
                     <span jhiTranslate="{{'ecomgucvoileApp.Taille.' + userProfile.tailleCombinaison}}">{{userProfile.tailleCombinaison}}</span>
                 </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.reservation">Reservation</span></dt>
-                <dd>
-                    <div *ngIf="userProfile.reservationId">
-                        <a [routerLink]="['/reservation', userProfile.reservationId, 'view']">{{userProfile.reservationId}}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

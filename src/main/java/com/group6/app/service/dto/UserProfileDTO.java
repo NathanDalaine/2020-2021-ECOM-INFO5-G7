@@ -36,8 +36,6 @@ public class UserProfileDTO implements Serializable {
     private Taille tailleCombinaison;
 
 
-    private Long reservationId;
-
     public Long getId() {
         return id;
     }
@@ -134,14 +132,6 @@ public class UserProfileDTO implements Serializable {
         this.tailleCombinaison = tailleCombinaison;
     }
 
-    public Long getReservationId() {
-        return reservationId;
-    }
-
-    public void setReservationId(Long reservationId) {
-        this.reservationId = reservationId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -178,7 +168,6 @@ public class UserProfileDTO implements Serializable {
             ", remarque='" + getRemarque() + "'" +
             ", tailleHarnais='" + getTailleHarnais() + "'" +
             ", tailleCombinaison='" + getTailleCombinaison() + "'" +
-            ", reservation=" + getReservationId() +
             "}";
     }
 }

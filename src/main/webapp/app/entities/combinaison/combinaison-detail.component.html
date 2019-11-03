@@ -37,12 +37,6 @@
                 <dd>
                     <span>{{combinaison.deletedAt}}</span>
                 </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.combinaison.reservation">Reservation</span></dt>
-                <dd>
-                    <div *ngIf="combinaison.reservationId">
-                        <a [routerLink]="['/reservation', combinaison.reservationId, 'view']">{{combinaison.reservationId}}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

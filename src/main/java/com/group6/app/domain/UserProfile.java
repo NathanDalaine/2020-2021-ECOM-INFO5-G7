@@ -1,5 +1,4 @@
 package com.group6.app.domain;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -67,10 +66,6 @@ public class UserProfile implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "taille_combinaison")
     private Taille tailleCombinaison;
-
-    @ManyToOne
-    @JsonIgnoreProperties("users")
-    private Reservation reservation;
 
     @OneToMany(mappedBy = "userProfile")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -226,19 +221,6 @@ public class UserProfile implements Serializable {
 
     public void setTailleCombinaison(Taille tailleCombinaison) {
         this.tailleCombinaison = tailleCombinaison;
-    }
-
-    public Reservation getReservation() {
-        return reservation;
-    }
-
-    public UserProfile reservation(Reservation reservation) {
-        this.reservation = reservation;
-        return this;
-    }
-
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
     }
 
     public Set<Reservation> getReservations() {

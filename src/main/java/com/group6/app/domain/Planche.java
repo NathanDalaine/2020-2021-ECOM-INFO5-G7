@@ -1,5 +1,4 @@
 package com.group6.app.domain;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -63,10 +62,6 @@ public class Planche implements Serializable {
 
     @Column(name = "deleted_at")
     private Instant deletedAt;
-
-    @ManyToOne
-    @JsonIgnoreProperties("planches")
-    private Reservation reservation;
 
     @OneToMany(mappedBy = "planche")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -248,19 +243,6 @@ public class Planche implements Serializable {
 
     public void setDeletedAt(Instant deletedAt) {
         this.deletedAt = deletedAt;
-    }
-
-    public Reservation getReservation() {
-        return reservation;
-    }
-
-    public Planche reservation(Reservation reservation) {
-        this.reservation = reservation;
-        return this;
-    }
-
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
     }
 
     public Set<Reservation> getReservations() {

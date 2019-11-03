@@ -48,8 +48,7 @@ describe('Harnais e2e test', () => {
       harnaisUpdatePage.setDeletedByInput('deletedBy'),
       harnaisUpdatePage.setCreatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
       harnaisUpdatePage.setUpdatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
-      harnaisUpdatePage.setDeletedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
-      harnaisUpdatePage.reservationSelectLastOption()
+      harnaisUpdatePage.setDeletedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM')
     ]);
     expect(await harnaisUpdatePage.getEtatInput()).to.eq('etat', 'Expected Etat value to be equals to etat');
     expect(await harnaisUpdatePage.getCreatedByInput()).to.eq('createdBy', 'Expected CreatedBy value to be equals to createdBy');

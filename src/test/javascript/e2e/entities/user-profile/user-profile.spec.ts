@@ -50,8 +50,7 @@ describe('UserProfile e2e test', () => {
       userProfileUpdatePage.niveauSelectLastOption(),
       userProfileUpdatePage.setRemarqueInput('remarque'),
       userProfileUpdatePage.tailleHarnaisSelectLastOption(),
-      userProfileUpdatePage.tailleCombinaisonSelectLastOption(),
-      userProfileUpdatePage.reservationSelectLastOption()
+      userProfileUpdatePage.tailleCombinaisonSelectLastOption()
     ]);
     expect(await userProfileUpdatePage.getDateEcheanceInput()).to.contain(
       '2001-01-01T02:30',

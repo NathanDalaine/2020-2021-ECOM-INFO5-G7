@@ -53,8 +53,7 @@ describe('Voile e2e test', () => {
       voileUpdatePage.setDeletedByInput('deletedBy'),
       voileUpdatePage.setCreatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
       voileUpdatePage.setUpdatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
-      voileUpdatePage.setDeletedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
-      voileUpdatePage.reservationSelectLastOption()
+      voileUpdatePage.setDeletedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM')
     ]);
     expect(await voileUpdatePage.getSurfaceInput()).to.eq('5', 'Expected surface value to be equals to 5');
     expect(await voileUpdatePage.getMarqueInput()).to.eq('marque', 'Expected Marque value to be equals to marque');

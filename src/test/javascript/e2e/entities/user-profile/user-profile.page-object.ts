@@ -37,7 +37,6 @@ export class UserProfileUpdatePage {
   remarqueInput = element(by.id('field_remarque'));
   tailleHarnaisSelect = element(by.id('field_tailleHarnais'));
   tailleCombinaisonSelect = element(by.id('field_tailleCombinaison'));
-  reservationSelect = element(by.id('field_reservation'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -152,25 +151,6 @@ export class UserProfileUpdatePage {
       .all(by.tagName('option'))
       .last()
       .click();
-  }
-
-  async reservationSelectLastOption(timeout?: number) {
-    await this.reservationSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
-  }
-
-  async reservationSelectOption(option) {
-    await this.reservationSelect.sendKeys(option);
-  }
-
-  getReservationSelect(): ElementFinder {
-    return this.reservationSelect;
-  }
-
-  async getReservationSelectedOption() {
-    return await this.reservationSelect.element(by.css('option:checked')).getText();
   }
 
   async save(timeout?: number) {

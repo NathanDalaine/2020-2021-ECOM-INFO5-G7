@@ -37,12 +37,6 @@
                 <dd>
                     <span>{{harnais.deletedAt}}</span>
                 </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.harnais.reservation">Reservation</span></dt>
-                <dd>
-                    <div *ngIf="harnais.reservationId">
-                        <a [routerLink]="['/reservation', harnais.reservationId, 'view']">{{harnais.reservationId}}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

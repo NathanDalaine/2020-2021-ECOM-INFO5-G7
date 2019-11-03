@@ -29,7 +29,6 @@
             <th><span jhiTranslate="ecomgucvoileApp.userProfile.remarque">Remarque</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.userProfile.tailleHarnais">Taille Harnais</span></th>
             <th><span jhiTranslate="ecomgucvoileApp.userProfile.tailleCombinaison">Taille Combinaison</span></th>
-            <th><span jhiTranslate="ecomgucvoileApp.userProfile.reservation">Reservation</span></th>
             <th></th>
             </tr>
             </thead>
@@ -47,11 +46,6 @@
                 <td>{{userProfile.remarque}}</td>
                 <td jhiTranslate="{{'ecomgucvoileApp.Taille.' + userProfile.tailleHarnais}}">{{userProfile.tailleHarnais}}</td>
                 <td jhiTranslate="{{'ecomgucvoileApp.Taille.' + userProfile.tailleCombinaison}}">{{userProfile.tailleCombinaison}}</td>
-                <td>
-                    <div *ngIf="userProfile.reservationId">
-                        <a [routerLink]="['/reservation', userProfile.reservationId , 'view' ]" >{{userProfile.reservationId}}</a>
-                    </div>
-                </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"
