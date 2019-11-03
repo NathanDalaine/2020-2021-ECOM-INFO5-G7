@@ -32,9 +32,9 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA'
+        currentDate,
+        currentDate,
+        currentDate
       );
     });
 
@@ -43,7 +43,10 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             dateReservation: currentDate.format(DATE_TIME_FORMAT),
-            dateRendu: currentDate.format(DATE_TIME_FORMAT)
+            dateRendu: currentDate.format(DATE_TIME_FORMAT),
+            createdAt: currentDate.format(DATE_TIME_FORMAT),
+            updatedAt: currentDate.format(DATE_TIME_FORMAT),
+            deletedAt: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
@@ -62,14 +65,20 @@ describe('Service Tests', () => {
           {
             id: 0,
             dateReservation: currentDate.format(DATE_TIME_FORMAT),
-            dateRendu: currentDate.format(DATE_TIME_FORMAT)
+            dateRendu: currentDate.format(DATE_TIME_FORMAT),
+            createdAt: currentDate.format(DATE_TIME_FORMAT),
+            updatedAt: currentDate.format(DATE_TIME_FORMAT),
+            deletedAt: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
         const expected = Object.assign(
           {
             dateReservation: currentDate,
-            dateRendu: currentDate
+            dateRendu: currentDate,
+            createdAt: currentDate,
+            updatedAt: currentDate,
+            deletedAt: currentDate
           },
           returnedFromService
         );
@@ -88,12 +97,12 @@ describe('Service Tests', () => {
             dateReservation: currentDate.format(DATE_TIME_FORMAT),
             dateRendu: currentDate.format(DATE_TIME_FORMAT),
             remarques: 'BBBBBB',
-            createdAt: 'BBBBBB',
             createdBy: 'BBBBBB',
-            updatedAt: 'BBBBBB',
             updatedBy: 'BBBBBB',
-            deletedAt: 'BBBBBB',
-            deletedBy: 'BBBBBB'
+            deletedBy: 'BBBBBB',
+            createdAt: currentDate.format(DATE_TIME_FORMAT),
+            updatedAt: currentDate.format(DATE_TIME_FORMAT),
+            deletedAt: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
@@ -101,7 +110,10 @@ describe('Service Tests', () => {
         const expected = Object.assign(
           {
             dateReservation: currentDate,
-            dateRendu: currentDate
+            dateRendu: currentDate,
+            createdAt: currentDate,
+            updatedAt: currentDate,
+            deletedAt: currentDate
           },
           returnedFromService
         );
@@ -120,19 +132,22 @@ describe('Service Tests', () => {
             dateReservation: currentDate.format(DATE_TIME_FORMAT),
             dateRendu: currentDate.format(DATE_TIME_FORMAT),
             remarques: 'BBBBBB',
-            createdAt: 'BBBBBB',
             createdBy: 'BBBBBB',
-            updatedAt: 'BBBBBB',
             updatedBy: 'BBBBBB',
-            deletedAt: 'BBBBBB',
-            deletedBy: 'BBBBBB'
+            deletedBy: 'BBBBBB',
+            createdAt: currentDate.format(DATE_TIME_FORMAT),
+            updatedAt: currentDate.format(DATE_TIME_FORMAT),
+            deletedAt: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
         const expected = Object.assign(
           {
             dateReservation: currentDate,
-            dateRendu: currentDate
+            dateRendu: currentDate,
+            createdAt: currentDate,
+            updatedAt: currentDate,
+            deletedAt: currentDate
           },
           returnedFromService
         );

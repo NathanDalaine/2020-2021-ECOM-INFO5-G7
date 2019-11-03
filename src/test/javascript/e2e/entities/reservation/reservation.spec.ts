@@ -44,12 +44,17 @@ describe('Reservation e2e test', () => {
       reservationUpdatePage.setDateReservationInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
       reservationUpdatePage.setDateRenduInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
       reservationUpdatePage.setRemarquesInput('remarques'),
-      reservationUpdatePage.setCreatedAtInput('createdAt'),
       reservationUpdatePage.setCreatedByInput('createdBy'),
-      reservationUpdatePage.setUpdatedAtInput('updatedAt'),
       reservationUpdatePage.setUpdatedByInput('updatedBy'),
-      reservationUpdatePage.setDeletedAtInput('deletedAt'),
-      reservationUpdatePage.setDeletedByInput('deletedBy')
+      reservationUpdatePage.setDeletedByInput('deletedBy'),
+      reservationUpdatePage.setCreatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
+      reservationUpdatePage.setUpdatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
+      reservationUpdatePage.setDeletedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
+      reservationUpdatePage.voileSelectLastOption(),
+      reservationUpdatePage.userProfileSelectLastOption(),
+      reservationUpdatePage.combinaisonSelectLastOption(),
+      reservationUpdatePage.harnaisSelectLastOption(),
+      reservationUpdatePage.plancheSelectLastOption()
     ]);
     expect(await reservationUpdatePage.getDateReservationInput()).to.contain(
       '2001-01-01T02:30',
@@ -60,12 +65,21 @@ describe('Reservation e2e test', () => {
       'Expected dateRendu value to be equals to 2000-12-31'
     );
     expect(await reservationUpdatePage.getRemarquesInput()).to.eq('remarques', 'Expected Remarques value to be equals to remarques');
-    expect(await reservationUpdatePage.getCreatedAtInput()).to.eq('createdAt', 'Expected CreatedAt value to be equals to createdAt');
     expect(await reservationUpdatePage.getCreatedByInput()).to.eq('createdBy', 'Expected CreatedBy value to be equals to createdBy');
-    expect(await reservationUpdatePage.getUpdatedAtInput()).to.eq('updatedAt', 'Expected UpdatedAt value to be equals to updatedAt');
     expect(await reservationUpdatePage.getUpdatedByInput()).to.eq('updatedBy', 'Expected UpdatedBy value to be equals to updatedBy');
-    expect(await reservationUpdatePage.getDeletedAtInput()).to.eq('deletedAt', 'Expected DeletedAt value to be equals to deletedAt');
     expect(await reservationUpdatePage.getDeletedByInput()).to.eq('deletedBy', 'Expected DeletedBy value to be equals to deletedBy');
+    expect(await reservationUpdatePage.getCreatedAtInput()).to.contain(
+      '2001-01-01T02:30',
+      'Expected createdAt value to be equals to 2000-12-31'
+    );
+    expect(await reservationUpdatePage.getUpdatedAtInput()).to.contain(
+      '2001-01-01T02:30',
+      'Expected updatedAt value to be equals to 2000-12-31'
+    );
+    expect(await reservationUpdatePage.getDeletedAtInput()).to.contain(
+      '2001-01-01T02:30',
+      'Expected deletedAt value to be equals to 2000-12-31'
+    );
     await reservationUpdatePage.save();
     expect(await reservationUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
 

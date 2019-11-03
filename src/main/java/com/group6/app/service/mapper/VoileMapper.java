@@ -8,13 +8,12 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Voile} and its DTO {@link VoileDTO}.
  */
-@Mapper(componentModel = "spring", uses = {ReservationMapper.class})
+@Mapper(componentModel = "spring", uses = {})
 public interface VoileMapper extends EntityMapper<VoileDTO, Voile> {
 
-    @Mapping(source = "reservation.id", target = "reservationId")
-    VoileDTO toDto(Voile voile);
 
-    @Mapping(source = "reservationId", target = "reservation")
+    @Mapping(target = "reservations", ignore = true)
+    @Mapping(target = "removeReservation", ignore = true)
     Voile toEntity(VoileDTO voileDTO);
 
     default Voile fromId(Long id) {

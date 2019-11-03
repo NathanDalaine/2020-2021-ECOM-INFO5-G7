@@ -22,6 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static com.group6.app.web.rest.TestUtil.createFormattingConversionService;
@@ -61,23 +63,26 @@ public class VoileResourceIT {
     private static final Boolean DEFAULT_GREE = false;
     private static final Boolean UPDATED_GREE = true;
 
-    private static final String DEFAULT_CREATED_AT = "AAAAAAAAAA";
-    private static final String UPDATED_CREATED_AT = "BBBBBBBBBB";
-
     private static final String DEFAULT_CREATED_BY = "AAAAAAAAAA";
     private static final String UPDATED_CREATED_BY = "BBBBBBBBBB";
-
-    private static final String DEFAULT_UPDATED_AT = "AAAAAAAAAA";
-    private static final String UPDATED_UPDATED_AT = "BBBBBBBBBB";
 
     private static final String DEFAULT_UPDATED_BY = "AAAAAAAAAA";
     private static final String UPDATED_UPDATED_BY = "BBBBBBBBBB";
 
-    private static final String DEFAULT_DELETED_AT = "AAAAAAAAAA";
-    private static final String UPDATED_DELETED_AT = "BBBBBBBBBB";
-
     private static final String DEFAULT_DELETED_BY = "AAAAAAAAAA";
     private static final String UPDATED_DELETED_BY = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant SMALLER_CREATED_AT = Instant.ofEpochMilli(-1L);
+
+    private static final Instant DEFAULT_UPDATED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_UPDATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant SMALLER_UPDATED_AT = Instant.ofEpochMilli(-1L);
+
+    private static final Instant DEFAULT_DELETED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DELETED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant SMALLER_DELETED_AT = Instant.ofEpochMilli(-1L);
 
     @Autowired
     private VoileRepository voileRepository;
@@ -135,12 +140,12 @@ public class VoileResourceIT {
             .etat(DEFAULT_ETAT)
             .libelle(DEFAULT_LIBELLE)
             .gree(DEFAULT_GREE)
-            .createdAt(DEFAULT_CREATED_AT)
             .createdBy(DEFAULT_CREATED_BY)
-            .updatedAt(DEFAULT_UPDATED_AT)
             .updatedBy(DEFAULT_UPDATED_BY)
-            .deletedAt(DEFAULT_DELETED_AT)
-            .deletedBy(DEFAULT_DELETED_BY);
+            .deletedBy(DEFAULT_DELETED_BY)
+            .createdAt(DEFAULT_CREATED_AT)
+            .updatedAt(DEFAULT_UPDATED_AT)
+            .deletedAt(DEFAULT_DELETED_AT);
         return voile;
     }
     /**
@@ -159,12 +164,12 @@ public class VoileResourceIT {
             .etat(UPDATED_ETAT)
             .libelle(UPDATED_LIBELLE)
             .gree(UPDATED_GREE)
-            .createdAt(UPDATED_CREATED_AT)
             .createdBy(UPDATED_CREATED_BY)
-            .updatedAt(UPDATED_UPDATED_AT)
             .updatedBy(UPDATED_UPDATED_BY)
-            .deletedAt(UPDATED_DELETED_AT)
-            .deletedBy(UPDATED_DELETED_BY);
+            .deletedBy(UPDATED_DELETED_BY)
+            .createdAt(UPDATED_CREATED_AT)
+            .updatedAt(UPDATED_UPDATED_AT)
+            .deletedAt(UPDATED_DELETED_AT);
         return voile;
     }
 
@@ -197,12 +202,12 @@ public class VoileResourceIT {
         assertThat(testVoile.getEtat()).isEqualTo(DEFAULT_ETAT);
         assertThat(testVoile.getLibelle()).isEqualTo(DEFAULT_LIBELLE);
         assertThat(testVoile.isGree()).isEqualTo(DEFAULT_GREE);
-        assertThat(testVoile.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testVoile.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
-        assertThat(testVoile.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
         assertThat(testVoile.getUpdatedBy()).isEqualTo(DEFAULT_UPDATED_BY);
-        assertThat(testVoile.getDeletedAt()).isEqualTo(DEFAULT_DELETED_AT);
         assertThat(testVoile.getDeletedBy()).isEqualTo(DEFAULT_DELETED_BY);
+        assertThat(testVoile.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
+        assertThat(testVoile.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
+        assertThat(testVoile.getDeletedAt()).isEqualTo(DEFAULT_DELETED_AT);
     }
 
     @Test
@@ -245,12 +250,12 @@ public class VoileResourceIT {
             .andExpect(jsonPath("$.[*].etat").value(hasItem(DEFAULT_ETAT.toString())))
             .andExpect(jsonPath("$.[*].libelle").value(hasItem(DEFAULT_LIBELLE.toString())))
             .andExpect(jsonPath("$.[*].gree").value(hasItem(DEFAULT_GREE.booleanValue())))
-            .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY.toString())))
-            .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedBy").value(hasItem(DEFAULT_UPDATED_BY.toString())))
-            .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())))
-            .andExpect(jsonPath("$.[*].deletedBy").value(hasItem(DEFAULT_DELETED_BY.toString())));
+            .andExpect(jsonPath("$.[*].deletedBy").value(hasItem(DEFAULT_DELETED_BY.toString())))
+            .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
+            .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
+            .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())));
     }
     
     @Test
@@ -272,12 +277,12 @@ public class VoileResourceIT {
             .andExpect(jsonPath("$.etat").value(DEFAULT_ETAT.toString()))
             .andExpect(jsonPath("$.libelle").value(DEFAULT_LIBELLE.toString()))
             .andExpect(jsonPath("$.gree").value(DEFAULT_GREE.booleanValue()))
-            .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY.toString()))
-            .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
             .andExpect(jsonPath("$.updatedBy").value(DEFAULT_UPDATED_BY.toString()))
-            .andExpect(jsonPath("$.deletedAt").value(DEFAULT_DELETED_AT.toString()))
-            .andExpect(jsonPath("$.deletedBy").value(DEFAULT_DELETED_BY.toString()));
+            .andExpect(jsonPath("$.deletedBy").value(DEFAULT_DELETED_BY.toString()))
+            .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
+            .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
+            .andExpect(jsonPath("$.deletedAt").value(DEFAULT_DELETED_AT.toString()));
     }
 
     @Test
@@ -309,12 +314,12 @@ public class VoileResourceIT {
             .etat(UPDATED_ETAT)
             .libelle(UPDATED_LIBELLE)
             .gree(UPDATED_GREE)
-            .createdAt(UPDATED_CREATED_AT)
             .createdBy(UPDATED_CREATED_BY)
-            .updatedAt(UPDATED_UPDATED_AT)
             .updatedBy(UPDATED_UPDATED_BY)
-            .deletedAt(UPDATED_DELETED_AT)
-            .deletedBy(UPDATED_DELETED_BY);
+            .deletedBy(UPDATED_DELETED_BY)
+            .createdAt(UPDATED_CREATED_AT)
+            .updatedAt(UPDATED_UPDATED_AT)
+            .deletedAt(UPDATED_DELETED_AT);
         VoileDTO voileDTO = voileMapper.toDto(updatedVoile);
 
         restVoileMockMvc.perform(put("/api/voiles")
@@ -334,12 +339,12 @@ public class VoileResourceIT {
         assertThat(testVoile.getEtat()).isEqualTo(UPDATED_ETAT);
         assertThat(testVoile.getLibelle()).isEqualTo(UPDATED_LIBELLE);
         assertThat(testVoile.isGree()).isEqualTo(UPDATED_GREE);
-        assertThat(testVoile.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testVoile.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
-        assertThat(testVoile.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
         assertThat(testVoile.getUpdatedBy()).isEqualTo(UPDATED_UPDATED_BY);
-        assertThat(testVoile.getDeletedAt()).isEqualTo(UPDATED_DELETED_AT);
         assertThat(testVoile.getDeletedBy()).isEqualTo(UPDATED_DELETED_BY);
+        assertThat(testVoile.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testVoile.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
+        assertThat(testVoile.getDeletedAt()).isEqualTo(UPDATED_DELETED_AT);
     }
 
     @Test

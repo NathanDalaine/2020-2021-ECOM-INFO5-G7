@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { browser, ExpectedConditions as ec, promise } from 'protractor';
+import { browser, ExpectedConditions as ec, protractor, promise } from 'protractor';
 import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -43,21 +43,29 @@ describe('Combinaison e2e test', () => {
     await promise.all([
       combinaisonUpdatePage.tailleSelectLastOption(),
       combinaisonUpdatePage.setEtatInput('etat'),
-      combinaisonUpdatePage.setCreatedAtInput('createdAt'),
       combinaisonUpdatePage.setCreatedByInput('createdBy'),
-      combinaisonUpdatePage.setUpdatedAtInput('updatedAt'),
       combinaisonUpdatePage.setUpdatedByInput('updatedBy'),
-      combinaisonUpdatePage.setDeletedAtInput('deletedAt'),
       combinaisonUpdatePage.setDeletedByInput('deletedBy'),
-      combinaisonUpdatePage.reservationSelectLastOption()
+      combinaisonUpdatePage.setCreatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
+      combinaisonUpdatePage.setUpdatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
+      combinaisonUpdatePage.setDeletedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM')
     ]);
     expect(await combinaisonUpdatePage.getEtatInput()).to.eq('etat', 'Expected Etat value to be equals to etat');
-    expect(await combinaisonUpdatePage.getCreatedAtInput()).to.eq('createdAt', 'Expected CreatedAt value to be equals to createdAt');
     expect(await combinaisonUpdatePage.getCreatedByInput()).to.eq('createdBy', 'Expected CreatedBy value to be equals to createdBy');
-    expect(await combinaisonUpdatePage.getUpdatedAtInput()).to.eq('updatedAt', 'Expected UpdatedAt value to be equals to updatedAt');
     expect(await combinaisonUpdatePage.getUpdatedByInput()).to.eq('updatedBy', 'Expected UpdatedBy value to be equals to updatedBy');
-    expect(await combinaisonUpdatePage.getDeletedAtInput()).to.eq('deletedAt', 'Expected DeletedAt value to be equals to deletedAt');
     expect(await combinaisonUpdatePage.getDeletedByInput()).to.eq('deletedBy', 'Expected DeletedBy value to be equals to deletedBy');
+    expect(await combinaisonUpdatePage.getCreatedAtInput()).to.contain(
+      '2001-01-01T02:30',
+      'Expected createdAt value to be equals to 2000-12-31'
+    );
+    expect(await combinaisonUpdatePage.getUpdatedAtInput()).to.contain(
+      '2001-01-01T02:30',
+      'Expected updatedAt value to be equals to 2000-12-31'
+    );
+    expect(await combinaisonUpdatePage.getDeletedAtInput()).to.contain(
+      '2001-01-01T02:30',
+      'Expected deletedAt value to be equals to 2000-12-31'
+    );
     await combinaisonUpdatePage.save();
     expect(await combinaisonUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
 

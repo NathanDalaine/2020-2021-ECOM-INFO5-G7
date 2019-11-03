@@ -1,5 +1,4 @@
 package com.group6.app.domain;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -7,12 +6,14 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
-
-import com.group6.app.domain.enumeration.Taille;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.group6.app.domain.enumeration.TypeAbonnement;
 
 import com.group6.app.domain.enumeration.Niveau;
+
+import com.group6.app.domain.enumeration.Taille;
 
 /**
  * A UserProfile.
@@ -29,12 +30,10 @@ public class UserProfile implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
 
-    @Column(name = "localisation")
-    private String localisation;
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL)
+    private User user;
 
     @Column(name = "date_echeance")
     private Instant dateEcheance;
@@ -44,10 +43,6 @@ public class UserProfile implements Serializable {
 
     @Column(name = "date_adhesion")
     private Instant dateAdhesion;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "pref_taille")
-    private Taille prefTaille;
 
     @Column(name = "adresse")
     private String adresse;
@@ -69,9 +64,17 @@ public class UserProfile implements Serializable {
     @Column(name = "remarque")
     private String remarque;
 
-    @ManyToOne
-    @JsonIgnoreProperties("users")
-    private Reservation reservation;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "taille_harnais")
+    private Taille tailleHarnais;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "taille_combinaison")
+    private Taille tailleCombinaison;
+
+    @OneToMany(mappedBy = "userProfile")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Reservation> reservations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -88,19 +91,6 @@ public class UserProfile implements Serializable {
 
     public void setUser(User user){
         this.user = user;
-    }
-
-    public String getLocalisation() {
-        return localisation;
-    }
-
-    public UserProfile localisation(String localisation) {
-        this.localisation = localisation;
-        return this;
-    }
-
-    public void setLocalisation(String localisation) {
-        this.localisation = localisation;
     }
 
     public Instant getDateEcheance() {
@@ -140,19 +130,6 @@ public class UserProfile implements Serializable {
 
     public void setDateAdhesion(Instant dateAdhesion) {
         this.dateAdhesion = dateAdhesion;
-    }
-
-    public Taille getPrefTaille() {
-        return prefTaille;
-    }
-
-    public UserProfile prefTaille(Taille prefTaille) {
-        this.prefTaille = prefTaille;
-        return this;
-    }
-
-    public void setPrefTaille(Taille prefTaille) {
-        this.prefTaille = prefTaille;
     }
 
     public String getAdresse() {
@@ -233,17 +210,55 @@ public class UserProfile implements Serializable {
         this.remarque = remarque;
     }
 
-    public Reservation getReservation() {
-        return reservation;
+    public Taille getTailleHarnais() {
+        return tailleHarnais;
     }
 
-    public UserProfile reservation(Reservation reservation) {
-        this.reservation = reservation;
+    public UserProfile tailleHarnais(Taille tailleHarnais) {
+        this.tailleHarnais = tailleHarnais;
         return this;
     }
 
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
+    public void setTailleHarnais(Taille tailleHarnais) {
+        this.tailleHarnais = tailleHarnais;
+    }
+
+    public Taille getTailleCombinaison() {
+        return tailleCombinaison;
+    }
+
+    public UserProfile tailleCombinaison(Taille tailleCombinaison) {
+        this.tailleCombinaison = tailleCombinaison;
+        return this;
+    }
+
+    public void setTailleCombinaison(Taille tailleCombinaison) {
+        this.tailleCombinaison = tailleCombinaison;
+    }
+
+    public Set<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public UserProfile reservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
+        return this;
+    }
+
+    public UserProfile addReservation(Reservation reservation) {
+        this.reservations.add(reservation);
+        reservation.setUserProfile(this);
+        return this;
+    }
+
+    public UserProfile removeReservation(Reservation reservation) {
+        this.reservations.remove(reservation);
+        reservation.setUserProfile(null);
+        return this;
+    }
+
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -267,17 +282,17 @@ public class UserProfile implements Serializable {
     public String toString() {
         return "UserProfile{" +
             "id=" + getId() +
-            ", localisation='" + getLocalisation() + "'" +
             ", dateEcheance='" + getDateEcheance() + "'" +
             ", dateNaissance='" + getDateNaissance() + "'" +
             ", dateAdhesion='" + getDateAdhesion() + "'" +
-            ", prefTaille='" + getPrefTaille() + "'" +
             ", adresse='" + getAdresse() + "'" +
             ", telephone='" + getTelephone() + "'" +
             ", typeAbonnement='" + getTypeAbonnement() + "'" +
             ", niveau='" + getNiveau() + "'" +
             ", materielTechniqueAutorise='" + isMaterielTechniqueAutorise() + "'" +
             ", remarque='" + getRemarque() + "'" +
+            ", tailleHarnais='" + getTailleHarnais() + "'" +
+            ", tailleCombinaison='" + getTailleCombinaison() + "'" +
             "}";
     }
 }

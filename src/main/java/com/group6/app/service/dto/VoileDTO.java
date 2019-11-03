@@ -1,4 +1,5 @@
 package com.group6.app.service.dto;
+import java.time.Instant;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -25,20 +26,18 @@ public class VoileDTO implements Serializable {
 
     private Boolean gree;
 
-    private String createdAt;
-
     private String createdBy;
-
-    private String updatedAt;
 
     private String updatedBy;
 
-    private String deletedAt;
-
     private String deletedBy;
 
+    private Instant createdAt;
 
-    private Long reservationId;
+    private Instant updatedAt;
+
+    private Instant deletedAt;
+
 
     public Long getId() {
         return id;
@@ -112,28 +111,12 @@ public class VoileDTO implements Serializable {
         this.gree = gree;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
     public String getCreatedBy() {
         return createdBy;
     }
 
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     public String getUpdatedBy() {
@@ -144,14 +127,6 @@ public class VoileDTO implements Serializable {
         this.updatedBy = updatedBy;
     }
 
-    public String getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(String deletedAt) {
-        this.deletedAt = deletedAt;
-    }
-
     public String getDeletedBy() {
         return deletedBy;
     }
@@ -160,12 +135,28 @@ public class VoileDTO implements Serializable {
         this.deletedBy = deletedBy;
     }
 
-    public Long getReservationId() {
-        return reservationId;
+    public Instant getCreatedAt() {
+        return createdAt;
     }
 
-    public void setReservationId(Long reservationId) {
-        this.reservationId = reservationId;
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Instant getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Instant getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt(Instant deletedAt) {
+        this.deletedAt = deletedAt;
     }
 
     @Override
@@ -201,13 +192,12 @@ public class VoileDTO implements Serializable {
             ", etat='" + getEtat() + "'" +
             ", libelle='" + getLibelle() + "'" +
             ", gree='" + isGree() + "'" +
-            ", createdAt='" + getCreatedAt() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
-            ", updatedAt='" + getUpdatedAt() + "'" +
             ", updatedBy='" + getUpdatedBy() + "'" +
-            ", deletedAt='" + getDeletedAt() + "'" +
             ", deletedBy='" + getDeletedBy() + "'" +
-            ", reservation=" + getReservationId() +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", updatedAt='" + getUpdatedAt() + "'" +
+            ", deletedAt='" + getDeletedAt() + "'" +
             "}";
     }
 }

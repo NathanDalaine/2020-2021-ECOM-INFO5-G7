@@ -33,35 +33,29 @@
                 <dd>
                     <span>{{planche.volume}}</span>
                 </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.planche.createdAt">Created At</span></dt>
-                <dd>
-                    <span>{{planche.createdAt}}</span>
-                </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.planche.createdBy">Created By</span></dt>
                 <dd>
                     <span>{{planche.createdBy}}</span>
-                </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.planche.updatedAt">Updated At</span></dt>
-                <dd>
-                    <span>{{planche.updatedAt}}</span>
                 </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.planche.updatedBy">Updated By</span></dt>
                 <dd>
                     <span>{{planche.updatedBy}}</span>
                 </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.planche.deletedAt">Deleted At</span></dt>
-                <dd>
-                    <span>{{planche.deletedAt}}</span>
-                </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.planche.deletedBy">Deleted By</span></dt>
                 <dd>
                     <span>{{planche.deletedBy}}</span>
                 </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.planche.reservation">Reservation</span></dt>
+                <dt><span jhiTranslate="ecomgucvoileApp.planche.createdAt">Created At</span></dt>
                 <dd>
-                    <div *ngIf="planche.reservationId">
-                        <a [routerLink]="['/reservation', planche.reservationId, 'view']">{{planche.reservationId}}</a>
-                    </div>
+                    <span>{{planche.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.planche.updatedAt">Updated At</span></dt>
+                <dd>
+                    <span>{{planche.updatedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.planche.deletedAt">Deleted At</span></dt>
+                <dd>
+                    <span>{{planche.deletedAt}}</span>
                 </dd>
             </dl>
 
@@ -69,6 +63,12 @@
                     (click)="previousState()"
                     class="btn btn-info">
                 <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/planche', planche.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
             </button>
         </div>
     </div>
