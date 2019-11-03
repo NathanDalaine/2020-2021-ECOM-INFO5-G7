@@ -28,7 +28,6 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   tailles: SelectItem[];
   abonnements: SelectItem[];
   niveaux : SelectItem[];
-  private membre: String = MEMBRE;
 
   registerForm = this.fb.group({
     role: [MEMBRE],
@@ -44,6 +43,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     niveau: ['',Validators.required],
     firstName: [''],
     lastName: [''],
+    dateNaissance: [''],
     adresse: [''],
     activated: [false],
     materielTechniqueAutorise: [false]
@@ -107,32 +107,6 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         response => this.processError(response)
       );
     }
-
-
-
-    /*
-        let registerAccount = {};
-        const login = this.registerForm.get(['login']).value;
-        const email = this.registerForm.get(['email']).value;
-        const password = this.registerForm.get(['password']).value;
-        if (password !== this.registerForm.get(['confirmPassword']).value) {
-          this.doNotMatch = 'ERROR';
-        } else {
-          registerAccount = { ...registerAccount, login, email, password };
-          this.doNotMatch = null;
-          this.error = null;
-          this.errorUserExists = null;
-          this.errorEmailExists = null;
-          this.languageService.getCurrent().then(langKey => {
-            registerAccount = { ...registerAccount, langKey };
-            this.registerService.save(registerAccount).subscribe(
-              () => {
-                this.success = true;
-              },
-              response => this.processError(response)
-            );
-          });
-        }*/
   }
 
   openLogin() {
