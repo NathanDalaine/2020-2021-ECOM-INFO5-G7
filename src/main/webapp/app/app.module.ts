@@ -11,6 +11,7 @@ import { EcomgucvoileSharedModule } from 'app/shared/shared.module';
 import { EcomgucvoileCoreModule } from 'app/core/core.module';
 import { EcomgucvoileAppRoutingModule } from './app-routing.module';
 import { EcomgucvoileHomeModule } from './home/home.module';
+import {EcomgucvoileRenduMaterielModule} from './pages/renduMateriel/renduMateriel.module'
 
 import { EcomgucvoileMaterialListModule } from './pages/materialList/materialList.module';
 import { EcomgucvoileEntityModule } from './entities/entity.module';
@@ -29,6 +30,7 @@ import { ErrorComponent } from './layouts/error/error.component';
     EcomgucvoileCoreModule,
     EcomgucvoileHomeModule,
     EcomgucvoileMaterialListModule,
+    EcomgucvoileRenduMaterielModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     EcomgucvoileEntityModule,
     EcomgucvoileAppRoutingModule

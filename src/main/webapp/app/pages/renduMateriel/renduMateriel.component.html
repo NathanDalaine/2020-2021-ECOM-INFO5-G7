@@ -1,0 +1,40 @@
+<div>
+    <div class="alert alert-warning" *ngIf="voiles?.length === 0">
+        <span jhiTranslate="ecomgucvoileApp.voile.home.notFound">No voiles found</span>
+    </div>
+    <span>Les Voiles</span>
+    <div class="table-responsive" *ngIf="voiles?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+                <th><span jhiTranslate="ecomgucvoileApp.voile.libelle">Libelle</span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let voile of voiles ;trackBy: trackIdVoile">
+                <td><a [routerLink]="['/voile', voile.id, 'view' ]">{{voile.libelle}}</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="alert alert-warning" *ngIf="planches?.length === 0">
+        <span jhiTranslate="ecomgucvoileApp.planche.home.notFound">No planches found</span>
+    </div>
+    <span>Les Planches</span>
+    <div class="table-responsive" *ngIf="planches?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+                <th><span jhiTranslate="ecomgucvoileApp.planche.libelle">Libelle</span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let planche of planches ;trackBy: trackIdPlanche">
+                <td><a [routerLink]="['/planche', planche.id, 'view' ]">{{planche.libelle}}</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
