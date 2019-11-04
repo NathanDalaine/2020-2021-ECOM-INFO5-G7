@@ -3,11 +3,11 @@ import { AccountService } from 'app/core/auth/account.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
-
-import { IVoile } from 'app/shared/model/voile.model';
-import { IPlanche } from 'app/shared/model/planche.model';
-import { VoileService } from '../../entities/voile/voile.service';
-import { PlancheService } from '../../entities/planche/planche.service';
+import {IReservation, Reservation} from "app/shared/model/reservation.model";
+import {ReservationService} from "app/entities/reservation/reservation.service";
+import * as moment from "moment";
+import {Observable} from "rxjs";
+import {IUserProfile} from "app/shared/model/user-profile.model";
 
 @Component({
   selector: 'jhi-rendumateriel',
@@ -15,41 +15,29 @@ import { PlancheService } from '../../entities/planche/planche.service';
   styleUrls: ['renduMateriel.scss']
 })
 export class RenduMaterielComponent implements OnInit, OnDestroy {
-  voiles: IVoile[];
-  planches: IPlanche[];
+  reservations : IReservation[];
+  reservation: IReservation;
+  reservationNonRendu : IReservation[];
   currentAccount: any;
+  private success: boolean;
 
   constructor(
-    protected voileService: VoileService,
-    protected plancheService: PlancheService,
+    protected reservationService: ReservationService,
     protected jhiAlertService: JhiAlertService,
     protected eventManager: JhiEventManager,
     protected accountService: AccountService
   ) {}
 
   loadAll() {
-    this.voileService
-      .query()
+    this.reservationService
+      .find(1)
       .pipe(
-        filter((res: HttpResponse<IVoile[]>) => res.ok),
-        map((res: HttpResponse<IVoile[]>) => res.body)
+        filter((res: HttpResponse<IReservation>) => res.ok),
+        map((res: HttpResponse<IReservation>) => res.body)
       )
       .subscribe(
-        (res: IVoile[]) => {
-          this.voiles = res;
-        },
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
-
-    this.plancheService
-      .query()
-      .pipe(
-        filter((res: HttpResponse<IPlanche[]>) => res.ok),
-        map((res: HttpResponse<IPlanche[]>) => res.body)
-      )
-      .subscribe(
-        (res: IPlanche[]) => {
-          this.planches = res;
+        (res: IReservation) => {
+          this.reservation = res;
         },
         (res: HttpErrorResponse) => this.onError(res.message)
       );
@@ -57,22 +45,44 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadAll();
+    this.getReservationNonRendu();
     this.accountService.identity().then(account => {
       this.currentAccount = account;
     });
   }
 
+
   ngOnDestroy() {}
 
-  trackIdVoile(index: number, item: IVoile) {
-    return item.id;
+  confirm(){
+    this.reservation.dateRendu = moment();
+    this.subscribeToSaveResponse(this.reservationService.update(this.reservation));
   }
 
-  trackIdPlanche(index: number, item: IPlanche) {
-    return item.id;
+  getReservationNonRendu(){
+    this.reservations.forEach(res =>{
+      if(res.dateRendu == null){
+        this.reservationNonRendu.push(res);
+      }
+    });
   }
+
+  protected subscribeToSaveResponse(result: Observable<HttpResponse<IReservation>>) {
+    result.subscribe(() => {
+      this.success = true;
+      this.onSuccess("ecomgucvoileApp.renduMateriel.validation")
+    }, () => {
+      this.success = false;
+      this.onError("Rendu Impossible");
+    });
+  }
+
 
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  protected onSuccess(sucessMessage: string) {
+    this.jhiAlertService.success(sucessMessage, null, null);
   }
 }

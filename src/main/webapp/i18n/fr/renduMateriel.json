@@ -7,6 +7,8 @@
         "createOrEditLabel": "Create or edit a Planche",
         "notFound": "No Planches found"
       },
+      "confirmation" : "confirmer le rendu",
+      "validation": "Rendu validé",
       "created": "A new Planche is created with identifier {{ param }}",
       "updated": "A Planche is updated with identifier {{ param }}",
       "deleted": "A Planche is deleted with identifier {{ param }}",
