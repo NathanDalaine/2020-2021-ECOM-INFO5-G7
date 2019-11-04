@@ -65,6 +65,10 @@
             <input formControlName="combinaison" type="checkbox">
         </div>
     </div>
+    <div class="form-group">
+        <label class="form-control-label" jhiTranslate="global.form.remark.label">Remark</label>
+        <input type="text" id="remarque" name="remarque"  class="form-control" formControlName="remarques">
+    </div>
     <div fxLayoutAlign="end center">
         <button type="submit" [disabled]="registerForm.get('voileId').value == null && registerForm.get('plancheId').value == null && registerForm.get('harnais').value == false && registerForm.get('combinaison').value == false" class="btn btn-primary" jhiTranslate="ecomgucvoileApp.reservation.reserve">
             Register

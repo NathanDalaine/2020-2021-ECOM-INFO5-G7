@@ -23,6 +23,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
   planches: IPlanche[];
   currentAccount: any;
   registerForm = this.fb.group({
+    remarques: [''],
     voileId: [null],
     plancheId: [null],
     harnais: [false],
