@@ -1,0 +1,20 @@
+<div style="text-align: center;">Bonjour,</div>
+<div style="text-align: center;"><br></div>
+<div style="text-align: center;">Cette page a pour objectifs de vous expliquer comment fonctionne notre site de réservation GUC Voile.</div>
+<div style="text-align: center;"><br></div>
+<div style="text-align: center;">Cet outil vous permet de réserver une planche à voile selon le créneaux que vous aurez choisi.</div>
+<div style="text-align: center;">Pour ce faire, rien de plus simple !</div>
+<div style="text-align: center;"><br></div>
+<div style="text-align: center;" *ngIf="account == null"><a [routerLink]="['/account/register']">Créez un compte</a>, et une fois connecté, dirigez sur l'onglet Réservation.</div>
+<div style="text-align: center;" *ngIf="account != null">Créez un compte, et une fois connecté, dirigez sur l'onglet <a [routerLink]="['/materialList']">Réservation.</a></div>
+<div style="text-align: center;">Ici, vous pouvez choisir une tranche horaire, puis une planche et une voile parmi toutes celles disponible.</div>
+<div style="text-align: center;"><br></div>
+<div style="text-align: center;">N'hésitez pas à cocher la case Harnais et Combinaison si vous en avez besoin.</div>
+<div style="text-align: center;"><br></div>
+<div style="text-align: center;">Une fois la réservation validée, il ne vous reste plus qu'à vous rendre au GUC Voile pour récupérer vos équipements.</div>
+<div style="text-align: center;"><br></div>
+<div style="text-align: center;">Pour de plus amples informations sur le GUC Voile, dirigez vous sur le site :&nbsp;
+    <a href="https://www.guc-voile.com/" style="background-color: rgb(255, 255, 255);">https://www.guc-voile.com/</a>&nbsp;
+</div>
+<div style="text-align: center;"><br></div>
+
