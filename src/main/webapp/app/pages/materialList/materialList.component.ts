@@ -10,8 +10,8 @@ import {VoileService} from '../../entities/voile/voile.service';
 import {PlancheService} from '../../entities/planche/planche.service';
 import {FormBuilder} from "@angular/forms";
 import {ReservationService} from "app/entities/reservation/reservation.service";
-import {IReservation} from "app/shared/model/reservation.model";
 import {ConfirmService} from "app/shared/confirm/confirm.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'jhi-materiallist',
@@ -37,6 +37,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     protected reservationService: ReservationService,
     protected jhiAlertService: JhiAlertService,
     protected eventManager: JhiEventManager,
+    protected  translate: TranslateService,
     private fb: FormBuilder,
     protected confirmService: ConfirmService,
     protected accountService: AccountService
@@ -71,7 +72,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
   }
 
   public openConfirmationDialog() {
-    this.confirmService.confirm('Please confirm..', 'Do you really want to ... ?')
+    this.confirmService.confirm(this.translate.instant("global.messages.confirm.pleaseConfirm"),this.getReservationRecap() )
       .then((confirmed) => {
           if (confirmed) {
            this.reserver();
@@ -79,6 +80,12 @@ export class MaterialListComponent implements OnInit, OnDestroy {
         }
       )
       .catch();
+  }
+
+  private getReservationRecap() : string {
+  let text : string;
+
+  return " METTRE RECAP COMMANDE";
   }
 
   loadAll() {

@@ -85,6 +85,13 @@
           "connect": "Connectez-vous"
         }
       },
+      "confirm": {
+        "pleaseConfirm": "Veuillez confirmer",
+        "board": "la planche",
+        "sail": "la voile",
+        "wetsuit": "une combinaison",
+        "harness": "un harnais"
+      },
       "error": {
         "dontmatch": "Le nouveau mot de passe et sa confirmation ne sont pas égaux !"
       },
