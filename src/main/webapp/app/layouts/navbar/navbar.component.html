@@ -40,6 +40,14 @@
                     </span>
                 </a>
             </li>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="helpPage" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="info-circle"></fa-icon>
+                        <span jhiTranslate="helpPage.title">Help</span>
+                    </span>
+                </a>
+            </li>
 
             <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="reservationList" (click)="collapseNavbar()">
