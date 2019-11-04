@@ -223,7 +223,7 @@ public class ReservationResourceIT {
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
             .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getReservation() throws Exception {

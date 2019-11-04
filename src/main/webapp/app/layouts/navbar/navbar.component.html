@@ -8,23 +8,23 @@
     </a>
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
         <ul class="navbar-nav ml-auto">
-           <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+           <!--li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="materialList" (click)="collapseNavbar()">
                     <span>
                         <fa-icon icon="book"></fa-icon>
                         <span jhiTranslate="global.menu.materialList">Material List</span>
                     </span>
                 </a>
-            </li>
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
+            </li-->
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="materialList" (click)="collapseNavbar()">
                     <span>
                         <fa-icon icon="calendar-check"></fa-icon>
                         <span>Reservation</span>
                     </span>
                 </a>
             </li>
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
                     <span>
                         <fa-icon icon="undo-alt"></fa-icon>
@@ -41,7 +41,7 @@
                 </a>
             </li>
 
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="reservationList" (click)="collapseNavbar()">
                     <span>
                         <fa-icon icon="home"></fa-icon>

@@ -29,7 +29,7 @@
 </div>
 <div class="row justify-content-center">
     <div class="col-md-8">
-        <form name="form" role="form" (ngSubmit)="register(registerForm.value)" [formGroup]="registerForm" *ngIf="!success">
+        <form name="form" role="form" (ngSubmit)="register()" [formGroup]="registerForm" *ngIf="!success">
             <div class="form-group">
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="global.form.role.label">Roles</label>
@@ -215,7 +215,6 @@
                 <label class="form-control-label" jhiTranslate="global.form.remark.label">Remark</label>
                 <input type="text" id="remarque" name="remarque"  class="form-control" formControlName="remarque">
             </div>
-
             <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary" jhiTranslate="register.form.button">Register</button>
         </form>
         <div class="alert alert-warning">

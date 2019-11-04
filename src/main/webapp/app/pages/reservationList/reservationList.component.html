@@ -19,15 +19,14 @@
                 <tbody>
                 <tr *ngFor="let reservation of (reservations | value) ;trackBy: trackDate " >
                         <td>{{reservation.dateReservation | date:'medium'}}</td>
-                        <td>{{reservation.users | date:'medium'}}</td>
-                        <td>{{reservation.voiles | date:'medium'}}</td>
-                        <td>{{reservation.planches | date:'medium'}}</td>
-                        <td>{{reservation.combinaisons | date:'medium'}}</td>
-                        <td>{{reservation.harnais | date:'medium'}}</td>
-                        
+                        <td><a *ngIf="reservation.userProfileId" [routerLink]="['/user-profile', reservation.userProfileId, 'view' ]">{{reservation.userProfileId}}</a></td>
+                        <td><a *ngIf="reservation.voileId" [routerLink]="['/voile', reservation.voileId, 'view' ]">{{reservation.voileId}}</a></td>
+                        <td><a  *ngIf="reservation.plancheId" [routerLink]="['/planche', reservation.plancheId, 'view' ]">{{reservation.plancheId}}</a></td>
+                        <td>{{reservation.combinaisonId}}</td>
+                        <td>{{reservation.harnaisId}}</td>
                 </tr>
                 </tbody>
             </table>
-    
+
     </div>
 </div>
