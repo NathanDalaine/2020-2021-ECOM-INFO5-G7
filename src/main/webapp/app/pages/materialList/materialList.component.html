@@ -2,7 +2,7 @@
     <strong>Registration saved!</strong>reservationSuccess
 </div>
 
-<form name="form" role="form" (ngSubmit)="reserver(registerForm.value)" [formGroup]="registerForm" *ngIf="!success">
+<form name="form" role="form" (ngSubmit)="openConfirmationDialog()" [formGroup]="registerForm" *ngIf="!success">
     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2%">
         <div fxFlex="50%">
             <div class="alert alert-warning" *ngIf="voiles?.length === 0">

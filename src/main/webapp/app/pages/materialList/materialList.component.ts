@@ -1,16 +1,17 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AccountService } from 'app/core/auth/account.service';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { filter, map } from 'rxjs/operators';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {AccountService} from 'app/core/auth/account.service';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {filter, map} from 'rxjs/operators';
+import {JhiEventManager, JhiAlertService} from 'ng-jhipster';
 
 import {IVoile} from 'app/shared/model/voile.model';
 import {IPlanche} from 'app/shared/model/planche.model';
-import { VoileService } from '../../entities/voile/voile.service';
-import { PlancheService } from '../../entities/planche/planche.service';
+import {VoileService} from '../../entities/voile/voile.service';
+import {PlancheService} from '../../entities/planche/planche.service';
 import {FormBuilder} from "@angular/forms";
 import {ReservationService} from "app/entities/reservation/reservation.service";
 import {IReservation} from "app/shared/model/reservation.model";
+import {ConfirmService} from "app/shared/confirm/confirm.service";
 
 @Component({
   selector: 'jhi-materiallist',
@@ -30,7 +31,6 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     combinaison: [false]
   });
 
-
   constructor(
     protected voileService: VoileService,
     protected plancheService: PlancheService,
@@ -38,36 +38,47 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     protected jhiAlertService: JhiAlertService,
     protected eventManager: JhiEventManager,
     private fb: FormBuilder,
+    protected confirmService: ConfirmService,
     protected accountService: AccountService
-  ) {}
+  ) {
+  }
 
-  selectVoile(voileId:number){
-    if(this.registerForm.get("voileId").value === voileId){
+  selectVoile(voileId: number) {
+    if (this.registerForm.get("voileId").value === voileId) {
       this.registerForm.controls["voileId"].setValue(null);
-    }else{
+    } else {
       this.registerForm.controls["voileId"].setValue(voileId);
     }
   }
 
-  selectPlanche(plancheId:number){
-    if(this.registerForm.get("plancheId").value === plancheId){
+  selectPlanche(plancheId: number) {
+    if (this.registerForm.get("plancheId").value === plancheId) {
       this.registerForm.controls["plancheId"].setValue(null);
-    }else{
+    } else {
       this.registerForm.controls["plancheId"].setValue(plancheId);
     }
   }
 
-  reserver(reservation : IReservation){
+  reserver() {
     /* eslint-disable no-console */
-    console.log(reservation);
+    console.log(this.registerForm.value);
     /* eslint-enable no-console */
-    this.success = true; //pour les tests à sup
-    this.reservationService.create(reservation).subscribe(
-      () => {
+    this.reservationService.create(this.registerForm.value).subscribe(() => {
         this.success = true;
       },
       response => this.processError(response)
-    );
+    )
+  }
+
+  public openConfirmationDialog() {
+    this.confirmService.confirm('Please confirm..', 'Do you really want to ... ?')
+      .then((confirmed) => {
+          if (confirmed) {
+           this.reserver();
+          }
+        }
+      )
+      .catch();
   }
 
   loadAll() {
@@ -106,7 +117,8 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+  }
 
   trackIdVoile(index: number, item: IVoile) {
     return item.id;
