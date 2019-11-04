@@ -1,12 +1,14 @@
 import { Route } from '@angular/router';
 
 import { MaterialListComponent } from './materialList.component';
+import {UserRouteAccessService} from "app/core/auth/user-route-access-service";
 
 export const MATERIAL_LIST_ROUTE: Route = {
   path: 'materialList',
   component: MaterialListComponent,
   data: {
-    authorities: [],
+    authorities: ['ROLE_USER'],
     pageTitle: 'ecomgucvoileApp.materialList.home.title'
-  }
+  },
+  canActivate: [UserRouteAccessService]
 };
