@@ -26,10 +26,13 @@
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
       "voile": "Voile",
+      "user": "Utilisateur",
       "userProfile": "User Profile",
       "combinaison": "Combinaison",
       "harnais": "Harnais",
-      "planche": "Planche"
+      "planche": "Planche",
+      "reserve": "Reserver",
+      "reservationSuccess" : "Votre réservation a été effectué avec succès."
     }
   }
 }

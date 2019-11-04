@@ -4,6 +4,7 @@
     "browsehappy": "Vous utilisez un <strong>ancien</strong> navigateur. Veuillez <a href=\"http://browsehappy.com/?locale=fr\">mettre à jour votre navigateur</a> pour une meilleure expérience.",
     "menu": {
       "home": "Accueil",
+      "reservationList": "Liste des réservations",
       "materialList": "Liste du matériel",
       "renduMateriel": "Rendu matériel",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
@@ -85,6 +86,13 @@
           "link": "Créer un compte",
           "connect": "Connectez-vous"
         }
+      },
+      "confirm": {
+        "pleaseConfirm": "Veuillez confirmer",
+        "board": "la planche",
+        "sail": "la voile",
+        "wetsuit": "une combinaison",
+        "harness": "un harnais"
       },
       "error": {
         "dontmatch": "Le nouveau mot de passe et sa confirmation ne sont pas égaux !"
@@ -176,5 +184,5 @@
     "idexists": "Une nouvelle entité {{entityName}} ne peut pas avoir d'ID !",
     "idnull": "Invalid ID"
   },
-  "footer": "RIVOIRE Antoine - MASSON Jeremy - SOLVERY Tom - DALAINE Nathan - BRES Maxence - BETEND Baptiste  <br> Site réalisé en 2019 a Polytech-Grenoble, Promotion RICM5"
+  "footer": "RIVOIRE Antoine - MASSON Jeremy - SOLVERY Tom - DALAINE Nathan - BRES Maxence - BETEND Baptiste  <br> Site réalisé en 2019 à Polytech-Grenoble, Promotion RICM5"
 }
