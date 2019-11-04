@@ -91,7 +91,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#login'), 'focus', []);
   }
 
-  register(profile: IUserProfile ) {
+  register() {
     const password = this.registerForm.get(['password']).value;
     if (password !== this.registerForm.get(['confirmPassword']).value) {
       this.doNotMatch = 'ERROR';
@@ -100,7 +100,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       this.error = null;
       this.errorUserExists = null;
       this.errorEmailExists = null;
-      this.userProfileService.create(profile).subscribe(
+      this.userProfileService.create(this.registerForm.value).subscribe(
         () => {
           this.success = true;
         },

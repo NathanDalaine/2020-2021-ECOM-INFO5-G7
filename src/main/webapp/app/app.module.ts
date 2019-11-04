@@ -10,6 +10,7 @@ import { EcomgucvoileSharedModule } from 'app/shared/shared.module';
 import { EcomgucvoileCoreModule } from 'app/core/core.module';
 import { EcomgucvoileAppRoutingModule } from './app-routing.module';
 import { EcomgucvoileHomeModule } from './home/home.module';
+import { EcomgucvoileReservationListModule } from './pages/reservationList/reservationList.module';
 
 import { EcomgucvoileMaterialListModule } from './pages/materialList/materialList.module';
 import { EcomgucvoileEntityModule } from './entities/entity.module';
@@ -30,10 +31,12 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     EcomgucvoileSharedModule,
     EcomgucvoileCoreModule,
     EcomgucvoileHomeModule,
+    EcomgucvoileReservationListModule,
     EcomgucvoileMaterialListModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     EcomgucvoileEntityModule,
-    EcomgucvoileAppRoutingModule
+    EcomgucvoileAppRoutingModule,
+    
   ],
   declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   providers: [

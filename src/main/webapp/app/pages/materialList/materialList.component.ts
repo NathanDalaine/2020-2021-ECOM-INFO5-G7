@@ -20,9 +20,10 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class MaterialListComponent implements OnInit, OnDestroy {
   success: boolean;
+  allPlanches: IPlanche[];
+  allVoiles : IPlanche[];
   voiles: IVoile[];
   planches: IPlanche[];
-  currentAccount: any;
   registerForm = this.fb.group({
     remarques: [''],
     voileId: [null],
@@ -60,10 +61,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     }
   }
 
-  reserver() {
-    /* eslint-disable no-console */
-    console.log(this.registerForm.value);
-    /* eslint-enable no-console */
+  reserve() {
     this.reservationService.create(this.registerForm.value).subscribe(() => {
         this.success = true;
       },
@@ -75,7 +73,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     this.confirmService.confirm(this.translate.instant("global.messages.confirm.pleaseConfirm"),this.getReservationRecap() )
       .then((confirmed) => {
           if (confirmed) {
-           this.reserver();
+           this.reserve();
           }
         }
       )
@@ -83,9 +81,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
   }
 
   private getReservationRecap() : string {
-  let text : string;
-
-  return " METTRE RECAP COMMANDE";
+  return "";
   }
 
   loadAll() {
@@ -97,6 +93,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         (res: IVoile[]) => {
+          this.allVoiles = res;
           this.voiles = res;
         },
         (res: HttpErrorResponse) => this.onError(res.message)
@@ -110,6 +107,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         (res: IPlanche[]) => {
+          this.allPlanches = res;
           this.planches = res;
         },
         (res: HttpErrorResponse) => this.onError(res.message)
@@ -119,9 +117,6 @@ export class MaterialListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.loadAll();
     this.success = false;
-    this.accountService.identity().then(account => {
-      this.currentAccount = account;
-    });
   }
 
   ngOnDestroy() {
@@ -141,5 +136,27 @@ export class MaterialListComponent implements OnInit, OnDestroy {
 
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  searchPlanche(text: string) {
+    if(text !== ""){
+      const regex = RegExp(text.toLowerCase());
+      this.planches = this.allPlanches.filter(res=>{
+        return regex.exec(res.libelle.toLocaleLowerCase());
+      });
+    }else{
+      this.planches = this.allPlanches;
+    }
+  }
+
+  searchVoile(text: string) {
+    if(text !== ""){
+      const regex = RegExp(text.toLowerCase());
+      this.voiles = this.allVoiles.filter(res=>{
+        return regex.exec(res.libelle.toLocaleLowerCase());
+      });
+    }else{
+      this.voiles = this.allVoiles;
+    }
   }
 }

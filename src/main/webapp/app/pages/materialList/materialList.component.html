@@ -9,7 +9,10 @@
                 <span jhiTranslate="ecomgucvoileApp.voile.home.notFound">No voiles found</span>
             </div>
             <span>Les Voiles</span>
-            <div class="table-responsive" *ngIf="voiles?.length > 0">
+            <div>
+                <input #searchTextVoile type="text" (input)="searchVoile(searchTextVoile.value)" placeholder="Recherche voile"/>
+            </div>
+            <div class="t+able-responsive" *ngIf="voiles?.length > 0">
                 <table class="table table-striped" aria-describedby="page-heading">
                     <thead>
                     <tr>
@@ -34,6 +37,9 @@
                 <span jhiTranslate="ecomgucvoileApp.planche.home.notFound">No planches found</span>
             </div>
             <span>Les Planches</span>
+            <div>
+                <input #searchTextPlanche type="text" (input)="searchPlanche(searchTextPlanche.value)" placeholder="Recherche planche"/>
+            </div>
             <div class="table-responsive" *ngIf="planches?.length > 0">
                 <table class="table table-striped" aria-describedby="page-heading">
                     <thead>
