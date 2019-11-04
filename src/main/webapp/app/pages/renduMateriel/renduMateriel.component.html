@@ -1,0 +1,30 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="reservation">
+            <h2><span jhiTranslate="ecomgucvoileApp.renduMateriel.home.title">Rendu Materiel</span></h2>
+            <hr>
+            <jhi-alert></jhi-alert>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></dt>
+                <dd>
+                    <span>{{reservation.dateReservation}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.dateRendu">Date Rendu</span></dt>
+                <dd>
+                    <span>{{reservation.dateRendu}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.remarques">Remarques</span></dt>
+                <dd>
+                    <span>{{reservation.remarques}}</span>
+                </dd>
+
+            <button type="submit"
+                    (click)="confirm()"
+                    class="btn btn-info">
+                    <span jhiTranslate="ecomgucvoileApp.renduMateriel.confirmation"> Back</span>
+            </button>
+            </dl>
+        </div>
+        <div></div>
+    </div>
+</div>
