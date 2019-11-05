@@ -1,0 +1,26 @@
+## Avancement, Ticket, Organisation, Qualité, Basé sur Git uniquement
+
+### Organisation des branch :
+-	Master vide
+-	Une branche par tiket ou feature -> Explicite mais branche non supprimé au fur et à mesure
+-	Sandbox inutilisé
+-	Chaque feature repart de la branche dev
+-	Une branche fonctionnel pour merge rapide
+
+### Merge request :
+-	Pas de revu de code gitlab -> mais pair programing ? Méthode ?
+
+### Issue : 
+-	ToDo sur les tickets, Label priority, Message de commit clair
+-	Beaucoup de tickets ouverts, peu de ticket fermé, pas de commit associé, édité uniquement par le même collaborateur. 
+-	Conclusion : Niveau d’avancement inconnue
+
+### Documentation : 
+-	Readme basique
+-	Journal de bord complet
+-	Aucun Wiki
+
+### Commentaire Git ajouté -> Clair
+
+Branch test CICD, sonar, pas de docker, par de doc dessus, test frontenf not work
+
