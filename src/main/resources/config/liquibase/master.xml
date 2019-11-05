@@ -15,4 +15,5 @@
 
 
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <includeAll path="config/liquibase/changelog" relativeToChangelogFile="false"/>
 </databaseChangeLog>
