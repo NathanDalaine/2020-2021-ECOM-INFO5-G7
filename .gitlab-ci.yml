@@ -2,6 +2,7 @@
   only:
     - master
     - dev
+    - merge_requests
 
 image: openjdk:8
 
