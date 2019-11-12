@@ -24,3 +24,10 @@ Afin de gérer les tickets, nous utilisons l'outil glo de gitkraken.
 - Réalisation de l'audit du groupe 3
 - Debug du dev
 
+# Semaine 11/11 - 17/11
+
+- Correction de la page réservation
+- filtrage des reservations par l'utilisateur courant
+- Correction de bug avec le pipeline
+- Liaison avec le backend pour la reservation de harnais et combinaison
+- Modification graphique et disposition
