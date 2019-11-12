@@ -57,15 +57,8 @@ public class UserProfileResource {
         if (userProfileDTO.getId() != null) {
             throw new BadRequestAlertException("A new user cannot already have an ID", "userManagement", "idexists");
             // Lowercase the user login before comparing with database
-        } else if (userRepository.findOneByLogin(userProfileDTO.getLogin().toLowerCase()).isPresent()) {
-            throw new LoginAlreadyUsedException();
-        } else if (userRepository.findOneByEmailIgnoreCase(userProfileDTO.getEmail()).isPresent()) {
-            throw new EmailAlreadyUsedException();
         } else {
             log.debug("REST request to save UserProfile : {}", userProfileDTO);
-            if (userProfileDTO.getId() != null) {
-                throw new BadRequestAlertException("A new userProfile cannot already have an ID", ENTITY_NAME, "idexists");
-            }
             UserProfileDTO result = userProfileService.register(userProfileDTO, userProfileDTO.getPassword());
             return ResponseEntity.created(new URI("/api/user-profiles/" + result.getId()))
                 .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
