@@ -2,7 +2,7 @@
 
 Afin de gérer les tickets, nous utilisons l'outil glo de gitkraken.
 
-# Semaine 16/09 - 22/09 Spint 0
+# Semaine 16/09 - 22/09 Sprint 0
 
 - Présentation du projet
 
