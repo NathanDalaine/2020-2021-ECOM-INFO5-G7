@@ -1,6 +1,12 @@
 package com.group6.app.service;
 
+import com.group6.app.domain.Combinaison;
+import com.group6.app.domain.Harnais;
 import com.group6.app.domain.Reservation;
+import com.group6.app.domain.UserProfile;
+import com.group6.app.domain.enumeration.Taille;
+import com.group6.app.repository.CombinaisonRepository;
+import com.group6.app.repository.HarnaisRepository;
 import com.group6.app.repository.ReservationRepository;
 import com.group6.app.repository.UserProfileRepository;
 import com.group6.app.security.SecurityUtils;
@@ -11,6 +17,7 @@ import org.slf4j.LoggerFactory;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.HttpServerErrorException;
 
 import java.time.Instant;
 import java.util.LinkedList;
@@ -29,15 +36,19 @@ public class ReservationService {
 
     private final ReservationRepository reservationRepository;
     private final UserProfileService userProfileService;
-private final UserProfileRepository userProfileRepository;
+    private final UserProfileRepository userProfileRepository;
+    private final HarnaisRepository harnaisRepository;
+    private final CombinaisonRepository combinaisonRepository;
 
     private final ReservationMapper reservationMapper;
 
-    public ReservationService(ReservationRepository reservationRepository,UserProfileRepository userProfileRepository,UserProfileService userProfileService, ReservationMapper reservationMapper) {
+    public ReservationService(ReservationRepository reservationRepository, CombinaisonRepository combinaisonRepository, HarnaisRepository harnaisRepository, UserProfileRepository userProfileRepository, UserProfileService userProfileService, ReservationMapper reservationMapper) {
         this.reservationRepository = reservationRepository;
         this.reservationMapper = reservationMapper;
         this.userProfileService = userProfileService;
         this.userProfileRepository = userProfileRepository;
+        this.harnaisRepository = harnaisRepository;
+        this.combinaisonRepository = combinaisonRepository;
     }
 
     /**
@@ -52,10 +63,25 @@ private final UserProfileRepository userProfileRepository;
         Reservation reservation = reservationMapper.toEntity(reservationDTO);
         reservation.setCreatedAt(Instant.now());
         reservation.setDateReservation(Instant.now());      //à modifier lors de l'ajout de la date de réservation
-        if(SecurityUtils.getCurrentUserLogin().isPresent()){
+        if (SecurityUtils.getCurrentUserLogin().isPresent()) {
             reservation.setCreatedBy(SecurityUtils.getCurrentUserLogin().get());
             reservation.setUserProfile(userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()));
-        }else{
+            Taille taille = userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()).getTailleHarnais();
+            if (reservationDTO.getHarnaisId() != null) {
+                Harnais harnais = harnaisRepository.findDistinctFirstByTailleAndReservationsIsNull(taille);
+                if(harnais == null){
+                    throw new Error();
+                }
+                reservation.setHarnais(harnais);
+            }
+            if (reservationDTO.getCombinaisonId() != null) {
+                Combinaison combi = combinaisonRepository.findDistinctFirstByTailleAndReservationsIsNull(taille);
+                if(combi == null){
+                    throw new Error();
+                }
+                reservation.setCombinaison(combi);
+            }
+        } else {
             reservation.setCreatedBy("Anonymoususer");
         }
 
