@@ -3,6 +3,7 @@ package com.group6.app.web.rest;
 import com.group6.app.EcomgucvoileApp;
 import com.group6.app.domain.UserProfile;
 import com.group6.app.repository.UserProfileRepository;
+import com.group6.app.repository.UserRepository;
 import com.group6.app.service.UserProfileService;
 import com.group6.app.service.dto.UserProfileDTO;
 import com.group6.app.service.mapper.UserProfileMapper;
@@ -82,6 +83,9 @@ public class UserProfileResourceIT {
     private UserProfileRepository userProfileRepository;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private UserProfileMapper userProfileMapper;
 
     @Autowired
@@ -109,7 +113,7 @@ public class UserProfileResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final UserProfileResource userProfileResource = new UserProfileResource(userProfileService);
+        final UserProfileResource userProfileResource = new UserProfileResource(userProfileService,userRepository);
         this.restUserProfileMockMvc = MockMvcBuilders.standaloneSetup(userProfileResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -239,7 +243,7 @@ public class UserProfileResourceIT {
             .andExpect(jsonPath("$.[*].tailleHarnais").value(hasItem(DEFAULT_TAILLE_HARNAIS.toString())))
             .andExpect(jsonPath("$.[*].tailleCombinaison").value(hasItem(DEFAULT_TAILLE_COMBINAISON.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getUserProfile() throws Exception {
