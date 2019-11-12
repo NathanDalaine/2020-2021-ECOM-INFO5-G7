@@ -21,11 +21,10 @@ export class ReservationListComponent implements OnInit, OnDestroy {
     protected reservationService: ReservationService,
     protected jhiAlertService: JhiAlertService
 
-   
+
   ) {}
 
   ngOnInit() {
-
     this.accountService.identity().then(account => {
       this.currentAccount = account;
     });
