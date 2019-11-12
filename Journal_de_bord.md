@@ -2,7 +2,7 @@
 
 Afin de gérer les tickets, nous utilisons l'outil glo de gitkraken.
 
-# Semaine 16/09 - 22/09
+# Semaine 16/09 - 22/09 Spint 0
 
 - Présentation du projet
 
@@ -51,7 +51,7 @@ Afin de gérer les tickets, nous utilisons l'outil glo de gitkraken.
 Vacances de la Toussaint
 - Selection du materiel
 - Rendre le materiel en 1 clic, version légère
-- Ebauche de la pop up de configuration
+- Ebauche de la pop up de confirmation
 
 # Semaine 04/11 - 10/11 Sprint 2
 
