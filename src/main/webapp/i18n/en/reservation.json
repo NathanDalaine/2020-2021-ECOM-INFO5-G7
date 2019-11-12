@@ -5,7 +5,7 @@
         "title": "Reservations",
         "createLabel": "Create a new Reservation",
         "createOrEditLabel": "Create or edit a Reservation",
-        "notFound": "No Reservations found"
+        "notFound": "There is no reservation in progress."
       },
       "created": "A new Reservation is created with identifier {{ param }}",
       "updated": "A Reservation is updated with identifier {{ param }}",

@@ -5,7 +5,7 @@
         "title": "Reservations",
         "createLabel": "Créer un nouveau Reservation",
         "createOrEditLabel": "Créer ou éditer un Reservation",
-        "notFound": "Aucun Reservation trouvé"
+        "notFound": "Il n'y aucune réservation en cours."
       },
       "created": "Un nouveau Reservation a été créé avec l'identifiant {{ param }}",
       "updated": "Le Reservation avec l'identifiant {{ param }} a été mis à jour",
@@ -32,7 +32,7 @@
       "harnais": "Harnais",
       "planche": "Planche",
       "reserve": "Reserver",
-      "reservationSuccess" : "Votre réservation a été effectué avec succès."
+      "reservationSuccess": "Votre réservation a été effectué avec succès."
     }
   }
 }
