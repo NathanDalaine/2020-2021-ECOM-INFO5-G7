@@ -22,11 +22,11 @@
       "adresse": "Adresse",
       "telephone": "Telephone",
       "typeAbonnement": "Type Abonnement",
-      "niveau": "Niveau",
       "materielTechniqueAutorise": "Materiel Technique Autorise",
       "remarque": "Remarque",
       "tailleHarnais": "Taille Harnais",
       "tailleCombinaison": "Taille Combinaison",
+      "niveau": "Niveau",
       "reservation": "Reservation"
     }
   }

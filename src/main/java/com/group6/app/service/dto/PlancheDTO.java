@@ -2,6 +2,7 @@ package com.group6.app.service.dto;
 import java.time.Instant;
 import java.io.Serializable;
 import java.util.Objects;
+import com.group6.app.domain.enumeration.Niveau;
 
 /**
  * A DTO for the {@link com.group6.app.domain.Planche} entity.
@@ -35,6 +36,8 @@ public class PlancheDTO implements Serializable {
     private Instant updatedAt;
 
     private Instant deletedAt;
+
+    private Niveau niveaurequis;
 
 
     public Long getId() {
@@ -149,6 +152,14 @@ public class PlancheDTO implements Serializable {
         this.deletedAt = deletedAt;
     }
 
+    public Niveau getNiveaurequis() {
+        return niveaurequis;
+    }
+
+    public void setNiveaurequis(Niveau niveaurequis) {
+        this.niveaurequis = niveaurequis;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -187,6 +198,7 @@ public class PlancheDTO implements Serializable {
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
+            ", niveaurequis='" + getNiveaurequis() + "'" +
             "}";
     }
 }

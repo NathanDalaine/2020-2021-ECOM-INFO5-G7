@@ -85,6 +85,7 @@ class PlancheGatlingTest extends Simulation {
                 , "createdAt":"2020-01-01T00:00:00.000Z"
                 , "updatedAt":"2020-01-01T00:00:00.000Z"
                 , "deletedAt":"2020-01-01T00:00:00.000Z"
+                , "niveaurequis":"DEBUTANT"
                 }""")).asJson
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_planche_url"))).exitHereIfFailed

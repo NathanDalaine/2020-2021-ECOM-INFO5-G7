@@ -25,11 +25,11 @@ export class UserProfileUpdateComponent implements OnInit {
     adresse: [],
     telephone: [],
     typeAbonnement: [],
-    niveau: [],
     materielTechniqueAutorise: [],
     remarque: [],
     tailleHarnais: [],
-    tailleCombinaison: []
+    tailleCombinaison: [],
+    niveau: []
   });
 
   constructor(protected userProfileService: UserProfileService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -50,11 +50,11 @@ export class UserProfileUpdateComponent implements OnInit {
       adresse: userProfile.adresse,
       telephone: userProfile.telephone,
       typeAbonnement: userProfile.typeAbonnement,
-      niveau: userProfile.niveau,
       materielTechniqueAutorise: userProfile.materielTechniqueAutorise,
       remarque: userProfile.remarque,
       tailleHarnais: userProfile.tailleHarnais,
-      tailleCombinaison: userProfile.tailleCombinaison
+      tailleCombinaison: userProfile.tailleCombinaison,
+      niveau: userProfile.niveau
     });
   }
 
@@ -87,11 +87,11 @@ export class UserProfileUpdateComponent implements OnInit {
       adresse: this.editForm.get(['adresse']).value,
       telephone: this.editForm.get(['telephone']).value,
       typeAbonnement: this.editForm.get(['typeAbonnement']).value,
-      niveau: this.editForm.get(['niveau']).value,
       materielTechniqueAutorise: this.editForm.get(['materielTechniqueAutorise']).value,
       remarque: this.editForm.get(['remarque']).value,
       tailleHarnais: this.editForm.get(['tailleHarnais']).value,
-      tailleCombinaison: this.editForm.get(['tailleCombinaison']).value
+      tailleCombinaison: this.editForm.get(['tailleCombinaison']).value,
+      niveau: this.editForm.get(['niveau']).value
     };
   }
 

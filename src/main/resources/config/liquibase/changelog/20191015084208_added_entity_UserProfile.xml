@@ -40,10 +40,6 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="niveau" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <column name="materiel_technique_autorise" type="boolean">
                 <constraints nullable="true" />
             </column>
@@ -57,6 +53,10 @@
             </column>
 
             <column name="taille_combinaison" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="niveau" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
@@ -93,11 +93,11 @@
             <column name="adresse" type="string"/>
             <column name="telephone" type="string"/>
             <column name="type_abonnement" type="string"/>
-            <column name="niveau" type="string"/>
             <column name="materiel_technique_autorise" type="boolean"/>
             <column name="remarque" type="string"/>
             <column name="taille_harnais" type="string"/>
             <column name="taille_combinaison" type="string"/>
+            <column name="niveau" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

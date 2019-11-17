@@ -32,6 +32,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.group6.app.domain.enumeration.Niveau;
 /**
  * Integration tests for the {@link VoileResource} REST controller.
  */
@@ -83,6 +84,9 @@ public class VoileResourceIT {
     private static final Instant DEFAULT_DELETED_AT = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_DELETED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
     private static final Instant SMALLER_DELETED_AT = Instant.ofEpochMilli(-1L);
+
+    private static final Niveau DEFAULT_NIVEAUREQUIS = Niveau.DEBUTANT;
+    private static final Niveau UPDATED_NIVEAUREQUIS = Niveau.DEBUTANTPLUS;
 
     @Autowired
     private VoileRepository voileRepository;
@@ -145,7 +149,8 @@ public class VoileResourceIT {
             .deletedBy(DEFAULT_DELETED_BY)
             .createdAt(DEFAULT_CREATED_AT)
             .updatedAt(DEFAULT_UPDATED_AT)
-            .deletedAt(DEFAULT_DELETED_AT);
+            .deletedAt(DEFAULT_DELETED_AT)
+            .niveaurequis(DEFAULT_NIVEAUREQUIS);
         return voile;
     }
     /**
@@ -169,7 +174,8 @@ public class VoileResourceIT {
             .deletedBy(UPDATED_DELETED_BY)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
-            .deletedAt(UPDATED_DELETED_AT);
+            .deletedAt(UPDATED_DELETED_AT)
+            .niveaurequis(UPDATED_NIVEAUREQUIS);
         return voile;
     }
 
@@ -208,6 +214,7 @@ public class VoileResourceIT {
         assertThat(testVoile.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testVoile.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
         assertThat(testVoile.getDeletedAt()).isEqualTo(DEFAULT_DELETED_AT);
+        assertThat(testVoile.getNiveaurequis()).isEqualTo(DEFAULT_NIVEAUREQUIS);
     }
 
     @Test
@@ -255,7 +262,8 @@ public class VoileResourceIT {
             .andExpect(jsonPath("$.[*].deletedBy").value(hasItem(DEFAULT_DELETED_BY.toString())))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
-            .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())));
+            .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())))
+            .andExpect(jsonPath("$.[*].niveaurequis").value(hasItem(DEFAULT_NIVEAUREQUIS.toString())));
     }
     
     @Test
@@ -282,7 +290,8 @@ public class VoileResourceIT {
             .andExpect(jsonPath("$.deletedBy").value(DEFAULT_DELETED_BY.toString()))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
-            .andExpect(jsonPath("$.deletedAt").value(DEFAULT_DELETED_AT.toString()));
+            .andExpect(jsonPath("$.deletedAt").value(DEFAULT_DELETED_AT.toString()))
+            .andExpect(jsonPath("$.niveaurequis").value(DEFAULT_NIVEAUREQUIS.toString()));
     }
 
     @Test
@@ -319,7 +328,8 @@ public class VoileResourceIT {
             .deletedBy(UPDATED_DELETED_BY)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
-            .deletedAt(UPDATED_DELETED_AT);
+            .deletedAt(UPDATED_DELETED_AT)
+            .niveaurequis(UPDATED_NIVEAUREQUIS);
         VoileDTO voileDTO = voileMapper.toDto(updatedVoile);
 
         restVoileMockMvc.perform(put("/api/voiles")
@@ -345,6 +355,7 @@ public class VoileResourceIT {
         assertThat(testVoile.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testVoile.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
         assertThat(testVoile.getDeletedAt()).isEqualTo(UPDATED_DELETED_AT);
+        assertThat(testVoile.getNiveaurequis()).isEqualTo(UPDATED_NIVEAUREQUIS);
     }
 
     @Test

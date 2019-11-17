@@ -6,8 +6,8 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
 import { IUserProfile, UserProfile } from 'app/shared/model/user-profile.model';
 import { TypeAbonnement } from 'app/shared/model/enumerations/type-abonnement.model';
-import { Niveau } from 'app/shared/model/enumerations/niveau.model';
 import { Taille } from 'app/shared/model/enumerations/taille.model';
+import { Niveau } from 'app/shared/model/enumerations/niveau.model';
 
 describe('Service Tests', () => {
   describe('UserProfile Service', () => {
@@ -35,11 +35,11 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         TypeAbonnement.JOURNALIER,
-        Niveau.DEBUTANT,
         false,
         'AAAAAAA',
         Taille.S,
-        Taille.S
+        Taille.S,
+        Niveau.DEBUTANT
       );
     });
 
@@ -99,11 +99,11 @@ describe('Service Tests', () => {
             adresse: 'BBBBBB',
             telephone: 'BBBBBB',
             typeAbonnement: 'BBBBBB',
-            niveau: 'BBBBBB',
             materielTechniqueAutorise: true,
             remarque: 'BBBBBB',
             tailleHarnais: 'BBBBBB',
-            tailleCombinaison: 'BBBBBB'
+            tailleCombinaison: 'BBBBBB',
+            niveau: 'BBBBBB'
           },
           elemDefault
         );
@@ -134,11 +134,11 @@ describe('Service Tests', () => {
             adresse: 'BBBBBB',
             telephone: 'BBBBBB',
             typeAbonnement: 'BBBBBB',
-            niveau: 'BBBBBB',
             materielTechniqueAutorise: true,
             remarque: 'BBBBBB',
             tailleHarnais: 'BBBBBB',
-            tailleCombinaison: 'BBBBBB'
+            tailleCombinaison: 'BBBBBB',
+            niveau: 'BBBBBB'
           },
           elemDefault
         );

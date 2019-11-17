@@ -33,9 +33,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.group6.app.domain.enumeration.TypeAbonnement;
+import com.group6.app.domain.enumeration.Taille;
+import com.group6.app.domain.enumeration.Taille;
 import com.group6.app.domain.enumeration.Niveau;
-import com.group6.app.domain.enumeration.Taille;
-import com.group6.app.domain.enumeration.Taille;
 /**
  * Integration tests for the {@link UserProfileResource} REST controller.
  */
@@ -63,9 +63,6 @@ public class UserProfileResourceIT {
     private static final TypeAbonnement DEFAULT_TYPE_ABONNEMENT = TypeAbonnement.JOURNALIER;
     private static final TypeAbonnement UPDATED_TYPE_ABONNEMENT = TypeAbonnement.ETUDIANT;
 
-    private static final Niveau DEFAULT_NIVEAU = Niveau.DEBUTANT;
-    private static final Niveau UPDATED_NIVEAU = Niveau.DUBUTANTPLUS;
-
     private static final Boolean DEFAULT_MATERIEL_TECHNIQUE_AUTORISE = false;
     private static final Boolean UPDATED_MATERIEL_TECHNIQUE_AUTORISE = true;
 
@@ -77,6 +74,9 @@ public class UserProfileResourceIT {
 
     private static final Taille DEFAULT_TAILLE_COMBINAISON = Taille.S;
     private static final Taille UPDATED_TAILLE_COMBINAISON = Taille.M;
+
+    private static final Niveau DEFAULT_NIVEAU = Niveau.DEBUTANT;
+    private static final Niveau UPDATED_NIVEAU = Niveau.DEBUTANTPLUS;
 
     @Autowired
     private UserProfileRepository userProfileRepository;
@@ -132,11 +132,11 @@ public class UserProfileResourceIT {
             .adresse(DEFAULT_ADRESSE)
             .telephone(DEFAULT_TELEPHONE)
             .typeAbonnement(DEFAULT_TYPE_ABONNEMENT)
-            .niveau(DEFAULT_NIVEAU)
             .materielTechniqueAutorise(DEFAULT_MATERIEL_TECHNIQUE_AUTORISE)
             .remarque(DEFAULT_REMARQUE)
             .tailleHarnais(DEFAULT_TAILLE_HARNAIS)
-            .tailleCombinaison(DEFAULT_TAILLE_COMBINAISON);
+            .tailleCombinaison(DEFAULT_TAILLE_COMBINAISON)
+            .niveau(DEFAULT_NIVEAU);
         return userProfile;
     }
     /**
@@ -153,11 +153,11 @@ public class UserProfileResourceIT {
             .adresse(UPDATED_ADRESSE)
             .telephone(UPDATED_TELEPHONE)
             .typeAbonnement(UPDATED_TYPE_ABONNEMENT)
-            .niveau(UPDATED_NIVEAU)
             .materielTechniqueAutorise(UPDATED_MATERIEL_TECHNIQUE_AUTORISE)
             .remarque(UPDATED_REMARQUE)
             .tailleHarnais(UPDATED_TAILLE_HARNAIS)
-            .tailleCombinaison(UPDATED_TAILLE_COMBINAISON);
+            .tailleCombinaison(UPDATED_TAILLE_COMBINAISON)
+            .niveau(UPDATED_NIVEAU);
         return userProfile;
     }
 
@@ -188,11 +188,11 @@ public class UserProfileResourceIT {
         assertThat(testUserProfile.getAdresse()).isEqualTo(DEFAULT_ADRESSE);
         assertThat(testUserProfile.getTelephone()).isEqualTo(DEFAULT_TELEPHONE);
         assertThat(testUserProfile.getTypeAbonnement()).isEqualTo(DEFAULT_TYPE_ABONNEMENT);
-        assertThat(testUserProfile.getNiveau()).isEqualTo(DEFAULT_NIVEAU);
         assertThat(testUserProfile.isMaterielTechniqueAutorise()).isEqualTo(DEFAULT_MATERIEL_TECHNIQUE_AUTORISE);
         assertThat(testUserProfile.getRemarque()).isEqualTo(DEFAULT_REMARQUE);
         assertThat(testUserProfile.getTailleHarnais()).isEqualTo(DEFAULT_TAILLE_HARNAIS);
         assertThat(testUserProfile.getTailleCombinaison()).isEqualTo(DEFAULT_TAILLE_COMBINAISON);
+        assertThat(testUserProfile.getNiveau()).isEqualTo(DEFAULT_NIVEAU);
     }
 
     @Test
@@ -233,11 +233,11 @@ public class UserProfileResourceIT {
             .andExpect(jsonPath("$.[*].adresse").value(hasItem(DEFAULT_ADRESSE.toString())))
             .andExpect(jsonPath("$.[*].telephone").value(hasItem(DEFAULT_TELEPHONE.toString())))
             .andExpect(jsonPath("$.[*].typeAbonnement").value(hasItem(DEFAULT_TYPE_ABONNEMENT.toString())))
-            .andExpect(jsonPath("$.[*].niveau").value(hasItem(DEFAULT_NIVEAU.toString())))
             .andExpect(jsonPath("$.[*].materielTechniqueAutorise").value(hasItem(DEFAULT_MATERIEL_TECHNIQUE_AUTORISE.booleanValue())))
             .andExpect(jsonPath("$.[*].remarque").value(hasItem(DEFAULT_REMARQUE.toString())))
             .andExpect(jsonPath("$.[*].tailleHarnais").value(hasItem(DEFAULT_TAILLE_HARNAIS.toString())))
-            .andExpect(jsonPath("$.[*].tailleCombinaison").value(hasItem(DEFAULT_TAILLE_COMBINAISON.toString())));
+            .andExpect(jsonPath("$.[*].tailleCombinaison").value(hasItem(DEFAULT_TAILLE_COMBINAISON.toString())))
+            .andExpect(jsonPath("$.[*].niveau").value(hasItem(DEFAULT_NIVEAU.toString())));
     }
     
     @Test
@@ -257,11 +257,11 @@ public class UserProfileResourceIT {
             .andExpect(jsonPath("$.adresse").value(DEFAULT_ADRESSE.toString()))
             .andExpect(jsonPath("$.telephone").value(DEFAULT_TELEPHONE.toString()))
             .andExpect(jsonPath("$.typeAbonnement").value(DEFAULT_TYPE_ABONNEMENT.toString()))
-            .andExpect(jsonPath("$.niveau").value(DEFAULT_NIVEAU.toString()))
             .andExpect(jsonPath("$.materielTechniqueAutorise").value(DEFAULT_MATERIEL_TECHNIQUE_AUTORISE.booleanValue()))
             .andExpect(jsonPath("$.remarque").value(DEFAULT_REMARQUE.toString()))
             .andExpect(jsonPath("$.tailleHarnais").value(DEFAULT_TAILLE_HARNAIS.toString()))
-            .andExpect(jsonPath("$.tailleCombinaison").value(DEFAULT_TAILLE_COMBINAISON.toString()));
+            .andExpect(jsonPath("$.tailleCombinaison").value(DEFAULT_TAILLE_COMBINAISON.toString()))
+            .andExpect(jsonPath("$.niveau").value(DEFAULT_NIVEAU.toString()));
     }
 
     @Test
@@ -291,11 +291,11 @@ public class UserProfileResourceIT {
             .adresse(UPDATED_ADRESSE)
             .telephone(UPDATED_TELEPHONE)
             .typeAbonnement(UPDATED_TYPE_ABONNEMENT)
-            .niveau(UPDATED_NIVEAU)
             .materielTechniqueAutorise(UPDATED_MATERIEL_TECHNIQUE_AUTORISE)
             .remarque(UPDATED_REMARQUE)
             .tailleHarnais(UPDATED_TAILLE_HARNAIS)
-            .tailleCombinaison(UPDATED_TAILLE_COMBINAISON);
+            .tailleCombinaison(UPDATED_TAILLE_COMBINAISON)
+            .niveau(UPDATED_NIVEAU);
         UserProfileDTO userProfileDTO = userProfileMapper.toDto(updatedUserProfile);
 
         restUserProfileMockMvc.perform(put("/api/user-profiles")
@@ -313,11 +313,11 @@ public class UserProfileResourceIT {
         assertThat(testUserProfile.getAdresse()).isEqualTo(UPDATED_ADRESSE);
         assertThat(testUserProfile.getTelephone()).isEqualTo(UPDATED_TELEPHONE);
         assertThat(testUserProfile.getTypeAbonnement()).isEqualTo(UPDATED_TYPE_ABONNEMENT);
-        assertThat(testUserProfile.getNiveau()).isEqualTo(UPDATED_NIVEAU);
         assertThat(testUserProfile.isMaterielTechniqueAutorise()).isEqualTo(UPDATED_MATERIEL_TECHNIQUE_AUTORISE);
         assertThat(testUserProfile.getRemarque()).isEqualTo(UPDATED_REMARQUE);
         assertThat(testUserProfile.getTailleHarnais()).isEqualTo(UPDATED_TAILLE_HARNAIS);
         assertThat(testUserProfile.getTailleCombinaison()).isEqualTo(UPDATED_TAILLE_COMBINAISON);
+        assertThat(testUserProfile.getNiveau()).isEqualTo(UPDATED_NIVEAU);
     }
 
     @Test
