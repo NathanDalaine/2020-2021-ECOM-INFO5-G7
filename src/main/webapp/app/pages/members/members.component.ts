@@ -8,6 +8,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { IUserProfile } from 'app/shared/model/user-profile.model';
 import { AccountService } from 'app/core/auth/account.service';
 import { UserProfileService } from '../../entities/user-profile/user-profile.service';
+import { MEMBRE } from '../../shared/constants/roles.constants';
 
 @Component({
   selector: 'jhi-members',
@@ -35,8 +36,9 @@ export class MembersComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         (res: IUserProfile[]) => {
+          this.userProfiles = [];
           res.forEach(r => {
-            if (r.user != null) {
+            if (r.user != null && r.user.authorities.includes(MEMBRE)) {
               this.userProfiles.push(r);
             }
           });

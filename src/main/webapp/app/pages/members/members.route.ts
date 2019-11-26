@@ -7,7 +7,7 @@ export const MEMBERS_ROUTE: Route = {
   path: 'members',
   component: MembersComponent,
   data: {
-    authorities: ['ROLE_USER'],
+    authorities: ['ROLE_GESTIONNAIRE'],
     pageTitle: 'ecomgucvoileApp.members.home.title'
   },
   canActivate: [UserRouteAccessService]
