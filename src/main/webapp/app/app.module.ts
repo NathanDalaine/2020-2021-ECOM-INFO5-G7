@@ -10,9 +10,10 @@ import { EcomgucvoileSharedModule } from 'app/shared/shared.module';
 import { EcomgucvoileCoreModule } from 'app/core/core.module';
 import { EcomgucvoileAppRoutingModule } from './app-routing.module';
 import { EcomgucvoileHomeModule } from './home/home.module';
-import {EcomgucvoileRenduMaterielModule} from './pages/renduMateriel/renduMateriel.module'
+import { EcomgucvoileRenduMaterielModule } from './pages/renduMateriel/renduMateriel.module';
 import { EcomgucvoileReservationListModule } from './pages/reservationList/reservationList.module';
 import { EcomgucvoileHelpPageModule } from './pages/helpPage/helpPage.module';
+import { EcomgucvoileMembersModule } from './pages/members/members.module';
 
 import { EcomgucvoileMaterialListModule } from './pages/materialList/materialList.module';
 import { EcomgucvoileEntityModule } from './entities/entity.module';
@@ -24,13 +25,14 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
-import {FlexLayoutModule} from "@angular/flex-layout";
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     BrowserModule,
     FlexLayoutModule, // Angular Flex Layout
     EcomgucvoileSharedModule,
+    EcomgucvoileMembersModule,
     EcomgucvoileCoreModule,
     EcomgucvoileHomeModule,
     EcomgucvoileReservationListModule,
@@ -39,8 +41,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     EcomgucvoileHelpPageModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     EcomgucvoileEntityModule,
-    EcomgucvoileAppRoutingModule,
-
+    EcomgucvoileAppRoutingModule
   ],
   declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   providers: [
