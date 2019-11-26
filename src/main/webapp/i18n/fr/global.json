@@ -70,8 +70,9 @@
       "subscription.placeholder": "Selectionner l'abonnement",
       "level.label": "Niveau",
       "role.label": "Role",
-      "level.placeholder":"Selectionner le niveau",
-      "technicalMaterialAutorization.label": "Materiel technique autorise"
+      "level.placeholder": "Selectionner le niveau",
+      "technicalMaterialAutorization.label": "Materiel technique autorise",
+      "birthday.label": "Date de naissance"
     },
     "messages": {
       "info": {
@@ -116,16 +117,16 @@
           "invalid": "Votre email n'est pas valide."
         },
         "wetsuit": {
-          "required" : "Une taille de combinaison est requise"
+          "required": "Une taille de combinaison est requise"
         },
         "harness": {
-          "required" : "Une taille de harnais est requise"
+          "required": "Une taille de harnais est requise"
         },
         "level": {
-          "required" : "Un niveau est requis"
+          "required": "Un niveau est requis"
         },
         "typeAbonnement": {
-          "required" : "Un type d'abonnement est requis"
+          "required": "Un type d'abonnement est requis"
         },
         "phone": {
           "required": "Votre numero de telephone est requis",
