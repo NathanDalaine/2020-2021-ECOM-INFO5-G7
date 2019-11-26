@@ -15,6 +15,7 @@ import { UserProfileService } from '../../entities/user-profile/user-profile.ser
 })
 export class MembersComponent implements OnInit, OnDestroy {
   userProfiles: IUserProfile[];
+  tmp: IUserProfile[];
   currentAccount: any;
   eventSubscriber: Subscription;
 
@@ -34,7 +35,11 @@ export class MembersComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         (res: IUserProfile[]) => {
-          this.userProfiles = res;
+          res.forEach(r => {
+            if (r.user != null) {
+              this.userProfiles.push(r);
+            }
+          });
         },
         (res: HttpErrorResponse) => this.onError(res.message)
       );

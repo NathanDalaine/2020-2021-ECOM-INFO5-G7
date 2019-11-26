@@ -25,6 +25,14 @@
                 </a>
             </li>
             <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="members" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="calendar-check"></fa-icon>
+                        <span jhiTranslate="global.menu.members">Membres</span>
+                    </span>
+                </a>
+            </li>
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="renduMateriel" (click)="collapseNavbar()">
                     <span>
                         <fa-icon icon="undo-alt"></fa-icon>

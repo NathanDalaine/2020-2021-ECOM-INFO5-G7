@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="ecomgucvoileApp.members.home.title">Membres</span>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="userProfiles?.length === 0">
+        <span jhiTranslate="ecomgucvoileApp.members.home.notFound">No Members found</span>
+    </div>
+    <div class="table-responsive" *ngIf="userProfiles?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+                <th><span jhiTranslate="ecomgucvoileApp.members.firstname">Prénom</span></th>
+                <th><span jhiTranslate="ecomgucvoileApp.members.name">Nom</span></th>
+                <th><span jhiTranslate="ecomgucvoileApp.userProfile.niveau">Niveau</span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let userProfile of userProfiles ;trackBy: trackId">
+                <td>{{userProfile.user.firstName}}</td>
+                <td>{{userProfile.user.lastName}}</td>
+                <td>{{userProfile.niveau}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
