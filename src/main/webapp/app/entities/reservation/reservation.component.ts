@@ -8,7 +8,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { IReservation } from 'app/shared/model/reservation.model';
 import { AccountService } from 'app/core/auth/account.service';
 import { ReservationService } from './reservation.service';
-import {UserProfileService} from "app/entities/user-profile/user-profile.service";
+import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
 
 @Component({
   selector: 'jhi-reservation',
@@ -21,15 +21,15 @@ export class ReservationComponent implements OnInit, OnDestroy {
 
   constructor(
     protected reservationService: ReservationService,
-    protected userProfileService : UserProfileService,
+    protected userProfileService: UserProfileService,
     protected jhiAlertService: JhiAlertService,
     protected eventManager: JhiEventManager,
     protected accountService: AccountService
   ) {}
 
   loadAll() {
-    this.userProfileService
-      .findReservations()
+    this.reservationService
+      .query()
       .pipe(
         filter((res: HttpResponse<IReservation[]>) => res.ok),
         map((res: HttpResponse<IReservation[]>) => res.body)
