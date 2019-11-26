@@ -5,6 +5,7 @@ import { ReservationService } from '../../entities/reservation/reservation.servi
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
 import { IReservation } from 'app/shared/model/reservation.model';
+import {UserProfileService} from "app/entities/user-profile/user-profile.service";
 
 @Component({
   selector: 'jhi-reservationlist',
@@ -18,24 +19,20 @@ export class ReservationListComponent implements OnInit, OnDestroy {
 
   constructor(
     protected accountService: AccountService,
+    protected userProfileService : UserProfileService,
     protected reservationService: ReservationService,
     protected jhiAlertService: JhiAlertService
-
-   
   ) {}
 
   ngOnInit() {
-
     this.accountService.identity().then(account => {
       this.currentAccount = account;
     });
     this.loadAll();
   }
 
-
   loadAll() {
-    this.reservationService
-      .query()
+    this.userProfileService.findReservations()
       .pipe(
         filter((res: HttpResponse<IReservation[]>) => res.ok),
         map((res: HttpResponse<IReservation[]>) => res.body)
