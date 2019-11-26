@@ -2,82 +2,86 @@
     <strong>Registration saved!</strong>reservationSuccess
 </div>
 
+
 <form name="form" role="form" (ngSubmit)="openConfirmationDialog()" [formGroup]="registerForm" *ngIf="!success">
-    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2%">
-        <div fxFlex="50%">
-            <div class="alert alert-warning" *ngIf="voiles?.length === 0">
-                <span jhiTranslate="ecomgucvoileApp.voile.home.notFound">No voiles found</span>
-            </div>
-            <span>Les Voiles</span>
-            <div>
-                <input #searchTextVoile type="text" (input)="searchVoile(searchTextVoile.value)" placeholder="Recherche voile"/>
-            </div>
-            <div class="t+able-responsive" *ngIf="voiles?.length > 0">
-                <table class="table table-striped" aria-describedby="page-heading">
-                    <thead>
-                    <tr>
-                        <th style="width:5%;"></th>
-                        <th><span jhiTranslate="ecomgucvoileApp.voile.libelle">Libelle</span></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr *ngFor="let voile of voiles ;trackBy: trackIdVoile">
-                        <td>
-                            <input [checked]="this.registerForm.get('voileId').value == voile.id"
-                                   (click)="selectVoile(voile.id)" type="checkbox">
-                        </td>
-                        <td><a [routerLink]="['/voile', voile.id, 'view' ]">{{voile.libelle}}</a></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div fxFlex>
-            <div class="alert alert-warning" *ngIf="planches?.length === 0">
-                <span jhiTranslate="ecomgucvoileApp.planche.home.notFound">No planches found</span>
-            </div>
-            <span>Les Planches</span>
-            <div>
-                <input #searchTextPlanche type="text" (input)="searchPlanche(searchTextPlanche.value)" placeholder="Recherche planche"/>
-            </div>
-            <div class="table-responsive" *ngIf="planches?.length > 0">
-                <table class="table table-striped" aria-describedby="page-heading">
-                    <thead>
-                    <tr>
-                        <th style="width:5%;"></th>
-                        <th><span jhiTranslate="ecomgucvoileApp.planche.libelle">Libelle</span></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr *ngFor="let planche of planches ;trackBy: trackIdPlanche">
-                        <td>
-                            <input [checked]="this.registerForm.get('plancheId').value == planche.id"
-                                   (click)="selectPlanche(planche.id)" type="checkbox">
-                        </td>
-                        <td><a [routerLink]="['/planche', planche.id, 'view' ]">{{planche.libelle}}</a></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+
     <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="2%">
         <div>
-            <label class="form-control-label" jhiTranslate="ecomgucvoileApp.reservation.harnais">Harness</label>
+            <label class="form-control-label" jhiTranslate="ecomgucvoileApp.reservation.harnais" style="font-weight:bold">Harness</label>
             <input formControlName="harnais" type="checkbox">
         </div>
         <div>
-            <label class="form-control-label" jhiTranslate="ecomgucvoileApp.reservation.combinaison">Wetsuit</label>
+            <label class="form-control-label" jhiTranslate="ecomgucvoileApp.reservation.combinaison" style="font-weight:bold">Wetsuit</label>
             <input formControlName="combinaison" type="checkbox">
         </div>
     </div>
-    <div class="form-group">
-        <label class="form-control-label" jhiTranslate="global.form.remark.label">Remark</label>
-        <input type="text" id="remarque" name="remarque"  class="form-control" formControlName="remarques">
+
+    <div fxLayoutGap="2%">
+        <mat-tab-group mat-align-tabs="center">
+            <mat-tab label="Les Voiles">
+                    <div class="alert alert-warning" *ngIf="voiles?.length === 0">
+                        <span jhiTranslate="ecomgucvoileApp.voile.home.notFound">No voiles found</span>
+                    </div>
+                    <div>
+                        <input #searchTextVoile type="text" (input)="searchVoile(searchTextVoile.value)"
+                               placeholder="Recherche voile"/>
+                    </div>
+                    <div class="t+able-responsive" *ngIf="voiles?.length > 0">
+                        <table class="table table-striped" aria-describedby="page-heading">
+                            <thead>
+                            <tr>
+                                <th style="width:5%;"></th>
+                                <th><span jhiTranslate="ecomgucvoileApp.voile.libelle">Libelle</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let voile of voiles ;trackBy: trackIdVoile">
+                                <td>
+                                    <input [checked]="this.registerForm.get('voileId').value == voile.id"
+                                           (click)="selectVoile(voile.id)" type="checkbox">
+                                </td>
+                                <td><a [routerLink]="['/voile', voile.id, 'view' ]">{{voile.libelle}}</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            </mat-tab>
+            <mat-tab label="Les Planches">
+                    <div class="alert alert-warning" *ngIf="planches?.length === 0">
+                        <span jhiTranslate="ecomgucvoileApp.planche.home.notFound">No planches found</span>
+                    </div>
+                    <div>
+                        <input #searchTextPlanche type="text" (input)="searchPlanche(searchTextPlanche.value)"
+                               placeholder="Recherche planche"/>
+                    </div>
+                    <div class="table-responsive" *ngIf="planches?.length > 0">
+                        <table class="table table-striped" aria-describedby="page-heading">
+                            <thead>
+                            <tr>
+                                <th style="width:5%;"></th>
+                                <th><span jhiTranslate="ecomgucvoileApp.planche.libelle">Libelle</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let planche of planches ;trackBy: trackIdPlanche">
+                                <td>
+                                    <input [checked]="this.registerForm.get('plancheId').value == planche.id"
+                                           (click)="selectPlanche(planche.id)" type="checkbox">
+                                </td>
+                                <td><a [routerLink]="['/planche', planche.id, 'view' ]">{{planche.libelle}}</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            </mat-tab>
+        </mat-tab-group>
     </div>
     <div fxLayoutAlign="end center">
-        <button type="submit" [disabled]="registerForm.get('voileId').value == null && registerForm.get('plancheId').value == null && registerForm.get('harnais').value == false && registerForm.get('combinaison').value == false" class="btn btn-primary" jhiTranslate="ecomgucvoileApp.reservation.reserve">
+        <button type="submit"
+                [disabled]="registerForm.get('voileId').value == null && registerForm.get('plancheId').value == null && registerForm.get('harnais').value == false && registerForm.get('combinaison').value == false"
+                class="btn btn-primary" jhiTranslate="ecomgucvoileApp.reservation.reserve">
             Register
         </button>
     </div>
 </form>
+
