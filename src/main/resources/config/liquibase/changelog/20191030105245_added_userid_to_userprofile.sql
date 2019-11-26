@@ -1,1 +1,1 @@
-ALTER TABLE user_profile ADD user_id INT NULL;
+ALTER TABLE user_profile ADD user_id BIGINT NULL;

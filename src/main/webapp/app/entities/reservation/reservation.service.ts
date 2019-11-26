@@ -73,7 +73,7 @@ export class ReservationService {
     return res;
   }
 
-  protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
+  public convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
       res.body.forEach((reservation: IReservation) => {
         reservation.dateReservation = reservation.dateReservation != null ? moment(reservation.dateReservation) : null;
