@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { IReservationFull} from "app/shared/model/reservationFull.model";
 
 @Component({
   selector: 'jhi-confirmation-dialog',
@@ -16,6 +17,7 @@ export class ConfirmComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   public decline() {

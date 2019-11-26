@@ -24,6 +24,8 @@ export class MaterialListComponent implements OnInit, OnDestroy {
   allVoiles : IPlanche[];
   voiles: IVoile[];
   planches: IPlanche[];
+  selectedVoile : IVoile;
+  selectedPlanche : IPlanche;
   registerForm = this.fb.group({
     remarques: [''],
     voileId: [null],
@@ -45,19 +47,23 @@ export class MaterialListComponent implements OnInit, OnDestroy {
   ) {
   }
 
-  selectVoile(voileId: number) {
-    if (this.registerForm.get("voileId").value === voileId) {
+  selectVoile(voile: IVoile) {
+    if (this.registerForm.get("voileId").value === voile.id) {
       this.registerForm.controls["voileId"].setValue(null);
+      this.selectedVoile = null;
     } else {
-      this.registerForm.controls["voileId"].setValue(voileId);
+      this.selectedVoile = voile;
+      this.registerForm.controls["voileId"].setValue(voile.id);
     }
   }
 
-  selectPlanche(plancheId: number) {
-    if (this.registerForm.get("plancheId").value === plancheId) {
+  selectPlanche(planche: IPlanche) {
+    if (this.registerForm.get("plancheId").value === planche.id) {
       this.registerForm.controls["plancheId"].setValue(null);
+      this.selectedPlanche = null;
     } else {
-      this.registerForm.controls["plancheId"].setValue(plancheId);
+      this.selectedPlanche = planche;
+      this.registerForm.controls["plancheId"].setValue(planche.id);
     }
   }
 
@@ -73,6 +79,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     this.confirmService.confirm(this.translate.instant("global.messages.confirm.pleaseConfirm"),this.getReservationRecap() )
       .then((confirmed) => {
           if (confirmed) {
+
            this.reserve();
           }
         }
@@ -81,7 +88,20 @@ export class MaterialListComponent implements OnInit, OnDestroy {
   }
 
   private getReservationRecap() : string {
-  return "";
+    let message = this.translate.instant("global.menu.aboutToReserve");
+    if(this.selectedVoile != null){
+      message = message + this.translate.instant("global.menu.1voile") + this.selectedVoile.libelle+" ";
+    }
+    if(this.selectedPlanche != null){
+      message = message + this.translate.instant("global.menu.1planche")+ this.selectedPlanche.libelle+" ";
+    }
+    if(this.registerForm.get("harnais").value !== false){
+      message = message + this.translate.instant("global.menu.1harnais")+" ";
+    }
+    if(this.registerForm.get("combinaison").value !== false){
+      message = message + this.translate.instant("global.menu.1combinaison")+" ";
+    }
+    return message + this.translate.instant("global.menu.doYouConfirm");
   }
 
   loadAll() {
