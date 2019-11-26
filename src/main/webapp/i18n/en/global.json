@@ -6,6 +6,12 @@
       "home": "Home",
       "reservationList": "Reservation List",
       "materialList": "Material List",
+      "aboutToReserve": "You are about to reserve ",
+      "1combinaison": "a wetsuit",
+      "1voile": "A sail ",
+      "1planche": "A board ",
+      "1harnais": "A harness",
+      "doYouConfirm" : "D you confirm?",
       "renduMateriel": "Material Rendering",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {

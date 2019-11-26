@@ -1,6 +1,7 @@
 package com.group6.app.web.rest;
 
 import com.group6.app.service.ReservationService;
+import com.group6.app.service.dto.ReservationFullDTO;
 import com.group6.app.web.rest.errors.BadRequestAlertException;
 import com.group6.app.service.dto.ReservationDTO;
 
@@ -34,7 +35,6 @@ public class ReservationResource {
     private String applicationName;
 
     private final ReservationService reservationService;
-
     public ReservationResource(ReservationService reservationService) {
         this.reservationService = reservationService;
     }
@@ -89,6 +89,11 @@ public class ReservationResource {
     public List<ReservationDTO> getAllReservations() {
         log.debug("REST request to get all Reservations");
         return reservationService.findAll();
+    }
+
+    @GetMapping("/fullreservations")
+    public List<ReservationFullDTO> getAllFullReservations() {
+        return reservationService.findAllFull();
     }
 
     /**
