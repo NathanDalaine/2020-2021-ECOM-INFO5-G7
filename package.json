@@ -10,6 +10,7 @@
   "dependencies": {
     "@angular/animations": "^8.2.13",
     "@angular/cdk": "^8.2.3",
+    "@angular/animations": "^8.2.14",
     "@angular/common": "8.2.4",
     "@angular/compiler": "8.2.4",
     "@angular/core": "8.2.4",
@@ -43,6 +44,7 @@
   "devDependencies": {
     "@angular/cli": "8.3.1",
     "@angular/compiler-cli": "8.2.4",
+    "@angular/animations": "^8.2.14",
     "@ngtools/webpack": "8.3.1",
     "@types/chai": "4.2.0",
     "@types/chai-string": "1.4.2",
