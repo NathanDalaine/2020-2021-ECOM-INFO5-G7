@@ -76,7 +76,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
   }
 
   public openConfirmationDialog() {
-    this.confirmService.confirm(this.translate.instant("global.messages.confirm.pleaseConfirm"),this.getReservationRecap() )
+    this.confirmService.confirm(this.translate.instant("global.messages.confirm.pleaseConfirm"),this.getReservationRecap(),this.selectedPlanche,this.selectedVoile,this.registerForm.get("combinaison").value,this.registerForm.get("harnais").value)
       .then((confirmed) => {
           if (confirmed) {
 
@@ -88,20 +88,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
   }
 
   private getReservationRecap() : string {
-    let message = this.translate.instant("global.menu.aboutToReserve");
-    if(this.selectedVoile != null){
-      message = message + this.translate.instant("global.menu.1voile") + this.selectedVoile.libelle+" ";
-    }
-    if(this.selectedPlanche != null){
-      message = message + this.translate.instant("global.menu.1planche")+ this.selectedPlanche.libelle+" ";
-    }
-    if(this.registerForm.get("harnais").value !== false){
-      message = message + this.translate.instant("global.menu.1harnais")+" ";
-    }
-    if(this.registerForm.get("combinaison").value !== false){
-      message = message + this.translate.instant("global.menu.1combinaison")+" ";
-    }
-    return message + this.translate.instant("global.menu.doYouConfirm");
+    return "";
   }
 
   loadAll() {
