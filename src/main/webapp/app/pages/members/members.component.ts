@@ -38,7 +38,7 @@ export class MembersComponent implements OnInit, OnDestroy {
         (res: IUserProfile[]) => {
           this.userProfiles = [];
           res.forEach(r => {
-            if (r.user != null && r.user.authorities.includes(MEMBRE)) {
+            if (r.user != null && r.user.authorities != null && r.user.authorities.includes(MEMBRE)) {
               this.userProfiles.push(r);
             }
           });

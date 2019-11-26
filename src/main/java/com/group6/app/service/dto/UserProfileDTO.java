@@ -26,7 +26,7 @@ public class UserProfileDTO implements Serializable {
     @Size(min = 5, max = 254)
     private String email;
 
-    private User user;
+    private UserDTO user;
 
     private Instant dateEcheance;
 
@@ -50,9 +50,9 @@ public class UserProfileDTO implements Serializable {
 
     private Niveau niveau;
 
-    public User getUser(){return user;}
+    public UserDTO getUser(){return user;}
 
-    public void setUser(User user) {
+    public void setUser(UserDTO user) {
         this.user = user;
     }
 

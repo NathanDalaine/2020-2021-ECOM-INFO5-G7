@@ -29,7 +29,7 @@
                     </span>
                 </a>
             </li>
-            <div *jhiHasAnyAuthority="'ROLE_GESTIONNAIRE'">
+            <div *jhiHasAnyAuthority="'ROLE_ADMIN'">
                 <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active"
                     [routerLinkActiveOptions]="{exact: true}">
                     <a class="nav-link" routerLink="members" (click)="collapseNavbar()">
