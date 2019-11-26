@@ -2,6 +2,8 @@ package com.group6.app.service.dto;
 import java.time.Instant;
 import java.io.Serializable;
 import java.util.Objects;
+
+import com.group6.app.domain.User;
 import com.group6.app.domain.enumeration.TypeAbonnement;
 import com.group6.app.domain.enumeration.Niveau;
 import com.group6.app.domain.enumeration.Taille;
@@ -23,6 +25,8 @@ public class UserProfileDTO implements Serializable {
     @Email
     @Size(min = 5, max = 254)
     private String email;
+
+    private User user;
 
     private Instant dateEcheance;
 
@@ -46,6 +50,11 @@ public class UserProfileDTO implements Serializable {
 
     private Niveau niveau;
 
+    public User getUser(){return user;}
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Long getId() {
         return id;

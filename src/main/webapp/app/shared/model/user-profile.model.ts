@@ -3,6 +3,7 @@ import { IReservation } from 'app/shared/model/reservation.model';
 import { TypeAbonnement } from 'app/shared/model/enumerations/type-abonnement.model';
 import { Taille } from 'app/shared/model/enumerations/taille.model';
 import { Niveau } from 'app/shared/model/enumerations/niveau.model';
+import { IUser } from 'app/core/user/user.model';
 
 export interface IUserProfile {
   id?: number;
@@ -18,6 +19,7 @@ export interface IUserProfile {
   tailleCombinaison?: Taille;
   niveau?: Niveau;
   reservations?: IReservation[];
+  user?: IUser;
 }
 
 export class UserProfile implements IUserProfile {
@@ -34,7 +36,8 @@ export class UserProfile implements IUserProfile {
     public tailleHarnais?: Taille,
     public tailleCombinaison?: Taille,
     public niveau?: Niveau,
-    public reservations?: IReservation[]
+    public reservations?: IReservation[],
+    public user?: IUser
   ) {
     this.materielTechniqueAutorise = this.materielTechniqueAutorise || false;
   }
