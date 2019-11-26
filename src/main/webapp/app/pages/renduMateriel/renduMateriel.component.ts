@@ -94,6 +94,6 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
   }
 
   isChecked() {
-    return !this.checked;
+    return this.checked;
   }
 }
