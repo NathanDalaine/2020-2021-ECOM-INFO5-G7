@@ -70,4 +70,9 @@ Vacances de la Toussaint
 - Modification graphique et disposition
 - suppression de branche afin de nettoyer le git
 - Début de la refonte graphique suite à l'audit client
-- 
+
+# Semaine 18/11 - 02/12 Sprint 2
+
+- Finalisation des DTO des reservations
+- Finalisation de la pop up de confirmation de reservation (avec détail)
+- Ajout d'un champ niveau pour le materiel (des entités planche et voile)
