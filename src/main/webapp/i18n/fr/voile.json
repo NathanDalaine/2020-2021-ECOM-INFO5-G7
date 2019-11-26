@@ -18,19 +18,19 @@
       },
       "surface": "Surface",
       "marque": "Marque",
-      "modele": "Modele",
-      "numero": "Numero",
+      "modele": "Modèle",
+      "numero": "Numéro",
       "localisation": "Localisation",
-      "etat": "Etat",
-      "libelle": "Libelle",
+      "etat": "État",
+      "libelle": "Libellé",
       "gree": "Gree",
-      "createdBy": "Created By",
-      "updatedBy": "Updated By",
-      "deletedBy": "Deleted By",
-      "createdAt": "Created At",
-      "updatedAt": "Updated At",
-      "deletedAt": "Deleted At",
-      "reservation": "Reservation"
+      "createdBy": "Créé par",
+      "updatedBy": "Mis à jour par",
+      "deletedBy": "Supprimé par",
+      "createdAt": "Créé le",
+      "updatedAt": "Mis à jour le",
+      "deletedAt": "Supprimé le",
+      "reservation": "Réservation"
     }
   }
 }

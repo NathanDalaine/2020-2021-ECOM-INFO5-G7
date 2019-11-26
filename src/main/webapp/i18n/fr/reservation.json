@@ -16,15 +16,15 @@
       "detail": {
         "title": "Reservation"
       },
-      "dateReservation": "Date Reservation",
-      "dateRendu": "Date Rendu",
+      "dateReservation": "Date de réservation",
+      "dateRendu": "Date de rendu",
       "remarques": "Remarques",
-      "createdBy": "Created By",
-      "updatedBy": "Updated By",
-      "deletedBy": "Deleted By",
-      "createdAt": "Created At",
-      "updatedAt": "Updated At",
-      "deletedAt": "Deleted At",
+      "createdBy": "Créé par",
+      "updatedBy": "Mis à jour par",
+      "deletedBy": "Supprimé par",
+      "createdAt": "Créé le",
+      "updatedAt": "Mis à jour le",
+      "deletedAt": "Supprimé le",
       "voile": "Voile",
       "user": "Utilisateur",
       "userProfile": "User Profile",
@@ -32,7 +32,7 @@
       "harnais": "Harnais",
       "planche": "Planche",
       "reserve": "Reserver",
-      "reservationSuccess" : "Votre réservation a été effectué avec succès."
+      "reservationSuccess": "Votre réservation a été effectué avec succès."
     }
   }
 }

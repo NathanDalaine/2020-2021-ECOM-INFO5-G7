@@ -2,8 +2,8 @@
   "ecomgucvoileApp": {
     "Niveau": {
       "null": "",
-      "DEBUTANT": "DEBUTANT",
-      "DUBUTANTPLUS": "DUBUTANTPLUS",
+      "DEBUTANT": "BEGINNER",
+      "DUBUTANTPLUS": "ADVANCED_BEGINNER",
       "FUNBOARD": "FUNBOARD",
       "PERF": "PERF"
     }

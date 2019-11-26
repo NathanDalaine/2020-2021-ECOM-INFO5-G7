@@ -5,15 +5,16 @@
     "menu": {
       "home": "Home",
       "reservationList": "Reservation List",
-      "materialList": "Material List",
-      "renduMateriel": "Material Rendering",
+      "reservation": "Reservation",
+      "materialList": "Equipment List",
+      "renduMateriel": "Equipment Return",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
-        "combinaison": "Combinaison",
-        "harnais": "Harnais",
-        "planche": "Planche",
-        "voile": "Voile",
+        "combinaison": "Wetsuit",
+        "harnais": "Harness",
+        "planche": "Board",
+        "voile": "Sail",
         "reservation": "Reservation",
         "userProfile": "User Profile",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
@@ -63,7 +64,9 @@
         },
         "register": {
           "noaccount": "You don't have an account yet?",
-          "link": "Register a new account"
+          "link": "Register a new account",
+          "alreadyaccount": "Do you want to log-in into your account ?",
+          "connect": "Log-in"
         }
       },
       "error": {
@@ -141,5 +144,5 @@
     "idexists": "A new {{ entityName }} cannot already have an ID",
     "idnull": "Invalid ID"
   },
-  "footer": "This is your footer"
+  "footer": "RIVOIRE Antoine - MASSON Jeremy - SOLVERY Tom - DALAINE Nathan - BRES Maxence - BETEND Baptiste  <br> Website developed in 2019 in Polytech Grenoble"
 }

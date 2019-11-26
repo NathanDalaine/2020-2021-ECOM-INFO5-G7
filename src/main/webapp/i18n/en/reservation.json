@@ -16,21 +16,21 @@
       "detail": {
         "title": "Reservation"
       },
-      "dateReservation": "Date Reservation",
-      "dateRendu": "Date Rendu",
-      "remarques": "Remarques",
+      "dateReservation": "Reservation date",
+      "dateRendu": "Return date",
+      "remarques": "Observations",
       "createdBy": "Created By",
       "updatedBy": "Updated By",
       "deletedBy": "Deleted By",
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
-      "voile": "Voile",
+      "voile": "Sail",
       "user": "User",
       "userProfile": "User Profile",
-      "combinaison": "Combinaison",
-      "harnais": "Harnais",
-      "planche": "Planche"
+      "combinaison": "Wetsuit",
+      "harnais": "Harness",
+      "planche": "Board"
     }
   }
 }

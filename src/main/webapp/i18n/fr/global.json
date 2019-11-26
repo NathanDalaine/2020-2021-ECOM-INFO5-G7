@@ -5,8 +5,9 @@
     "menu": {
       "home": "Accueil",
       "reservationList": "Liste des réservations",
+      "reservation": "Réservation",
       "materialList": "Liste du matériel",
-      "renduMateriel": "Rendu matériel",
+      "renduMateriel": "Rendu du matériel",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entités",
@@ -14,7 +15,7 @@
         "harnais": "Harnais",
         "planche": "Planche",
         "voile": "Voile",
-        "reservation": "Reservation",
+        "reservation": "Réservation",
         "userProfile": "User Profile",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
@@ -59,8 +60,6 @@
       "tailleharnais.placeholder": "Choisir la taille de harnais",
       "telephone.label": "Numéro de telephone",
       "telephone.placeholder": "Telephone",
-      "email.label": "Email",
-      "email.placeholder": "Email",
       "firstname.label": "Prenom",
       "lastname.label": "Nom",
       "activated.label": "Activer",
@@ -70,7 +69,7 @@
       "subscription.placeholder": "Selectionner l'abonnement",
       "level.label": "Niveau",
       "role.label": "Role",
-      "level.placeholder":"Selectionner le niveau",
+      "level.placeholder": "Selectionner le niveau",
       "technicalMaterialAutorization.label": "Materiel technique autorise"
     },
     "messages": {
@@ -116,16 +115,16 @@
           "invalid": "Votre email n'est pas valide."
         },
         "wetsuit": {
-          "required" : "Une taille de combinaison est requise"
+          "required": "Une taille de combinaison est requise"
         },
         "harness": {
-          "required" : "Une taille de harnais est requise"
+          "required": "Une taille de harnais est requise"
         },
         "level": {
-          "required" : "Un niveau est requis"
+          "required": "Un niveau est requis"
         },
         "typeAbonnement": {
-          "required" : "Un type d'abonnement est requis"
+          "required": "Un type d'abonnement est requis"
         },
         "phone": {
           "required": "Votre numero de telephone est requis",
