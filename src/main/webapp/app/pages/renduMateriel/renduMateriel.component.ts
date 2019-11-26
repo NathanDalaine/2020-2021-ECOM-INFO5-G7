@@ -20,6 +20,7 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
   reservationNonRendu: IReservation[];
   currentAccount: any;
   private success: boolean;
+  checked: boolean;
 
   constructor(
     protected reservationService: ReservationService,
@@ -49,16 +50,12 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
     this.accountService.identity().then(account => {
       this.currentAccount = account;
     });
+    this.checked = false;
   }
 
   ngOnDestroy() {}
 
   confirm() {
-    this.reservation.dateRendu = moment();
-    this.subscribeToSaveResponse(this.reservationService.update(this.reservation));
-  }
-
-  confirmdamage() {
     this.reservation.dateRendu = moment();
     this.subscribeToSaveResponse(this.reservationService.update(this.reservation));
   }
@@ -92,11 +89,11 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
     this.jhiAlertService.success(sucessMessage, null, null);
   }
 
-  checkbox() {
-    if (document.getElementById('damage').checked) {
-      document.getElementById('circonstancedamage').disabled = '';
-    } else {
-      document.getElementById('submit').disabled = 'disabled';
-    }
+  checkboxdamage() {
+    this.checked = !this.checked;
+  }
+
+  isChecked() {
+    return !this.checked;
   }
 }

@@ -24,28 +24,11 @@
                     <span jhiTranslate="ecomgucvoileApp.renduMateriel.confirmation"> Back</span>
             </button>
 
-            <script language="JavaScript" type="text/javascript">
-
-
-                function checkbox()
-                {
-                checkboxdamage=document.maforme.getElementById("damage") ;
-                if (checkboxdamage.checked)
-                {
-                document.descriptiondamage.Submit.disabled = false;
-                }
-                else
-                {
-                document.descriptiondamage.Submit.disabled = true;
-                }
-                }
-            </script> 
-
             </dl>
             <div>
                 <input type="checkbox" name="damage" id="damage"
                        unchecked>
-                <label for="damage" jhiTranslate="ecomgucvoileApp.renduMateriel.damage" onchange="checkbox()">Le materiel rendu est endommagé.</label>
+                <label for="damage" jhiTranslate="ecomgucvoileApp.renduMateriel.damage" onchange="checkboxdamage()">Le materiel rendu est endommagé.</label>
               </div>
 
             <br>
@@ -56,8 +39,6 @@
             <p><textarea name="descriptiondamage" cols="40" rows="5" ></textarea>  </p>
             <p><label for="circonstancedamage" jhiTranslate="ecomgucvoileApp.renduMateriel.circonstancedamagetext">Circonstances du dommage :</label></p>
             <p><textarea name="circonstancedamage" cols="40" rows="5" ></textarea></p>
-
-        </div>
 
         <div></div>
     </div>
