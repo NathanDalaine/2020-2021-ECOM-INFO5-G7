@@ -2,7 +2,6 @@
     <strong>Registration saved!</strong>reservationSuccess
 </div>
 
-
 <form name="form" role="form" (ngSubmit)="openConfirmationDialog()" [formGroup]="registerForm" *ngIf="!success">
 
     <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="2%">
@@ -17,7 +16,7 @@
     </div>
 
     <div fxLayoutGap="2%">
-        <mat-tab-group mat-align-tabs="center">
+        <mat-tab-group mat-align-tabs="left">
             <mat-tab label="Les Voiles">
                     <div class="alert alert-warning" *ngIf="voiles?.length === 0">
                         <span jhiTranslate="ecomgucvoileApp.voile.home.notFound">No voiles found</span>
@@ -35,10 +34,10 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr *ngFor="let voile of voiles ;trackBy: trackIdVoile">
+                            <tr *ngFor="let voile of voiles | orderBy: 'libelle' ;trackBy: trackIdVoile">
                                 <td>
                                     <input [checked]="this.registerForm.get('voileId').value == voile.id"
-                                           (click)="selectVoile(voile.id)" type="checkbox">
+                                           (click)="selectVoile(voile.id)" type="radio">
                                 </td>
                                 <td><a [routerLink]="['/voile', voile.id, 'view' ]">{{voile.libelle}}</a></td>
                             </tr>
@@ -63,10 +62,10 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr *ngFor="let planche of planches ;trackBy: trackIdPlanche">
+                            <tr *ngFor="let planche of planches | orderBy: 'libelle' ;trackBy: trackIdPlanche">
                                 <td>
                                     <input [checked]="this.registerForm.get('plancheId').value == planche.id"
-                                           (click)="selectPlanche(planche.id)" type="checkbox">
+                                           (click)="selectPlanche(planche.id)" type="radio">
                                 </td>
                                 <td><a [routerLink]="['/planche', planche.id, 'view' ]">{{planche.libelle}}</a></td>
                             </tr>

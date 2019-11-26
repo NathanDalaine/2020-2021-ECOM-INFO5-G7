@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     lastName: [''],
     dateNaissance: [],
     adresse: [''],
-    activated: [false],
+    activated: [true],
     materielTechniqueAutorise: [false]
   });
 
