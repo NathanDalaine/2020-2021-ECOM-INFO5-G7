@@ -7,7 +7,6 @@ Navbar
 
 .navbar-version {
   font-size: 0.65em;
-  color: $navbar-dark-color;
 }
 
 .profile-image {
@@ -17,6 +16,7 @@ Navbar
 
 .navbar {
   padding: 0.2rem 1rem;
+  background-color: #2b6ca3;
 
   ul.navbar-nav {
     .nav-item {
