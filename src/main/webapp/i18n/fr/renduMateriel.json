@@ -7,7 +7,10 @@
         "createOrEditLabel": "Create or edit a Planche",
         "notFound": "No Planches found"
       },
-      "confirmation" : "confirmer le rendu",
+      "confirmation": "confirmer le rendu",
+      "damage": "Le materiel rendu est endommagé",
+      "descriptiondamagetext": "Description du dommage :",
+      "circonstancedamagetext": "Circonstances du dommage :",
       "validation": "Rendu validé",
       "created": "A new Planche is created with identifier {{ param }}",
       "updated": "A Planche is updated with identifier {{ param }}",
