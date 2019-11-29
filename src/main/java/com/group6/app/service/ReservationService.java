@@ -70,16 +70,17 @@ public class ReservationService {
         if (SecurityUtils.getCurrentUserLogin().isPresent()) {
             reservation.setCreatedBy(SecurityUtils.getCurrentUserLogin().get());
             reservation.setUserProfile(userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()));
-            Taille taille = userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()).getTailleHarnais();
+            Taille tailleHarnais = userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()).getTailleHarnais();
+            Taille tailleCombinaison = userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()).getTailleCombinaison();
             if (reservationDTO.getHarnaisId() != null) {
-                Harnais harnais = harnaisRepository.findDistinctFirstByTailleAndReservationsIsNull(taille);
+                Harnais harnais = harnaisRepository.findDistinctFirstByTailleAndReservationsIsNull(tailleHarnais);
                 if(harnais == null){
                     throw new Error();
                 }
                 reservation.setHarnais(harnais);
             }
             if (reservationDTO.getCombinaisonId() != null) {
-                Combinaison combi = combinaisonRepository.findDistinctFirstByTailleAndReservationsIsNull(taille);
+                Combinaison combi = combinaisonRepository.findDistinctFirstByTailleAndReservationsIsNull(tailleCombinaison);
                 if(combi == null){
                     throw new Error();
                 }

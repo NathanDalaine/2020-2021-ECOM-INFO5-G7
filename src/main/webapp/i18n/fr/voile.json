@@ -30,6 +30,7 @@
       "createdAt": "Créé le",
       "updatedAt": "Mis à jour le",
       "deletedAt": "Supprimé le",
+      "niveaurequis": "Niveau requis",
       "reservation": "Réservation"
     }
   }

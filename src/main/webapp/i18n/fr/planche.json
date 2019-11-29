@@ -29,7 +29,8 @@
       "createdAt": "Créé le",
       "updatedAt": "Mis à jour le",
       "deletedAt": "Supprimé le",
-      "reservation": "Réservation"
+      "reservation": "Réservation",
+      "niveaurequis": "Niveau requis"
     }
   }
 }

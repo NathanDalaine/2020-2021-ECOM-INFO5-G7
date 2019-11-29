@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { VoileService } from 'app/entities/voile/voile.service';
 import { IVoile, Voile } from 'app/shared/model/voile.model';
+import { Niveau } from 'app/shared/model/enumerations/niveau.model';
 
 describe('Service Tests', () => {
   describe('Voile Service', () => {
@@ -39,7 +40,8 @@ describe('Service Tests', () => {
         'AAAAAAA',
         currentDate,
         currentDate,
-        currentDate
+        currentDate,
+        Niveau.DEBUTANT
       );
     });
 
@@ -106,7 +108,8 @@ describe('Service Tests', () => {
             deletedBy: 'BBBBBB',
             createdAt: currentDate.format(DATE_TIME_FORMAT),
             updatedAt: currentDate.format(DATE_TIME_FORMAT),
-            deletedAt: currentDate.format(DATE_TIME_FORMAT)
+            deletedAt: currentDate.format(DATE_TIME_FORMAT),
+            niveaurequis: 'BBBBBB'
           },
           elemDefault
         );
@@ -144,7 +147,8 @@ describe('Service Tests', () => {
             deletedBy: 'BBBBBB',
             createdAt: currentDate.format(DATE_TIME_FORMAT),
             updatedAt: currentDate.format(DATE_TIME_FORMAT),
-            deletedAt: currentDate.format(DATE_TIME_FORMAT)
+            deletedAt: currentDate.format(DATE_TIME_FORMAT),
+            niveaurequis: 'BBBBBB'
           },
           elemDefault
         );

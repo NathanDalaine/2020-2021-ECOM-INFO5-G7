@@ -47,15 +47,6 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.userProfile.niveau" for="field_niveau">Niveau</label>
-                    <select class="form-control" name="niveau" formControlName="niveau" id="field_niveau">
-                        <option value="DEBUTANT">{{'ecomgucvoileApp.Niveau.DEBUTANT' | translate}}</option>
-                        <option value="DUBUTANTPLUS">{{'ecomgucvoileApp.Niveau.DUBUTANTPLUS' | translate}}</option>
-                        <option value="FUNBOARD">{{'ecomgucvoileApp.Niveau.FUNBOARD' | translate}}</option>
-                        <option value="PERF">{{'ecomgucvoileApp.Niveau.PERF' | translate}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ecomgucvoileApp.userProfile.materielTechniqueAutorise" for="field_materielTechniqueAutorise">Materiel Technique Autorise</label>
                     <input type="checkbox" class="form-control" name="materielTechniqueAutorise" id="field_materielTechniqueAutorise"
                            formControlName="materielTechniqueAutorise"/>
@@ -81,6 +72,15 @@
                         <option value="M">{{'ecomgucvoileApp.Taille.M' | translate}}</option>
                         <option value="L">{{'ecomgucvoileApp.Taille.L' | translate}}</option>
                         <option value="XL">{{'ecomgucvoileApp.Taille.XL' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.userProfile.niveau" for="field_niveau">Niveau</label>
+                    <select class="form-control" name="niveau" formControlName="niveau" id="field_niveau">
+                        <option value="DEBUTANT">{{'ecomgucvoileApp.Niveau.DEBUTANT' | translate}}</option>
+                        <option value="DEBUTANTPLUS">{{'ecomgucvoileApp.Niveau.DEBUTANTPLUS' | translate}}</option>
+                        <option value="FUNBOARD">{{'ecomgucvoileApp.Niveau.FUNBOARD' | translate}}</option>
+                        <option value="PERF">{{'ecomgucvoileApp.Niveau.PERF' | translate}}</option>
                     </select>
                 </div>
 

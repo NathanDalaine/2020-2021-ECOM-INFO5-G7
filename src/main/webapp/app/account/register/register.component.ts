@@ -81,7 +81,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     ];
     this.niveaux = [
       { label: 'Debutant', value: Niveau.DEBUTANT },
-      { label: 'Debutant+', value: Niveau.DUBUTANTPLUS },
+      { label: 'Debutant+', value: Niveau.DEBUTANTPLUS },
       { label: 'Performance', value: Niveau.PERF },
       { label: 'Funboard', value: Niveau.FUNBOARD }
     ];
