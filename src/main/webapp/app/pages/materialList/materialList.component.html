@@ -2,6 +2,8 @@
     <strong>Registration saved!</strong>reservationSuccess
 </div>
 
+<jhi-alert-error></jhi-alert-error>
+
 <form name="form" role="form" (ngSubmit)="openConfirmationDialog()" [formGroup]="registerForm" *ngIf="!success">
     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2%">
         <div fxFlex="50%">
@@ -24,7 +26,7 @@
                     <tr *ngFor="let voile of voiles ;trackBy: trackIdVoile">
                         <td>
                             <input [checked]="this.registerForm.get('voileId').value == voile.id"
-                                   (click)="selectVoile(voile.id)" type="checkbox">
+                                   (click)="selectVoile(voile)" type="checkbox">
                         </td>
                         <td><a [routerLink]="['/voile', voile.id, 'view' ]">{{voile.libelle}}</a></td>
                     </tr>
@@ -52,7 +54,7 @@
                     <tr *ngFor="let planche of planches ;trackBy: trackIdPlanche">
                         <td>
                             <input [checked]="this.registerForm.get('plancheId').value == planche.id"
-                                   (click)="selectPlanche(planche.id)" type="checkbox">
+                                   (click)="selectPlanche(planche)" type="checkbox">
                         </td>
                         <td><a [routerLink]="['/planche', planche.id, 'view' ]">{{planche.libelle}}</a></td>
                     </tr>

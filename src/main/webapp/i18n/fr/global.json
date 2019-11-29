@@ -7,7 +7,13 @@
       "reservationList": "Liste des réservations",
       "reservation": "Réservation",
       "materialList": "Liste du matériel",
-      "renduMateriel": "Rendu du matériel",
+      "aboutToReserve": "Vous êtes sur le point de réserver ",
+      "1combinaison": "une combinaison",
+      "1voile": "une voile ",
+      "1planche": "une planche ",
+      "1harnais": "un harnais",
+      "doYouConfirm" : "Vous confirmez?",
+      "renduMateriel": "Rendu matériel",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entités",
@@ -70,7 +76,8 @@
       "level.label": "Niveau",
       "role.label": "Role",
       "level.placeholder": "Selectionner le niveau",
-      "technicalMaterialAutorization.label": "Materiel technique autorise"
+      "technicalMaterialAutorization.label": "Materiel technique autorise",
+      "birthday.label": "Date de naissance"
     },
     "messages": {
       "info": {
