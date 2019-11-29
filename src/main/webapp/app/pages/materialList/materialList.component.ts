@@ -1,17 +1,17 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {AccountService} from 'app/core/auth/account.service';
-import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
-import {filter, map} from 'rxjs/operators';
-import {JhiEventManager, JhiAlertService} from 'ng-jhipster';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AccountService } from 'app/core/auth/account.service';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { filter, map } from 'rxjs/operators';
+import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
-import {IVoile} from 'app/shared/model/voile.model';
-import {IPlanche} from 'app/shared/model/planche.model';
-import {VoileService} from '../../entities/voile/voile.service';
-import {PlancheService} from '../../entities/planche/planche.service';
-import {FormBuilder} from "@angular/forms";
-import {ReservationService} from "app/entities/reservation/reservation.service";
-import {ConfirmService} from "app/shared/confirm/confirm.service";
-import {TranslateService} from "@ngx-translate/core";
+import { IVoile } from 'app/shared/model/voile.model';
+import { IPlanche } from 'app/shared/model/planche.model';
+import { VoileService } from '../../entities/voile/voile.service';
+import { PlancheService } from '../../entities/planche/planche.service';
+import { FormBuilder } from '@angular/forms';
+import { ReservationService } from 'app/entities/reservation/reservation.service';
+import { ConfirmService } from 'app/shared/confirm/confirm.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'jhi-materiallist',
@@ -21,7 +21,7 @@ import {TranslateService} from "@ngx-translate/core";
 export class MaterialListComponent implements OnInit, OnDestroy {
   success: boolean;
   allPlanches: IPlanche[];
-  allVoiles : IPlanche[];
+  allVoiles: IPlanche[];
   voiles: IVoile[];
   planches: IPlanche[];
   selectedVoile : IVoile;
@@ -31,7 +31,9 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     voileId: [null],
     plancheId: [null],
     harnais: [false],
-    combinaison: [false]
+    combinaison: [false],
+    harnaisId: null,
+    combinaisonId: null
   });
 
   constructor(
@@ -40,12 +42,11 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     protected reservationService: ReservationService,
     protected jhiAlertService: JhiAlertService,
     protected eventManager: JhiEventManager,
-    protected  translate: TranslateService,
+    protected translate: TranslateService,
     private fb: FormBuilder,
     protected confirmService: ConfirmService,
     protected accountService: AccountService
-  ) {
-  }
+  ) {}
 
   selectVoile(voile: IVoile) {
     if (this.registerForm.get("voileId").value === voile.id) {
@@ -68,11 +69,18 @@ export class MaterialListComponent implements OnInit, OnDestroy {
   }
 
   reserve() {
-    this.reservationService.create(this.registerForm.value).subscribe(() => {
+    if (this.registerForm.get('harnais').value === true) {
+      this.registerForm.controls['harnaisId'].setValue(1);
+    }
+    if (this.registerForm.get('combinaison').value === true) {
+      this.registerForm.controls['combinaisonId'].setValue(1);
+    }
+    this.reservationService.create(this.registerForm.value).subscribe(
+      () => {
         this.success = true;
       },
-      response => this.processError(response)
-    )
+      (response: HttpErrorResponse) => this.onError(response.message)
+    );
   }
 
   public openConfirmationDialog() {
@@ -126,8 +134,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     this.success = false;
   }
 
-  ngOnDestroy() {
-  }
+  ngOnDestroy() {}
 
   trackIdVoile(index: number, item: IVoile) {
     return item.id;
@@ -137,32 +144,28 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     return item.id;
   }
 
-  private processError(response: HttpErrorResponse) {
-
-  }
-
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
   }
 
   searchPlanche(text: string) {
-    if(text !== ""){
+    if (text !== '') {
       const regex = RegExp(text.toLowerCase());
-      this.planches = this.allPlanches.filter(res=>{
+      this.planches = this.allPlanches.filter(res => {
         return regex.exec(res.libelle.toLocaleLowerCase());
       });
-    }else{
+    } else {
       this.planches = this.allPlanches;
     }
   }
 
   searchVoile(text: string) {
-    if(text !== ""){
+    if (text !== '') {
       const regex = RegExp(text.toLowerCase());
-      this.voiles = this.allVoiles.filter(res=>{
+      this.voiles = this.allVoiles.filter(res => {
         return regex.exec(res.libelle.toLocaleLowerCase());
       });
-    }else{
+    } else {
       this.voiles = this.allVoiles;
     }
   }
