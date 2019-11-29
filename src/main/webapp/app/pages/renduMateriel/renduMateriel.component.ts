@@ -3,11 +3,11 @@ import { AccountService } from 'app/core/auth/account.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
-import {IReservation, Reservation} from "app/shared/model/reservation.model";
-import {ReservationService} from "app/entities/reservation/reservation.service";
-import * as moment from "moment";
-import {Observable} from "rxjs";
-import {IUserProfile} from "app/shared/model/user-profile.model";
+import { IReservation, Reservation } from 'app/shared/model/reservation.model';
+import { ReservationService } from 'app/entities/reservation/reservation.service';
+import * as moment from 'moment';
+import { Observable } from 'rxjs';
+import { IUserProfile } from 'app/shared/model/user-profile.model';
 
 @Component({
   selector: 'jhi-rendumateriel',
@@ -15,11 +15,12 @@ import {IUserProfile} from "app/shared/model/user-profile.model";
   styleUrls: ['renduMateriel.scss']
 })
 export class RenduMaterielComponent implements OnInit, OnDestroy {
-  reservations : IReservation[];
+  reservations: IReservation[];
   reservation: IReservation;
-  reservationNonRendu : IReservation[];
+  reservationNonRendu: IReservation[];
   currentAccount: any;
   private success: boolean;
+  checked: boolean;
 
   constructor(
     protected reservationService: ReservationService,
@@ -49,34 +50,36 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
     this.accountService.identity().then(account => {
       this.currentAccount = account;
     });
+    this.checked = false;
   }
-
 
   ngOnDestroy() {}
 
-  confirm(){
+  confirm() {
     this.reservation.dateRendu = moment();
     this.subscribeToSaveResponse(this.reservationService.update(this.reservation));
   }
 
-  getReservationNonRendu(){
-    this.reservations.forEach(res =>{
-      if(res.dateRendu == null){
+  getReservationNonRendu() {
+    this.reservations.forEach(res => {
+      if (res.dateRendu == null) {
         this.reservationNonRendu.push(res);
       }
     });
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IReservation>>) {
-    result.subscribe(() => {
-      this.success = true;
-      this.onSuccess("ecomgucvoileApp.renduMateriel.validation")
-    }, () => {
-      this.success = false;
-      this.onError("Rendu Impossible");
-    });
+    result.subscribe(
+      () => {
+        this.success = true;
+        this.onSuccess('ecomgucvoileApp.renduMateriel.validation');
+      },
+      () => {
+        this.success = false;
+        this.onError('Rendu Impossible');
+      }
+    );
   }
-
 
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
@@ -84,5 +87,13 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
 
   protected onSuccess(sucessMessage: string) {
     this.jhiAlertService.success(sucessMessage, null, null);
+  }
+
+  checkboxdamage() {
+    this.checked = !this.checked;
+  }
+
+  isChecked() {
+    return this.checked;
   }
 }
