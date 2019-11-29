@@ -120,6 +120,12 @@ public class ReservationService {
             .collect(Collectors.toCollection(LinkedList::new));
     }
 
+    @Transactional(readOnly = true)
+    public Optional<ReservationFullDTO> findOneFull(Long id) {
+        return reservationRepository.findById(id)
+            .map(reservationFullMapper::toDto);
+    }
+
 
     /**
      * Get one reservation by id.
