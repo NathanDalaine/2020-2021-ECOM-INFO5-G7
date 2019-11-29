@@ -78,11 +78,11 @@ class UserProfileGatlingTest extends Simulation {
                 , "adresse":"SAMPLE_TEXT"
                 , "telephone":"SAMPLE_TEXT"
                 , "typeAbonnement":"JOURNALIER"
-                , "niveau":"DEBUTANT"
                 , "materielTechniqueAutorise":null
                 , "remarque":"SAMPLE_TEXT"
                 , "tailleHarnais":"S"
                 , "tailleCombinaison":"S"
+                , "niveau":"DEBUTANT"
                 }""")).asJson
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_userProfile_url"))).exitHereIfFailed

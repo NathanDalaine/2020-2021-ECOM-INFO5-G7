@@ -3,12 +3,13 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { map } from 'rxjs/operators';
 
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IUserProfile } from 'app/shared/model/user-profile.model';
+import { IReservation } from 'app/shared/model/reservation.model';
+import { ReservationService } from 'app/entities/reservation/reservation.service';
 
 type EntityResponseType = HttpResponse<IUserProfile>;
 type EntityArrayResponseType = HttpResponse<IUserProfile[]>;
@@ -17,13 +18,19 @@ type EntityArrayResponseType = HttpResponse<IUserProfile[]>;
 export class UserProfileService {
   public resourceUrl = SERVER_API_URL + 'api/user-profiles';
 
-  constructor(protected http: HttpClient) {}
+  constructor(protected http: HttpClient, protected reservationService: ReservationService) {}
 
   create(userProfile: IUserProfile): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(userProfile);
     return this.http
       .post<IUserProfile>(this.resourceUrl, copy, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+
+  findReservations(): Observable<EntityArrayResponseType> {
+    return this.http
+      .get<IReservation[]>(`${this.resourceUrl}` + '/reservations', { observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.reservationService.convertDateArrayFromServer(res)));
   }
 
   update(userProfile: IUserProfile): Observable<EntityResponseType> {

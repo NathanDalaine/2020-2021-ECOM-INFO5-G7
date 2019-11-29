@@ -40,6 +40,7 @@ export class VoileUpdatePage {
   createdAtInput = element(by.id('field_createdAt'));
   updatedAtInput = element(by.id('field_updatedAt'));
   deletedAtInput = element(by.id('field_deletedAt'));
+  niveaurequisSelect = element(by.id('field_niveaurequis'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -150,6 +151,21 @@ export class VoileUpdatePage {
 
   async getDeletedAtInput() {
     return await this.deletedAtInput.getAttribute('value');
+  }
+
+  async setNiveaurequisSelect(niveaurequis) {
+    await this.niveaurequisSelect.sendKeys(niveaurequis);
+  }
+
+  async getNiveaurequisSelect() {
+    return await this.niveaurequisSelect.element(by.css('option:checked')).getText();
+  }
+
+  async niveaurequisSelectLastOption(timeout?: number) {
+    await this.niveaurequisSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
   }
 
   async save(timeout?: number) {

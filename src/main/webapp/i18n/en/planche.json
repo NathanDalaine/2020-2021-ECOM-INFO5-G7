@@ -1,26 +1,26 @@
 {
   "ecomgucvoileApp": {
-    "planche": {
+    "Board": {
       "home": {
-        "title": "Planches",
-        "createLabel": "Create a new Planche",
-        "createOrEditLabel": "Create or edit a Planche",
-        "notFound": "No Planches found"
+        "title": "Boards",
+        "createLabel": "Create a new Board",
+        "createOrEditLabel": "Create or edit a Board",
+        "notFound": "No Boards found"
       },
-      "created": "A new Planche is created with identifier {{ param }}",
-      "updated": "A Planche is updated with identifier {{ param }}",
-      "deleted": "A Planche is deleted with identifier {{ param }}",
+      "created": "A new Board is created with identifier {{ param }}",
+      "updated": "A Board is updated with identifier {{ param }}",
+      "deleted": "A Board is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Planche {{ id }}?"
+        "question": "Are you sure you want to delete Board {{ id }}?"
       },
       "detail": {
-        "title": "Planche"
+        "title": "Board"
       },
-      "marque": "Marque",
-      "modele": "Modele",
-      "numero": "Numero",
-      "localisation": "Localisation",
-      "etat": "Etat",
+      "marque": "Brand",
+      "modele": "Model",
+      "numero": "Number",
+      "localisation": "Location",
+      "etat": "State",
       "libelle": "Libelle",
       "volume": "Volume",
       "createdBy": "Created By",
@@ -29,6 +29,7 @@
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
+      "niveaurequis": "Level required",
       "reservation": "Reservation"
     }
   }

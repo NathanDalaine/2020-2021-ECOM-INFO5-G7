@@ -32,6 +32,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.group6.app.domain.enumeration.Niveau;
 /**
  * Integration tests for the {@link PlancheResource} REST controller.
  */
@@ -80,6 +81,9 @@ public class PlancheResourceIT {
     private static final Instant DEFAULT_DELETED_AT = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_DELETED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
     private static final Instant SMALLER_DELETED_AT = Instant.ofEpochMilli(-1L);
+
+    private static final Niveau DEFAULT_NIVEAUREQUIS = Niveau.DEBUTANT;
+    private static final Niveau UPDATED_NIVEAUREQUIS = Niveau.DEBUTANTPLUS;
 
     @Autowired
     private PlancheRepository plancheRepository;
@@ -141,7 +145,8 @@ public class PlancheResourceIT {
             .deletedBy(DEFAULT_DELETED_BY)
             .createdAt(DEFAULT_CREATED_AT)
             .updatedAt(DEFAULT_UPDATED_AT)
-            .deletedAt(DEFAULT_DELETED_AT);
+            .deletedAt(DEFAULT_DELETED_AT)
+            .niveaurequis(DEFAULT_NIVEAUREQUIS);
         return planche;
     }
     /**
@@ -164,7 +169,8 @@ public class PlancheResourceIT {
             .deletedBy(UPDATED_DELETED_BY)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
-            .deletedAt(UPDATED_DELETED_AT);
+            .deletedAt(UPDATED_DELETED_AT)
+            .niveaurequis(UPDATED_NIVEAUREQUIS);
         return planche;
     }
 
@@ -202,6 +208,7 @@ public class PlancheResourceIT {
         assertThat(testPlanche.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testPlanche.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
         assertThat(testPlanche.getDeletedAt()).isEqualTo(DEFAULT_DELETED_AT);
+        assertThat(testPlanche.getNiveaurequis()).isEqualTo(DEFAULT_NIVEAUREQUIS);
     }
 
     @Test
@@ -248,7 +255,8 @@ public class PlancheResourceIT {
             .andExpect(jsonPath("$.[*].deletedBy").value(hasItem(DEFAULT_DELETED_BY.toString())))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
-            .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())));
+            .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())))
+            .andExpect(jsonPath("$.[*].niveaurequis").value(hasItem(DEFAULT_NIVEAUREQUIS.toString())));
     }
     
     @Test
@@ -274,7 +282,8 @@ public class PlancheResourceIT {
             .andExpect(jsonPath("$.deletedBy").value(DEFAULT_DELETED_BY.toString()))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
-            .andExpect(jsonPath("$.deletedAt").value(DEFAULT_DELETED_AT.toString()));
+            .andExpect(jsonPath("$.deletedAt").value(DEFAULT_DELETED_AT.toString()))
+            .andExpect(jsonPath("$.niveaurequis").value(DEFAULT_NIVEAUREQUIS.toString()));
     }
 
     @Test
@@ -310,7 +319,8 @@ public class PlancheResourceIT {
             .deletedBy(UPDATED_DELETED_BY)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
-            .deletedAt(UPDATED_DELETED_AT);
+            .deletedAt(UPDATED_DELETED_AT)
+            .niveaurequis(UPDATED_NIVEAUREQUIS);
         PlancheDTO plancheDTO = plancheMapper.toDto(updatedPlanche);
 
         restPlancheMockMvc.perform(put("/api/planches")
@@ -335,6 +345,7 @@ public class PlancheResourceIT {
         assertThat(testPlanche.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testPlanche.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
         assertThat(testPlanche.getDeletedAt()).isEqualTo(UPDATED_DELETED_AT);
+        assertThat(testPlanche.getNiveaurequis()).isEqualTo(UPDATED_NIVEAUREQUIS);
     }
 
     @Test

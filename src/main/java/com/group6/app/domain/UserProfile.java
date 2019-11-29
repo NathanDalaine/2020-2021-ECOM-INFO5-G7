@@ -11,9 +11,9 @@ import java.util.Set;
 
 import com.group6.app.domain.enumeration.TypeAbonnement;
 
-import com.group6.app.domain.enumeration.Niveau;
-
 import com.group6.app.domain.enumeration.Taille;
+
+import com.group6.app.domain.enumeration.Niveau;
 
 /**
  * A UserProfile.
@@ -54,10 +54,6 @@ public class UserProfile implements Serializable {
     @Column(name = "type_abonnement")
     private TypeAbonnement typeAbonnement;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "niveau")
-    private Niveau niveau;
-
     @Column(name = "materiel_technique_autorise")
     private Boolean materielTechniqueAutorise;
 
@@ -71,6 +67,10 @@ public class UserProfile implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "taille_combinaison")
     private Taille tailleCombinaison;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "niveau")
+    private Niveau niveau;
 
     @OneToMany(mappedBy = "userProfile")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -171,19 +171,6 @@ public class UserProfile implements Serializable {
         this.typeAbonnement = typeAbonnement;
     }
 
-    public Niveau getNiveau() {
-        return niveau;
-    }
-
-    public UserProfile niveau(Niveau niveau) {
-        this.niveau = niveau;
-        return this;
-    }
-
-    public void setNiveau(Niveau niveau) {
-        this.niveau = niveau;
-    }
-
     public Boolean isMaterielTechniqueAutorise() {
         return materielTechniqueAutorise;
     }
@@ -234,6 +221,19 @@ public class UserProfile implements Serializable {
 
     public void setTailleCombinaison(Taille tailleCombinaison) {
         this.tailleCombinaison = tailleCombinaison;
+    }
+
+    public Niveau getNiveau() {
+        return niveau;
+    }
+
+    public UserProfile niveau(Niveau niveau) {
+        this.niveau = niveau;
+        return this;
+    }
+
+    public void setNiveau(Niveau niveau) {
+        this.niveau = niveau;
     }
 
     public Set<Reservation> getReservations() {
@@ -288,11 +288,11 @@ public class UserProfile implements Serializable {
             ", adresse='" + getAdresse() + "'" +
             ", telephone='" + getTelephone() + "'" +
             ", typeAbonnement='" + getTypeAbonnement() + "'" +
-            ", niveau='" + getNiveau() + "'" +
             ", materielTechniqueAutorise='" + isMaterielTechniqueAutorise() + "'" +
             ", remarque='" + getRemarque() + "'" +
             ", tailleHarnais='" + getTailleHarnais() + "'" +
             ", tailleCombinaison='" + getTailleCombinaison() + "'" +
+            ", niveau='" + getNiveau() + "'" +
             "}";
     }
 }

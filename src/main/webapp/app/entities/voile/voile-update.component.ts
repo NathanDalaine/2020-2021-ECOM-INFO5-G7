@@ -32,7 +32,8 @@ export class VoileUpdateComponent implements OnInit {
     deletedBy: [],
     createdAt: [],
     updatedAt: [],
-    deletedAt: []
+    deletedAt: [],
+    niveaurequis: []
   });
 
   constructor(protected voileService: VoileService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -60,7 +61,8 @@ export class VoileUpdateComponent implements OnInit {
       deletedBy: voile.deletedBy,
       createdAt: voile.createdAt != null ? voile.createdAt.format(DATE_TIME_FORMAT) : null,
       updatedAt: voile.updatedAt != null ? voile.updatedAt.format(DATE_TIME_FORMAT) : null,
-      deletedAt: voile.deletedAt != null ? voile.deletedAt.format(DATE_TIME_FORMAT) : null
+      deletedAt: voile.deletedAt != null ? voile.deletedAt.format(DATE_TIME_FORMAT) : null,
+      niveaurequis: voile.niveaurequis
     });
   }
 
@@ -98,7 +100,8 @@ export class VoileUpdateComponent implements OnInit {
       updatedAt:
         this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
       deletedAt:
-        this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined
+        this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
+      niveaurequis: this.editForm.get(['niveaurequis']).value
     };
   }
 

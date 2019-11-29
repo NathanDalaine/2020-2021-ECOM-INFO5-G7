@@ -47,10 +47,10 @@ describe('UserProfile e2e test', () => {
       userProfileUpdatePage.setAdresseInput('adresse'),
       userProfileUpdatePage.setTelephoneInput('telephone'),
       userProfileUpdatePage.typeAbonnementSelectLastOption(),
-      userProfileUpdatePage.niveauSelectLastOption(),
       userProfileUpdatePage.setRemarqueInput('remarque'),
       userProfileUpdatePage.tailleHarnaisSelectLastOption(),
-      userProfileUpdatePage.tailleCombinaisonSelectLastOption()
+      userProfileUpdatePage.tailleCombinaisonSelectLastOption(),
+      userProfileUpdatePage.niveauSelectLastOption()
     ]);
     expect(await userProfileUpdatePage.getDateEcheanceInput()).to.contain(
       '2001-01-01T02:30',

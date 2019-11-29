@@ -16,18 +16,18 @@
       "detail": {
         "title": "User Profile"
       },
-      "dateEcheance": "Date Echeance",
-      "dateNaissance": "Date Naissance",
-      "dateAdhesion": "Date Adhesion",
+      "dateEcheance": "Date d'écheance",
+      "dateNaissance": "Date de naissance",
+      "dateAdhesion": "Date d'adhesion",
       "adresse": "Adresse",
-      "telephone": "Telephone",
-      "typeAbonnement": "Type Abonnement",
+      "telephone": "Téléphone",
+      "typeAbonnement": "Type d'abonnement",
       "niveau": "Niveau",
-      "materielTechniqueAutorise": "Materiel Technique Autorise",
+      "materielTechniqueAutorise": "Matériel Technique Autorisé",
       "remarque": "Remarque",
       "tailleHarnais": "Taille Harnais",
       "tailleCombinaison": "Taille Combinaison",
-      "reservation": "Reservation"
+      "reservation": "Réservation"
     }
   }
 }
