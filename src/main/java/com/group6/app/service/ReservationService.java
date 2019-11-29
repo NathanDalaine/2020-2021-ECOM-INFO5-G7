@@ -11,6 +11,8 @@ import com.group6.app.repository.ReservationRepository;
 import com.group6.app.repository.UserProfileRepository;
 import com.group6.app.security.SecurityUtils;
 import com.group6.app.service.dto.ReservationDTO;
+import com.group6.app.service.dto.ReservationFullDTO;
+import com.group6.app.service.mapper.ReservationFullMapper;
 import com.group6.app.service.mapper.ReservationMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,14 +43,16 @@ public class ReservationService {
     private final CombinaisonRepository combinaisonRepository;
 
     private final ReservationMapper reservationMapper;
+    private final ReservationFullMapper reservationFullMapper;
 
-    public ReservationService(ReservationRepository reservationRepository, CombinaisonRepository combinaisonRepository, HarnaisRepository harnaisRepository, UserProfileRepository userProfileRepository, UserProfileService userProfileService, ReservationMapper reservationMapper) {
+    public ReservationService(ReservationRepository reservationRepository, CombinaisonRepository combinaisonRepository, HarnaisRepository harnaisRepository,ReservationFullMapper reservationFullMapper, UserProfileRepository userProfileRepository, UserProfileService userProfileService, ReservationMapper reservationMapper) {
         this.reservationRepository = reservationRepository;
         this.reservationMapper = reservationMapper;
         this.userProfileService = userProfileService;
         this.userProfileRepository = userProfileRepository;
         this.harnaisRepository = harnaisRepository;
         this.combinaisonRepository = combinaisonRepository;
+        this.reservationFullMapper = reservationFullMapper;
     }
 
     /**
@@ -99,6 +103,19 @@ public class ReservationService {
         log.debug("Request to get all Reservations");
         return reservationRepository.findAll().stream()
             .map(reservationMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    /**
+     * Get all the reservations with all the relationship
+     *
+     * @return the list of entities.
+     */
+    @Transactional(readOnly = true)
+    public List<ReservationFullDTO> findAllFull() {
+        log.debug("Request to get all Reservations");
+        return reservationRepository.findAll().stream()
+            .map(reservationFullMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }
 

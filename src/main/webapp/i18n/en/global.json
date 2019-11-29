@@ -6,6 +6,12 @@
       "home": "Home",
       "reservationList": "Reservation List",
       "materialList": "Material List",
+      "aboutToReserve": "You are about to reserve ",
+      "1combinaison": "a wetsuit",
+      "1voile": "A sail ",
+      "1planche": "A board ",
+      "1harnais": "A harness",
+      "doYouConfirm" : "D you confirm?",
       "renduMateriel": "Material Rendering",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
@@ -50,9 +56,29 @@
       "newpassword.label": "New password",
       "newpassword.placeholder": "New password",
       "confirmpassword.label": "New password confirmation",
-      "confirmpassword.placeholder": "Confirm the new password",
+      "confirmpassword.placeholder": "New password confirmation",
       "email.label": "Email",
-      "email.placeholder": "Your email"
+      "email.placeholder": "Your email",
+      "taillecombinaison.label": "Wetsuit size",
+      "taillecombinaison.placeholder": "Choose the wetsuit size",
+      "tailleharnais.label": "Harness size",
+      "tailleharnais.placeholder": "Choose the harness size",
+      "telephone.label": "Phone number",
+      "telephone.placeholder": "Phone",
+      "email.label": "Email",
+      "email.placeholder": "Email",
+      "firstname.label": "Firstname",
+      "lastname.label": "Name",
+      "activated.label": "Activate",
+      "address.label": "Address",
+      "remark.label": "Remark",
+      "subscription.label": "Subscription",
+      "subscription.placeholder": "Select the subscription",
+      "level.label": "Level",
+      "role.label": "Role",
+      "level.placeholder": "Select the level",
+      "technicalMaterialAutorization.label": "Technical material authorization",
+      "birthday.label": "Birthday"
     },
     "messages": {
       "info": {
@@ -86,6 +112,22 @@
           "invalid": "Your email is invalid.",
           "minlength": "Your email is required to be at least 5 characters.",
           "maxlength": "Your email cannot be longer than 50 characters."
+        },
+        "wetsuit": {
+          "required": "Wetsuit size required"
+        },
+        "harness": {
+          "required": "Harness size required"
+        },
+        "level": {
+          "required": "Level required"
+        },
+        "typeAbonnement": {
+          "required": "Subscription required"
+        },
+        "phone": {
+          "required": "Phone number required",
+          "invalid": "Phone number not valid"
         }
       }
     },
