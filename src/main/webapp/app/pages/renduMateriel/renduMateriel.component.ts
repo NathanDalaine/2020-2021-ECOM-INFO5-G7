@@ -8,6 +8,8 @@ import { ReservationService } from 'app/entities/reservation/reservation.service
 import * as moment from 'moment';
 import { Observable } from 'rxjs';
 import { IUserProfile } from 'app/shared/model/user-profile.model';
+import { IReservationFull } from 'app/shared/model/reservationFull.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'jhi-rendumateriel',
@@ -16,7 +18,7 @@ import { IUserProfile } from 'app/shared/model/user-profile.model';
 })
 export class RenduMaterielComponent implements OnInit, OnDestroy {
   reservations: IReservation[];
-  reservation: IReservation;
+  reservation: IReservationFull;
   reservationNonRendu: IReservation[];
   currentAccount: any;
   private success: boolean;
@@ -26,27 +28,18 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
     protected reservationService: ReservationService,
     protected jhiAlertService: JhiAlertService,
     protected eventManager: JhiEventManager,
-    protected accountService: AccountService
+    protected accountService: AccountService,
+    protected activatedRoute: ActivatedRoute
   ) {}
 
   loadAll() {
-    this.reservationService
-      .find(1)
-      .pipe(
-        filter((res: HttpResponse<IReservation>) => res.ok),
-        map((res: HttpResponse<IReservation>) => res.body)
-      )
-      .subscribe(
-        (res: IReservation) => {
-          this.reservation = res;
-        },
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
+    this.activatedRoute.data.subscribe(({ reservation }) => {
+      this.reservation = reservation;
+    });
   }
 
   ngOnInit() {
     this.loadAll();
-    this.getReservationNonRendu();
     this.accountService.identity().then(account => {
       this.currentAccount = account;
     });
@@ -63,14 +56,6 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
   confirm() {
     this.reservation.dateRendu = moment();
     this.subscribeToSaveResponse(this.reservationService.update(this.reservation));
-  }
-
-  getReservationNonRendu() {
-    this.reservations.forEach(res => {
-      if (res.dateRendu == null) {
-        this.reservationNonRendu.push(res);
-      }
-    });
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IReservation>>) {

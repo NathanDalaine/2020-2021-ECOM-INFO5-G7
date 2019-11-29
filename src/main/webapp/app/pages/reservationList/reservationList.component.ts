@@ -4,7 +4,7 @@ import { JhiAlertService } from 'ng-jhipster';
 import { ReservationService } from '../../entities/reservation/reservation.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
-import { IReservation } from 'app/shared/model/reservation.model';
+import { IReservationFull } from 'app/shared/model/reservationFull.model';
 import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { UserProfileService } from 'app/entities/user-profile/user-profile.servi
 })
 export class ReservationListComponent implements OnInit, OnDestroy {
   currentAccount: any;
-  reservations: IReservation[];
+  reservations: IReservationFull[];
 
   constructor(
     protected accountService: AccountService,
@@ -32,20 +32,20 @@ export class ReservationListComponent implements OnInit, OnDestroy {
 
   loadAll() {
     this.reservationService
-      .query()
+      .getAllFullReservation()
       .pipe(
-        filter((res: HttpResponse<IReservation[]>) => res.ok),
-        map((res: HttpResponse<IReservation[]>) => res.body)
+        filter((res: HttpResponse<IReservationFull[]>) => res.ok),
+        map((res: HttpResponse<IReservationFull[]>) => res.body)
       )
       .subscribe(
-        (res: IReservation[]) => {
+        (res: IReservationFull[]) => {
           this.reservations = res;
         },
         (res: HttpErrorResponse) => this.onError(res.message)
       );
   }
 
-  trackDate(index: number, item: IReservation) {
+  trackDate(index: number, item: IReservationFull) {
     return item.dateReservation;
   }
 
