@@ -1,5 +1,6 @@
 import { Moment } from 'moment';
 import { IReservation } from 'app/shared/model/reservation.model';
+import { Niveau } from 'app/shared/model/enumerations/niveau.model';
 
 export interface IVoile {
   id?: number;
@@ -17,6 +18,7 @@ export interface IVoile {
   createdAt?: Moment;
   updatedAt?: Moment;
   deletedAt?: Moment;
+  niveaurequis?: Niveau;
   reservations?: IReservation[];
 }
 
@@ -37,6 +39,7 @@ export class Voile implements IVoile {
     public createdAt?: Moment,
     public updatedAt?: Moment,
     public deletedAt?: Moment,
+    public niveaurequis?: Niveau,
     public reservations?: IReservation[]
   ) {
     this.gree = this.gree || false;

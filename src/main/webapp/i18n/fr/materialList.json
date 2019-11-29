@@ -17,19 +17,19 @@
         "title": "Planche"
       },
       "marque": "Marque",
-      "modele": "Modele",
-      "numero": "Numero",
+      "modele": "Modèle",
+      "numero": "Numéro",
       "localisation": "Localisation",
-      "etat": "Etat",
-      "libelle": "Libelle",
+      "etat": "État",
+      "libelle": "Libellé",
       "volume": "Volume",
-      "createdAt": "Created At",
-      "createdBy": "Created By",
-      "updatedAt": "Updated At",
-      "updatedBy": "Updated By",
-      "deletedAt": "Deleted At",
-      "deletedBy": "Deleted By",
-      "reservation": "Reservation"
+      "createdAt": "Créé let",
+      "createdBy": "Créé par",
+      "updatedAt": "Mis à jour le",
+      "updatedBy": "Mis à jour par",
+      "deletedAt": "Supprimé le",
+      "deletedBy": "Supprimé par",
+      "reservation": "Réservation"
     }
   }
 }

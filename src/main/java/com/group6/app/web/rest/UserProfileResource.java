@@ -1,10 +1,14 @@
 package com.group6.app.web.rest;
 
+import com.group6.app.repository.UserRepository;
 import com.group6.app.service.UserProfileService;
+import com.group6.app.service.dto.ReservationDTO;
 import com.group6.app.service.dto.UserProfileVMDTO;
 import com.group6.app.web.rest.errors.BadRequestAlertException;
 import com.group6.app.service.dto.UserProfileDTO;
 
+import com.group6.app.web.rest.errors.EmailAlreadyUsedException;
+import com.group6.app.web.rest.errors.LoginAlreadyUsedException;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -34,9 +38,11 @@ public class UserProfileResource {
     private String applicationName;
 
     private final UserProfileService userProfileService;
+    private final UserRepository userRepository;
 
-    public UserProfileResource(UserProfileService userProfileService) {
+    public UserProfileResource(UserProfileService userProfileService,UserRepository userRepository) {
         this.userProfileService = userProfileService;
+        this.userRepository = userRepository;
     }
 
     /**
@@ -48,14 +54,16 @@ public class UserProfileResource {
      */
     @PostMapping("/user-profiles")
     public ResponseEntity<UserProfileDTO> createUserProfile(@RequestBody UserProfileVMDTO userProfileDTO) throws URISyntaxException {
-        log.debug("REST request to save UserProfile : {}", userProfileDTO);
         if (userProfileDTO.getId() != null) {
-            throw new BadRequestAlertException("A new userProfile cannot already have an ID", ENTITY_NAME, "idexists");
+            throw new BadRequestAlertException("A new user cannot already have an ID", "userManagement", "idexists");
+            // Lowercase the user login before comparing with database
+        } else {
+            log.debug("REST request to save UserProfile : {}", userProfileDTO);
+            UserProfileDTO result = userProfileService.register(userProfileDTO, userProfileDTO.getPassword());
+            return ResponseEntity.created(new URI("/api/user-profiles/" + result.getId()))
+                .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+                .body(result);
         }
-        UserProfileDTO result = userProfileService.register(userProfileDTO,userProfileDTO.getPassword());
-        return ResponseEntity.created(new URI("/api/user-profiles/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
-            .body(result);
     }
 
     /**
@@ -89,6 +97,12 @@ public class UserProfileResource {
     public List<UserProfileDTO> getAllUserProfiles() {
         log.debug("REST request to get all UserProfiles");
         return userProfileService.findAll();
+    }
+
+    @GetMapping("/user-profiles/reservations")
+    public List<ReservationDTO> getReservationFromCurrentUser() {
+        log.debug("REST request to get all UserProfiles");
+        return userProfileService.findReservationFromCurrentUser();
     }
 
     /**

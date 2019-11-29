@@ -2,11 +2,7 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
         <h1 jhiTranslate="register.title">Registration</h1>
-
-        <div class="alert alert-success" *ngIf="success && (registerForm.get('activated').value == false)" jhiTranslate="register.messages.success">
-            <strong>Registration saved!</strong> Please check your email for confirmation.
-        </div>
-        <div class="alert alert-success" *ngIf="success && (registerForm.get('activated').value == true)" jhiTranslate="register.messages.successactivate">
+        <div class="alert alert-success" *ngIf="success" jhiTranslate="register.messages.successactivate">
             <strong>Registration saved!</strong>
         </div>
 
@@ -71,7 +67,7 @@
                 <input type="text" id="adresse" name="adresse"  class="form-control" formControlName="adresse">
             </div>
             <div class="form-group">
-                <label class="form-control-label" jhiTranslate="global.form.address.label">Birth date</label>
+                <label class="form-control-label" jhiTranslate="global.form.birthday.label">Birth date</label>
                 <input type="date" id="start" name="trip-start"
                        value="2000-00-00" formControlName="dateNaissance" class="form-control">
             </div>
@@ -140,7 +136,7 @@
             <div class="form-group">
                 <label class="form-control-label" jhiTranslate="global.form.taillecombinaison.label">Wetsuit size</label>
                 <select class="form-control" id="tailleCombinaison" name="tailleCombinaison" formControlName="tailleCombinaison" required>
-                    <option value="">Sélectionner une taille</option>
+                    <option jhiTranslate="global.form.taillecombinaison.placeholder" value="">Sélectionner une taille</option>
                     <option *ngFor="let t of tailles" [value]="t.value">{{t.label}}</option>
                 </select>
                 <div *ngIf="registerForm.get('tailleCombinaison').invalid && (registerForm.get('tailleCombinaison').dirty || registerForm.get('tailleCombinaison').touched)">
@@ -153,7 +149,7 @@
             <div class="form-group">
                 <label class="form-control-label" jhiTranslate="global.form.tailleharnais.label">Harness size</label>
                 <select class="form-control" id="tailleHarnais" name="tailleHarnais" formControlName="tailleHarnais" required>
-                    <option value="">Sélectionner une taille</option>
+                    <option jhiTranslate="global.form.tailleharnais.placeholder" value="">Sélectionner une taille</option>
                     <option *ngFor="let t of tailles" [value]="t.value">{{t.label}}</option>
                 </select>
                 <div *ngIf="registerForm.get('tailleHarnais').invalid && (registerForm.get('tailleHarnais').dirty || registerForm.get('tailleHarnais').touched)">
@@ -204,22 +200,10 @@
                 </div>
             </div>
             <div class="form-group">
+                <input style="display: inline; width: auto; height: auto" type="checkbox" id="materielTechniqueAutorise" name="materielTechniqueAutorise"  class="form-control" formControlName="materielTechniqueAutorise">
                 <label class="form-control-label" jhiTranslate="global.form.technicalMaterialAutorization.label">Technical material authorized</label>
-                <input type="checkbox" id="materielTechniqueAutorise" name="materielTechniqueAutorise"  class="form-control" formControlName="materielTechniqueAutorise">
-            </div>
-            <div class="form-group">
-                <label class="form-control-label" jhiTranslate="global.form.activated.label">Activated</label>
-                <input type="checkbox" id="activated" name="activated"  class="form-control" formControlName="activated">
-            </div>
-            <div class="form-group">
-                <label class="form-control-label" jhiTranslate="global.form.remark.label">Remark</label>
-                <input type="text" id="remarque" name="remarque"  class="form-control" formControlName="remarque">
             </div>
             <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary" jhiTranslate="register.form.button">Register</button>
         </form>
-        <div class="alert alert-warning">
-            <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
-            <a class="alert-link" (click)="openLogin()" jhiTranslate="global.messages.info.authenticated.link">sign in</a><span jhiTranslate="global.messages.info.authenticated.suffix">, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>
-        </div>
     </div>
 </div>

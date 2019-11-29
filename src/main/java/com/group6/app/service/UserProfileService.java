@@ -7,7 +7,10 @@ import com.group6.app.repository.AuthorityRepository;
 import com.group6.app.repository.UserProfileRepository;
 import com.group6.app.repository.UserRepository;
 import com.group6.app.security.AuthoritiesConstants;
+import com.group6.app.security.SecurityUtils;
+import com.group6.app.service.dto.ReservationDTO;
 import com.group6.app.service.dto.UserProfileDTO;
+import com.group6.app.service.mapper.ReservationMapper;
 import com.group6.app.service.mapper.UserProfileMapper;
 import com.group6.app.service.util.RandomUtil;
 import org.slf4j.Logger;
@@ -34,6 +37,7 @@ public class UserProfileService {
     private final UserProfileRepository userProfileRepository;
 
     private final UserProfileMapper userProfileMapper;
+    private final ReservationMapper reservationMapper;
 
     private final UserRepository userRepository;
 
@@ -42,13 +46,14 @@ public class UserProfileService {
     private final PasswordEncoder passwordEncoder;
     private final MailService mailService;
 
-    public UserProfileService(UserRepository userRepository,PasswordEncoder passwordEncoder,MailService mailService,UserProfileRepository userProfileRepository,AuthorityRepository authorityRepository, UserProfileMapper userProfileMapper) {
+    public UserProfileService(UserRepository userRepository, PasswordEncoder passwordEncoder, ReservationMapper reservationMapper, MailService mailService, UserProfileRepository userProfileRepository, AuthorityRepository authorityRepository, UserProfileMapper userProfileMapper) {
         this.userProfileRepository = userProfileRepository;
         this.userProfileMapper = userProfileMapper;
         this.userRepository = userRepository;
         this.authorityRepository = authorityRepository;
         this.passwordEncoder = passwordEncoder;
         this.mailService = mailService;
+        this.reservationMapper = reservationMapper;
     }
 
     /**
@@ -81,7 +86,7 @@ public class UserProfileService {
         // newUser.setImageUrl(userDTO.getImageUrl());
         //newUser.setLangKey(userDTO.getLangKey());
         // new user is not active
-        newUser.setActivated(false);
+        newUser.setActivated(true);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         Set<Authority> authorities = new HashSet<>();
@@ -90,18 +95,18 @@ public class UserProfileService {
 
         log.debug("Request to save UserProfile : {}", userProfileDTO);
         UserProfile userProfile = userProfileMapper.toEntity(userProfileDTO);
-        if(userProfile.getDateAdhesion() == null){
+        if (userProfile.getDateAdhesion() == null) {
             userProfile.setDateAdhesion(Instant.now());
         }
-        if(userProfile.getDateEcheance() == null){
-            userProfile.setDateEcheance(Instant.now().plus(365,ChronoUnit.DAYS));
+        if (userProfile.getDateEcheance() == null) {
+            userProfile.setDateEcheance(Instant.now().plus(365, ChronoUnit.DAYS));
         }
         userProfile.setUser(newUser);
         userProfile = userProfileRepository.save(userProfile);
         return userProfileMapper.toDto(userProfile);
     }
 
-    public UserProfileDTO register(UserProfileDTO userProfileDTO,String password) {
+    public UserProfileDTO register(UserProfileDTO userProfileDTO, String password) {
         userRepository.findOneByLogin(userProfileDTO.getLogin().toLowerCase()).ifPresent(existingUser -> {
             boolean removed = false; //removeNonActivatedUser(existingUser);
             if (!removed) {
@@ -125,7 +130,7 @@ public class UserProfileService {
         // newUser.setImageUrl(userDTO.getImageUrl());
         newUser.setLangKey("fr");
         // new user is not active
-        newUser.setActivated(userProfileDTO.getActivated());
+        newUser.setActivated(true);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         Set<Authority> authorities = new HashSet<>();
@@ -134,15 +139,15 @@ public class UserProfileService {
 
         log.debug("Request to save UserProfile : {}", userProfileDTO);
         UserProfile userProfile = userProfileMapper.toEntity(userProfileDTO);
-        if(userProfile.getDateAdhesion() == null){
+        if (userProfile.getDateAdhesion() == null) {
             userProfile.setDateAdhesion(Instant.now());
         }
-        if(userProfile.getDateEcheance() == null){
+        if (userProfile.getDateEcheance() == null) {
             userProfile.setDateEcheance(Instant.now().plus(365, ChronoUnit.DAYS));
         }
         userProfile.setUser(newUser);
         userProfile = userProfileRepository.save(userProfile);
-        if(!userProfileDTO.getActivated()){
+        if (!userProfileDTO.getActivated()) {
             mailService.sendActivationEmail(userProfile.getUser());
         }
         return userProfileMapper.toDto(userProfile);
@@ -161,6 +166,17 @@ public class UserProfileService {
             .collect(Collectors.toCollection(LinkedList::new));
     }
 
+    @Transactional(readOnly = true)
+    public List<ReservationDTO> findReservationFromCurrentUser() {
+        log.debug("Request to get all UserProfiles");
+        UserProfile currentUser = userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get());
+        if (currentUser == null) {
+            return null;
+        }
+        return currentUser.getReservations().stream()
+            .map(reservationMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
 
 
     /**

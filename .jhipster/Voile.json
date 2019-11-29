@@ -65,6 +65,11 @@
         {
             "fieldName": "deletedAt",
             "fieldType": "Instant"
+        },
+        {
+            "fieldName": "niveaurequis",
+            "fieldType": "Niveau",
+            "fieldValues": "DEBUTANT,DEBUTANTPLUS,FUNBOARD,PERF"
         }
     ],
     "changelogDate": "20191015084206",

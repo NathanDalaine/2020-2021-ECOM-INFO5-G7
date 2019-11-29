@@ -1,9 +1,9 @@
 <div class="row">
     <br/>
-    <div class="alert alert-warning" *ngIf="reservations?.length === 0">
-        <span jhiTranslate="ecomgucvoileApp.reservation.home.notFound">No reservations found</span>
+    <div class="alert alert-warning" *ngIf="(reservations | value)?.length === 0">
+        <span jhiTranslate="ecomgucvoileApp.reservation.home.notFound">There is no reservation in progress.</span>
     </div>
-        <div class="table-responsive" *ngIf="reservations?.length > 0">
+        <div class="table-responsive" *ngIf="(reservations | value)?.length > 0">
             <table class="table table-striped" aria-describedby="page-heading">
                 <thead>
                 <tr>
@@ -21,12 +21,11 @@
                         <td>{{reservation.dateReservation | date:'medium'}}</td>
                         <td><a *ngIf="reservation.userProfileId" [routerLink]="['/user-profile', reservation.userProfileId, 'view' ]">{{reservation.userProfileId}}</a></td>
                         <td><a *ngIf="reservation.voileId" [routerLink]="['/voile', reservation.voileId, 'view' ]">{{reservation.voileId}}</a></td>
-                        <td><a  *ngIf="reservation.plancheId" [routerLink]="['/planche', reservation.plancheId, 'view' ]">{{reservation.plancheId}}</a></td>
+                        <td><a *ngIf="reservation.plancheId" [routerLink]="['/planche', reservation.plancheId, 'view' ]">{{reservation.plancheId}}</a></td>
                         <td>{{reservation.combinaisonId}}</td>
                         <td>{{reservation.harnaisId}}</td>
                 </tr>
                 </tbody>
             </table>
-
     </div>
 </div>

@@ -2,7 +2,7 @@
   "ecomgucvoileApp": {
     "renduMateriel": {
       "home": {
-        "title": "Rendu Matériel",
+        "title": "Rendu du matériel",
         "createLabel": "Create a new Planche",
         "createOrEditLabel": "Create or edit a Planche",
         "notFound": "No Planches found"
