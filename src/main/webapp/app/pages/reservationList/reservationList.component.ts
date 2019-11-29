@@ -5,7 +5,7 @@ import { ReservationService } from '../../entities/reservation/reservation.servi
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
 import { IReservation } from 'app/shared/model/reservation.model';
-import {UserProfileService} from "app/entities/user-profile/user-profile.service";
+import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
 
 @Component({
   selector: 'jhi-reservationlist',
@@ -14,12 +14,11 @@ import {UserProfileService} from "app/entities/user-profile/user-profile.service
 })
 export class ReservationListComponent implements OnInit, OnDestroy {
   currentAccount: any;
-    reservations: IReservation[];
-
+  reservations: IReservation[];
 
   constructor(
     protected accountService: AccountService,
-    protected userProfileService : UserProfileService,
+    protected userProfileService: UserProfileService,
     protected reservationService: ReservationService,
     protected jhiAlertService: JhiAlertService
   ) {}
@@ -32,7 +31,8 @@ export class ReservationListComponent implements OnInit, OnDestroy {
   }
 
   loadAll() {
-    this.userProfileService.findReservations()
+    this.reservationService
+      .query()
       .pipe(
         filter((res: HttpResponse<IReservation[]>) => res.ok),
         map((res: HttpResponse<IReservation[]>) => res.body)
@@ -46,14 +46,12 @@ export class ReservationListComponent implements OnInit, OnDestroy {
   }
 
   trackDate(index: number, item: IReservation) {
-      return item.dateReservation;
+    return item.dateReservation;
   }
 
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
   }
 
-  ngOnDestroy() {
-  }
-
+  ngOnDestroy() {}
 }
