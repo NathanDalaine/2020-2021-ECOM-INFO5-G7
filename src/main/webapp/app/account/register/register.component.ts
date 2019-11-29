@@ -10,6 +10,7 @@ import { Taille } from 'app/shared/model/enumerations/taille.model';
 import { SelectItem } from 'primeng/api';
 import { TypeAbonnement } from 'app/shared/model/enumerations/type-abonnement.model';
 import { Niveau } from 'app/shared/model/enumerations/niveau.model';
+import { IUserProfile } from 'app/shared/model/user-profile.model';
 import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
 import { ADMINISTRATEUR, GESTIONNAIRE, MEMBRE } from 'app/shared/constants/roles.constants';
 
@@ -45,7 +46,6 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     lastName: [''],
     dateNaissance: [],
     adresse: [''],
-    activated: [true],
     materielTechniqueAutorise: [false]
   });
 

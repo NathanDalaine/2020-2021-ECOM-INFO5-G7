@@ -39,10 +39,25 @@
                 <button type="button"
                     (click)="confirm()"
                     class="btn btn-info">
-                    <span jhiTranslate="ecomgucvoileApp.renduMateriel.confirmation">Rendre le materiel séléctionné</span>
-                </button>
-                 </dl> 
-        </div>
+                    <span jhiTranslate="ecomgucvoileApp.renduMateriel.confirmation"> Back</span>
+            </button>
+
+            </dl>
+            <div>
+                <input type="checkbox" name="damage" id="damage"
+                       unchecked>
+                <label for="damage" jhiTranslate="ecomgucvoileApp.renduMateriel.damage" onchange="checkboxdamage()">Le materiel rendu est endommagé.</label>
+              </div>
+
+            <br>
+            <br>
+            <br>
+
+            <p><label for="descriptiondamage" jhiTranslate="ecomgucvoileApp.renduMateriel.descriptiondamagetext" >Description du dommage :</label></p>
+            <p><textarea name="descriptiondamage" cols="40" rows="5" ></textarea>  </p>
+            <p><label for="circonstancedamage" jhiTranslate="ecomgucvoileApp.renduMateriel.circonstancedamagetext">Circonstances du dommage :</label></p>
+            <p><textarea name="circonstancedamage" cols="40" rows="5" ></textarea></p>
+
         <div></div>
     </div>
 </div>
