@@ -28,8 +28,8 @@ export class ReservationComponent implements OnInit, OnDestroy {
   ) {}
 
   loadAll() {
-    this.userProfileService
-      .findReservations()
+    this.reservationService
+      .query()
       .pipe(
         filter((res: HttpResponse<IReservation[]>) => res.ok),
         map((res: HttpResponse<IReservation[]>) => res.body)

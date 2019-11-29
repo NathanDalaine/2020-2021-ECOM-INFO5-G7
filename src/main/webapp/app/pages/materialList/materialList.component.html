@@ -2,6 +2,8 @@
     <strong>Registration saved!</strong>reservationSuccess
 </div>
 
+<jhi-alert-error></jhi-alert-error>
+
 <form name="form" role="form" (ngSubmit)="openConfirmationDialog()" [formGroup]="registerForm" *ngIf="!success">
 
     <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="2%">

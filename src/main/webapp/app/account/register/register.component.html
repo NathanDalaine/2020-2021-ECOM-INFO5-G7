@@ -71,7 +71,7 @@
                 <input type="text" id="adresse" name="adresse"  class="form-control" formControlName="adresse">
             </div>
             <div class="form-group">
-                <label class="form-control-label" jhiTranslate="global.form.address.label">Birth date</label>
+                <label class="form-control-label" jhiTranslate="global.form.birthday.label">Birth date</label>
                 <input type="date" id="start" name="trip-start"
                        value="2000-00-00" formControlName="dateNaissance" class="form-control">
             </div>
@@ -140,7 +140,7 @@
             <div class="form-group">
                 <label class="form-control-label" jhiTranslate="global.form.taillecombinaison.label">Wetsuit size</label>
                 <select class="form-control" id="tailleCombinaison" name="tailleCombinaison" formControlName="tailleCombinaison" required>
-                    <option value="">Sélectionner une taille</option>
+                    <option jhiTranslate="global.form.taillecombinaison.placeholder" value="">Sélectionner une taille</option>
                     <option *ngFor="let t of tailles" [value]="t.value">{{t.label}}</option>
                 </select>
                 <div *ngIf="registerForm.get('tailleCombinaison').invalid && (registerForm.get('tailleCombinaison').dirty || registerForm.get('tailleCombinaison').touched)">
@@ -153,7 +153,7 @@
             <div class="form-group">
                 <label class="form-control-label" jhiTranslate="global.form.tailleharnais.label">Harness size</label>
                 <select class="form-control" id="tailleHarnais" name="tailleHarnais" formControlName="tailleHarnais" required>
-                    <option value="">Sélectionner une taille</option>
+                    <option jhiTranslate="global.form.tailleharnais.placeholder" value="">Sélectionner une taille</option>
                     <option *ngFor="let t of tailles" [value]="t.value">{{t.label}}</option>
                 </select>
                 <div *ngIf="registerForm.get('tailleHarnais').invalid && (registerForm.get('tailleHarnais').dirty || registerForm.get('tailleHarnais').touched)">
