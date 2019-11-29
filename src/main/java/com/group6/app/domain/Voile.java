@@ -9,6 +9,8 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.group6.app.domain.enumeration.Niveau;
+
 /**
  * A Voile.
  */
@@ -65,6 +67,10 @@ public class Voile implements Serializable {
 
     @Column(name = "deleted_at")
     private Instant deletedAt;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "niveaurequis")
+    private Niveau niveaurequis;
 
     @OneToMany(mappedBy = "voile")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -261,6 +267,19 @@ public class Voile implements Serializable {
         this.deletedAt = deletedAt;
     }
 
+    public Niveau getNiveaurequis() {
+        return niveaurequis;
+    }
+
+    public Voile niveaurequis(Niveau niveaurequis) {
+        this.niveaurequis = niveaurequis;
+        return this;
+    }
+
+    public void setNiveaurequis(Niveau niveaurequis) {
+        this.niveaurequis = niveaurequis;
+    }
+
     public Set<Reservation> getReservations() {
         return reservations;
     }
@@ -321,6 +340,7 @@ public class Voile implements Serializable {
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
+            ", niveaurequis='" + getNiveaurequis() + "'" +
             "}";
     }
 }

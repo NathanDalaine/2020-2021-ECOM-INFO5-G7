@@ -36,11 +36,6 @@
             "fieldValues": "JOURNALIER,ETUDIANT,ADULTE,FAMILLE"
         },
         {
-            "fieldName": "niveau",
-            "fieldType": "Niveau",
-            "fieldValues": "DEBUTANT,DUBUTANTPLUS,FUNBOARD,PERF"
-        },
-        {
             "fieldName": "materielTechniqueAutorise",
             "fieldType": "Boolean"
         },
@@ -57,6 +52,11 @@
             "fieldName": "tailleCombinaison",
             "fieldType": "Taille",
             "fieldValues": "S,M,L,XL"
+        },
+        {
+            "fieldName": "niveau",
+            "fieldType": "Niveau",
+            "fieldValues": "DEBUTANT,DEBUTANTPLUS,FUNBOARD,PERF"
         }
     ],
     "changelogDate": "20191015084208",

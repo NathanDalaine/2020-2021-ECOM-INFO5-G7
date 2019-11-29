@@ -36,8 +36,6 @@ public class UserProfileDTO implements Serializable {
 
     private TypeAbonnement typeAbonnement;
 
-    private Niveau niveau;
-
     private Boolean materielTechniqueAutorise;
 
     private String remarque;
@@ -45,6 +43,8 @@ public class UserProfileDTO implements Serializable {
     private Taille tailleHarnais;
 
     private Taille tailleCombinaison;
+
+    private Niveau niveau;
 
 
     public Long getId() {
@@ -142,14 +142,6 @@ public class UserProfileDTO implements Serializable {
         this.typeAbonnement = typeAbonnement;
     }
 
-    public Niveau getNiveau() {
-        return niveau;
-    }
-
-    public void setNiveau(Niveau niveau) {
-        this.niveau = niveau;
-    }
-
     public Boolean isMaterielTechniqueAutorise() {
         return materielTechniqueAutorise;
     }
@@ -180,6 +172,14 @@ public class UserProfileDTO implements Serializable {
 
     public void setTailleCombinaison(Taille tailleCombinaison) {
         this.tailleCombinaison = tailleCombinaison;
+    }
+
+    public Niveau getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(Niveau niveau) {
+        this.niveau = niveau;
     }
 
     @Override
@@ -213,11 +213,11 @@ public class UserProfileDTO implements Serializable {
             ", adresse='" + getAdresse() + "'" +
             ", telephone='" + getTelephone() + "'" +
             ", typeAbonnement='" + getTypeAbonnement() + "'" +
-            ", niveau='" + getNiveau() + "'" +
             ", materielTechniqueAutorise='" + isMaterielTechniqueAutorise() + "'" +
             ", remarque='" + getRemarque() + "'" +
             ", tailleHarnais='" + getTailleHarnais() + "'" +
             ", tailleCombinaison='" + getTailleCombinaison() + "'" +
+            ", niveau='" + getNiveau() + "'" +
             "}";
     }
 }

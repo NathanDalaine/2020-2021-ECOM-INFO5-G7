@@ -29,6 +29,7 @@
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
+      "niveaurequis": "Niveaurequis",
       "reservation": "Reservation"
     }
   }
