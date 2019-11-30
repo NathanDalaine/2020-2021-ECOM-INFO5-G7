@@ -57,7 +57,7 @@ export class ReservationService {
     const options = createRequestOption(req);
     return this.http
       .get<IReservationFull[]>(this.resourceUrl+"full", { params: options, observe: 'response' })
-      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+      .pipe(map((res: EntityArrayResponseType) => this.convertFullDateArrayFromServer(res)));
   }
 
   delete(id: number): Observable<HttpResponse<any>> {
@@ -76,6 +76,19 @@ export class ReservationService {
     return copy;
   }
 
+  protected convertFullDateFromClient(reservation: IReservationFull): IReservationFull {
+    const copy: IReservationFull = Object.assign({}, reservation, {
+      dateReservation:
+        reservation.dateReservation != null && reservation.dateReservation.isValid() ? reservation.dateReservation.toJSON() : null,
+      dateRendu: reservation.dateRendu != null && reservation.dateRendu.isValid() ? reservation.dateRendu.toJSON() : null,
+      createdAt: reservation.createdAt != null && reservation.createdAt.isValid() ? reservation.createdAt.toJSON() : null,
+      updatedAt: reservation.updatedAt != null && reservation.updatedAt.isValid() ? reservation.updatedAt.toJSON() : null,
+      deletedAt: reservation.deletedAt != null && reservation.deletedAt.isValid() ? reservation.deletedAt.toJSON() : null
+    });
+    return copy;
+  }
+
+
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
       res.body.dateReservation = res.body.dateReservation != null ? moment(res.body.dateReservation) : null;
@@ -87,9 +100,24 @@ export class ReservationService {
     return res;
   }
 
+
   public convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
       res.body.forEach((reservation: IReservation) => {
+        reservation.dateReservation = reservation.dateReservation != null ? moment(reservation.dateReservation) : null;
+        reservation.dateRendu = reservation.dateRendu != null ? moment(reservation.dateRendu) : null;
+        reservation.createdAt = reservation.createdAt != null ? moment(reservation.createdAt) : null;
+        reservation.updatedAt = reservation.updatedAt != null ? moment(reservation.updatedAt) : null;
+        reservation.deletedAt = reservation.deletedAt != null ? moment(reservation.deletedAt) : null;
+      });
+    }
+    return res;
+  }
+
+
+  public convertFullDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
+    if (res.body) {
+      res.body.forEach((reservation: IReservationFull) => {
         reservation.dateReservation = reservation.dateReservation != null ? moment(reservation.dateReservation) : null;
         reservation.dateRendu = reservation.dateRendu != null ? moment(reservation.dateRendu) : null;
         reservation.createdAt = reservation.createdAt != null ? moment(reservation.createdAt) : null;
