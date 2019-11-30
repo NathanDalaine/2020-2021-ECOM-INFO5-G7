@@ -63,13 +63,13 @@ public class UserProfileService {
      * @return the persisted entity.
      */
     public UserProfileDTO save(UserProfileDTO userProfileDTO) {
-        userRepository.findOneByLogin(userProfileDTO.getLogin().toLowerCase()).ifPresent(existingUser -> {
+        userRepository.findOneByLogin(userProfileDTO.getUser().getLogin().toLowerCase()).ifPresent(existingUser -> {
             boolean removed = false; //removeNonActivatedUser(existingUser);
             if (!removed) {
                 throw new UsernameAlreadyUsedException();
             }
         });
-        userRepository.findOneByEmailIgnoreCase(userProfileDTO.getEmail()).ifPresent(existingUser -> {
+        userRepository.findOneByEmailIgnoreCase(userProfileDTO.getUser().getEmail()).ifPresent(existingUser -> {
             boolean removed = false; // removeNonActivatedUser(existingUser);
             if (!removed) {
                 throw new EmailAlreadyUsedException();
@@ -77,12 +77,12 @@ public class UserProfileService {
         });
         User newUser = new User();
         // String encryptedPassword = passwordEncoder.encode(userProfileDTO.getPassword());
-        newUser.setLogin(userProfileDTO.getLogin().toLowerCase());
+        newUser.setLogin(userProfileDTO.getUser().getLogin().toLowerCase());
         // new user gets initially a generated password
         //  newUser.setPassword(encryptedPassword);
-        newUser.setFirstName(userProfileDTO.getFirstName());
-        newUser.setLastName(userProfileDTO.getLastName());
-        newUser.setEmail(userProfileDTO.getEmail().toLowerCase());
+        newUser.setFirstName(userProfileDTO.getUser().getFirstName());
+        newUser.setLastName(userProfileDTO.getUser().getLastName());
+        newUser.setEmail(userProfileDTO.getUser().getEmail().toLowerCase());
         // newUser.setImageUrl(userDTO.getImageUrl());
         //newUser.setLangKey(userDTO.getLangKey());
         // new user is not active
@@ -107,13 +107,13 @@ public class UserProfileService {
     }
 
     public UserProfileDTO register(UserProfileDTO userProfileDTO, String password) {
-        userRepository.findOneByLogin(userProfileDTO.getLogin().toLowerCase()).ifPresent(existingUser -> {
+        userRepository.findOneByLogin(userProfileDTO.getUser().getLogin().toLowerCase()).ifPresent(existingUser -> {
             boolean removed = false; //removeNonActivatedUser(existingUser);
             if (!removed) {
                 throw new UsernameAlreadyUsedException();
             }
         });
-        userRepository.findOneByEmailIgnoreCase(userProfileDTO.getEmail()).ifPresent(existingUser -> {
+        userRepository.findOneByEmailIgnoreCase(userProfileDTO.getUser().getEmail()).ifPresent(existingUser -> {
             boolean removed = false; // removeNonActivatedUser(existingUser);
             if (!removed) {
                 throw new EmailAlreadyUsedException();
@@ -121,12 +121,12 @@ public class UserProfileService {
         });
         User newUser = new User();
         String encryptedPassword = passwordEncoder.encode(password);
-        newUser.setLogin(userProfileDTO.getLogin().toLowerCase());
+        newUser.setLogin(userProfileDTO.getUser().getLogin().toLowerCase());
         // new user gets initially a generated password
         newUser.setPassword(encryptedPassword);
-        newUser.setFirstName(userProfileDTO.getFirstName());
-        newUser.setLastName(userProfileDTO.getLastName());
-        newUser.setEmail(userProfileDTO.getEmail().toLowerCase());
+        newUser.setFirstName(userProfileDTO.getUser().getFirstName());
+        newUser.setLastName(userProfileDTO.getUser().getLastName());
+        newUser.setEmail(userProfileDTO.getUser().getEmail().toLowerCase());
         // newUser.setImageUrl(userDTO.getImageUrl());
         newUser.setLangKey("fr");
         // new user is not active
@@ -147,7 +147,7 @@ public class UserProfileService {
         }
         userProfile.setUser(newUser);
         userProfile = userProfileRepository.save(userProfile);
-        if (!userProfileDTO.getActivated()) {
+        if (!userProfileDTO.getUser().getActivated()) {
             mailService.sendActivationEmail(userProfile.getUser());
         }
         return userProfileMapper.toDto(userProfile);

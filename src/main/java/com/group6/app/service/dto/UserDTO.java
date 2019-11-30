@@ -83,6 +83,10 @@ public class UserDTO {
         this.id = id;
     }
 
+    public boolean getActivated(){
+        return activated;
+    }
+
     public String getLogin() {
         return login;
     }

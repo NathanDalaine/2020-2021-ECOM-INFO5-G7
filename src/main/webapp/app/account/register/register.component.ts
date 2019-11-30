@@ -32,20 +32,22 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   registerForm = this.fb.group({
     role: [MEMBRE],
     langKey: ['fr'],
-    login: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50), Validators.pattern('^[_.@A-Za-z0-9-]*$')]],
-    email: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
     password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
     telephone: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
     tailleHarnais: ['', [Validators.required]],
     tailleCombinaison: ['', [Validators.required]],
     typeAbonnement: ['', Validators.required],
-    remarque: [''],
     niveau: ['', Validators.required],
-    firstName: [''],
-    lastName: [''],
     dateNaissance: [],
     adresse: [''],
+    user : this.fb.group({
+        login: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50), Validators.pattern('^[_.@A-Za-z0-9-]*$')]],
+        email: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
+        firstName: [''],
+        lastName: [''],
+      }
+    ),
     materielTechniqueAutorise: [false]
   });
 
