@@ -6,7 +6,6 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
 import { IReservationFull } from 'app/shared/model/reservationFull.model';
 import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
-import { IReservationFull } from 'app/shared/model/reservationFull.model';
 
 @Component({
   selector: 'jhi-reservationlist',
