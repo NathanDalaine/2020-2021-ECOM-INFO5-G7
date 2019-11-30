@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AccountService } from 'app/core/auth/account.service';
 import { JhiAlertService } from 'ng-jhipster';
-import { ReservationService } from '../../entities/reservation/reservation.service';
+import { ReservationService } from 'app/entities/reservation/reservation.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
 import { IReservationFull } from 'app/shared/model/reservationFull.model';
 import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
+import { IReservationFull } from 'app/shared/model/reservationFull.model';
 
 @Component({
   selector: 'jhi-reservationlist',

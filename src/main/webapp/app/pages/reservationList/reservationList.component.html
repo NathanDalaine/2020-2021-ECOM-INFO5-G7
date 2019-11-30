@@ -1,12 +1,12 @@
 <div class="row">
     <br/>
-    <div class="alert alert-warning" *ngIf="(reservations | value)?.length === 0">
+    <div class="alert alert-warning" *ngIf="(reservations | valuefull)?.length === 0">
         <span jhiTranslate="ecomgucvoileApp.reservation.home.notFound">There is no reservation in progress.</span>
     </div>
-        <div class="table-responsive" *ngIf="(reservations | value)?.length > 0">
-            <table class="table table-striped" aria-describedby="page-heading">
-                <thead>
-                <tr>
+    <div class="table-responsive" *ngIf="(reservations | valuefull)?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
                 <th><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></th>
                 <th><span jhiTranslate="ecomgucvoileApp.reservation.voile">Voile</span></th>
                 <th><span jhiTranslate="ecomgucvoileApp.reservation.planche">Planche</span></th>
