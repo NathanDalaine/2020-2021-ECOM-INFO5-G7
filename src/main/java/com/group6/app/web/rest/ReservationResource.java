@@ -91,9 +91,15 @@ public class ReservationResource {
         return reservationService.findAll();
     }
 
-    @GetMapping("/fullreservations")
+    @GetMapping("/reservationsfull")
     public List<ReservationFullDTO> getAllFullReservations() {
         return reservationService.findAllFull();
+    }
+
+    @GetMapping("/reservationsfull/{id}")
+    public ResponseEntity<ReservationFullDTO> getOneFullReservation(@PathVariable Long id) {
+        Optional<ReservationFullDTO> reservationDTO = reservationService.findOneFull(id);
+        return ResponseUtil.wrapOrNotFound(reservationDTO);
     }
 
     /**

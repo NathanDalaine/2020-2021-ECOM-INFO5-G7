@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IReservation } from 'app/shared/model/reservation.model';
+import {IReservationFull} from "app/shared/model/reservationFull.model";
 
 type EntityResponseType = HttpResponse<IReservation>;
 type EntityArrayResponseType = HttpResponse<IReservation[]>;
@@ -39,10 +40,23 @@ export class ReservationService {
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
+  findFullReservation(id: number): Observable<EntityResponseType> {
+    return this.http
+      .get<IReservationFull>(`${this.resourceUrl+"full"}/${id}`, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http
       .get<IReservation[]>(this.resourceUrl, { params: options, observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  }
+
+  getAllFullReservation(req?: any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http
+      .get<IReservationFull[]>(this.resourceUrl+"full", { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 
