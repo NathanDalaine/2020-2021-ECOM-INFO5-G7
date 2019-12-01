@@ -24,8 +24,8 @@ export class MaterialListComponent implements OnInit, OnDestroy {
   allVoiles: IPlanche[];
   voiles: IVoile[];
   planches: IPlanche[];
-  selectedVoile : IVoile;
-  selectedPlanche : IPlanche;
+  selectedVoile: IVoile;
+  selectedPlanche: IPlanche;
   registerForm = this.fb.group({
     remarques: [''],
     voileId: [null],
@@ -49,22 +49,22 @@ export class MaterialListComponent implements OnInit, OnDestroy {
   ) {}
 
   selectVoile(voile: IVoile) {
-    if (this.registerForm.get("voileId").value === voile.id) {
-      this.registerForm.controls["voileId"].setValue(null);
+    if (this.registerForm.get('voileId').value === voile.id) {
+      this.registerForm.controls['voileId'].setValue(null);
       this.selectedVoile = null;
     } else {
       this.selectedVoile = voile;
-      this.registerForm.controls["voileId"].setValue(voile.id);
+      this.registerForm.controls['voileId'].setValue(voile.id);
     }
   }
 
   selectPlanche(planche: IPlanche) {
-    if (this.registerForm.get("plancheId").value === planche.id) {
-      this.registerForm.controls["plancheId"].setValue(null);
+    if (this.registerForm.get('plancheId').value === planche.id) {
+      this.registerForm.controls['plancheId'].setValue(null);
       this.selectedPlanche = null;
     } else {
       this.selectedPlanche = planche;
-      this.registerForm.controls["plancheId"].setValue(planche.id);
+      this.registerForm.controls['plancheId'].setValue(planche.id);
     }
   }
 
@@ -84,19 +84,25 @@ export class MaterialListComponent implements OnInit, OnDestroy {
   }
 
   public openConfirmationDialog() {
-    this.confirmService.confirm(this.translate.instant("global.messages.confirm.pleaseConfirm"),this.getReservationRecap(),this.selectedPlanche,this.selectedVoile,this.registerForm.get("combinaison").value,this.registerForm.get("harnais").value)
-      .then((confirmed) => {
-          if (confirmed) {
-
-           this.reserve();
-          }
-        }
+    this.confirmService
+      .confirm(
+        this.translate.instant('global.messages.confirm.pleaseConfirm'),
+        this.getReservationRecap(),
+        this.selectedPlanche,
+        this.selectedVoile,
+        this.registerForm.get('combinaison').value,
+        this.registerForm.get('harnais').value
       )
+      .then(confirmed => {
+        if (confirmed) {
+          this.reserve();
+        }
+      })
       .catch();
   }
 
-  private getReservationRecap() : string {
-    return "";
+  private getReservationRecap(): string {
+    return '';
   }
 
   loadAll() {

@@ -11,7 +11,7 @@
       "1voile": "A sail ",
       "1planche": "A board ",
       "1harnais": "A harness",
-      "doYouConfirm" : "D you confirm?",
+      "doYouConfirm": "D you confirm?",
       "renduMateriel": "Material Rendering",
       "reservation": "Reservation",
       "materialList": "Equipment List",
@@ -154,7 +154,8 @@
       "edit": "Edit",
       "open": "Open",
       "save": "Save",
-      "view": "View"
+      "view": "View",
+      "return": "Return"
     },
     "detail": {
       "field": "Field",
