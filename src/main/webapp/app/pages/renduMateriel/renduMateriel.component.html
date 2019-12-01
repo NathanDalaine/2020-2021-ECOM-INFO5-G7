@@ -4,27 +4,42 @@
             <h2><span jhiTranslate="ecomgucvoileApp.renduMateriel.home.title">Rendu Materiel</span></h2>
             <hr>
             <jhi-alert></jhi-alert>
-            <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></dt>
+            <dt class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></mat-checkbox></dt>
                 <dd>
                     <span>{{reservation.dateReservation}}</span>
-                </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.reservation.dateRendu">Date Rendu</span></dt>
-                <dd>
-                    <span>{{reservation.dateRendu}}</span>
                 </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.reservation.remarques">Remarques</span></dt>
                 <dd>
                     <span>{{reservation.remarques}}</span>
                 </dd>
+                <dt *ngIf="reservation.planche"><span jhiTranslate="ecomgucvoileApp.reservation.planche">Planche</span></dt>
+                <dd *ngIf="reservation.planche">
+                    <input type="checkbox" id="planche" name="planche">
+                    <label for=planche>{{reservation.planche.libelle}}</label>
+                </dd>
+                <dt *ngIf="reservation.voile"><span jhiTranslate="ecomgucvoileApp.reservation.voile">Voile</span></dt>
+                <dd *ngIf="reservation.voile">
+                    <input type="checkbox" id="voile" name="voile">
+                    <label for=voile>{{reservation.voile.libelle}}</label>
 
-            <button type="submit"
+                </dd>
+                <dt *ngIf="reservation.harnais"><span jhiTranslate="ecomgucvoileApp.reservation.harnais">Harnais</span></dt>
+                <dd *ngIf="reservation.harnais">
+                    <input type="checkbox" id="Harnai" name="Harnai">
+                    <label for=Harnai>{{reservation.harnais.taille}}</label>
+                </dd>
+                <dt *ngIf="reservation.combinaison"><span jhiTranslate="ecomgucvoileApp.reservation.combinaison">Combinaison</span></dt>
+                <dd *ngIf="reservation.combinaison">
+                    <input type="checkbox" id="Combinaison" name="Combinaison">
+                    <label for=Combinaison>{{reservation.combinaison.taille}}</label>
+                </dd>
+                <button type="button"
                     (click)="confirm()"
                     class="btn btn-info">
                     <span jhiTranslate="ecomgucvoileApp.renduMateriel.confirmation"> Back</span>
             </button>
 
-            </dl>
             <div>
                 <input type="checkbox" name="damage" id="damage"
                        unchecked>

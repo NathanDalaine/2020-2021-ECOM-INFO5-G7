@@ -39,7 +39,7 @@
                             <tr *ngFor="let voile of voiles | orderBy: 'libelle' ;trackBy: trackIdVoile">
                                 <td>
                                     <input [checked]="this.registerForm.get('voileId').value == voile.id"
-                                           (click)="selectVoile(voile.id)" type="radio">
+                                           (click)="selectVoile(voile)" type="radio">
                                 </td>
                                 <td><a [routerLink]="['/voile', voile.id, 'view' ]">{{voile.libelle}}</a></td>
                             </tr>
@@ -67,7 +67,7 @@
                             <tr *ngFor="let planche of planches | orderBy: 'libelle' ;trackBy: trackIdPlanche">
                                 <td>
                                     <input [checked]="this.registerForm.get('plancheId').value == planche.id"
-                                           (click)="selectPlanche(planche.id)" type="radio">
+                                           (click)="selectPlanche(planche)" type="radio">
                                 </td>
                                 <td><a [routerLink]="['/planche', planche.id, 'view' ]">{{planche.libelle}}</a></td>
                             </tr>
@@ -79,7 +79,7 @@
     </div>
     <div fxLayoutAlign="end center">
         <button type="submit"
-                [disabled]="registerForm.get('voileId').value == null && registerForm.get('plancheId').value == null && registerForm.get('harnais').value == false && registerForm.get('combinaison').value == false"
+                [disabled]="registerForm.get('voileId').value == null && registerForm.get('plancheId').value == null"
                 class="btn btn-primary" jhiTranslate="ecomgucvoileApp.reservation.reserve">
             Register
         </button>

@@ -8,11 +8,11 @@
     </a>
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
         <ul class="navbar-nav ml-auto">
-           <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="materialList" (click)="collapseNavbar()">
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
                     <span>
-                        <fa-icon icon="book"></fa-icon>
-                        <span jhiTranslate="global.menu.materialList">Material List</span>
+                        <fa-icon icon="home"></fa-icon>
+                        <span jhiTranslate="global.menu.home">Home</span>
                     </span>
                 </a>
             </li>
@@ -24,31 +24,6 @@
                     </span>
                 </a>
             </li>
-            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="renduMateriel" (click)="collapseNavbar()">
-                    <span>
-                        <fa-icon icon="undo-alt"></fa-icon>
-                        <span jhiTranslate="global.menu.renduMateriel">Equipment return</span>
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
-                    <span>
-                        <fa-icon icon="home"></fa-icon>
-                        <span jhiTranslate="global.menu.home">Home</span>
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="helpPage" (click)="collapseNavbar()">
-                    <span>
-                        <fa-icon icon="info-circle"></fa-icon>
-                        <span jhiTranslate="helpPage.title">Help</span>
-                    </span>
-                </a>
-            </li>
-
             <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="reservationList" (click)="collapseNavbar()">
                     <span>
@@ -178,6 +153,14 @@
                         <a class="dropdown-item" [jhiActiveMenu]="language" href="javascript:void(0);" (click)="changeLanguage(language);collapseNavbar();">{{language | findLanguageFromKey}}</a>
                     </li>
                 </ul>
+            </li>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="helpPage" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="info-circle"></fa-icon>
+                        <span jhiTranslate="helpPage.title">Help</span>
+                    </span>
+                </a>
             </li>
             <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu">

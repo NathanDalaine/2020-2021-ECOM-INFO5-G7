@@ -1,14 +1,13 @@
 <div class="row">
     <br/>
-    <div class="alert alert-warning" *ngIf="(reservations | value)?.length === 0">
+    <div class="alert alert-warning" *ngIf="(reservations | valuefull)?.length === 0">
         <span jhiTranslate="ecomgucvoileApp.reservation.home.notFound">There is no reservation in progress.</span>
     </div>
-        <div class="table-responsive" *ngIf="(reservations | value)?.length > 0">
-            <table class="table table-striped" aria-describedby="page-heading">
-                <thead>
-                <tr>
+    <div class="table-responsive" *ngIf="(reservations | valuefull)?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
                 <th><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></th>
-                <th><span jhiTranslate="ecomgucvoileApp.reservation.user">Utilisateur</span></th>
                 <th><span jhiTranslate="ecomgucvoileApp.reservation.voile">Voile</span></th>
                 <th><span jhiTranslate="ecomgucvoileApp.reservation.planche">Planche</span></th>
                 <th><span jhiTranslate="ecomgucvoileApp.reservation.combinaison">Combinaison</span></th>
@@ -17,13 +16,20 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let reservation of (reservations | value) ;trackBy: trackDate " >
+                <tr *ngFor="let reservation of (reservations | valuefull) ;trackBy: trackDate " >
                         <td>{{reservation.dateReservation | date:'medium'}}</td>
-                        <td><a *ngIf="reservation.userProfileId" [routerLink]="['/user-profile', reservation.userProfileId, 'view' ]">{{reservation.userProfileId}}</a></td>
-                        <td><a *ngIf="reservation.voileId" [routerLink]="['/voile', reservation.voileId, 'view' ]">{{reservation.voileId}}</a></td>
-                        <td><a *ngIf="reservation.plancheId" [routerLink]="['/planche', reservation.plancheId, 'view' ]">{{reservation.plancheId}}</a></td>
-                        <td>{{reservation.combinaisonId}}</td>
-                        <td>{{reservation.harnaisId}}</td>
+                        <td><a *ngIf="reservation.voile" [routerLink]="['/voile', reservation.voile.id, 'view' ]">{{reservation.voile.libelle}}</a></td>
+                        <td><a *ngIf="reservation.planche" [routerLink]="['/planche', reservation.planche.id, 'view' ]">{{reservation.planche.libelle}}</a></td>
+                        <td *ngIf="reservation.combinaison">{{reservation.combinaison.taille}}</td>
+                        <td *ngIf="reservation.combinaison === null"></td>
+                        <td *ngIf="reservation.harnais">{{reservation.harnais.taille}}</td>
+                        <td *ngIf="reservation.harnais === null"></td>
+                    <button type="submit"
+                            [routerLink]="['/renduMateriel', reservation.id, 'view' ]"
+                            class="btn btn-info btn-sm">
+                        <fa-icon [icon]="'eye'"></fa-icon>
+                        <span class="d-none d-md-inline" jhiTranslate="entity.action.return">Rendre</span>
+                    </button>
                 </tr>
                 </tbody>
             </table>
