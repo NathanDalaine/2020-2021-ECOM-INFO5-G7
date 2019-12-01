@@ -1,30 +1,25 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import {Voile} from "app/shared/model/voile.model";
-import {Planche} from "app/shared/model/planche.model";
+import { Voile } from 'app/shared/model/voile.model';
+import { Planche } from 'app/shared/model/planche.model';
 
 @Component({
   selector: 'jhi-confirmation-dialog',
-  templateUrl: './confirm.component.html',
+  templateUrl: './confirm.component.html'
 })
 export class ConfirmComponent implements OnInit {
-
   @Input() title: string;
   @Input() message: string;
-  @Input() voile : Voile;
-  @Input() planche : Planche;
+  @Input() voile: Voile;
+  @Input() planche: Planche;
   @Input() combinaison = false;
-  @Input() harnais  = false;
+  @Input() harnais = false;
   @Input() btnOkText: string;
   @Input() btnCancelText: string;
 
-  constructor(private activeModal: NgbActiveModal) {
+  constructor(private activeModal: NgbActiveModal) {}
 
-  }
-
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   public decline() {
     this.activeModal.close(false);

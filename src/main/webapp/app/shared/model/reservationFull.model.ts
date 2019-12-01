@@ -1,9 +1,9 @@
-import {Moment} from "moment";
-import {IVoile} from "app/shared/model/voile.model";
-import {IUserProfile} from "app/shared/model/user-profile.model";
-import {ICombinaison} from "app/shared/model/combinaison.model";
-import {IHarnais} from "app/shared/model/harnais.model";
-import {IPlanche} from "app/shared/model/planche.model";
+import { Moment } from 'moment';
+import { IVoile } from 'app/shared/model/voile.model';
+import { IUserProfile } from 'app/shared/model/user-profile.model';
+import { ICombinaison } from 'app/shared/model/combinaison.model';
+import { IHarnais } from 'app/shared/model/harnais.model';
+import { IPlanche } from 'app/shared/model/planche.model';
 
 export interface IReservationFull {
   id?: number;
@@ -23,7 +23,7 @@ export interface IReservationFull {
   planche?: IPlanche;
 }
 
-export class Reservation implements IReservationFull {
+export class ReservationFull implements IReservationFull {
   constructor(
     public id?: number,
     public dateReservation?: Moment,
@@ -35,10 +35,10 @@ export class Reservation implements IReservationFull {
     public createdAt?: Moment,
     public updatedAt?: Moment,
     public deletedAt?: Moment,
-    public voileId?: number,
-    public userProfileId?: number,
-    public combinaisonId?: number,
-    public harnaisId?: number,
-    public plancheId?: number
+    public voile?: IVoile,
+    public userProfile?: IUserProfile,
+    public combinaison?: ICombinaison,
+    public harnais?: IHarnais,
+    public planche?: IPlanche
   ) {}
 }

@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IReservation } from 'app/shared/model/reservation.model';
-import {IReservationFull} from "app/shared/model/reservationFull.model";
+import { IReservationFull } from 'app/shared/model/reservationFull.model';
 
 type EntityResponseType = HttpResponse<IReservation>;
 type EntityArrayResponseType = HttpResponse<IReservation[]>;
@@ -42,7 +42,7 @@ export class ReservationService {
 
   findFullReservation(id: number): Observable<EntityResponseType> {
     return this.http
-      .get<IReservationFull>(`${this.resourceUrl+"full"}/${id}`, { observe: 'response' })
+      .get<IReservationFull>(`${this.resourceUrl + 'full'}/${id}`, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
@@ -88,7 +88,6 @@ export class ReservationService {
     return copy;
   }
 
-
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
       res.body.dateReservation = res.body.dateReservation != null ? moment(res.body.dateReservation) : null;
@@ -113,7 +112,6 @@ export class ReservationService {
     }
     return res;
   }
-
 
   public convertFullDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {

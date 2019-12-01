@@ -12,7 +12,7 @@
       "1voile": "une voile ",
       "1planche": "une planche ",
       "1harnais": "un harnais",
-      "doYouConfirm" : "Vous confirmez?",
+      "doYouConfirm": "Vous confirmez?",
       "renduMateriel": "Rendu matériel",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
@@ -157,7 +157,8 @@
       "delete": "Supprimer",
       "open": "Ouvrir",
       "save": "Sauvegarder",
-      "view": "Voir"
+      "view": "Voir",
+      "return": "Rendre"
     },
     "detail": {
       "field": "Champs",
