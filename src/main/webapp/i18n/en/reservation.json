@@ -30,7 +30,13 @@
       "userProfile": "User Profile",
       "combinaison": "Wetsuit",
       "harnais": "Harness",
-      "planche": "Board"
+      "planche": "Board",
+      "rechercheVoile": "Search for a sail",
+      "recherchePlanche": "Search for a board",
+      "lesVoiles": "Sails",
+      "lesPlanches": "Boards",
+      "reserve": "Make a reservation",
+      "reservationSuccess": "Your reservation was made successfully"
     }
   }
 }
