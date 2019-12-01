@@ -3,7 +3,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiLanguageService } from 'ng-jhipster';
-import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from 'app/shared/constants/error.constants';
+import {
+  EMAIL_ALREADY_USED_TYPE,
+  INVALID_AUTHORITY,
+  LOGIN_ALREADY_USED_TYPE
+} from 'app/shared/constants/error.constants';
 import { LoginModalService } from 'app/core/login/login-modal.service';
 import { Register } from './register.service';
 import { Taille } from 'app/shared/model/enumerations/taille.model';
@@ -23,6 +27,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   error: string;
   errorEmailExists: string;
   errorUserExists: string;
+  errorInvalidAuthority: string;
   success: boolean;
   modalRef: NgbModalRef;
   tailles: SelectItem[];
@@ -30,7 +35,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   niveaux: SelectItem[];
 
   registerForm = this.fb.group({
-    role: [MEMBRE],
+    authoritie: [MEMBRE],
     langKey: ['fr'],
     password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
@@ -121,8 +126,11 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       this.errorUserExists = 'ERROR';
     } else if (response.status === 400 && response.error.type === EMAIL_ALREADY_USED_TYPE) {
       this.errorEmailExists = 'ERROR';
-    } else {
-      this.error = 'ERROR';
+    } else if(response.status === 400 && response.error.type === INVALID_AUTHORITY){
+      this.errorInvalidAuthority = 'ERROR';
+    }else{
+        this.error = 'ERROR';
+      }
     }
   }
-}
+

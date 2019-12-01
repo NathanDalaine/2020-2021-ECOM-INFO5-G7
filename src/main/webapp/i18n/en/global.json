@@ -98,7 +98,8 @@
         }
       },
       "error": {
-        "dontmatch": "The password and its confirmation do not match!"
+        "dontmatch": "The password and its confirmation do not match!",
+        "invalidAuthority": "You don't have the authority to create this kind of user!"
       },
       "validate": {
         "newpassword": {

@@ -17,8 +17,10 @@
         <div class="alert alert-danger" *ngIf="errorEmailExists" jhiTranslate="register.messages.error.emailexists">
             <strong>Email is already in use!</strong> Please choose another one.
         </div>
-
         <div class="alert alert-danger" *ngIf="doNotMatch" jhiTranslate="global.messages.error.dontmatch">
+            The password and its confirmation do not match!
+        </div>
+        <div class="alert alert-danger" *ngIf="errorInvalidAuthority" jhiTranslate="global.messages.error.invalidAuthority">
             The password and its confirmation do not match!
         </div>
     </div>
@@ -29,7 +31,7 @@
             <div class="form-group">
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="global.form.role.label">Roles</label>
-                    <select class="form-control" id="role" name="role" formControlName="role">
+                    <select class="form-control" id="role" name="role" formControlName="authoritie">
                         <option *ngFor="let r of roles" [value]="r.value">{{r.label}}</option>
                     </select>
                 </div>

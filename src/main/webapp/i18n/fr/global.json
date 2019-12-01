@@ -101,7 +101,8 @@
         "harness": "un harnais"
       },
       "error": {
-        "dontmatch": "Le nouveau mot de passe et sa confirmation ne sont pas égaux !"
+        "dontmatch": "Le nouveau mot de passe et sa confirmation ne sont pas égaux !",
+        "invalidAuthority": "Vous n'avez pas les droits nécesssaires pour créer ce type d'utilisateur!"
       },
       "validate": {
         "newpassword": {

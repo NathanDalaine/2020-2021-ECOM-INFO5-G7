@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
  */
 public class UserProfileDTO implements Serializable {
     private Long id;
-
+    private String authoritie;
     private Instant dateEcheance;
 
     private Instant dateNaissance;
@@ -61,6 +61,14 @@ public class UserProfileDTO implements Serializable {
 
     public void setDateEcheance(Instant dateEcheance) {
         this.dateEcheance = dateEcheance;
+    }
+
+    public String getAuthoritie(){
+        return authoritie;
+    }
+
+    public void setAuthoritie(String authoritie) {
+        this.authoritie = authoritie;
     }
 
     public Instant getDateNaissance() {
