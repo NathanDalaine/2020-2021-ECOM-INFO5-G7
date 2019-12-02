@@ -12,6 +12,11 @@ import { FormBuilder } from '@angular/forms';
 import { ReservationService } from 'app/entities/reservation/reservation.service';
 import { ConfirmService } from 'app/shared/confirm/confirm.service';
 import { TranslateService } from '@ngx-translate/core';
+import {
+  EMAIL_ALREADY_USED_TYPE,
+  INVALID_AUTHORITY,
+  LOGIN_ALREADY_USED_TYPE, NO_HARNESS_AVAILABLE, NO_WETSUIT_AVAILABLE
+} from "app/shared/constants/error.constants";
 
 @Component({
   selector: 'jhi-materiallist',
@@ -35,6 +40,9 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     harnaisId: null,
     combinaisonId: null
   });
+  errorNoWetSuitAvailable : string;
+  errorNoHarnessAvailable : string;
+  error : string;
 
   constructor(
     protected voileService: VoileService,
@@ -78,8 +86,11 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     this.reservationService.create(this.registerForm.value).subscribe(
       () => {
         this.success = true;
+        this.error = null;
+        this.errorNoWetSuitAvailable = null;
+        this.errorNoHarnessAvailable = null;
       },
-      (response: HttpErrorResponse) => this.onError(response.message)
+      response => this.processError(response)
     );
   }
 
@@ -87,7 +98,6 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     this.confirmService.confirm(this.translate.instant("global.messages.confirm.pleaseConfirm"),this.getReservationRecap(),this.selectedPlanche,this.selectedVoile,this.registerForm.get("combinaison").value,this.registerForm.get("harnais").value)
       .then((confirmed) => {
           if (confirmed) {
-
            this.reserve();
           }
         }
@@ -146,6 +156,17 @@ export class MaterialListComponent implements OnInit, OnDestroy {
 
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  private processError(response: HttpErrorResponse) {
+    this.success = false;
+    if (response.status === 400 && response.error.type === NO_WETSUIT_AVAILABLE) {
+      this.errorNoWetSuitAvailable = 'ERROR';
+    } else if (response.status === 400 && response.error.type === NO_HARNESS_AVAILABLE) {
+      this.errorNoHarnessAvailable = 'ERROR';
+    }else{
+      this.error = 'ERROR';
+    }
   }
 
   searchPlanche(text: string) {
