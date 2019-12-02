@@ -101,7 +101,11 @@
         "harness": "un harnais"
       },
       "error": {
-        "dontmatch": "Le nouveau mot de passe et sa confirmation ne sont pas égaux !"
+        "dontmatch": "Le nouveau mot de passe et sa confirmation ne sont pas égaux !",
+        "invalidAuthority": "Vous n'avez pas les droits nécesssaires pour créer ce type d'utilisateur!",
+        "noWetsuitAvailable": "Il n'y a pas de combinaison à votre taille de disponible.",
+        "noReservationDone": "Une erreur est survenue, la réservation n'a pas été effectuée.",
+        "noHarnessAvailable": "Il n'y a pas d'harnais à votre taille de disponible."
       },
       "validate": {
         "newpassword": {

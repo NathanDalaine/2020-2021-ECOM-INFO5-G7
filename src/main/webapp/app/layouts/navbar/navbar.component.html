@@ -24,6 +24,37 @@
                     </span>
                 </a>
             </li>
+                <a class="nav-link" routerLink="renduMateriel" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="undo-alt"></fa-icon>
+                        <span jhiTranslate="global.menu.renduMateriel">Equipment return</span>
+                    </span>
+                </a>
+            </li>
+
+            <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
+                <a class="nav-link" routerLink="account/register" routerLinkActive="active" (click)="collapseNavbar()">
+                    <fa-icon icon="user-plus" fixedWidth="true"></fa-icon>
+                    <span jhiTranslate="global.menu.account.register">Register</span>
+                </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="home"></fa-icon>
+                        <span jhiTranslate="global.menu.home">Home</span>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="helpPage" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="info-circle"></fa-icon>
+                        <span jhiTranslate="helpPage.title">Help</span>
+                    </span>
+                </a>
+            </li>
+
             <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="reservationList" (click)="collapseNavbar()">
                     <span>

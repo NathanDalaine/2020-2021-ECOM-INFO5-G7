@@ -98,7 +98,11 @@
         }
       },
       "error": {
-        "dontmatch": "The password and its confirmation do not match!"
+        "dontmatch": "The password and its confirmation do not match!",
+        "invalidAuthority": "You don't have the authority to create this kind of user!",
+        "noWetsuitAvailable": "There is no wetsuit fitting your size available.",
+        "noReservationDone": "An error occur, no reservation has been made.",
+        "noHarnessAvailable": "There is no harness fitting your size available."
       },
       "validate": {
         "newpassword": {
