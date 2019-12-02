@@ -56,7 +56,7 @@ export class ReservationService {
   getAllFullReservation(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http
-      .get<IReservationFull[]>(this.resourceUrl + 'full', { params: options, observe: 'response' })
+      .get<IReservationFull[]>(this.resourceUrl+"full", { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertFullDateArrayFromServer(res)));
   }
 
@@ -98,6 +98,7 @@ export class ReservationService {
     }
     return res;
   }
+
 
   public convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
