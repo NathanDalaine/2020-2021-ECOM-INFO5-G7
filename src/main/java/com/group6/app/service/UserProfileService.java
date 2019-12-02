@@ -158,12 +158,12 @@ public class UserProfileService {
             authoritie ->{
                 switch(authoritie.getName()){
                     case AuthoritiesConstants.ADMIN :
-                        if(currentUser == null ||!currentUser.getAuthorities().contains(AuthoritiesConstants.ADMIN)){
+                        if(currentUser == null ||!currentUser.getAuthorities().contains(authorityRepository.getOne(AuthoritiesConstants.ADMIN))){
                             throw new AuthorityException();
                         }
                         break;
                     case AuthoritiesConstants.GESTIONNAIRE:
-                        if(currentUser == null ||(!currentUser.getAuthorities().contains(AuthoritiesConstants.GESTIONNAIRE) && !currentUser.getAuthorities().contains(AuthoritiesConstants.ADMIN))){
+                        if(currentUser == null ||(!currentUser.getAuthorities().contains(authorityRepository.getOne(AuthoritiesConstants.GESTIONNAIRE)) && !currentUser.getAuthorities().contains(authorityRepository.getOne(AuthoritiesConstants.ADMIN)))){
                             throw new AuthorityException();
                         }
                         break;
@@ -211,6 +211,16 @@ public class UserProfileService {
         return currentUser.getReservations().stream()
             .map(reservationMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    @Transactional(readOnly = true)
+    public UserProfileDTO findCurrentUser() {
+        if(SecurityUtils.getCurrentUserLogin().isPresent()){
+            if(userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()) != null){
+                return userProfileMapper.toDto(userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()));
+            }
+        }
+        return null;
     }
 
 

@@ -32,6 +32,13 @@
                     </span>
                 </a>
             </li>
+
+            <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
+                <a class="nav-link" routerLink="account/register" routerLinkActive="active" (click)="collapseNavbar()">
+                    <fa-icon icon="user-plus" fixedWidth="true"></fa-icon>
+                    <span jhiTranslate="global.menu.account.register">Register</span>
+                </a>
+            </li>
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
                     <span>

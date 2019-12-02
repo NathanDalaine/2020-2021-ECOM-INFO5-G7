@@ -14,9 +14,9 @@ import { Taille } from 'app/shared/model/enumerations/taille.model';
 import { SelectItem } from 'primeng/api';
 import { TypeAbonnement } from 'app/shared/model/enumerations/type-abonnement.model';
 import { Niveau } from 'app/shared/model/enumerations/niveau.model';
-import { IUserProfile } from 'app/shared/model/user-profile.model';
 import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
 import { ADMINISTRATEUR, GESTIONNAIRE, MEMBRE } from 'app/shared/constants/roles.constants';
+import {AccountService} from "app/core/auth/account.service";
 
 @Component({
   selector: 'jhi-register',
@@ -56,12 +56,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     materielTechniqueAutorise: [false]
   });
 
-  roles: SelectItem[] = [
-    { label: 'Membre', value: MEMBRE },
-    { label: 'Gestionnaire', value: GESTIONNAIRE },
-    { label: 'Administrateur', value: ADMINISTRATEUR }
-  ];
-
+  roles: SelectItem[] ;
   constructor(
     private languageService: JhiLanguageService,
     private loginModalService: LoginModalService,
@@ -69,6 +64,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     private elementRef: ElementRef,
     private renderer: Renderer,
     private fb: FormBuilder,
+    private accountService: AccountService,
     private userProfileService: UserProfileService
   ) {}
 
@@ -92,45 +88,76 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       { label: 'Performance', value: Niveau.PERF },
       { label: 'Funboard', value: Niveau.FUNBOARD }
     ];
+    this.authoritiesAvailable();
   }
 
   ngAfterViewInit() {
     this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#login'), 'focus', []);
   }
 
-  register() {
-    const password = this.registerForm.get(['password']).value;
-    if (password !== this.registerForm.get(['confirmPassword']).value) {
-      this.doNotMatch = 'ERROR';
-    } else {
-      this.doNotMatch = null;
-      this.error = null;
-      this.errorUserExists = null;
-      this.errorEmailExists = null;
-      this.userProfileService.create(this.registerForm.value).subscribe(
-        () => {
-          this.success = true;
-        },
-        response => this.processError(response)
-      );
-    }
-  }
-
-  openLogin() {
-    this.modalRef = this.loginModalService.open();
-  }
-
-  private processError(response: HttpErrorResponse) {
-    this.success = null;
-    if (response.status === 400 && response.error.type === LOGIN_ALREADY_USED_TYPE) {
-      this.errorUserExists = 'ERROR';
-    } else if (response.status === 400 && response.error.type === EMAIL_ALREADY_USED_TYPE) {
-      this.errorEmailExists = 'ERROR';
-    } else if(response.status === 400 && response.error.type === INVALID_AUTHORITY){
-      this.errorInvalidAuthority = 'ERROR';
-    }else{
-        this.error = 'ERROR';
+  authoritiesAvailable(){
+    this.accountService.hasAuthority(ADMINISTRATEUR).then(
+      res => {
+        if(res){
+          this.roles = [
+            { label: 'Membre', value: MEMBRE },
+            { label: 'Gestionnaire', value: GESTIONNAIRE },
+            { label: 'Administrateur', value: ADMINISTRATEUR }
+          ];
+        }else{
+          this.accountService.hasAuthority(GESTIONNAIRE).then(
+            res2 => {
+              if(res2){
+                this.roles = [
+                  { label: 'Membre', value: MEMBRE },
+                  { label: 'Gestionnaire', value: GESTIONNAIRE }
+                ];
+              }else {
+                this.roles = [
+                  { label: 'Membre', value: MEMBRE }
+                ];
+              }
+            }
+          );
+        }
       }
-    }
+  );
+}
+
+register() {
+  const password = this.registerForm.get(['password']).value;
+  if (password !== this.registerForm.get(['confirmPassword']).value) {
+    this.doNotMatch = 'ERROR';
+  } else {
+    this.doNotMatch = null;
+    this.error = null;
+    this.errorUserExists = null;
+    this.errorEmailExists = null;
+    this.errorInvalidAuthority = null;
+    this.userProfileService.create(this.registerForm.value).subscribe(
+      () => {
+        this.success = true;
+      },
+      response => this.processError(response)
+    );
   }
+}
+
+openLogin() {
+  this.modalRef = this.loginModalService.open();
+}
+
+private processError(response: HttpErrorResponse) {
+  this.success = null;
+  if (response.status === 400 && response.error.type === LOGIN_ALREADY_USED_TYPE) {
+    this.errorUserExists = 'ERROR';
+  } else if (response.status === 400 && response.error.type === EMAIL_ALREADY_USED_TYPE) {
+    this.errorEmailExists = 'ERROR';
+  } else if(response.status === 400 && response.error.type === INVALID_AUTHORITY){
+    this.errorInvalidAuthority = 'ERROR';
+  }else{
+    this.error = 'ERROR';
+  }
+}
+}
 
