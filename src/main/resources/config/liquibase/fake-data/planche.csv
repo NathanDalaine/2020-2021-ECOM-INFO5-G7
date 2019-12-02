@@ -1,11 +1,57 @@
-id;marque;modele;numero;localisation;etat;libelle;volume;created_by;updated_by;deleted_by;created_at;updated_at;deleted_at;niveaurequis
-1;mobile Fish;Home Loan Account Table Computer;Trace;Savings Account alarm;Tasty Metal Bacon;red Chips Soap;30424;Albania web-readiness;Namibia;Steel zero administration;2019-11-17T05:48:52;2019-11-17T09:01:14;2019-11-17T03:39:41;DEBUTANTPLUS
-2;syndicate;Mississippi Refined Rubber Chicken Table;Automotive;Planner cross-platform access;Public-key;infomediaries;12203;Buckinghamshire Games;incentivize Tuna copy;Costa Rica Mayotte;2019-11-17T10:10:14;2019-11-17T13:51:20;2019-11-16T15:20:14;FUNBOARD
-3;capacitor archive;sky blue Tasty Plastic Pizza;compress South Georgia and the South Sandwich Islands;compelling mission-critical;bifurcated scalable;Small;98688;index orange;Jewelery;monitor;2019-11-16T21:06:40;2019-11-16T19:38:35;2019-11-16T20:05:48;DEBUTANTPLUS
-4;generating Highway Ergonomic;moratorium moratorium;New York tangible Mississippi;Frozen bus;hard drive Robust Networked;Poland;42754;Grocery;red;withdrawal knowledge base Buckinghamshire;2019-11-16T16:49:32;2019-11-17T11:15:47;2019-11-17T08:37:27;PERF
-5;Brand;neutral Salad;Auto Loan Account modular Refined;digital maroon;EXE projection Fresh;support Gorgeous;22793;synergies copying;ability Hat Iraq;magenta Concrete;2019-11-17T06:30:16;2019-11-17T08:44:53;2019-11-16T15:58:39;DEBUTANTPLUS
-6;Oklahoma facilitate;Engineer;Exclusive Moroccan Dirham card;zero tolerance;mission-critical;Berkshire Small Plastic Pants Investor;23956;Granite Berkshire Designer;Credit Card Account;navigate;2019-11-17T08:54:14;2019-11-17T08:47:43;2019-11-16T21:07:48;DEBUTANTPLUS
-7;bypassing optical;installation;Argentine Peso;Kentucky Algerian Dinar Clothing;open-source turn-key;Sausages;69093;synthesize Creative;Forint;Concrete Global SMS;2019-11-17T08:24:59;2019-11-17T09:07:19;2019-11-16T22:46:03;DEBUTANT
-8;Borders content-based;Tasty Customer Human;pink even-keeled;bus Internal AI;THX bypassing Marketing;Dynamic Home Loan Account Tools;10147;invoice Home Gloves;Buckinghamshire Ports;Devolved driver Networked;2019-11-17T06:47:51;2019-11-17T10:18:55;2019-11-16T20:41:29;DEBUTANT
-9;local area network Benin;turn-key dedicated;Wisconsin;target Human withdrawal;dot-com payment Libyan Dinar;white sensor local;2431;deposit Chips Applications;uniform PCI back up;Tactics architectures Planner;2019-11-16T15:28:49;2019-11-16T15:04:46;2019-11-16T18:08:06;FUNBOARD
-10;fuchsia eco-centric;Pants Maryland;calculating Intranet Ergonomic Concrete Soap;Director Concrete Bedfordshire;portal calculating Metal;real-time discrete redundant;81011;HDD;Sleek Beauty Auto Loan Account;deposit;2019-11-16T21:45:36;2019-11-17T05:05:04;2019-11-16T19:30:30;PERF
+id;marque;modele;numero;volume;localisation;etat;libelle;created_by;updated_by;deleted_by;created_at;updated_at;deleted_at
+1;BOB;Bamascus Freestyle;100;;Zone 2;;Bamascus Freestyle 100l Num ;;;;;;
+2;Fanatic;Falcon;131;;Rack 28;;Falcon 131l Num ;;;;;;
+3;JP;Freestyle Pro;100;;Zone 1;;Freestyle Pro 100l Num ;;;;;;
+4;AHD;MaxRide;110;;Zone 1;;MaxRide 110l Num ;;;;;;
+5;BIC;Melody;300;1;Rattelier central;;Melody 300l Num 1;;;;;;
+6;BIC;Melody;300;10;Rattelier central;;Melody 300l Num 10;;;;;;
+7;BIC;Melody;300;11;Rattelier central;;Melody 300l Num 11;;;;;;
+8;BIC;Melody;300;12;Rattelier central;;Melody 300l Num 12;;;;;;
+9;BIC;Melody;300;2;Rattelier central;;Melody 300l Num 2;;;;;;
+10;BIC;Melody;300;3;Rattelier central;;Melody 300l Num 3;;;;;;
+11;BIC;Melody;300;4;Rattelier central;;Melody 300l Num 4;;;;;;
+12;BIC;Melody;300;5;Rattelier central;;Melody 300l Num 5;;;;;;
+13;BIC;Melody;300;6;Rattelier central;;Melody 300l Num 6;;;;;;
+14;BIC;Melody;300;7;Rattelier central;;Melody 300l Num 7;;;;;;
+15;BIC;Melody;300;8;Rattelier central;;Melody 300l Num 8;;;;;;
+16;BIC;Melody;300;9;Rattelier central;;Melody 300l Num 9;;;;;;
+17;Mistral;Score;99;1;Zone 1;;Score 99l Num 1;;;;;;
+18;Mistral;Score;99;2;Zone 1;;Score 99l Num 2;;;;;;
+19;JP;Super Cross;106;;Rack 24;;Super Cross 106l Num ;;;;;;
+20;BIC;Techno 112;112;1;Zone 1;;Techno 112 112l Num 1;;;;;;
+21;BIC;Techno 112;112;2;Zone 1;;Techno 112 112l Num 2;;;;;;
+22;BIC;Techno 112;112;3;Zone 1;;Techno 112 112l Num 3;;;;;;
+23;BIC;Techno 133;133;2;;;Techno 133 133l Num 2;;;;;;
+24;BIC;Techno 273;125;1;Zone 2;;Techno 273 125l Num 1;;;;;;
+25;BIC;Techno 273;125;2;Zone 2;;Techno 273 125l Num 2;;;;;;
+26;BIC;Techno 273;125;3;Zone 2;;Techno 273 125l Num 3;;;;;;
+27;BIC;Techno 273;125;4;Zone 2;;Techno 273 125l Num 4;;;;;;
+28;BIC;Techno 283;152;1;Zone 3;;Techno 283 152l Num 1;;;;;;
+29;BIC;Techno 283;152;2;Zone 2;;Techno 283 152l Num 2;;;;;;
+30;BIC;Techno 283;152;3;Zone 2;;Techno 283 152l Num 3;;;;;;
+31;BIC;Techno 283;152;4;Zone 2;;Techno 283 152l Num 4;;;;;;
+32;BIC;Techno 283;152;6;Zone 2;;Techno 283 152l Num 6;;;;;;
+33;BIC;Techno 283;152;5;;;Techno 283 152l Num 5;;;;;;
+34;BOB;Warpig;100;;Zone 1;;Warpig 100l Num ;;;;;;
+35;BIC;Beach;175;1;Zone 1/2;;Beach 175l Num 1;;;;;;
+36;BIC;Beach;175;2;Zone 1/2;;Beach 175l Num 2;;;;;;
+37;BIC;Beach;175;3;Zone 1/2;;Beach 175l Num 3;;;;;;
+38;BIC;Beach;175;4;Zone 1/2;;Beach 175l Num 4;;;;;;
+39;BIC;Beach;175;5;Zone 1/2;;Beach 175l Num 5;;;;;;
+40;BIC;Beach;175;6;Zone 1/2;;Beach 175l Num 6;;;;;;
+41;BIC;Beach EVUG;175;1;Zone 1/2;;Beach EVUG 175l Num 1;;;;;;
+42;BIC;Beach EVUG;175;2;Zone 1/2;;Beach EVUG 175l Num 2;;;;;;
+43;BIC;Beach EVUG;175;3;Zone 1/2;;Beach EVUG 175l Num 3;;;;;;
+44;Fanatic;Falcon;148;1;;HS (Tete de vis);Falcon 148l Num 1;;;;;;
+45;Fanatic;Hawk;123;1;;;Hawk 123l Num 1;;;;;;
+46;Tabou;Guru;135;1;;;Guru 135l Num 1;;;;;;
+47;RRD;Foil -RRD ;120;1;;;Foil -RRD  120l Num 1;;;;;;
+48;RRD;RRD;120;2;;;RRD 120l Num 2;;;;;;
+49;RRD;Evolution 360;;;;;Evolution 360 l Num ;;;;;;
+50;KINETIC;Natural;140;;Ratelier Central;;Natural 140l Num ;;;;;;
+51;SEA TRAIN;Sea Train;155;;Ratelier Central;;Sea Train 155l Num ;;;;;;
+52;Fanatic;Falcon;102;;Ratelier Central;;Falcon 102l Num ;;;;;;
+53;RRD;Avant ride;130;;;;Avant ride 130l Num ;;;;;;
+54;BIC;Techno E-large;135;;;;Techno E-large 135l Num ;;;;;;
+55;ACEBEC;ACEBEC;150;;;;ACEBEC 150l Num ;;;;;;
+56;AHD;Inspiro;158;;;;Inspiro 158l Num ;;;;;;

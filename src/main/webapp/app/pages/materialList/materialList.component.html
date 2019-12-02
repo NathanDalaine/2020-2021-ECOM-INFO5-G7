@@ -64,7 +64,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr *ngFor="let planche of planches | orderBy: 'libelle' ;trackBy: trackIdPlanche">
+                            <tr *ngFor="let planche of planches | orderBy: 'libelle'; trackBy: trackIdPlanche">
                                 <td>
                                     <input [checked]="this.registerForm.get('plancheId').value == planche.id"
                                            (click)="selectPlanche(planche)" type="radio">

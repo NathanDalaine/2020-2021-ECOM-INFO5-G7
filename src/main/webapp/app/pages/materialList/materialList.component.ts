@@ -3,7 +3,6 @@ import { AccountService } from 'app/core/auth/account.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
-
 import { IVoile } from 'app/shared/model/voile.model';
 import { IPlanche } from 'app/shared/model/planche.model';
 import { VoileService } from '../../entities/voile/voile.service';
@@ -12,11 +11,13 @@ import { FormBuilder } from '@angular/forms';
 import { ReservationService } from 'app/entities/reservation/reservation.service';
 import { ConfirmService } from 'app/shared/confirm/confirm.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'jhi-materiallist',
   templateUrl: './materialList.component.html',
-  styleUrls: ['materialList.scss']
+  styleUrls: ['materialList.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MaterialListComponent implements OnInit, OnDestroy {
   success: boolean;
