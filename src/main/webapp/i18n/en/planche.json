@@ -1,6 +1,6 @@
 {
   "ecomgucvoileApp": {
-    "Board": {
+    "planche": {
       "home": {
         "title": "Boards",
         "createLabel": "Create a new Board",
@@ -22,6 +22,7 @@
       "localisation": "Location",
       "etat": "State",
       "libelle": "Libelle",
+      "reservationLibelle": "Boards",
       "volume": "Volume",
       "createdBy": "Created By",
       "updatedBy": "Updated By",

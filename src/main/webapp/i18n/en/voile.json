@@ -23,6 +23,7 @@
       "localisation": "Location",
       "etat": "State",
       "libelle": "Libelle",
+      "reservationLibelle": "Sails",
       "gree": "Gree",
       "createdBy": "Created By",
       "updatedBy": "Updated By",

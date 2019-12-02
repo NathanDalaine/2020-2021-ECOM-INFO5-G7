@@ -31,8 +31,12 @@
       "combinaison": "Combinaison",
       "harnais": "Harnais",
       "planche": "Planche",
-      "reserve": "Reserver",
-      "reservationSuccess": "Votre réservation a été effectué avec succès."
+      "reserve": "Réserver",
+      "reservationSuccess": "Votre réservation a été effectué avec succès.",
+      "rechercheVoile": "Rechercher une voile",
+      "recherchePlanche": "Rechercher une planche",
+      "lesVoiles": "Les voiles",
+      "lesPlanches": "Les planches"
     }
   }
 }

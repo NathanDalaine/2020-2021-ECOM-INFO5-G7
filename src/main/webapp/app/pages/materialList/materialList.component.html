@@ -18,21 +18,21 @@
     </div>
 
     <div fxLayoutGap="2%">
-        <mat-tab-group mat-align-tabs="start">
-            <mat-tab label="Les Voiles" >
+        <mat-tab-group mat-align-tabs="left">
+            <mat-tab label="{{'ecomgucvoileApp.reservation.lesVoiles' | translate}}">
                     <div class="alert alert-warning" *ngIf="voiles?.length === 0">
                         <span jhiTranslate="ecomgucvoileApp.voile.home.notFound">No voiles found</span>
                     </div>
                     <div>
                         <input #searchTextVoile type="text" (input)="searchVoile(searchTextVoile.value)"
-                               placeholder="Recherche voile" class="searchTerm"/>
+                               placeholder="{{'ecomgucvoileApp.reservation.rechercheVoile' | translate}}"/>
                     </div>
                     <div class="t+able-responsive" *ngIf="voiles?.length > 0">
                         <table class="table table-striped" aria-describedby="page-heading">
                             <thead>
                             <tr>
                                 <th style="width:5%;"></th>
-                                <th><span jhiTranslate="ecomgucvoileApp.voile.libelle">Libelle</span></th>
+                                <th><span jhiTranslate="ecomgucvoileApp.voile.reservationLibelle">Libelle</span></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -47,20 +47,20 @@
                         </table>
                     </div>
             </mat-tab>
-            <mat-tab label="Les Planches">
+            <mat-tab label="{{'ecomgucvoileApp.reservation.lesPlanches' | translate}}">
                     <div class="alert alert-warning" *ngIf="planches?.length === 0">
                         <span jhiTranslate="ecomgucvoileApp.planche.home.notFound">No planches found</span>
                     </div>
                     <div>
                         <input #searchTextPlanche type="text" (input)="searchPlanche(searchTextPlanche.value)"
-                               placeholder="Recherche planche" class="searchTerm"/>
+                               placeholder="{{'ecomgucvoileApp.reservation.recherchePlanche' | translate}}"/>
                     </div>
                     <div class="table-responsive" *ngIf="planches?.length > 0">
                         <table class="table table-striped" aria-describedby="page-heading">
                             <thead>
                             <tr>
                                 <th style="width:5%;"></th>
-                                <th><span jhiTranslate="ecomgucvoileApp.planche.libelle">Libelle</span></th>
+                                <th><span jhiTranslate="ecomgucvoileApp.planche.reservationLibelle">Libelle</span></th>
                             </tr>
                             </thead>
                             <tbody>
