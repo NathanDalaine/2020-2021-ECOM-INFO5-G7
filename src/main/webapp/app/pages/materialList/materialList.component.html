@@ -18,14 +18,14 @@
     </div>
 
     <div fxLayoutGap="2%">
-        <mat-tab-group mat-align-tabs="left">
-            <mat-tab label="Les Voiles">
+        <mat-tab-group mat-align-tabs="start">
+            <mat-tab label="Les Voiles" >
                     <div class="alert alert-warning" *ngIf="voiles?.length === 0">
                         <span jhiTranslate="ecomgucvoileApp.voile.home.notFound">No voiles found</span>
                     </div>
                     <div>
                         <input #searchTextVoile type="text" (input)="searchVoile(searchTextVoile.value)"
-                               placeholder="Recherche voile"/>
+                               placeholder="Recherche voile" class="searchTerm"/>
                     </div>
                     <div class="t+able-responsive" *ngIf="voiles?.length > 0">
                         <table class="table table-striped" aria-describedby="page-heading">
@@ -53,7 +53,7 @@
                     </div>
                     <div>
                         <input #searchTextPlanche type="text" (input)="searchPlanche(searchTextPlanche.value)"
-                               placeholder="Recherche planche"/>
+                               placeholder="Recherche planche" class="searchTerm"/>
                     </div>
                     <div class="table-responsive" *ngIf="planches?.length > 0">
                         <table class="table table-striped" aria-describedby="page-heading">
@@ -64,7 +64,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr *ngFor="let planche of planches | orderBy: 'libelle' ;trackBy: trackIdPlanche">
+                            <tr *ngFor="let planche of planches | orderBy: 'libelle'; trackBy: trackIdPlanche">
                                 <td>
                                     <input [checked]="this.registerForm.get('plancheId').value == planche.id"
                                            (click)="selectPlanche(planche)" type="radio">

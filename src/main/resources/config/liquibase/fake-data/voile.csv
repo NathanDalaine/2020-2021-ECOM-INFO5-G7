@@ -1,11 +1,59 @@
-id;surface;marque;modele;numero;localisation;etat;libelle;gree;created_by;updated_by;deleted_by;created_at;updated_at;deleted_at;niveaurequis
-1;37454;Directives application Home Loan Account;Dam;Practical Fresh Pants;Metal deposit;Producer;Implementation Electronics Officer;true;Home Loan Account;web-readiness;Namibia;2019-11-17T04:55:26;2019-11-17T11:10:21;2019-11-17T13:24:01;FUNBOARD
-2;23277;Licensed Savings Account;Cambridgeshire Mississippi;HDD;Table Small Frozen Sausages Planner;envisioneer Music Public-key;infomediaries;false;Buckinghamshire Games;incentivize Tuna copy;Costa Rica Mayotte;2019-11-17T10:05:02;2019-11-17T13:46:08;2019-11-16T15:15:02;PERF
-3;59789;National Awesome sky blue;Tactics;scale interactive generating;Specialist Home Loan Account;Plastic;Car Industrial deliverables;false;24 hour;overriding;monitor 1080p Checking Account;2019-11-16T16:17:22;2019-11-17T05:55:02;2019-11-16T22:53:41;DEBUTANT
-4;85003;Highway Ergonomic;moratorium moratorium;New York tangible Mississippi;Frozen bus;hard drive Robust Networked;Poland;false;Grocery;red;withdrawal knowledge base Buckinghamshire;2019-11-16T16:44:20;2019-11-17T11:10:35;2019-11-17T08:32:15;PERF
-5;22879;Generic neutral Salad;Auto Loan Account modular Refined;digital maroon;EXE projection Fresh;support Gorgeous;withdrawal;false;cutting-edge ability Hat;supply-chains magenta;encompassing;2019-11-17T08:39:41;2019-11-16T15:53:27;2019-11-17T10:28:53;DEBUTANTPLUS
-6;55810;facilitate Tasty Concrete Chips Exclusive;Buckinghamshire capability zero tolerance;mission-critical;Berkshire Small Plastic Pants Investor;Canadian Dollar;Berkshire Designer;false;Bulgarian Lev navigate;Re-contextualized;web-enabled invoice withdrawal;2019-11-17T01:39:43;2019-11-16T18:55:34;2019-11-17T12:21:12;DEBUTANT
-7;4077;Kentucky Algerian Dinar Clothing;open-source turn-key;Sausages;disintermediate Cambridgeshire hacking;bricks-and-clicks Concrete Global;Fiji Dollar Profound Bacon;true;Borders content-based;Tasty Customer Human;pink even-keeled;2019-11-16T21:42:43;2019-11-16T21:05:51;2019-11-16T18:12:02;DEBUTANT
-8;85092;Marketing;Dynamic Home Loan Account Tools;Branding;Home Gloves Latvia;Ports Manager Fish;Networked;false;navigate;program alarm;Nevada;2019-11-17T12:16:20;2019-11-17T02:18:32;2019-11-17T05:41:43;DEBUTANT
-9;97301;target Human withdrawal;dot-com payment Libyan Dinar;white sensor local;calculate;Chips;Villages uniform PCI;true;Factors;architectures;Wisconsin Facilitator Incredible;2019-11-17T07:11:01;2019-11-17T05:16:41;2019-11-17T09:56:19;FUNBOARD
-10;39469;calculating Intranet Ergonomic Concrete Soap;Director Concrete Bedfordshire;portal calculating Metal;real-time discrete redundant;Synergistic Personal Loan Account Sleek;Borders;true;deposit;extend Unbranded Fresh Pants Tools;Practical North Dakota;2019-11-17T13:39:28;2019-11-17T06:38:41;2019-11-17T03:20:46;FUNBOARD
+id;marque;modele;surface;numero;gree;localisation;etat;libelle;created_by;updated_by;deleted_by;created_at;updated_at;deleted_at
+1;Gun Sails;Torro;5,7;GF1;oui;Ratellier Voile;En rep;GF1 Gun Sails Torro Surface 5,7m2;;;;;;
+2;Gun Sails;Torro;5,7;GF2;oui;Ratellier Voile;x;GF2 Gun Sails Torro Surface 5,7m2;;;;;;
+3;Gun Sails;Torro;5,7;GF3;oui;Ratellier Voile;x;GF3 Gun Sails Torro Surface 5,7m2;;;;;;
+4;North;Prisma;6;GF4;oui;;x;GF4 North Prisma Surface 6m2;;;;;;
+5;Gun Sails;Torro;5,7;GF6;oui;Ratellier Voile;x;GF6 Gun Sails Torro Surface 5,7m2;;;;;;
+6;Gun Sails;Torro;5,7;GF7;oui;Ratellier Voile;x;GF7 Gun Sails Torro Surface 5,7m2;;;;;;
+7;Gun Sails;Beat;5,3;GF10;oui;Ratellier Voile;En rep;GF10 Gun Sails Beat Surface 5,3m2;;;;;;
+8;Gun Sails;Beat;5,3;GF11;oui;Ratellier Voile;x;GF11 Gun Sails Beat Surface 5,3m2;;;;;;
+9;Gun Sails;Torro;6,6;GF16;oui;Ratellier Voile;x;GF16 Gun Sails Torro Surface 6,6m2;;;;;;
+10;Gun Sails;Torro;6,6;GF17;oui;Ratellier Voile;x;GF17 Gun Sails Torro Surface 6,6m2;;;;;;
+11;Equipe;Speed Slalom ;5,2;GF24;oui;Ratellier Voile;HS dégrée;GF24 Equipe Speed Slalom  Surface 5,2m2;;;;;;
+12;Ezzy;Wave;5;GF31;Oui;Ratellier Voile;x;GF31 Ezzy Wave Surface 5m2;;;;;;
+14;Air Foil;Wave;4,6;GF33;oui;Ratellier Voile;x;GF33 Air Foil Wave Surface 4,6m2;;;;;;
+15;Gun Sails;Top wave;5;GF34;oui;Ratellier Voile;x;GF34 Gun Sails Top wave Surface 5,0m2;;;;;;
+16;North;Infinity;5;GF40;oui;Ratellier Voile;HS;GF40 North Infinity Surface 5,0m2;;;;;;
+17;Bob;Noname;4,5;GF41;oui;Ratellier Voile;x;GF41 Bob Noname Surface 4,5m2;;;;;;
+18;North;Infinity;5;GF42;oui;Ratellier Voile;x;GF42 North Infinity Surface 5,0m2;;;;;;
+19;North;Spectro;5;GF43;oui;;x;GF43 North Spectro Surface 5m2;;;;;;
+20;North;Spectro;5;GF44;oui;;x;GF44 North Spectro Surface 5m2;;;;;;
+21;Pryde;Raf;4,5;GF45;oui;Ratellier Voile;x;GF45 Pryde Raf Surface 4,5m2;;;;;;
+22;North;Zeta;4,2;GF46;oui;Ratellier Voile;x;GF46 North Zeta Surface 4,2m2;;;;;;
+23;North;Zeta;4;GF47;oui;Ratellier Voile;x;GF47 North Zeta Surface 4,0m2;;;;;;
+24;Maui;Legend;4;GF48;oui;Ratellier Voile;x;GF48 Maui Legend Surface 4m2 Réservé bon niveau;;;;;;
+25;Loft Sails;LIP;3,9;GF51;oui;Ratellier Voile;x;GF51 Loft Sails LIP Surface 3,9m2;;;;;;
+26;Neilpryde;Warp;3,3;GF52;oui;Ratellier Voile;x;GF52 Neilpryde Warp Surface 3,3m2;;;;;;
+27;Neilpryde;Warp;4,2;GF53;oui;Ratellier Voile;En rep;GF53 Neilpryde Warp Surface 4,2m2;;;;;;
+28;Neilpryde;Raf;3,7;GF54;oui;Ratellier Voile;x;GF54 Neilpryde Raf Surface 3,7m2;;;;;;
+29;Gun Sails;Hammer;4;GF55;oui;Ratellier Voile;x;GF55 Gun Sails Hammer Surface 4,0m2;;;;;;
+30;Simmer;Surflite;3,4;GF56;oui;Ratellier Voile;x;GF56 Simmer Surflite Surface 3,4m2;;;;;;
+31;North;Zeta;4,2;GF57;oui;Ratellier Voile;x;GF57 North Zeta Surface 4,2m2;;;;;;
+32;Gun Sails;Top wave;5;GF58;oui;Ratellier Voile;x;GF58 Gun Sails Top wave Surface 5,0m2;;;;;;
+33;Arrows;Impact;3,6;GF59;oui;Ratellier Voile;x;GF59 Arrows Impact Surface 3,6m2;;;;;;
+34;Gun Sails;Rapid;7,2;GF60;oui;Ratellier Voile;x;GF60 Gun Sails Rapid Surface 7,2m2;;;;;;
+35;Gun Sails;Rapid;7,2;GF61;oui;;x;GF61 Gun Sails Rapid Surface 7,2m2;;;;;;
+36;Neilpryde;V6;6;GF62;oui;Ratellier Voile;;GF62 Neilpryde V6 Surface 6m2 Réservé bon niveau;;;;;;
+37;Neilpryde;RS Slalom;6,7;GF63;non;;x;GF63 Neilpryde RS Slalom Surface 6,7m2 RESERVE FUN++ ;;;;;;
+38;Loft Sails;Blade;8,5;GF64;non;;En rep;GF64 Loft Sails Blade Surface 8,5m2;;;;;;
+39;Loft Sails;O2;8,4;GF65;non;;x;GF65 Loft Sails O2 Surface 8,4m2;;;;;;
+40;Gun Sails;GSR;8,7;GF66;non;;x;GF66 Gun Sails GSR Surface 8,7m2;;;;;;
+41;Gun Sails;Mission;8;GF67;non;;En rep;GF67 Gun Sails Mission Surface 8,0m2;;;;;;
+42;Neilpryde;V8;10;GF68;non;;x;GF68 Neilpryde V8 Surface 10m2;;;;;;
+43;Simmer ;Spark;5;GF69;Oui;Ratellier Voile;x;GF69 Simmer  Spark Surface 5m2 Réservé bon niveau;;;;;;
+44;Gaastra;Remedy;5;GF70;oui;Ratellier Voile;x;GF70 Gaastra Remedy Surface 5m2 Réservé bon niveau;;;;;;
+45;North;Style;5;GF71;oui;Ratellier Voile;x;GF71 North Style Surface 5m2 Réservé bon niveau;;;;;;
+46;Gun Sails;Zoom;7;GF72;non;;;GF72 Gun Sails Zoom Surface 7m2;;;;;;
+47;Gaastra;;7;GF73;oui;;;GF73 Gaastra  Surface 7m2;;;;;;
+48;Gun ;Canon Ball;7;GF83;non;;;GF83 Gun  Canon Ball Surface 7m2;;;;;;
+49;Gun Sails;Dragon;4;GF100 enfant;oui;;x;GF100 enfant Gun Sails Dragon Surface 4m2;;;;;;
+50;Neilpryde;Wavepro;5;GF5;oui;Ratellier Voile;x;GF5 Neilpryde Wavepro Surface 5m2;;;;;;
+51;Naish;Force;5;GF8;;;x;GF8 Naish Force Surface 5m2 Réservé bon niveau;;;;;;
+52;Moove;Yes;6;GF9;;;x;GF9 Moove Yes Surface 6m2;;;;;;
+53;Gaastra;Pilot;6;GF12;;;x;GF12 Gaastra Pilot Surface 6m2;;;;;;
+54;Gun Sails;Mission;7;GF13;;;x;GF13 Gun Sails Mission Surface 7m2;;;;;;
+55;Tribord;RC4;8;GF14;;Rack du fond;x;GF14 Tribord RC4 Surface 8m2;;;;;;
+56;North Sails;S Type;8;GF15;;;x;GF15 North Sails S Type Surface 8m2;;;;;;
+57;Gun Sails;Cannonball;7;GF18;;;x;GF18 Gun Sails Cannonball Surface 7m2;;;;;;
+58;Neilpryde;V8;7;GF19;;;x;GF19 Neilpryde V8 Surface 7m2;;;;;;
+59;Neilpryde;V6;6;GF20;oui;Ratellier Voile;x;GF20 Neilpryde V6 Surface 6m2;;;;;;
