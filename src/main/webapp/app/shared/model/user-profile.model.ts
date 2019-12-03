@@ -19,7 +19,6 @@ export interface IUserProfile {
   tailleCombinaison?: Taille;
   niveau?: Niveau;
   reservations?: IReservation[];
-  user?: IUser;
 }
 
 export class UserProfile implements IUserProfile {
@@ -36,8 +35,7 @@ export class UserProfile implements IUserProfile {
     public tailleHarnais?: Taille,
     public tailleCombinaison?: Taille,
     public niveau?: Niveau,
-    public reservations?: IReservation[],
-    public user?: IUser
+    public reservations?: IReservation[]
   ) {
     this.materielTechniqueAutorise = this.materielTechniqueAutorise || false;
   }
