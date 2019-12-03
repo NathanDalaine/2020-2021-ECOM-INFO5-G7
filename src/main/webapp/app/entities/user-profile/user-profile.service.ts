@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { map } from 'rxjs/operators';
 
 import { SERVER_API_URL } from 'app/app.constants';
@@ -43,6 +42,12 @@ export class UserProfileService {
   find(id: number): Observable<EntityResponseType> {
     return this.http
       .get<IUserProfile>(`${this.resourceUrl}/${id}`, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+
+  findCurrentUser(): Observable<EntityResponseType> {
+    return this.http
+      .get<IUserProfile>(`${this.resourceUrl}/current-user`, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 

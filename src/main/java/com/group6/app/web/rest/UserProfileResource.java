@@ -99,6 +99,11 @@ public class UserProfileResource {
         return userProfileService.findAll();
     }
 
+    @GetMapping("/current-user")
+    public UserProfileDTO getCurrentUser(){
+        return userProfileService.findCurrentUser();
+    }
+
     @GetMapping("/user-profiles/reservations")
     public List<ReservationDTO> getReservationFromCurrentUser() {
         log.debug("REST request to get all UserProfiles");

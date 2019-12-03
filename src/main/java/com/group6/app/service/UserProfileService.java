@@ -13,6 +13,7 @@ import com.group6.app.service.dto.UserProfileDTO;
 import com.group6.app.service.mapper.ReservationMapper;
 import com.group6.app.service.mapper.UserProfileMapper;
 import com.group6.app.service.util.RandomUtil;
+import com.group6.app.web.rest.errors.AuthorityException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -63,13 +64,13 @@ public class UserProfileService {
      * @return the persisted entity.
      */
     public UserProfileDTO save(UserProfileDTO userProfileDTO) {
-        userRepository.findOneByLogin(userProfileDTO.getLogin().toLowerCase()).ifPresent(existingUser -> {
+        userRepository.findOneByLogin(userProfileDTO.getUser().getLogin().toLowerCase()).ifPresent(existingUser -> {
             boolean removed = false; //removeNonActivatedUser(existingUser);
             if (!removed) {
                 throw new UsernameAlreadyUsedException();
             }
         });
-        userRepository.findOneByEmailIgnoreCase(userProfileDTO.getEmail()).ifPresent(existingUser -> {
+        userRepository.findOneByEmailIgnoreCase(userProfileDTO.getUser().getEmail()).ifPresent(existingUser -> {
             boolean removed = false; // removeNonActivatedUser(existingUser);
             if (!removed) {
                 throw new EmailAlreadyUsedException();
@@ -77,12 +78,12 @@ public class UserProfileService {
         });
         User newUser = new User();
         // String encryptedPassword = passwordEncoder.encode(userProfileDTO.getPassword());
-        newUser.setLogin(userProfileDTO.getLogin().toLowerCase());
+        newUser.setLogin(userProfileDTO.getUser().getLogin().toLowerCase());
         // new user gets initially a generated password
         //  newUser.setPassword(encryptedPassword);
-        newUser.setFirstName(userProfileDTO.getFirstName());
-        newUser.setLastName(userProfileDTO.getLastName());
-        newUser.setEmail(userProfileDTO.getEmail().toLowerCase());
+        newUser.setFirstName(userProfileDTO.getUser().getFirstName());
+        newUser.setLastName(userProfileDTO.getUser().getLastName());
+        newUser.setEmail(userProfileDTO.getUser().getEmail().toLowerCase());
         // newUser.setImageUrl(userDTO.getImageUrl());
         //newUser.setLangKey(userDTO.getLangKey());
         // new user is not active
@@ -90,7 +91,10 @@ public class UserProfileService {
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         Set<Authority> authorities = new HashSet<>();
-        authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
+        authorityRepository.findById(userProfileDTO.getAuthoritie()).ifPresent(authorities::add);
+        if(authorities.isEmpty()){
+            throw new Error();
+        }
         newUser.setAuthorities(authorities);
 
         log.debug("Request to save UserProfile : {}", userProfileDTO);
@@ -107,13 +111,13 @@ public class UserProfileService {
     }
 
     public UserProfileDTO register(UserProfileDTO userProfileDTO, String password) {
-        userRepository.findOneByLogin(userProfileDTO.getLogin().toLowerCase()).ifPresent(existingUser -> {
+        userRepository.findOneByLogin(userProfileDTO.getUser().getLogin().toLowerCase()).ifPresent(existingUser -> {
             boolean removed = false; //removeNonActivatedUser(existingUser);
             if (!removed) {
                 throw new UsernameAlreadyUsedException();
             }
         });
-        userRepository.findOneByEmailIgnoreCase(userProfileDTO.getEmail()).ifPresent(existingUser -> {
+        userRepository.findOneByEmailIgnoreCase(userProfileDTO.getUser().getEmail()).ifPresent(existingUser -> {
             boolean removed = false; // removeNonActivatedUser(existingUser);
             if (!removed) {
                 throw new EmailAlreadyUsedException();
@@ -121,20 +125,51 @@ public class UserProfileService {
         });
         User newUser = new User();
         String encryptedPassword = passwordEncoder.encode(password);
-        newUser.setLogin(userProfileDTO.getLogin().toLowerCase());
+        newUser.setLogin(userProfileDTO.getUser().getLogin().toLowerCase());
         // new user gets initially a generated password
         newUser.setPassword(encryptedPassword);
-        newUser.setFirstName(userProfileDTO.getFirstName());
-        newUser.setLastName(userProfileDTO.getLastName());
-        newUser.setEmail(userProfileDTO.getEmail().toLowerCase());
+        newUser.setFirstName(userProfileDTO.getUser().getFirstName());
+        newUser.setLastName(userProfileDTO.getUser().getLastName());
+        newUser.setEmail(userProfileDTO.getUser().getEmail().toLowerCase());
         // newUser.setImageUrl(userDTO.getImageUrl());
         newUser.setLangKey("fr");
         // new user is not active
         newUser.setActivated(true);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
+        User currentUser;
+        if(SecurityUtils.getCurrentUserLogin().isPresent()){
+            if(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).isPresent()){
+                currentUser = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).get();
+            }else{
+                currentUser = null;
+            }
+        }else{
+            currentUser = null;
+        }
+
         Set<Authority> authorities = new HashSet<>();
-        authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
+        authorityRepository.findById(userProfileDTO.getAuthoritie()).ifPresent(authorities::add);
+        if(authorities.isEmpty()){
+            throw new Error();
+        }
+
+        authorities.forEach(
+            authoritie ->{
+                switch(authoritie.getName()){
+                    case AuthoritiesConstants.ADMIN :
+                        if(currentUser == null ||!currentUser.getAuthorities().contains(authorityRepository.getOne(AuthoritiesConstants.ADMIN))){
+                            throw new AuthorityException();
+                        }
+                        break;
+                    case AuthoritiesConstants.GESTIONNAIRE:
+                        if(currentUser == null ||(!currentUser.getAuthorities().contains(authorityRepository.getOne(AuthoritiesConstants.GESTIONNAIRE)) && !currentUser.getAuthorities().contains(authorityRepository.getOne(AuthoritiesConstants.ADMIN)))){
+                            throw new AuthorityException();
+                        }
+                        break;
+                }
+            }
+        );
         newUser.setAuthorities(authorities);
 
         log.debug("Request to save UserProfile : {}", userProfileDTO);
@@ -147,7 +182,7 @@ public class UserProfileService {
         }
         userProfile.setUser(newUser);
         userProfile = userProfileRepository.save(userProfile);
-        if (!userProfileDTO.getActivated()) {
+        if (!userProfileDTO.getUser().getActivated()) {
             mailService.sendActivationEmail(userProfile.getUser());
         }
         return userProfileMapper.toDto(userProfile);
@@ -176,6 +211,16 @@ public class UserProfileService {
         return currentUser.getReservations().stream()
             .map(reservationMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    @Transactional(readOnly = true)
+    public UserProfileDTO findCurrentUser() {
+        if(SecurityUtils.getCurrentUserLogin().isPresent()){
+            if(userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()) != null){
+                return userProfileMapper.toDto(userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()));
+            }
+        }
+        return null;
     }
 
 
