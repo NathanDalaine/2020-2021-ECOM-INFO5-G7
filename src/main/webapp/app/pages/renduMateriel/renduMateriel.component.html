@@ -7,11 +7,7 @@
             <dt class="row-md jh-entity-details">
                 <dt><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></mat-checkbox></dt>
                 <dd>
-                    <span>{{reservation.dateReservation}}</span>
-                </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.reservation.remarques">Remarques</span></dt>
-                <dd>
-                    <span>{{reservation.remarques}}</span>
+                    <span>{{reservation.dateReservation | date: 'medium'}}</span>
                 </dd>
                 <dt *ngIf="reservation.planche"><span jhiTranslate="ecomgucvoileApp.reservation.planche">Planche</span></dt>
                 <dd *ngIf="reservation.planche">

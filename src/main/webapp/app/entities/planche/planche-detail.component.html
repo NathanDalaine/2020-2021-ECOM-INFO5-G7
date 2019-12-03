@@ -1,22 +1,10 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="planche">
-            <h2><span jhiTranslate="ecomgucvoileApp.planche.detail.title">Planche</span> {{planche.id}}</h2>
+            <h2><span jhiTranslate="ecomgucvoileApp.planche.detail.title">Planche</span> {{planche.libelle}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="ecomgucvoileApp.planche.marque">Marque</span></dt>
-                <dd>
-                    <span>{{planche.marque}}</span>
-                </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.planche.modele">Modele</span></dt>
-                <dd>
-                    <span>{{planche.modele}}</span>
-                </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.planche.numero">Numero</span></dt>
-                <dd>
-                    <span>{{planche.numero}}</span>
-                </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.planche.localisation">Localisation</span></dt>
                 <dd>
                     <span>{{planche.localisation}}</span>
@@ -25,39 +13,11 @@
                 <dd>
                     <span>{{planche.etat}}</span>
                 </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.planche.libelle">Libelle</span></dt>
-                <dd>
-                    <span>{{planche.libelle}}</span>
-                </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.planche.volume">Volume</span></dt>
                 <dd>
                     <span>{{planche.volume}}</span>
                 </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.planche.createdBy">Created By</span></dt>
-                <dd>
-                    <span>{{planche.createdBy}}</span>
-                </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.planche.updatedBy">Updated By</span></dt>
-                <dd>
-                    <span>{{planche.updatedBy}}</span>
-                </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.planche.deletedBy">Deleted By</span></dt>
-                <dd>
-                    <span>{{planche.deletedBy}}</span>
-                </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.planche.createdAt">Created At</span></dt>
-                <dd>
-                    <span>{{planche.createdAt}}</span>
-                </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.planche.updatedAt">Updated At</span></dt>
-                <dd>
-                    <span>{{planche.updatedAt}}</span>
-                </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.planche.deletedAt">Deleted At</span></dt>
-                <dd>
-                    <span>{{planche.deletedAt}}</span>
-                </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.planche.niveaurequis">Niveaurequis</span></dt>
+                <dt><span jhiTranslate="ecomgucvoileApp.planche.niveaurequis">Niveau Requis</span></dt>
                 <dd>
                     <span jhiTranslate="{{'ecomgucvoileApp.Niveau.' + planche.niveaurequis}}">{{planche.niveaurequis}}</span>
                 </dd>
