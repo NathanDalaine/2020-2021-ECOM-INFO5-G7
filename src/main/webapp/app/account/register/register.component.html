@@ -58,11 +58,45 @@
             </div>
             <div class="form-group">
                 <label class="form-control-label" jhiTranslate="global.form.lastname.label">LastName</label>
-                <input type="text" id="lastName" name="lastName"  class="form-control" [formControl]="this.registerForm.get('user').get('lastname')">
+                <input type="text" id="lastName" name="lastName"  class="form-control" [formControl]="this.registerForm.get('user').get('lastName')" placeholder="{{'global.form.lastname.placeholder' | translate}}">
+                <div *ngIf="registerForm.get('user').get('lastName').invalid && (registerForm.get('user').get('lastName').dirty || registerForm.get('user').get('lastName').touched)">
+                    <small class="form-text text-danger" *ngIf="registerForm.get('lastName').errors.required" jhiTranslate="register.messages.validate.lastName.required">
+                        Your lastName is required.
+                    </small>
+                    <small class="form-text text-danger" *ngIf="registerForm.get('user').get('lastName').errors.minlength"
+                           jhiTranslate="register.messages.validate.lastName.minlength">
+                        Your lastName is required to be at least 2 character.
+                    </small>
+                    <small class="form-text text-danger" *ngIf="registerForm.get('user').get('lastName').errors.maxlength"
+                           jhiTranslate="register.messages.validate.lastName.maxlength">
+                        Your lastName cannot be longer than 20 characters.
+                    </small>
+                    <small class="form-text text-danger" *ngIf="registerForm.get('user').get('lastName').errors.pattern"
+                           jhiTranslate="register.messages.validate.lastName.pattern">
+                        Your lastName can only contain letters and digits.
+                    </small>
+                </div>
             </div>
             <div class="form-group">
                 <label class="form-control-label" jhiTranslate="global.form.firstname.label">FirstName</label>
-                <input type="text" id="firstName" name="firstName"  class="form-control" [formControl]="this.registerForm.get('user').get('firstname')">
+                <input type="text" id="firstName" name="firstName"  class="form-control" [formControl]="this.registerForm.get('user').get('firstName')" placeholder="{{'global.form.firstname.placeholder' | translate}}">
+            </div>
+            <div *ngIf="registerForm.get('user').get('firstName').invalid && (registerForm.get('user').get('firstName').dirty || registerForm.get('user').get('firstName').touched)">
+                <small class="form-text text-danger" *ngIf="registerForm.get('lastName').errors.required" jhiTranslate="register.messages.validate.lastName.required">
+                    Your firstName is required.
+                </small>
+                <small class="form-text text-danger" *ngIf="registerForm.get('user').get('firstName').errors.minlength"
+                       jhiTranslate="register.messages.validate.lastName.minlength">
+                    Your lastName is required to be at least 2 character.
+                </small>
+                <small class="form-text text-danger" *ngIf="registerForm.get('user').get('firstName').errors.maxlength"
+                       jhiTranslate="register.messages.validate.lastName.maxlength">
+                    Your firstName cannot be longer than 20 characters.
+                </small>
+                <small class="form-text text-danger" *ngIf="registerForm.get('user').get('firstName').errors.pattern"
+                       jhiTranslate="register.messages.validate.lastName.pattern">
+                    Your firstName can only contain letters and digits.
+                </small>
             </div>
             <div class="form-group">
                 <label class="form-control-label" jhiTranslate="global.form.address.label">Address</label>
