@@ -51,7 +51,6 @@ export class UserProfileUpdateComponent implements OnInit {
       telephone: userProfile.telephone,
       typeAbonnement: userProfile.typeAbonnement,
       materielTechniqueAutorise: userProfile.materielTechniqueAutorise,
-      remarque: userProfile.remarque,
       tailleHarnais: userProfile.tailleHarnais,
       tailleCombinaison: userProfile.tailleCombinaison,
       niveau: userProfile.niveau
@@ -88,7 +87,6 @@ export class UserProfileUpdateComponent implements OnInit {
       telephone: this.editForm.get(['telephone']).value,
       typeAbonnement: this.editForm.get(['typeAbonnement']).value,
       materielTechniqueAutorise: this.editForm.get(['materielTechniqueAutorise']).value,
-      remarque: this.editForm.get(['remarque']).value,
       tailleHarnais: this.editForm.get(['tailleHarnais']).value,
       tailleCombinaison: this.editForm.get(['tailleCombinaison']).value,
       niveau: this.editForm.get(['niveau']).value
