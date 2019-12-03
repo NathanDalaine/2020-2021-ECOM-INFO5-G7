@@ -76,3 +76,14 @@ Vacances de la Toussaint
 - Finalisation des DTO des reservations
 - Finalisation de la pop up de confirmation de reservation (avec détail)
 - Ajout d'un champ niveau pour le materiel (des entités planche et voile)
+
+# Semaine 03/12 - 10/12 Sprint 3
+
+- Préparation de l'audit
+- Merge de toutes les taches en cours
+- Modification de la navbar
+- Fix de divers bug liés aux taches réalisés
+- Mise à jour de la base de donnée avec des valeurs réelles
+- Authentification gestionnaire
+- Gestionnaire peut créer des comptes gestionnaires
+- Elaboration du wiki
