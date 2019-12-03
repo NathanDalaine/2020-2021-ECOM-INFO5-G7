@@ -215,6 +215,7 @@ public class UserProfileService {
 
     @Transactional(readOnly = true)
     public UserProfileDTO findCurrentUser() {
+        log.debug("Try to find current current user");
         if(SecurityUtils.getCurrentUserLogin().isPresent()){
             if(userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()) != null){
                 return userProfileMapper.toDto(userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()));

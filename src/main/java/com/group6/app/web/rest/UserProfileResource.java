@@ -90,7 +90,6 @@ public class UserProfileResource {
     /**
      * {@code GET  /user-profiles} : get all the userProfiles.
      *
-
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of userProfiles in body.
      */
     @GetMapping("/user-profiles")
@@ -99,7 +98,7 @@ public class UserProfileResource {
         return userProfileService.findAll();
     }
 
-    @GetMapping("/current-user")
+    @GetMapping("/user-profiles/current-user")
     public UserProfileDTO getCurrentUser(){
         return userProfileService.findCurrentUser();
     }
