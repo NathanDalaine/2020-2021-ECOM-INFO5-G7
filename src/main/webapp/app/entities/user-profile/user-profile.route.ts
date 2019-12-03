@@ -33,7 +33,7 @@ export const userProfileRoute: Routes = [
     path: '',
     component: UserProfileComponent,
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.userProfile.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const userProfileRoute: Routes = [
       userProfile: UserProfileResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.userProfile.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -57,7 +57,7 @@ export const userProfileRoute: Routes = [
       userProfile: UserProfileResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.userProfile.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -69,7 +69,7 @@ export const userProfileRoute: Routes = [
       userProfile: UserProfileResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.userProfile.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -84,7 +84,7 @@ export const userProfilePopupRoute: Routes = [
       userProfile: UserProfileResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.userProfile.home.title'
     },
     canActivate: [UserRouteAccessService],

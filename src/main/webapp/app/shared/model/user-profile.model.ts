@@ -6,7 +6,7 @@ import { Niveau } from 'app/shared/model/enumerations/niveau.model';
 import { IUser } from 'app/core/user/user.model';
 
 export interface IUserProfile {
-  user: IUser;
+  user?: IUser;
   id?: number;
   dateEcheance?: Moment;
   dateNaissance?: Moment;
@@ -23,7 +23,7 @@ export interface IUserProfile {
 
 export class UserProfile implements IUserProfile {
   constructor(
-    public user: IUser,
+    public user?: IUser,
     public id?: number,
     public dateEcheance?: Moment,
     public dateNaissance?: Moment,

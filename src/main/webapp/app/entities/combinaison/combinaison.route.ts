@@ -33,7 +33,7 @@ export const combinaisonRoute: Routes = [
     path: '',
     component: CombinaisonComponent,
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.combinaison.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const combinaisonRoute: Routes = [
       combinaison: CombinaisonResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.combinaison.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -57,7 +57,7 @@ export const combinaisonRoute: Routes = [
       combinaison: CombinaisonResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.combinaison.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -69,7 +69,7 @@ export const combinaisonRoute: Routes = [
       combinaison: CombinaisonResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.combinaison.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -84,7 +84,7 @@ export const combinaisonPopupRoute: Routes = [
       combinaison: CombinaisonResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.combinaison.home.title'
     },
     canActivate: [UserRouteAccessService],

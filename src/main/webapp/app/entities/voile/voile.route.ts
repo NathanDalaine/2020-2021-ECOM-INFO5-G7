@@ -33,7 +33,7 @@ export const voileRoute: Routes = [
     path: '',
     component: VoileComponent,
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.voile.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const voileRoute: Routes = [
       voile: VoileResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.voile.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -57,7 +57,7 @@ export const voileRoute: Routes = [
       voile: VoileResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.voile.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -69,7 +69,7 @@ export const voileRoute: Routes = [
       voile: VoileResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.voile.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -84,7 +84,7 @@ export const voilePopupRoute: Routes = [
       voile: VoileResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.voile.home.title'
     },
     canActivate: [UserRouteAccessService],
