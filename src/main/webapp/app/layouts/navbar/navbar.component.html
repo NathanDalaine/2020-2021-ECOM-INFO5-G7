@@ -24,47 +24,22 @@
                     </span>
                 </a>
             </li>
-                <a class="nav-link" routerLink="renduMateriel" (click)="collapseNavbar()">
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="reservationList" (click)="collapseNavbar()">
                     <span>
-                        <fa-icon icon="undo-alt"></fa-icon>
-                        <span jhiTranslate="global.menu.renduMateriel">Equipment return</span>
+                        <fa-icon icon="list"></fa-icon>
+                        <span jhiTranslate="global.menu.reservationList">Reservation List</span>
                     </span>
                 </a>
             </li>
-
             <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
                 <a class="nav-link" routerLink="account/register" routerLinkActive="active" (click)="collapseNavbar()">
                     <fa-icon icon="user-plus" fixedWidth="true"></fa-icon>
                     <span jhiTranslate="global.menu.account.register">Register</span>
                 </a>
             </li>
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
-                    <span>
-                        <fa-icon icon="home"></fa-icon>
-                        <span jhiTranslate="global.menu.home">Home</span>
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="helpPage" (click)="collapseNavbar()">
-                    <span>
-                        <fa-icon icon="info-circle"></fa-icon>
-                        <span jhiTranslate="helpPage.title">Help</span>
-                    </span>
-                </a>
-            </li>
-
-            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="reservationList" (click)="collapseNavbar()">
-                    <span>
-                        <fa-icon icon="home"></fa-icon>
-                        <span jhiTranslate="global.menu.reservationList">Reservation List</span>
-                    </span>
-                </a>
-            </li>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-            <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']"ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
                     <span>
                         <fa-icon icon="th-list"></fa-icon>
@@ -116,7 +91,7 @@
             <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu">
                     <span>
-                        <fa-icon icon="user-plus"></fa-icon>
+                        <fa-icon icon="users-cog"></fa-icon>
                         <span jhiTranslate="global.menu.admin.main">Administration</span>
                     </span>
                 </a>
