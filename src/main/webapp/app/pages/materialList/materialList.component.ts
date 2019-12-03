@@ -4,7 +4,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { IVoile, Voile } from 'app/shared/model/voile.model';
-import { IPlanche } from 'app/shared/model/planche.model';
+import { IPlanche, Planche } from 'app/shared/model/planche.model';
 import { VoileService } from '../../entities/voile/voile.service';
 import { PlancheService } from '../../entities/planche/planche.service';
 import { FormBuilder } from '@angular/forms';
@@ -141,8 +141,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         (res: IPlanche[]) => {
-          this.allPlanches = res;
-          this.planches = res;
+          this.sortAvailablePlanche(res);
         },
         (res: HttpErrorResponse) => this.onError(res.message)
       );
@@ -219,5 +218,26 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     } else {
       this.voiles = this.allVoiles;
     }
+  }
+
+  private sortAvailablePlanche(planches: IPlanche[]) {
+    let keep = true;
+    this.planches = new Array<Planche>();
+    if (planches != null) {
+      planches.forEach(v => {
+        if (v.reservations != null) {
+          v.reservations.forEach(r => {
+            if (r.dateRendu == null) {
+              keep = false;
+            }
+          });
+        }
+        if (keep) {
+          this.planches.push(v);
+        }
+        keep = true;
+      });
+    }
+    this.allPlanches = this.planches;
   }
 }
