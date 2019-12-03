@@ -17,14 +17,14 @@
         "title": "Combinaison"
       },
       "taille": "Taille",
-      "etat": "Etat",
-      "createdBy": "Created By",
-      "updatedBy": "Updated By",
-      "deletedBy": "Deleted By",
-      "createdAt": "Created At",
-      "updatedAt": "Updated At",
-      "deletedAt": "Deleted At",
-      "reservation": "Reservation"
+      "etat": "État",
+      "createdBy": "Créé par",
+      "updatedBy": "Mis à jour par",
+      "deletedBy": "Supprimé par",
+      "createdAt": "Créé le",
+      "updatedAt": "Mis à jour le",
+      "deletedAt": "Supprimé le",
+      "reservation": "Réservation"
     }
   }
 }

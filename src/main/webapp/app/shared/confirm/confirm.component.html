@@ -5,7 +5,19 @@
     </button>
 </div>
 <div class="modal-body">
-    {{ message }}
+    <span jhiTranslate="global.menu.aboutToReserve">You are about to reserve</span>:
+    <div *ngIf="voile != null">
+        - <span jhiTranslate="global.menu.1voile"></span>  {{voile.libelle}}
+    </div>
+    <div *ngIf="planche != null">
+        - <span jhiTranslate="global.menu.1planche"></span> {{planche.libelle}}
+    </div>
+    <div *ngIf="combinaison">
+        - <span jhiTranslate="global.menu.1combinaison"></span>
+    </div>
+    <div *ngIf="harnais">
+        - <span jhiTranslate="global.menu.1harnais"></span>
+    </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-danger" (click)="decline()">{{ btnCancelText }}</button>

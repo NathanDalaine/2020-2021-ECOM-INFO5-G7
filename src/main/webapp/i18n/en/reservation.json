@@ -5,7 +5,7 @@
         "title": "Reservations",
         "createLabel": "Create a new Reservation",
         "createOrEditLabel": "Create or edit a Reservation",
-        "notFound": "No Reservations found"
+        "notFound": "There is no reservation in progress."
       },
       "created": "A new Reservation is created with identifier {{ param }}",
       "updated": "A Reservation is updated with identifier {{ param }}",
@@ -16,21 +16,27 @@
       "detail": {
         "title": "Reservation"
       },
-      "dateReservation": "Date Reservation",
-      "dateRendu": "Date Rendu",
-      "remarques": "Remarques",
+      "dateReservation": "Reservation date",
+      "dateRendu": "Return date",
+      "remarques": "Observations",
       "createdBy": "Created By",
       "updatedBy": "Updated By",
       "deletedBy": "Deleted By",
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
-      "voile": "Voile",
+      "voile": "Sail",
       "user": "User",
       "userProfile": "User Profile",
-      "combinaison": "Combinaison",
-      "harnais": "Harnais",
-      "planche": "Planche"
+      "combinaison": "Wetsuit",
+      "harnais": "Harness",
+      "planche": "Board",
+      "rechercheVoile": "Search for a sail",
+      "recherchePlanche": "Search for a board",
+      "lesVoiles": "Sails",
+      "lesPlanches": "Boards",
+      "reserve": "Make a reservation",
+      "reservationSuccess": "Your reservation was made successfully"
     }
   }
 }

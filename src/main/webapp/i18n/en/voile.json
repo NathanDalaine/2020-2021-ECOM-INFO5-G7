@@ -2,27 +2,28 @@
   "ecomgucvoileApp": {
     "voile": {
       "home": {
-        "title": "Voiles",
-        "createLabel": "Create a new Voile",
-        "createOrEditLabel": "Create or edit a Voile",
-        "notFound": "No Voiles found"
+        "title": "Sails",
+        "createLabel": "Create a new sail",
+        "createOrEditLabel": "Create or edit a sail",
+        "notFound": "No sails found"
       },
-      "created": "A new Voile is created with identifier {{ param }}",
-      "updated": "A Voile is updated with identifier {{ param }}",
-      "deleted": "A Voile is deleted with identifier {{ param }}",
+      "created": "A new sail is created with identifier {{ param }}",
+      "updated": "A sail is updated with identifier {{ param }}",
+      "deleted": "A sail is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Voile {{ id }}?"
+        "question": "Are you sure you want to delete sail {{ id }}?"
       },
       "detail": {
-        "title": "Voile"
+        "title": "Sail"
       },
-      "surface": "Surface",
-      "marque": "Marque",
-      "modele": "Modele",
-      "numero": "Numero",
-      "localisation": "Localisation",
-      "etat": "Etat",
+      "surface": "Size",
+      "marque": "Brand",
+      "modele": "Model",
+      "numero": "Number",
+      "localisation": "Location",
+      "etat": "State",
       "libelle": "Libelle",
+      "reservationLibelle": "Sails",
       "gree": "Gree",
       "createdBy": "Created By",
       "updatedBy": "Updated By",
@@ -30,7 +31,7 @@
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
-      "niveaurequis": "Niveaurequis",
+      "niveaurequis": "Level required",
       "reservation": "Reservation"
     }
   }

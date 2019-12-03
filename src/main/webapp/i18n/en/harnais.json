@@ -2,22 +2,22 @@
   "ecomgucvoileApp": {
     "harnais": {
       "home": {
-        "title": "Harnais",
-        "createLabel": "Create a new Harnais",
-        "createOrEditLabel": "Create or edit a Harnais",
-        "notFound": "No Harnais found"
+        "title": "Harness",
+        "createLabel": "Create a new Harness",
+        "createOrEditLabel": "Create or edit a Harness",
+        "notFound": "No Harness found"
       },
-      "created": "A new Harnais is created with identifier {{ param }}",
-      "updated": "A Harnais is updated with identifier {{ param }}",
-      "deleted": "A Harnais is deleted with identifier {{ param }}",
+      "created": "A new Harness is created with identifier {{ param }}",
+      "updated": "A Harness is updated with identifier {{ param }}",
+      "deleted": "A Harness is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Harnais {{ id }}?"
+        "question": "Are you sure you want to delete Harness {{ id }}?"
       },
       "detail": {
-        "title": "Harnais"
+        "title": "Harness"
       },
-      "taille": "Taille",
-      "etat": "Etat",
+      "taille": "Size",
+      "etat": "State",
       "createdBy": "Created By",
       "updatedBy": "Updated By",
       "deletedBy": "Deleted By",

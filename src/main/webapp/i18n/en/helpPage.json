@@ -14,6 +14,18 @@
       "follow": "follow @java_hipster on Twitter"
     },
     "like": "If you like JHipster, don't forget to give us a star on",
-    "github": "GitHub"
+    "github": "GitHub",
+    "explanation": {
+      "text1": "Hello,",
+      "text2": "This page is here to explain how to use this application.",
+      "text3": "This application allows you to make a reservation for a sail and a board, for a specific time slot.",
+      "text4": "It's really simple!",
+      "text5": "<a [routerLink]=\"['/account/register']\">Create an account</a>, and when connected to your account, go to the 'Reservation' tab",
+      "text7": "Create an account, and when connected to your account, go to <a [routerLink]=\"['/materialList']\">Réservation.</a>",
+      "text8": "On this page you will be able to chose a timeslot, and then one of the boards and sails currently available",
+      "text9": "You can also make a reservation for a harness and a wetsuit on this page, if you need one",
+      "text10": "When your reservation is done, you just have to come to GUC Voile to get your equipment!",
+      "text11": "For more information on GUC Voile, you can check our website :&nbsp;  <a href=\"https://www.guc-voile.com/\" style=\"background-color: rgb(255, 255, 255);\">https://www.guc-voile.com/</a>&nbsp;"
+    }
   }
 }

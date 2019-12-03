@@ -5,7 +5,14 @@
     "menu": {
       "home": "Accueil",
       "reservationList": "Liste des réservations",
+      "reservation": "Réservation",
       "materialList": "Liste du matériel",
+      "aboutToReserve": "Vous êtes sur le point de réserver ",
+      "1combinaison": "une combinaison",
+      "1voile": "une voile ",
+      "1planche": "une planche ",
+      "1harnais": "un harnais",
+      "doYouConfirm": "Vous confirmez?",
       "renduMateriel": "Rendu matériel",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
@@ -14,7 +21,7 @@
         "harnais": "Harnais",
         "planche": "Planche",
         "voile": "Voile",
-        "reservation": "Reservation",
+        "reservation": "Réservation",
         "userProfile": "User Profile",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
@@ -59,8 +66,6 @@
       "tailleharnais.placeholder": "Choisir la taille de harnais",
       "telephone.label": "Numéro de telephone",
       "telephone.placeholder": "Telephone",
-      "email.label": "Email",
-      "email.placeholder": "Email",
       "firstname.label": "Prenom",
       "lastname.label": "Nom",
       "activated.label": "Activer",
@@ -71,7 +76,8 @@
       "level.label": "Niveau",
       "role.label": "Role",
       "level.placeholder": "Selectionner le niveau",
-      "technicalMaterialAutorization.label": "Materiel technique autorise"
+      "technicalMaterialAutorization.label": "Materiel technique autorise",
+      "birthday.label": "Date de naissance"
     },
     "messages": {
       "info": {
@@ -95,7 +101,11 @@
         "harness": "un harnais"
       },
       "error": {
-        "dontmatch": "Le nouveau mot de passe et sa confirmation ne sont pas égaux !"
+        "dontmatch": "Le nouveau mot de passe et sa confirmation ne sont pas égaux !",
+        "invalidAuthority": "Vous n'avez pas les droits nécesssaires pour créer ce type d'utilisateur!",
+        "noWetsuitAvailable": "Il n'y a pas de combinaison à votre taille de disponible.",
+        "noReservationDone": "Une erreur est survenue, la réservation n'a pas été effectuée.",
+        "noHarnessAvailable": "Il n'y a pas d'harnais à votre taille de disponible."
       },
       "validate": {
         "newpassword": {
@@ -151,7 +161,8 @@
       "delete": "Supprimer",
       "open": "Ouvrir",
       "save": "Sauvegarder",
-      "view": "Voir"
+      "view": "Voir",
+      "return": "Rendre"
     },
     "detail": {
       "field": "Champs",

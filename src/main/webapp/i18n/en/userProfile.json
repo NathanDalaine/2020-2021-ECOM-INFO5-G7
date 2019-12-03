@@ -16,16 +16,17 @@
       "detail": {
         "title": "User Profile"
       },
-      "dateEcheance": "Date Echeance",
-      "dateNaissance": "Date Naissance",
-      "dateAdhesion": "Date Adhesion",
-      "adresse": "Adresse",
-      "telephone": "Telephone",
-      "typeAbonnement": "Type Abonnement",
-      "materielTechniqueAutorise": "Materiel Technique Autorise",
-      "remarque": "Remarque",
-      "tailleHarnais": "Taille Harnais",
-      "tailleCombinaison": "Taille Combinaison",
+      "dateEcheance": "Subscription end date",
+      "dateNaissance": "Birth date",
+      "dateAdhesion": "Subscription date",
+      "adresse": "Address",
+      "telephone": "Phone number",
+      "typeAbonnement": "Subscription type",
+      "niveau": "Level",
+      "materielTechniqueAutorise": "Authorized equipment level",
+      "remarque": "Observation",
+      "tailleHarnais": "Harness size",
+      "tailleCombinaison": "Wetsuit size",
       "niveau": "Niveau",
       "reservation": "Reservation"
     }

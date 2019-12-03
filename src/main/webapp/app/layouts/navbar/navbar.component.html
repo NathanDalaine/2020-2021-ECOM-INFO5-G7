@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark navbar-expand-md bg-dark">
+<nav class="navbar navbar-dark navbar-expand-md">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
         <span class="logo-img"></span>
         <span jhiTranslate="global.title" class="navbar-title">Ecomgucvoile</span> <span
@@ -12,43 +12,6 @@
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed"
          [ngSwitch]="isAuthenticated()">
         <ul class="navbar-nav ml-auto">
-            <!--li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                 <a class="nav-link" routerLink="materialList" (click)="collapseNavbar()">
-                     <span>
-                         <fa-icon icon="book"></fa-icon>
-                         <span jhiTranslate="global.menu.materialList">Material List</span>
-                     </span>
-                 </a>
-             </li-->
-            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="materialList" (click)="collapseNavbar()">
-                    <span>
-                        <fa-icon icon="calendar-check"></fa-icon>
-                        <span>Reservation</span>
-                    </span>
-                </a>
-            </li>
-            <div *jhiHasAnyAuthority="'ROLE_ADMIN'">
-                <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active"
-                    [routerLinkActiveOptions]="{exact: true}">
-                    <a class="nav-link" routerLink="members" (click)="collapseNavbar()">
-                    <span>
-                        <fa-icon icon="calendar-check"></fa-icon>
-                        <span jhiTranslate="global.menu.members">Membres</span>
-                    </span>
-                    </a>
-                </li>
-            </div>
-            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="renduMateriel" (click)="collapseNavbar()">
-                    <span>
-                        <fa-icon icon="undo-alt"></fa-icon>
-                        <span jhiTranslate="global.menu.renduMateriel">Rendu Materiel</span>
-                    </span>
-                </a>
-            </li>
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
                     <span>
@@ -57,27 +20,30 @@
                     </span>
                 </a>
             </li>
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="helpPage" (click)="collapseNavbar()">
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="materialList" (click)="collapseNavbar()">
                     <span>
-                        <fa-icon icon="info-circle"></fa-icon>
-                        <span jhiTranslate="helpPage.title">Help</span>
+                        <fa-icon icon="calendar-check"></fa-icon>
+                        <span jhiTranslate="global.menu.reservation">Reservation</span>
                     </span>
                 </a>
             </li>
-
-            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact: true}">
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="reservationList" (click)="collapseNavbar()">
                     <span>
-                        <fa-icon icon="home"></fa-icon>
+                        <fa-icon icon="list"></fa-icon>
                         <span jhiTranslate="global.menu.reservationList">Reservation List</span>
                     </span>
                 </a>
             </li>
+            <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
+                <a class="nav-link" routerLink="account/register" routerLinkActive="active" (click)="collapseNavbar()">
+                    <fa-icon icon="user-plus" fixedWidth="true"></fa-icon>
+                    <span jhiTranslate="global.menu.account.register">Register</span>
+                </a>
+            </li>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-            <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" display="dynamic"
-                routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']"ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
                     <span>
                         <fa-icon icon="th-list"></fa-icon>
@@ -136,7 +102,7 @@
                 routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu">
                     <span>
-                        <fa-icon icon="user-plus"></fa-icon>
+                        <fa-icon icon="users-cog"></fa-icon>
                         <span jhiTranslate="global.menu.admin.main">Administration</span>
                     </span>
                 </a>
@@ -215,8 +181,15 @@
                     </li>
                 </ul>
             </li>
-            <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact: true}">
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="helpPage" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="info-circle"></fa-icon>
+                        <span jhiTranslate="helpPage.title">Help</span>
+                    </span>
+                </a>
+            </li>
+            <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
                   <span *ngIf="!getImageUrl()">
                     <fa-icon icon="user"></fa-icon>
