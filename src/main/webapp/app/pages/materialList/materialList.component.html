@@ -3,6 +3,13 @@
 </div>
 <jhi-alert-error></jhi-alert-error>
 <form name="form" role="form" (ngSubmit)="openConfirmationDialog()" [formGroup]="registerForm" *ngIf="!success">
+    <div fxLayoutAlign="end center">
+        <button type="submit"
+                [disabled]="registerForm.get('voileId').value == null && registerForm.get('plancheId').value == null"
+                class="btn btn-primary" jhiTranslate="ecomgucvoileApp.reservation.reserve">
+            Register
+        </button>
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="alert alert-danger" *ngIf="error" jhiTranslate="global.messages.error.fail">
@@ -86,13 +93,6 @@
                     </div>
             </mat-tab>
         </mat-tab-group>
-    </div>
-    <div fxLayoutAlign="end center">
-        <button type="submit"
-                [disabled]="registerForm.get('voileId').value == null && registerForm.get('plancheId').value == null"
-                class="btn btn-primary" jhiTranslate="ecomgucvoileApp.reservation.reserve">
-            Register
-        </button>
     </div>
 </form>
 
