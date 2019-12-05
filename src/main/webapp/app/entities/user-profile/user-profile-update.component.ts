@@ -23,13 +23,15 @@ export class UserProfileUpdateComponent implements OnInit {
     dateNaissance: [],
     dateAdhesion: [],
     adresse: [],
+    //authoritie:[],
     telephone: [],
     typeAbonnement: [],
     materielTechniqueAutorise: [],
     remarque: [],
     tailleHarnais: [],
     tailleCombinaison: [],
-    niveau: []
+    niveau: [],
+    user: []
   });
 
   constructor(protected userProfileService: UserProfileService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -48,12 +50,14 @@ export class UserProfileUpdateComponent implements OnInit {
       dateNaissance: userProfile.dateNaissance != null ? userProfile.dateNaissance.format(DATE_TIME_FORMAT) : null,
       dateAdhesion: userProfile.dateAdhesion != null ? userProfile.dateAdhesion.format(DATE_TIME_FORMAT) : null,
       adresse: userProfile.adresse,
+      //authoritie: userProfile.user.authorities[0],
       telephone: userProfile.telephone,
       typeAbonnement: userProfile.typeAbonnement,
       materielTechniqueAutorise: userProfile.materielTechniqueAutorise,
       tailleHarnais: userProfile.tailleHarnais,
       tailleCombinaison: userProfile.tailleCombinaison,
-      niveau: userProfile.niveau
+      niveau: userProfile.niveau,
+      user: userProfile.user
     });
   }
 
@@ -84,12 +88,14 @@ export class UserProfileUpdateComponent implements OnInit {
       dateAdhesion:
         this.editForm.get(['dateAdhesion']).value != null ? moment(this.editForm.get(['dateAdhesion']).value, DATE_TIME_FORMAT) : undefined,
       adresse: this.editForm.get(['adresse']).value,
+      //authoritie: this.editForm.get(['authoritie']).value,
       telephone: this.editForm.get(['telephone']).value,
       typeAbonnement: this.editForm.get(['typeAbonnement']).value,
       materielTechniqueAutorise: this.editForm.get(['materielTechniqueAutorise']).value,
       tailleHarnais: this.editForm.get(['tailleHarnais']).value,
       tailleCombinaison: this.editForm.get(['tailleCombinaison']).value,
-      niveau: this.editForm.get(['niveau']).value
+      niveau: this.editForm.get(['niveau']).value,
+      user: this.editForm.get(['user']).value
     };
   }
 
