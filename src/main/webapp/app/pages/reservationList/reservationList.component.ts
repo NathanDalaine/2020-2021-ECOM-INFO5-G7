@@ -60,7 +60,9 @@ export class ReservationListComponent implements OnInit, OnDestroy {
   }
 
   checkUserReservation(res: IReservationFull, user: IUserProfile) {
-    if (user != null && res != null) {
+    if (user.user.authorities.includes('ROLE_GESTIONNAIRE')) {
+      return true;
+    } else if (user != null && res != null) {
       if (res.userProfile.id === user.id) {
         return true;
       }
