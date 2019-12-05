@@ -7,7 +7,7 @@ export const RESERVATIONLIST_ROUTE: Route = {
   path: 'reservationList',
   component: ReservationListComponent,
   data: {
-    authorities: ['ROLE_USER','ROLE_ADMIN','ROLE_GESTIONNAIRE'],
+    authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_GESTIONNAIRE'],
     pageTitle: 'reservationList.title'
   },
   canActivate: [UserRouteAccessService]

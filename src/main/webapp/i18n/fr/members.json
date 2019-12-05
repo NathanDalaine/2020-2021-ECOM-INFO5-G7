@@ -1,0 +1,16 @@
+{
+  "ecomgucvoileApp": {
+    "members": {
+      "home": {
+        "title": "Membres",
+        "notFound": "Aucun membre trouvé"
+      },
+      "firstname": "Prénom",
+      "name": "Nom",
+      "address": "Adresse",
+      "email": "Email",
+      "phonenumber": "Téléphone",
+      "level": "Niveau"
+    }
+  }
+}

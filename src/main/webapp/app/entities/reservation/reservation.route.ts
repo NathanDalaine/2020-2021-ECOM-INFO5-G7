@@ -33,7 +33,7 @@ export const reservationRoute: Routes = [
     path: '',
     component: ReservationComponent,
     data: {
-      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
+      authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.reservation.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const reservationRoute: Routes = [
       reservation: ReservationResolve
     },
     data: {
-      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
+      authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.reservation.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -57,7 +57,7 @@ export const reservationRoute: Routes = [
       reservation: ReservationResolve
     },
     data: {
-      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
+      authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.reservation.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -69,7 +69,7 @@ export const reservationRoute: Routes = [
       reservation: ReservationResolve
     },
     data: {
-      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
+      authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.reservation.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -84,7 +84,7 @@ export const reservationPopupRoute: Routes = [
       reservation: ReservationResolve
     },
     data: {
-      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
+      authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.reservation.home.title'
     },
     canActivate: [UserRouteAccessService],

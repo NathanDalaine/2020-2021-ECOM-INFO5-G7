@@ -2,6 +2,8 @@ package com.group6.app.service.dto;
 import java.time.Instant;
 import java.io.Serializable;
 import java.util.Objects;
+
+import com.group6.app.domain.User;
 import com.group6.app.domain.enumeration.TypeAbonnement;
 import com.group6.app.domain.enumeration.Niveau;
 import com.group6.app.domain.enumeration.Taille;
