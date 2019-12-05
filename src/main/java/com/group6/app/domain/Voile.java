@@ -73,7 +73,7 @@ public class Voile implements Serializable {
     private Niveau niveaurequis;
 
     @OneToMany(mappedBy = "voile")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    //@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Reservation> reservations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

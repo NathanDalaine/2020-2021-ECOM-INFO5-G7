@@ -8,6 +8,7 @@
             <thead>
             <tr>
                 <th><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></th>
+                <th><span jhiTranslate="ecomgucvoileApp.reservation.user">Utilisateur</span></th>
                 <th><span jhiTranslate="ecomgucvoileApp.reservation.voile">Voile</span></th>
                 <th><span jhiTranslate="ecomgucvoileApp.reservation.planche">Planche</span></th>
                 <th><span jhiTranslate="ecomgucvoileApp.reservation.combinaison">Combinaison</span></th>
@@ -18,13 +19,14 @@
                 <tbody>
                 <tr *ngFor="let reservation of (reservations | valuefull) ;trackBy: trackDate " >
                         <td>{{reservation.dateReservation | date:'medium'}}</td>
+                        <td>{{reservation.userProfile.user.login}}</td>
                         <td><a *ngIf="reservation.voile" [routerLink]="['/voile', reservation.voile.id, 'view' ]">{{reservation.voile.libelle}}</a></td>
                         <td><a *ngIf="reservation.planche" [routerLink]="['/planche', reservation.planche.id, 'view' ]">{{reservation.planche.libelle}}</a></td>
                         <td *ngIf="reservation.combinaison">{{reservation.combinaison.taille}}</td>
                         <td *ngIf="reservation.combinaison === null"></td>
                         <td *ngIf="reservation.harnais">{{reservation.harnais.taille}}</td>
                         <td *ngIf="reservation.harnais === null"></td>
-                    <button type="submit"
+                    <button *ngIf ="checkUserReservation(reservation,currentUserProfile)" type="submit"
                             [routerLink]="['/renduMateriel', reservation.id, 'view' ]"
                             class="btn btn-info btn-sm">
                         <fa-icon [icon]="'eye'"></fa-icon>

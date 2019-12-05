@@ -3,8 +3,8 @@ import { AccountService } from 'app/core/auth/account.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
-import { IVoile } from 'app/shared/model/voile.model';
-import { IPlanche } from 'app/shared/model/planche.model';
+import { IVoile, Voile } from 'app/shared/model/voile.model';
+import { IPlanche, Planche } from 'app/shared/model/planche.model';
 import { VoileService } from '../../entities/voile/voile.service';
 import { PlancheService } from '../../entities/planche/planche.service';
 import { FormBuilder } from '@angular/forms';
@@ -128,8 +128,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         (res: IVoile[]) => {
-          this.allVoiles = res;
-          this.voiles = res;
+          this.sortAvailableVoile(res);
         },
         (res: HttpErrorResponse) => this.onError(res.message)
       );
@@ -142,8 +141,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         (res: IPlanche[]) => {
-          this.allPlanches = res;
-          this.planches = res;
+          this.sortAvailablePlanche(res);
         },
         (res: HttpErrorResponse) => this.onError(res.message)
       );
@@ -152,6 +150,27 @@ export class MaterialListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.loadAll();
     this.success = false;
+  }
+
+  sortAvailableVoile(voiles: IVoile[]) {
+    let keep = true;
+    this.voiles = new Array<Voile>();
+    if (voiles != null) {
+      voiles.forEach(v => {
+        if (v.reservations != null) {
+          v.reservations.forEach(r => {
+            if (r.dateRendu == null) {
+              keep = false;
+            }
+          });
+        }
+        if (keep) {
+          this.voiles.push(v);
+        }
+        keep = true;
+      });
+    }
+    this.allVoiles = this.voiles;
   }
 
   ngOnDestroy() {}
@@ -199,5 +218,26 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     } else {
       this.voiles = this.allVoiles;
     }
+  }
+
+  private sortAvailablePlanche(planches: IPlanche[]) {
+    let keep = true;
+    this.planches = new Array<Planche>();
+    if (planches != null) {
+      planches.forEach(v => {
+        if (v.reservations != null) {
+          v.reservations.forEach(r => {
+            if (r.dateRendu == null) {
+              keep = false;
+            }
+          });
+        }
+        if (keep) {
+          this.planches.push(v);
+        }
+        keep = true;
+      });
+    }
+    this.allPlanches = this.planches;
   }
 }
