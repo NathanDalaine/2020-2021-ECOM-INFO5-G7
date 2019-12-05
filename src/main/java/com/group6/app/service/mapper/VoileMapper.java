@@ -8,11 +8,11 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Voile} and its DTO {@link VoileDTO}.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {ReservationMapper.class})
 public interface VoileMapper extends EntityMapper<VoileDTO, Voile> {
 
 
-    @Mapping(target = "reservations", ignore = true)
+    //@Mapping(target = "reservations", ignore = true)
     @Mapping(target = "removeReservation", ignore = true)
     Voile toEntity(VoileDTO voileDTO);
 

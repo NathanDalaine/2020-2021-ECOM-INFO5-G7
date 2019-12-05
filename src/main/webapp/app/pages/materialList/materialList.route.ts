@@ -7,7 +7,7 @@ export const MATERIAL_LIST_ROUTE: Route = {
   path: 'materialList',
   component: MaterialListComponent,
   data: {
-    authorities: ['ROLE_USER'],
+    authorities: ['ROLE_USER','ROLE_ADMIN','ROLE_GESTIONNAIRE'],
     pageTitle: 'ecomgucvoileApp.materialList.home.title'
   },
   canActivate: [UserRouteAccessService]

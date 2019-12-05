@@ -33,7 +33,7 @@ export const plancheRoute: Routes = [
     path: '',
     component: PlancheComponent,
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.planche.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const plancheRoute: Routes = [
       planche: PlancheResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.planche.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -57,7 +57,7 @@ export const plancheRoute: Routes = [
       planche: PlancheResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.planche.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -69,7 +69,7 @@ export const plancheRoute: Routes = [
       planche: PlancheResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.planche.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -84,7 +84,7 @@ export const planchePopupRoute: Routes = [
       planche: PlancheResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE','ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.planche.home.title'
     },
     canActivate: [UserRouteAccessService],

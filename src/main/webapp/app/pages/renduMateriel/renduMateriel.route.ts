@@ -30,7 +30,7 @@ export const RENDU_MATERIEL_ROUTE: Route = {
   path: 'renduMateriel/:id/view',
   component: RenduMaterielComponent,
   data: {
-    authorities: ['ROLE_USER', 'ROLE_GESTIONNAIRE'],
+    authorities: ['ROLE_USER','ROLE_ADMIN','ROLE_GESTIONNAIRE'],
     pageTitle: 'ecomgucvoileApp.renduMateriel.home.title'
   },
   resolve: {

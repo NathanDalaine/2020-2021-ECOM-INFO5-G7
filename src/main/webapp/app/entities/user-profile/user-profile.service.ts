@@ -65,7 +65,7 @@ export class UserProfileService {
   protected convertDateFromClient(userProfile: IUserProfile): IUserProfile {
     const copy: IUserProfile = Object.assign({}, userProfile, {
       dateEcheance: userProfile.dateEcheance != null && userProfile.dateEcheance.isValid() ? userProfile.dateEcheance.toJSON() : null,
-      dateNaissance: userProfile.dateNaissance != null && userProfile.dateNaissance.isValid() ? userProfile.dateNaissance.toJSON() : null,
+      dateNaissance: userProfile.dateNaissance != null ? userProfile.dateNaissance.toJSON() : null,
       dateAdhesion: userProfile.dateAdhesion != null && userProfile.dateAdhesion.isValid() ? userProfile.dateAdhesion.toJSON() : null
     });
     return copy;

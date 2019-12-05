@@ -70,7 +70,7 @@ public class Planche implements Serializable {
     private Niveau niveaurequis;
 
     @OneToMany(mappedBy = "planche")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    //@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Reservation> reservations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

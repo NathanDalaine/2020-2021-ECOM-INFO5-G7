@@ -8,6 +8,7 @@ import { IUserProfile, UserProfile } from 'app/shared/model/user-profile.model';
 import { TypeAbonnement } from 'app/shared/model/enumerations/type-abonnement.model';
 import { Taille } from 'app/shared/model/enumerations/taille.model';
 import { Niveau } from 'app/shared/model/enumerations/niveau.model';
+import { User } from 'app/core/user/user.model';
 
 describe('Service Tests', () => {
   describe('UserProfile Service', () => {
@@ -28,6 +29,7 @@ describe('Service Tests', () => {
       currentDate = moment();
 
       elemDefault = new UserProfile(
+        new User(0),
         0,
         currentDate,
         currentDate,
@@ -36,7 +38,6 @@ describe('Service Tests', () => {
         'AAAAAAA',
         TypeAbonnement.JOURNALIER,
         false,
-        'AAAAAAA',
         Taille.S,
         Taille.S,
         Niveau.DEBUTANT
