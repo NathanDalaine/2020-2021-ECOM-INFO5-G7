@@ -2,6 +2,8 @@ package com.group6.app.service.dto;
 import java.time.Instant;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
+
 import com.group6.app.domain.enumeration.Niveau;
 
 /**
@@ -38,6 +40,8 @@ public class PlancheDTO implements Serializable {
     private Instant deletedAt;
 
     private Niveau niveaurequis;
+
+    private Set<ReservationDTO> reservations;
 
 
     public Long getId() {
@@ -159,6 +163,10 @@ public class PlancheDTO implements Serializable {
     public void setNiveaurequis(Niveau niveaurequis) {
         this.niveaurequis = niveaurequis;
     }
+
+    public Set<ReservationDTO> getReservations(){ return reservations;}
+
+    public void setReservations(Set<ReservationDTO> reservations) { this.reservations = reservations;}
 
     @Override
     public boolean equals(Object o) {
