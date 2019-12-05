@@ -37,7 +37,7 @@
                 </div>
                 <label class="form-control-label" for="login" jhiTranslate="global.form.username.label">Username</label>
                 <input type="text" class="form-control" id="login" name="login" placeholder="{{'global.form.username.placeholder' | translate}}"
-                        [formControl]="this.registerForm.get('user').get('login') ">
+                        [formControl]="this.registerForm.get('user').get('login')">
                 <div *ngIf="registerForm.get('user').get('login').invalid && (registerForm.get('user').get('login').dirty || registerForm.get('user').get('login').touched)">
                     <small class="form-text text-danger" *ngIf="registerForm.get('login').errors.required" jhiTranslate="register.messages.validate.login.required">
                         Your username is required.
