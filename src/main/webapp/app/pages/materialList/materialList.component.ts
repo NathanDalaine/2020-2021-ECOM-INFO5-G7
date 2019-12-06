@@ -13,9 +13,6 @@ import { ConfirmService } from 'app/shared/confirm/confirm.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ViewEncapsulation } from '@angular/core';
 import {
-  EMAIL_ALREADY_USED_TYPE,
-  INVALID_AUTHORITY,
-  LOGIN_ALREADY_USED_TYPE,
   NO_HARNESS_AVAILABLE,
   NO_WETSUIT_AVAILABLE
 } from 'app/shared/constants/error.constants';
@@ -82,16 +79,20 @@ export class MaterialListComponent implements OnInit, OnDestroy {
   reserve() {
     if (this.registerForm.get('harnais').value === true) {
       this.registerForm.controls['harnaisId'].setValue(1);
+    }else{
+      this.registerForm.controls['harnaisId'].setValue(null);
     }
     if (this.registerForm.get('combinaison').value === true) {
       this.registerForm.controls['combinaisonId'].setValue(1);
+    }else{
+      this.registerForm.controls['combinaisonId'].setValue(null);
     }
+    this.error = null;
+    this.errorNoWetSuitAvailable = null;
+    this.errorNoHarnessAvailable = null;
     this.reservationService.create(this.registerForm.value).subscribe(
       () => {
         this.success = true;
-        this.error = null;
-        this.errorNoWetSuitAvailable = null;
-        this.errorNoHarnessAvailable = null;
       },
       response => this.processError(response)
     );
@@ -101,7 +102,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     this.confirmService
       .confirm(
         this.translate.instant('global.messages.confirm.pleaseConfirm'),
-        this.getReservationRecap(),
+        '',
         this.selectedPlanche,
         this.selectedVoile,
         this.registerForm.get('combinaison').value,
@@ -113,10 +114,6 @@ export class MaterialListComponent implements OnInit, OnDestroy {
         }
       })
       .catch();
-  }
-
-  private getReservationRecap(): string {
-    return '';
   }
 
   loadAll() {

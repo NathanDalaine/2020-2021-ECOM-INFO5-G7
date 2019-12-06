@@ -2,7 +2,10 @@ package com.group6.app.web.rest;
 
 import com.group6.app.EcomgucvoileApp;
 import com.group6.app.domain.Reservation;
+import com.group6.app.repository.CombinaisonRepository;
+import com.group6.app.repository.HarnaisRepository;
 import com.group6.app.repository.ReservationRepository;
+import com.group6.app.repository.UserProfileRepository;
 import com.group6.app.service.ReservationService;
 import com.group6.app.service.dto.ReservationDTO;
 import com.group6.app.service.mapper.ReservationMapper;
@@ -77,6 +80,15 @@ public class ReservationResourceIT {
     private ReservationMapper reservationMapper;
 
     @Autowired
+    private UserProfileRepository userProfileRepository;
+
+    @Autowired
+    private HarnaisRepository harnaisRepository;
+
+    @Autowired
+    private CombinaisonRepository combinaisonRepository;
+
+    @Autowired
     private ReservationService reservationService;
 
     @Autowired
@@ -98,10 +110,13 @@ public class ReservationResourceIT {
 
     private Reservation reservation;
 
+
+
+
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ReservationResource reservationResource = new ReservationResource(reservationService);
+        final ReservationResource reservationResource = new ReservationResource(reservationService,userProfileRepository,harnaisRepository,combinaisonRepository);
         this.restReservationMockMvc = MockMvcBuilders.standaloneSetup(reservationResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
