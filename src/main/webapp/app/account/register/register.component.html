@@ -37,20 +37,20 @@
                 </div>
                 <label class="form-control-label" for="login" jhiTranslate="global.form.username.label">Username</label>
                 <input type="text" class="form-control" id="login" name="login" placeholder="{{'global.form.username.placeholder' | translate}}"
-                        [formControl]="this.registerForm.get('user').get('login')">
-                <div *ngIf="registerForm.get('user').get('login').invalid && (registerForm.get('user').get('login').dirty || registerForm.get('user').get('login').touched)">
+                        [formControlName]="'login'">
+                <div *ngIf="registerForm.get('login').invalid && (registerForm.get('login').dirty || registerForm.get('login').touched)">
                     <small class="form-text text-danger" *ngIf="registerForm.get('login').errors.required" jhiTranslate="register.messages.validate.login.required">
                         Your username is required.
                     </small>
-                    <small class="form-text text-danger" *ngIf="registerForm.get('user').get('login').errors.minlength"
+                    <small class="form-text text-danger" *ngIf="registerForm.get('login').errors.minlength"
                            jhiTranslate="register.messages.validate.login.minlength">
                         Your username is required to be at least 1 character.
                     </small>
-                    <small class="form-text text-danger" *ngIf="registerForm.get('user').get('login').errors.maxlength"
+                    <small class="form-text text-danger" *ngIf="registerForm.get('login').errors.maxlength"
                            jhiTranslate="register.messages.validate.login.maxlength">
                         Your username cannot be longer than 50 characters.
                     </small>
-                    <small class="form-text text-danger" *ngIf="registerForm.get('user').get('login').errors.pattern"
+                    <small class="form-text text-danger" *ngIf="registerForm.get('login').errors.pattern"
                            jhiTranslate="register.messages.validate.login.pattern">
                         Your username can only contain letters and digits.
                     </small>
@@ -110,21 +110,21 @@
             <div class="form-group">
                     <label class="form-control-label" for="email" jhiTranslate="global.form.email.label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="{{'global.form.email.placeholder' | translate}}"
-                           [formControl]="this.registerForm.get('user').get('email')">
-                <div *ngIf="registerForm.get('user').get('email').invalid && (registerForm.get('user').get('email').dirty || registerForm.get('user').get('email').touched)">
-                    <small class="form-text text-danger" *ngIf="registerForm.get('user').get('email').errors.required"
+                           [formControlName]="'email'">
+                <div *ngIf="registerForm.get('user').get('email').invalid && (registerForm.get('email').dirty || registerForm.get('email').touched)">
+                    <small class="form-text text-danger" *ngIf="registerForm.get('email').errors.required"
                            jhiTranslate="global.messages.validate.email.required">
                         Your email is required.
                     </small>
-                    <small class="form-text text-danger" *ngIf="registerForm.get('user').get('email').errors.invalid"
+                    <small class="form-text text-danger" *ngIf="registerForm.get('email').errors.invalid"
                            jhiTranslate="global.messages.validate.email.invalid">
                         Your email is invalid.
                     </small>
-                    <small class="form-text text-danger" *ngIf="registerForm.get('user').get('email').errors.minlength"
+                    <small class="form-text text-danger" *ngIf="registerForm.get('email').errors.minlength"
                            jhiTranslate="global.messages.validate.email.minlength">
                         Your email is required to be at least 5 characters.
                     </small>
-                    <small class="form-text text-danger" *ngIf="registerForm.get('user').get('email').errors.maxlength"
+                    <small class="form-text text-danger" *ngIf="registerForm.get('email').errors.maxlength"
                            jhiTranslate="global.messages.validate.email.maxlength">
                         Your email cannot be longer than 100 characters.
                     </small>
