@@ -45,11 +45,13 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     adresse: [''],
     login: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50), Validators.pattern('^[_.@A-Za-z0-9-]*$')]],
     email: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
+    firstName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20), Validators.pattern('[a-zA-Z ]*')]],
+    lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
     user: this.fb.group({
       login: [''],
       email: [''],
-      firstName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20), Validators.pattern('[a-zA-Z ]*')]],
-      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]]
+      firstName: [''],
+      lastName: ['']
     }),
     materielTechniqueAutorise: [false]
   });
@@ -125,6 +127,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       this.errorInvalidAuthority = null;
       this.registerForm.get("user").get("login").setValue(this.registerForm.get("login").value);
       this.registerForm.get("user").get("email").setValue(this.registerForm.get("email").value);
+      this.registerForm.get("user").get("firstName").setValue(this.registerForm.get("firstName").value);
+      this.registerForm.get("user").get("lastName").setValue(this.registerForm.get("lastName").value);
       this.userProfileService.create(this.registerForm.value).subscribe(
         () => {
           this.success = true;
