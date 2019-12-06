@@ -24,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 /**
@@ -64,38 +65,41 @@ public class UserProfileService {
      * @return the persisted entity.
      */
     public UserProfileDTO save(UserProfileDTO userProfileDTO) {
+        AtomicReference<User> newUser = new AtomicReference<>(new User());
         userRepository.findOneByLogin(userProfileDTO.getUser().getLogin().toLowerCase()).ifPresent(existingUser -> {
-            boolean removed = false; //removeNonActivatedUser(existingUser);
+            newUser.set(existingUser);
+            boolean removed = true; //removeNonActivatedUser(existingUser);
             if (!removed) {
                 throw new UsernameAlreadyUsedException();
             }
         });
         userRepository.findOneByEmailIgnoreCase(userProfileDTO.getUser().getEmail()).ifPresent(existingUser -> {
-            boolean removed = false; // removeNonActivatedUser(existingUser);
+            boolean removed = true; // removeNonActivatedUser(existingUser);
             if (!removed) {
                 throw new EmailAlreadyUsedException();
             }
         });
-        User newUser = new User();
+
         // String encryptedPassword = passwordEncoder.encode(userProfileDTO.getPassword());
-        newUser.setLogin(userProfileDTO.getUser().getLogin().toLowerCase());
+        newUser.get().setLogin(userProfileDTO.getUser().getLogin().toLowerCase());
         // new user gets initially a generated password
         //  newUser.setPassword(encryptedPassword);
-        newUser.setFirstName(userProfileDTO.getUser().getFirstName());
-        newUser.setLastName(userProfileDTO.getUser().getLastName());
-        newUser.setEmail(userProfileDTO.getUser().getEmail().toLowerCase());
+        newUser.get().setFirstName(userProfileDTO.getUser().getFirstName());
+        newUser.get().setLastName(userProfileDTO.getUser().getLastName());
+        newUser.get().setEmail(userProfileDTO.getUser().getEmail().toLowerCase());
         // newUser.setImageUrl(userDTO.getImageUrl());
         //newUser.setLangKey(userDTO.getLangKey());
         // new user is not active
-        newUser.setActivated(true);
+        newUser.get().setActivated(true);
         // new user gets registration key
-        newUser.setActivationKey(RandomUtil.generateActivationKey());
+        newUser.get().setActivationKey(RandomUtil.generateActivationKey());
         Set<Authority> authorities = new HashSet<>();
-        authorityRepository.findById(userProfileDTO.getAuthoritie()).ifPresent(authorities::add);
+        Set<String> userAuthorities = userProfileDTO.getUser().getAuthorities();
+        authorityRepository.findById(userAuthorities.iterator().next()).ifPresent(authorities::add);
         if(authorities.isEmpty()){
             throw new Error();
         }
-        newUser.setAuthorities(authorities);
+        newUser.get().setAuthorities(authorities);
 
         log.debug("Request to save UserProfile : {}", userProfileDTO);
         UserProfile userProfile = userProfileMapper.toEntity(userProfileDTO);
@@ -105,7 +109,7 @@ public class UserProfileService {
         if (userProfile.getDateEcheance() == null) {
             userProfile.setDateEcheance(Instant.now().plus(365, ChronoUnit.DAYS));
         }
-        userProfile.setUser(newUser);
+        userProfile.setUser(newUser.get());
         userProfile = userProfileRepository.save(userProfile);
         return userProfileMapper.toDto(userProfile);
     }
