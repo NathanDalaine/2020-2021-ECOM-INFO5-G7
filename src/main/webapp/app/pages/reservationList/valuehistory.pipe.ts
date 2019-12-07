@@ -4,6 +4,9 @@ import {Pipe, PipeTransform} from "@angular/core";
 @Pipe({ name: 'valuehistory' })
 export class ValuesHistoryPipe implements PipeTransform {
   transform(reservations: IReservationFull[]): IReservationFull[] {
-    return reservations.filter(reservation => reservation.dateRendu);
+    if(reservations != null){
+      return reservations.filter(reservation => reservation.dateRendu);
+    }
+    return null;
   }
 }
