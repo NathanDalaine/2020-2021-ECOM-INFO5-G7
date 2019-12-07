@@ -14,8 +14,6 @@ import com.group6.app.service.dto.ReservationDTO;
 import com.group6.app.service.dto.ReservationFullDTO;
 import com.group6.app.service.mapper.ReservationFullMapper;
 import com.group6.app.service.mapper.ReservationMapper;
-import com.group6.app.web.rest.errors.NoHarnessAvailableException;
-import com.group6.app.web.rest.errors.NoWetsuitAvailableException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -76,22 +74,15 @@ public class ReservationService {
             Taille tailleCombinaison = userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()).getTailleCombinaison();
             if (reservationDTO.getHarnaisId() != null) {
                 Harnais harnais = harnaisRepository.findDistinctFirstByTailleAndReservationsIsNull(tailleHarnais);
-                if(harnais == null){
-                    throw new NoHarnessAvailableException();
-                }
                 reservation.setHarnais(harnais);
             }
             if (reservationDTO.getCombinaisonId() != null) {
                 Combinaison combi = combinaisonRepository.findDistinctFirstByTailleAndReservationsIsNull(tailleCombinaison);
-                if(combi == null){
-                    throw new NoWetsuitAvailableException();
-                }
                 reservation.setCombinaison(combi);
             }
         } else {
             reservation.setCreatedBy("Anonymoususer");
         }
-
         reservation = reservationRepository.save(reservation);
         return reservationMapper.toDto(reservation);
     }
