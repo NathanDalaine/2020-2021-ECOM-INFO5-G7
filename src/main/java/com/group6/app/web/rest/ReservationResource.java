@@ -1,11 +1,21 @@
 package com.group6.app.web.rest;
 
+import com.group6.app.domain.Combinaison;
+import com.group6.app.domain.Harnais;
+import com.group6.app.domain.UserProfile;
+import com.group6.app.repository.CombinaisonRepository;
+import com.group6.app.repository.HarnaisRepository;
+import com.group6.app.repository.UserProfileRepository;
+import com.group6.app.repository.UserRepository;
+import com.group6.app.security.SecurityUtils;
 import com.group6.app.security.SecurityUtils;
 import com.group6.app.service.ReservationService;
 import com.group6.app.service.dto.ReservationFullDTO;
 import com.group6.app.web.rest.errors.BadRequestAlertException;
 import com.group6.app.service.dto.ReservationDTO;
 
+import com.group6.app.web.rest.errors.NoHarnessAvailableException;
+import com.group6.app.web.rest.errors.NoWetsuitAvailableException;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -33,10 +43,16 @@ public class ReservationResource {
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
-
+    private final UserProfileRepository userProfileRepository;
+    private final HarnaisRepository harnaisRepository;
+    private final CombinaisonRepository combinaisonRepository;
     private final ReservationService reservationService;
-    public ReservationResource(ReservationService reservationService) {
+
+    public ReservationResource(ReservationService reservationService,UserProfileRepository userProfileRepository,HarnaisRepository harnaisRepository,CombinaisonRepository combinaisonRepository) {
         this.reservationService = reservationService;
+        this.userProfileRepository = userProfileRepository;
+        this.harnaisRepository = harnaisRepository;
+        this.combinaisonRepository = combinaisonRepository;
     }
 
     /**
@@ -51,6 +67,21 @@ public class ReservationResource {
         log.debug("REST request to save Reservation : {}", reservationDTO);
         if (reservationDTO.getId() != null) {
             throw new BadRequestAlertException("A new reservation cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        if (SecurityUtils.getCurrentUserLogin().isPresent()) {
+            UserProfile currentUser = userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get());
+            Harnais harnais = harnaisRepository.findDistinctFirstByTailleAndReservationsIsNull(currentUser.getTailleHarnais());
+            if (reservationDTO.getHarnaisId() != null) {
+                if(harnais == null){
+                    throw new NoHarnessAvailableException();
+                }
+            }
+            if (reservationDTO.getCombinaisonId() != null) {
+                Combinaison combi = combinaisonRepository.findDistinctFirstByTailleAndReservationsIsNull(currentUser.getTailleCombinaison());
+                if(combi == null){
+                    throw new NoWetsuitAvailableException();
+                }
+            }
         }
         ReservationDTO result = reservationService.save(reservationDTO);
         return ResponseEntity.created(new URI("/api/reservations/" + result.getId()))

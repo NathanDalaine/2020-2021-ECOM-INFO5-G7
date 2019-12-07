@@ -1,7 +1,5 @@
 package com.group6.app.service.dto;
 
-import com.group6.app.domain.*;
-
 import java.io.Serializable;
 import java.time.Instant;
 
@@ -144,7 +142,7 @@ public class ReservationFullDTO implements Serializable {
         return harnais;
     }
 
-    public void setHarnais(Harnais harnaisDTO) {
+    public void setHarnais(HarnaisDTO harnais) {
         this.harnais = harnais;
     }
 

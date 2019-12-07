@@ -7,6 +7,7 @@ import { filter, map } from 'rxjs/operators';
 import { IReservationFull } from 'app/shared/model/reservationFull.model';
 import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
 import { IUserProfile } from 'app/shared/model/user-profile.model';
+import {ADMINISTRATEUR, GESTIONNAIRE} from "app/shared/constants/roles.constants";
 
 @Component({
   selector: 'jhi-reservationlist',
@@ -73,11 +74,13 @@ export class ReservationListComponent implements OnInit, OnDestroy {
   }
 
   checkUserReservation(res: IReservationFull, user: IUserProfile) {
-    if (user.user.authorities.includes('ROLE_GESTIONNAIRE')) {
-      return true;
-    } else if (user != null && res != null) {
-      if (res.userProfile.id === user.id) {
+    if(user != null){
+      if ((user.user.authorities.includes(GESTIONNAIRE) || user.user.authorities.includes(ADMINISTRATEUR)) ) {
         return true;
+      } else if (res != null) {
+        if (res.userProfile.id === user.id) {
+          return true;
+        }
       }
     }
     return false;
