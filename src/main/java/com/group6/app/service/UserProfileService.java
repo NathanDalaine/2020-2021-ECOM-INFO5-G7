@@ -9,7 +9,9 @@ import com.group6.app.repository.UserRepository;
 import com.group6.app.security.AuthoritiesConstants;
 import com.group6.app.security.SecurityUtils;
 import com.group6.app.service.dto.ReservationDTO;
+import com.group6.app.service.dto.ReservationFullDTO;
 import com.group6.app.service.dto.UserProfileDTO;
+import com.group6.app.service.mapper.ReservationFullMapper;
 import com.group6.app.service.mapper.ReservationMapper;
 import com.group6.app.service.mapper.UserProfileMapper;
 import com.group6.app.service.util.RandomUtil;
@@ -40,7 +42,7 @@ public class UserProfileService {
 
     private final UserProfileMapper userProfileMapper;
     private final ReservationMapper reservationMapper;
-
+    private final ReservationFullMapper reservationFullMapper;
     private final UserRepository userRepository;
 
     private final AuthorityRepository authorityRepository;
@@ -48,7 +50,7 @@ public class UserProfileService {
     private final PasswordEncoder passwordEncoder;
     private final MailService mailService;
 
-    public UserProfileService(UserRepository userRepository, PasswordEncoder passwordEncoder, ReservationMapper reservationMapper, MailService mailService, UserProfileRepository userProfileRepository, AuthorityRepository authorityRepository, UserProfileMapper userProfileMapper) {
+    public UserProfileService(UserRepository userRepository, PasswordEncoder passwordEncoder, ReservationMapper reservationMapper, MailService mailService, UserProfileRepository userProfileRepository, AuthorityRepository authorityRepository, UserProfileMapper userProfileMapper,ReservationFullMapper reservationFullMapper) {
         this.userProfileRepository = userProfileRepository;
         this.userProfileMapper = userProfileMapper;
         this.userRepository = userRepository;
@@ -56,6 +58,7 @@ public class UserProfileService {
         this.passwordEncoder = passwordEncoder;
         this.mailService = mailService;
         this.reservationMapper = reservationMapper;
+        this.reservationFullMapper = reservationFullMapper;
     }
 
     /**
@@ -214,6 +217,18 @@ public class UserProfileService {
         }
         return currentUser.getReservations().stream()
             .map(reservationMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    @Transactional(readOnly = true)
+    public List<ReservationFullDTO> findReservationFullFromCurrentUser() {
+        log.debug("Request to get all UserProfiles");
+        UserProfile currentUser = userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get());
+        if (currentUser == null) {
+            return null;
+        }
+        return currentUser.getReservations().stream()
+            .map(reservationFullMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }
 

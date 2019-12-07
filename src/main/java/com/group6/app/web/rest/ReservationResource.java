@@ -1,5 +1,6 @@
 package com.group6.app.web.rest;
 
+import com.group6.app.security.SecurityUtils;
 import com.group6.app.service.ReservationService;
 import com.group6.app.service.dto.ReservationFullDTO;
 import com.group6.app.web.rest.errors.BadRequestAlertException;

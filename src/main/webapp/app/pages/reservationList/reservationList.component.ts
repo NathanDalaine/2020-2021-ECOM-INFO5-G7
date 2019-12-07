@@ -16,6 +16,7 @@ import { IUserProfile } from 'app/shared/model/user-profile.model';
 export class ReservationListComponent implements OnInit, OnDestroy {
   currentAccount: any;
   reservations: IReservationFull[];
+  pastReservation : IReservationFull[];
   currentUserProfile: IUserProfile;
 
   constructor(
@@ -57,6 +58,18 @@ export class ReservationListComponent implements OnInit, OnDestroy {
         },
         (res: HttpErrorResponse) => this.onError(res.message)
       );
+    this.userProfileService
+      .findReservationsFull()
+      .pipe(
+        filter((res: HttpResponse<IReservationFull[]>) => res.ok),
+        map((res: HttpResponse<IReservationFull[]>) => res.body)
+      )
+      .subscribe(
+        (res : IReservationFull[]) => {
+          this.pastReservation = res;
+        },
+        (res: HttpErrorResponse) => this.onError(res.message)
+      )
   }
 
   checkUserReservation(res: IReservationFull, user: IUserProfile) {
