@@ -69,7 +69,9 @@ public class ReservationService {
         reservation.setDateReservation(Instant.now());      //à modifier lors de l'ajout de la date de réservation
         if (SecurityUtils.getCurrentUserLogin().isPresent()) {
             reservation.setCreatedBy(SecurityUtils.getCurrentUserLogin().get());
-            reservation.setUserProfile(userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()));
+            if(reservationDTO.getUserProfileId() == null){
+                reservation.setUserProfile(userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()));
+            }
             Taille tailleHarnais = userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()).getTailleHarnais();
             Taille tailleCombinaison = userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()).getTailleCombinaison();
             if (reservationDTO.getHarnaisId() != null) {
