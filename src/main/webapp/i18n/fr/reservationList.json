@@ -1,5 +1,9 @@
 {
     "reservationList": {
-      "title": "Liste des réservations"
+      "title": "Liste des réservations",
+      "myReservations" : "Mes réservations",
+      "allPastReservations" : "Toute les réservations",
+      "reservationHistory": "Historique des réservations",
+      "currentReservation": "Réservation en cours"
   }
 }

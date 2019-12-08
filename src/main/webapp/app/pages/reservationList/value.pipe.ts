@@ -1,5 +1,4 @@
 import { PipeTransform, Pipe } from '@angular/core';
-import { IReservation } from 'app/shared/model/reservation.model';
 import { IReservationFull } from 'app/shared/model/reservationFull.model';
 
 @Pipe({ name: 'value' })

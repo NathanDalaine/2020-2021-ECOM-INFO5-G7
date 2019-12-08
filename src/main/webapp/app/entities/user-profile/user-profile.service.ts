@@ -9,6 +9,7 @@ import { createRequestOption } from 'app/shared/util/request-util';
 import { IUserProfile } from 'app/shared/model/user-profile.model';
 import { IReservation } from 'app/shared/model/reservation.model';
 import { ReservationService } from 'app/entities/reservation/reservation.service';
+import {IReservationFull} from "app/shared/model/reservationFull.model";
 
 type EntityResponseType = HttpResponse<IUserProfile>;
 type EntityArrayResponseType = HttpResponse<IUserProfile[]>;
@@ -30,6 +31,12 @@ export class UserProfileService {
     return this.http
       .get<IReservation[]>(`${this.resourceUrl}` + '/reservations', { observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.reservationService.convertDateArrayFromServer(res)));
+  }
+
+  findReservationsFull(): Observable<EntityArrayResponseType> {
+    return this.http
+      .get<IReservationFull[]>(`${this.resourceUrl}` + '/reservationsFull', { observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.reservationService.convertFullDateArrayFromServer(res)));
   }
 
   update(userProfile: IUserProfile): Observable<EntityResponseType> {

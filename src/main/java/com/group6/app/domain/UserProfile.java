@@ -73,7 +73,6 @@ public class UserProfile implements Serializable {
     private Niveau niveau;
 
     @OneToMany(mappedBy = "userProfile")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Reservation> reservations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

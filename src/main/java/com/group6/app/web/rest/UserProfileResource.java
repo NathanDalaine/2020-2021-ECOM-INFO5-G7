@@ -3,6 +3,7 @@ package com.group6.app.web.rest;
 import com.group6.app.repository.UserRepository;
 import com.group6.app.service.UserProfileService;
 import com.group6.app.service.dto.ReservationDTO;
+import com.group6.app.service.dto.ReservationFullDTO;
 import com.group6.app.service.dto.UserProfileVMDTO;
 import com.group6.app.web.rest.errors.BadRequestAlertException;
 import com.group6.app.service.dto.UserProfileDTO;
@@ -107,6 +108,12 @@ public class UserProfileResource {
     public List<ReservationDTO> getReservationFromCurrentUser() {
         log.debug("REST request to get all UserProfiles");
         return userProfileService.findReservationFromCurrentUser();
+    }
+
+    @GetMapping("/user-profiles/reservationsFull")
+    public List<ReservationFullDTO> getReservationFullFromCurrentUser() {
+        log.debug("REST request to get all UserProfiles");
+        return userProfileService.findReservationFullFromCurrentUser();
     }
 
     /**

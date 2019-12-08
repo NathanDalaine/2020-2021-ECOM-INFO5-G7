@@ -50,12 +50,12 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
 
   confirmAll() {
     this.reservation.dateRendu = moment();
-    this.subscribeToSaveResponse(this.reservationService.update(this.reservation));
+    this.subscribeToSaveResponse(this.reservationService.updateFull(this.reservation));
   }
 
   confirm() {
     this.reservation.dateRendu = moment();
-    this.subscribeToSaveResponse(this.reservationService.update(this.reservation));
+    this.subscribeToSaveResponse(this.reservationService.updateFull(this.reservation));
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IReservation>>) {
