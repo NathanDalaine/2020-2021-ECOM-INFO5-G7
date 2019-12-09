@@ -34,6 +34,13 @@ export class ReservationService {
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
+  updateFull(reservation: IReservationFull): Observable<EntityResponseType> {
+    const copy = this.convertFullDateFromClient(reservation);
+    return this.http
+      .put<IReservationFull>(this.resourceUrl + 'full', copy, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+
   find(id: number): Observable<EntityResponseType> {
     return this.http
       .get<IReservation>(`${this.resourceUrl}/${id}`, { observe: 'response' })

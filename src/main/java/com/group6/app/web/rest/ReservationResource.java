@@ -8,6 +8,7 @@ import com.group6.app.repository.HarnaisRepository;
 import com.group6.app.repository.UserProfileRepository;
 import com.group6.app.repository.UserRepository;
 import com.group6.app.security.SecurityUtils;
+import com.group6.app.security.SecurityUtils;
 import com.group6.app.service.ReservationService;
 import com.group6.app.service.dto.ReservationFullDTO;
 import com.group6.app.web.rest.errors.BadRequestAlertException;
@@ -106,6 +107,26 @@ public class ReservationResource {
         ReservationDTO result = reservationService.save(reservationDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, reservationDTO.getId().toString()))
+            .body(result);
+    }
+
+    /**
+     * {@code PUT  /reservations} : Updates an existing reservation.
+     *
+     * @param reservationFullDTO the reservationDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated reservationDTO,
+     * or with status {@code 400 (Bad Request)} if the reservationDTO is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the reservationDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PutMapping("/reservationsfull")
+    public ResponseEntity<ReservationFullDTO> updateReservationFull(@RequestBody ReservationFullDTO reservationFullDTO) throws URISyntaxException {
+        if (reservationFullDTO.getId() == null) {
+            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        ReservationFullDTO result = reservationService.save(reservationFullDTO);
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, reservationFullDTO.getId().toString()))
             .body(result);
     }
 
