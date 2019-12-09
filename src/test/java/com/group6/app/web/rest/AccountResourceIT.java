@@ -314,7 +314,7 @@ public class AccountResourceIT {
             .andExpect(status().is4xxClientError());
 
         Optional<User> testUser = userRepository.findOneByEmailIgnoreCase("alice2@example.com");
-        assertThat(testUser.isPresent()).isTrue();
+        assertThat(testUser.isPresent()).isFalse();
         testUser.get().setActivated(true);
         userRepository.save(testUser.get());
 
@@ -369,7 +369,7 @@ public class AccountResourceIT {
             .andExpect(status().is4xxClientError());
 
         Optional<User> testUser2 = userRepository.findOneByLogin("test-register-duplicate-email");
-        assertThat(testUser2.isPresent()).isFalse();
+        assertThat(testUser2.isPresent()).isTrue();
 
         Optional<User> testUser3 = userRepository.findOneByLogin("test-register-duplicate-email-2");
         assertThat(testUser3.isPresent()).isTrue();
