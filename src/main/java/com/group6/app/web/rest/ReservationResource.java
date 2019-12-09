@@ -69,15 +69,15 @@ public class ReservationResource {
             throw new BadRequestAlertException("A new reservation cannot already have an ID", ENTITY_NAME, "idexists");
         }
         if (SecurityUtils.getCurrentUserLogin().isPresent()) {
-            UserProfile currentUser = userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get());
-            Harnais harnais = harnaisRepository.findDistinctFirstByTailleAndReservationsIsNull(currentUser.getTailleHarnais());
+            Optional<UserProfile> user = userProfileRepository.findById(reservationDTO.getUserProfileId());
+            Harnais harnais = harnaisRepository.findDistinctFirstByTailleAndReservationsIsNull(user.get().getTailleHarnais());
             if (reservationDTO.getHarnaisId() != null) {
                 if(harnais == null){
                     throw new NoHarnessAvailableException();
                 }
             }
             if (reservationDTO.getCombinaisonId() != null) {
-                Combinaison combi = combinaisonRepository.findDistinctFirstByTailleAndReservationsIsNull(currentUser.getTailleCombinaison());
+                Combinaison combi = combinaisonRepository.findDistinctFirstByTailleAndReservationsIsNull(user.get().getTailleCombinaison());
                 if(combi == null){
                     throw new NoWetsuitAvailableException();
                 }
