@@ -391,21 +391,10 @@ public class AccountResourceIT {
             post("/api/register")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(userWithUpperCaseEmail)))
-            .andExpect(status().isCreated());
+            .andExpect(status().is4xxClientError());
 
         Optional<User> testUser4 = userRepository.findOneByLogin("test-register-duplicate-email-3");
-        assertThat(testUser4.isPresent()).isTrue();
-        assertThat(testUser4.get().getEmail()).isEqualTo("test-register-duplicate-email@example.com");
-
-        testUser4.get().setActivated(true);
-        userService.updateUser((new UserDTO(testUser4.get())));
-
-        // Register 4th (already activated) user
-        restMvc.perform(
-            post("/api/register")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(secondUser)))
-            .andExpect(status().is4xxClientError());
+        assertThat(testUser4.isPresent()).isFalse();
     }
 
     @Test
