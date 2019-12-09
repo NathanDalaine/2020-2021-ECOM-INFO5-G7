@@ -9,7 +9,7 @@ import { createRequestOption } from 'app/shared/util/request-util';
 import { IUserProfile } from 'app/shared/model/user-profile.model';
 import { IReservation } from 'app/shared/model/reservation.model';
 import { ReservationService } from 'app/entities/reservation/reservation.service';
-import {IReservationFull} from "app/shared/model/reservationFull.model";
+import { IReservationFull } from 'app/shared/model/reservationFull.model';
 
 type EntityResponseType = HttpResponse<IUserProfile>;
 type EntityArrayResponseType = HttpResponse<IUserProfile[]>;

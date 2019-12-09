@@ -1,8 +1,8 @@
 {
   "reservationList": {
     "title": "Reservation list",
-    "myReservations" : "My reservation",
-    "allPastReservations" : "All reservation",
+    "myReservations": "My reservation",
+    "allPastReservations": "All reservation",
     "reservationHistory": "Reservation history",
     "currentReservation": "Current reservations"
   }

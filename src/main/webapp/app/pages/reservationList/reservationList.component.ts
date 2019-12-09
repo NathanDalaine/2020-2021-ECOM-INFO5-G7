@@ -7,7 +7,7 @@ import { filter, map } from 'rxjs/operators';
 import { IReservationFull } from 'app/shared/model/reservationFull.model';
 import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
 import { IUserProfile } from 'app/shared/model/user-profile.model';
-import {ADMINISTRATEUR, GESTIONNAIRE} from "app/shared/constants/roles.constants";
+import { ADMINISTRATEUR, GESTIONNAIRE } from 'app/shared/constants/roles.constants';
 
 @Component({
   selector: 'jhi-reservationlist',
@@ -17,7 +17,7 @@ import {ADMINISTRATEUR, GESTIONNAIRE} from "app/shared/constants/roles.constants
 export class ReservationListComponent implements OnInit, OnDestroy {
   currentAccount: any;
   reservations: IReservationFull[];
-  pastReservation : IReservationFull[];
+  pastReservation: IReservationFull[];
   currentUserProfile: IUserProfile;
 
   constructor(
@@ -66,16 +66,16 @@ export class ReservationListComponent implements OnInit, OnDestroy {
         map((res: HttpResponse<IReservationFull[]>) => res.body)
       )
       .subscribe(
-        (res : IReservationFull[]) => {
+        (res: IReservationFull[]) => {
           this.pastReservation = res;
         },
         (res: HttpErrorResponse) => this.onError(res.message)
-      )
+      );
   }
 
   checkUserReservation(res: IReservationFull, user: IUserProfile) {
-    if(user != null){
-      if ((user.user.authorities.includes(GESTIONNAIRE) || user.user.authorities.includes(ADMINISTRATEUR)) ) {
+    if (user != null) {
+      if (user.user.authorities.includes(GESTIONNAIRE) || user.user.authorities.includes(ADMINISTRATEUR)) {
         return true;
       } else if (res != null) {
         if (res.userProfile.id === user.id) {

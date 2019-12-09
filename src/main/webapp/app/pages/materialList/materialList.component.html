@@ -23,6 +23,12 @@
             </div>
         </div>
     </div>
+    <div class="form-group"*jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
+        <label class="form-control-label" jhiTranslate="global.form.role.label">Roles</label>
+        <select class="form-control" id="userProfileId" name="userProfileId" formControlName="userProfileId">
+            <option *ngFor="let r of users" [value]="r.id">{{r.user.firstName}} {{r.user.lastName}}</option>
+        </select>
+    </div>
     <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="2%">
         <div>
             <label class="form-control-label" jhiTranslate="ecomgucvoileApp.reservation.harnais" style="font-weight:bold">Harness</label>
