@@ -372,7 +372,7 @@ public class AccountResourceIT {
         assertThat(testUser2.isPresent()).isTrue();
 
         Optional<User> testUser3 = userRepository.findOneByLogin("test-register-duplicate-email-2");
-        assertThat(testUser3.isPresent()).isTrue();
+        assertThat(testUser3.isPresent()).isFalse();
 
         // Duplicate email - with uppercase email address
         ManagedUserVM userWithUpperCaseEmail = new ManagedUserVM();
