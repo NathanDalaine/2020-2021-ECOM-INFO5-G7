@@ -311,7 +311,7 @@ public class AccountResourceIT {
             post("/api/register")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(secondUser)))
-            .andExpect(status().isCreated());
+            .andExpect(status().is4xxClientError());
 
         Optional<User> testUser = userRepository.findOneByEmailIgnoreCase("alice2@example.com");
         assertThat(testUser.isPresent()).isTrue();
@@ -366,7 +366,7 @@ public class AccountResourceIT {
             post("/api/register")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(secondUser)))
-            .andExpect(status().isCreated());
+            .andExpect(status().is4xxClientError());
 
         Optional<User> testUser2 = userRepository.findOneByLogin("test-register-duplicate-email");
         assertThat(testUser2.isPresent()).isFalse();
