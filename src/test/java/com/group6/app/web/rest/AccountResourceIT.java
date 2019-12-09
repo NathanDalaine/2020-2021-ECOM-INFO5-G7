@@ -315,7 +315,6 @@ public class AccountResourceIT {
 
         Optional<User> testUser = userRepository.findOneByEmailIgnoreCase("alice2@example.com");
         assertThat(testUser.isPresent()).isFalse();
-        testUser.get().setActivated(true);
         userRepository.save(testUser.get());
 
         // Second (already activated) user
