@@ -315,7 +315,6 @@ public class AccountResourceIT {
 
         Optional<User> testUser = userRepository.findOneByEmailIgnoreCase("alice2@example.com");
         assertThat(testUser.isPresent()).isFalse();
-        userRepository.save(testUser.get());
 
         // Second (already activated) user
         restMvc.perform(
