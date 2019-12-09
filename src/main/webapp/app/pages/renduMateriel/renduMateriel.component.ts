@@ -10,6 +10,8 @@ import { Observable } from 'rxjs';
 import { IUserProfile } from 'app/shared/model/user-profile.model';
 import { IReservationFull } from 'app/shared/model/reservationFull.model';
 import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+import { MEMBRE } from 'app/shared/constants/roles.constants';
 
 @Component({
   selector: 'jhi-rendumateriel',
@@ -19,10 +21,15 @@ import { ActivatedRoute } from '@angular/router';
 export class RenduMaterielComponent implements OnInit, OnDestroy {
   reservations: IReservation[];
   reservation: IReservationFull;
+  secondreservation: IReservation;
   reservationNonRendu: IReservation[];
   currentAccount: any;
   private success: boolean;
   checked: boolean;
+  harnais: boolean = false;
+  voile: boolean = false;
+  combinaison: boolean = false;
+  planche: boolean = false;
 
   constructor(
     protected reservationService: ReservationService,
@@ -55,6 +62,33 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
 
   confirm() {
     this.reservation.dateRendu = moment();
+    this.secondreservation = new Reservation();
+    this.secondreservation.dateReservation = moment();
+    if (!this.combinaison && this.reservation.combinaison != null) {
+      this.secondreservation.combinaisonId = this.reservation.combinaison.id;
+      this.reservation.combinaison = null;
+    }
+    if (!this.planche && this.reservation.planche != null) {
+      this.secondreservation.plancheId = this.reservation.planche.id;
+      this.reservation.planche = null;
+    }
+
+    if (!this.voile && this.reservation.voile != null) {
+      this.secondreservation.voileId = this.reservation.voile.id;
+      this.reservation.voile = null;
+    }
+    if (!this.harnais && this.reservation.harnais != null) {
+      this.secondreservation.harnaisId = this.reservation.harnais.id;
+      this.reservation.harnais = null;
+    }
+    if (
+      this.secondreservation.voileId != null ||
+      this.secondreservation.plancheId != null ||
+      this.secondreservation.combinaisonId != null ||
+      this.secondreservation.harnaisId != null
+    ) {
+      this.subscribeToSaveResponse(this.reservationService.create(this.secondreservation));
+    }
     this.subscribeToSaveResponse(this.reservationService.updateFull(this.reservation));
   }
 
