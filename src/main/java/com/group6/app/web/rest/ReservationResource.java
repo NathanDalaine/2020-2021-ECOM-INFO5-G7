@@ -14,6 +14,7 @@ import com.group6.app.service.dto.ReservationFullDTO;
 import com.group6.app.web.rest.errors.BadRequestAlertException;
 import com.group6.app.service.dto.ReservationDTO;
 
+import com.group6.app.web.rest.errors.DueDatePassedException;
 import com.group6.app.web.rest.errors.NoHarnessAvailableException;
 import com.group6.app.web.rest.errors.NoWetsuitAvailableException;
 import io.github.jhipster.web.util.HeaderUtil;
@@ -27,6 +28,8 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -81,6 +84,10 @@ public class ReservationResource {
                 if(combi == null){
                     throw new NoWetsuitAvailableException();
                 }
+            }
+            Instant d = Instant.now();
+            if(user.get().getDateEcheance().compareTo(d) < 0){
+                throw new DueDatePassedException();
             }
         }
         ReservationDTO result = reservationService.save(reservationDTO);

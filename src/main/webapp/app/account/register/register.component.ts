@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   registerForm = this.fb.group({
     activated: false,
     remarque: '',
-    role: [MEMBRE],
+    authoritie: [MEMBRE],
     langKey: ['fr'],
     password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],

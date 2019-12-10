@@ -21,6 +21,9 @@
             <div class="alert alert-danger" *ngIf="errorNoWetSuitAvailable" jhiTranslate="global.messages.error.noWetsuitAvailable">
                 <strong></strong>
             </div>
+            <div class="alert alert-danger" *ngIf="errorDueDatePassed" jhiTranslate="global.messages.error.dueDatePassed">
+                <strong></strong>
+            </div>
         </div>
     </div>
     <div class="form-group"*jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
