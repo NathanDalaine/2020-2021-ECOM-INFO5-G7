@@ -1,1 +1,17 @@
 
+.mat-tab-label {
+  min-width: 100px !important;
+  max-width: 178px !important;
+  margin-right: 10px !important;
+  color: black;
+  font-weight: 700;
+}
+
+.mat-tab-label.mat-tab-label-active {
+  color: #2a62bc;
+  font-weight: 700;
+}
+
+.mat-ink-bar {
+  background-color: #2a62bc;
+}
