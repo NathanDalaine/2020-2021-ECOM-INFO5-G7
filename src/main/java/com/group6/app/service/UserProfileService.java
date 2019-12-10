@@ -15,7 +15,6 @@ import com.group6.app.service.mapper.ReservationFullMapper;
 import com.group6.app.service.mapper.ReservationMapper;
 import com.group6.app.service.mapper.UserProfileMapper;
 import com.group6.app.service.util.RandomUtil;
-import com.group6.app.web.rest.errors.AuthorityException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

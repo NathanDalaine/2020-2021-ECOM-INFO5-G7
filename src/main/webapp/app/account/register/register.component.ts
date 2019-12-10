@@ -13,7 +13,6 @@ import { Niveau } from 'app/shared/model/enumerations/niveau.model';
 import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
 import { ADMINISTRATEUR, GESTIONNAIRE, MEMBRE } from 'app/shared/constants/roles.constants';
 import { AccountService } from 'app/core/auth/account.service';
-import {UserProfile} from "app/shared/model/user-profile.model";
 
 @Component({
   selector: 'jhi-register',
@@ -96,23 +95,19 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   }
 
   authoritiesAvailable() {
-    this.accountService.hasAuthority(ADMINISTRATEUR).then(res => {
-      if (res) {
+      if (this.accountService.hasAnyAuthority([ADMINISTRATEUR])) {
         this.roles = [
           { label: 'Membre', value: MEMBRE },
           { label: 'Gestionnaire', value: GESTIONNAIRE },
           { label: 'Administrateur', value: ADMINISTRATEUR }
         ];
       } else {
-        this.accountService.hasAuthority(GESTIONNAIRE).then(res2 => {
-          if (res2) {
-            this.roles = [{ label: 'Membre', value: MEMBRE }, { label: 'Gestionnaire', value: GESTIONNAIRE }];
-          } else {
-            this.roles = [{ label: 'Membre', value: MEMBRE }];
-          }
-        });
+        if(this.accountService.hasAnyAuthority([GESTIONNAIRE])){
+          this.roles = [{ label: 'Membre', value: MEMBRE }, { label: 'Gestionnaire', value: GESTIONNAIRE }];
+        }else{
+          this.roles = [{ label: 'Membre', value: MEMBRE }];
+        }
       }
-    });
   }
 
   register() {
