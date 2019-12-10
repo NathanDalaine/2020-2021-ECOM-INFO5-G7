@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiLanguageService } from 'ng-jhipster';
+import { JhiEventManager, JhiLanguageService } from 'ng-jhipster';
 import { SessionStorageService } from 'ngx-webstorage';
 
 import { VERSION } from 'app/app.constants';
@@ -10,6 +10,8 @@ import { AccountService } from 'app/core/auth/account.service';
 import { LoginModalService } from 'app/core/login/login-modal.service';
 import { LoginService } from 'app/core/login/login.service';
 import { ProfileService } from 'app/layouts/profiles/profile.service';
+import { Account } from 'app/core/user/account.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'jhi-navbar',
@@ -17,6 +19,8 @@ import { ProfileService } from 'app/layouts/profiles/profile.service';
   styleUrls: ['navbar.scss']
 })
 export class NavbarComponent implements OnInit {
+  account: Account;
+  authSubscription: Subscription;
   inProduction: boolean;
   isNavbarCollapsed: boolean;
   languages: any[];
@@ -32,7 +36,8 @@ export class NavbarComponent implements OnInit {
     private accountService: AccountService,
     private loginModalService: LoginModalService,
     private profileService: ProfileService,
-    private router: Router
+    private router: Router,
+    private eventManager: JhiEventManager
   ) {
     this.version = VERSION ? 'v' + VERSION : '';
     this.isNavbarCollapsed = true;
@@ -46,6 +51,19 @@ export class NavbarComponent implements OnInit {
     this.profileService.getProfileInfo().then(profileInfo => {
       this.inProduction = profileInfo.inProduction;
       this.swaggerEnabled = profileInfo.swaggerEnabled;
+    });
+
+    this.accountService.identity().then((account: Account) => {
+      this.account = account;
+    });
+    this.registerAuthenticationSuccess();
+  }
+
+  registerAuthenticationSuccess() {
+    this.authSubscription = this.eventManager.subscribe('authenticationSuccess', message => {
+      this.accountService.identity().then(account => {
+        this.account = account;
+      });
     });
   }
 
@@ -70,6 +88,7 @@ export class NavbarComponent implements OnInit {
     this.collapseNavbar();
     this.loginService.logout();
     this.router.navigate(['']);
+    location.reload();
   }
 
   toggleNavbar() {
