@@ -1,5 +1,14 @@
 {
-  "paiement": {
-    "title": "Paiement"
+  "ecomgucvoileApp": {
+    "paiement": {
+      "home": {
+        "title": "Réinscription",
+        "description": "Sélectionnez votre nouvelle abonnement."
+      },
+      "etudiant": "Etudiant: 50€",
+      "adulte": "Adulte: 80€",
+      "famille": "Famille: 120€",
+      "journee": "Journée: 20€"
+    }
   }
 }
