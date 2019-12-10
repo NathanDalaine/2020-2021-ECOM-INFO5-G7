@@ -8,7 +8,7 @@ import { filter, map } from 'rxjs/operators';
 import { HttpResponse } from '@angular/common/http';
 
 export const PAIEMENT_ROUTE: Route = {
-  path: 'paiementList',
+  path: 'paiement',
   component: PaiementComponent,
   data: {
     authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_GESTIONNAIRE'],

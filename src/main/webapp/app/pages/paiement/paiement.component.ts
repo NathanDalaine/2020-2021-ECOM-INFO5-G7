@@ -12,9 +12,9 @@ import { IReservationFull } from 'app/shared/model/reservationFull.model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'jhi-rendumateriel',
-  templateUrl: './renduMateriel.component.html',
-  styleUrls: ['renduMateriel.scss']
+  selector: 'jhi-paiement',
+  templateUrl: './paiement.component.html',
+  styleUrls: ['paiement.scss']
 })
 export class PaiementComponent implements OnInit {
   constructor() {}
@@ -36,7 +36,7 @@ export class PaiementComponent implements OnInit {
     });
 
     handler.open({
-      name: 'Demo Site',
+      name: 'Paiement',
       description: '2 widgets',
       amount: amount * 100
     });
