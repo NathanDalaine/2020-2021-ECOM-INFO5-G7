@@ -46,19 +46,19 @@
                     <div class="alert alert-warning" *ngIf="voiles?.length === 0">
                         <span jhiTranslate="ecomgucvoileApp.voile.home.notFound">No voiles found</span>
                     </div>
-                    <div>
-                        <input #searchTextVoile type="text" (input)="searchVoile(searchTextVoile.value)"
-                               placeholder="{{'ecomgucvoileApp.reservation.rechercheVoile' | translate}}"/>
-                    </div>
                     <div class="t+able-responsive" *ngIf="voiles?.length > 0">
                         <table class="table table-striped" aria-describedby="page-heading">
-                            <thead>
-                            <tr>
-                                <th style="width:5%;"></th>
-                                <th><span jhiTranslate="ecomgucvoileApp.voile.reservationLibelle">Libelle</span></th>
-                            </tr>
-                            </thead>
                             <tbody>
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input #searchTextVoile type="text" (input)="searchVoile(searchTextVoile.value)"
+                                               placeholder="{{'ecomgucvoileApp.reservation.rechercheVoile' | translate}}"/>
+                                    </div>
+                                </td>
+                            </tr>
                             <tr *ngFor="let voile of voiles | orderBy: 'libelle' ;trackBy: trackIdVoile">
                                 <td>
                                     <input [checked]="this.registerForm.get('voileId').value == voile.id"

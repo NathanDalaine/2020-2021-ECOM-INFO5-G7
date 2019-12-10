@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   registerForm = this.fb.group({
     activated: false,
     remarque: '',
-    role: [MEMBRE],
+    authoritie: [MEMBRE],
     langKey: ['fr'],
     password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
@@ -89,10 +89,10 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       { label: 'Performance', value: Niveau.PERF },
       { label: 'Funboard', value: Niveau.FUNBOARD }
     ];
+    this.authoritiesAvailable();
   }
 
   ngAfterViewInit() {
-    this.authoritiesAvailable();
     this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#login'), 'focus', []);
   }
 
