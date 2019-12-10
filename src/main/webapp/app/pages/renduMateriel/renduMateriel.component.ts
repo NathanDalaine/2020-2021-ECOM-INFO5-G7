@@ -1,17 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AccountService } from 'app/core/auth/account.service';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { filter, map } from 'rxjs/operators';
+import { HttpResponse } from '@angular/common/http';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { IReservation, Reservation } from 'app/shared/model/reservation.model';
 import { ReservationService } from 'app/entities/reservation/reservation.service';
 import * as moment from 'moment';
 import { Observable } from 'rxjs';
-import { IUserProfile } from 'app/shared/model/user-profile.model';
 import { IReservationFull } from 'app/shared/model/reservationFull.model';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
-import { MEMBRE } from 'app/shared/constants/roles.constants';
 
 @Component({
   selector: 'jhi-rendumateriel',
@@ -22,7 +18,6 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
   reservations: IReservation[];
   reservation: IReservationFull;
   secondreservation: IReservation;
-  reservationNonRendu: IReservation[];
   currentAccount: any;
   private success: boolean;
   checked: boolean;
@@ -54,11 +49,6 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {}
-
-  confirmAll() {
-    this.reservation.dateRendu = moment();
-    this.subscribeToSaveResponse(this.reservationService.updateFull(this.reservation));
-  }
 
   confirm() {
     this.reservation.dateRendu = moment();
@@ -130,9 +120,5 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
 
   checkboxdamage() {
     this.checked = !this.checked;
-  }
-
-  isChecked() {
-    return this.checked;
   }
 }
