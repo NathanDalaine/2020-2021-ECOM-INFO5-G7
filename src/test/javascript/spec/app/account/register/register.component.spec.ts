@@ -72,7 +72,13 @@ describe('Component Tests', () => {
           telephone: '',
           typeAbonnement: '',
           password: 'password',
-          login: ''
+          login: '',
+          user: {
+            email: '',
+            firstName: '',
+            lastName: '',
+            login: ''
+          }
         });
         expect(comp.success).toEqual(true);
         //expect(mockTranslate.getCurrentSpy).toHaveBeenCalled();
