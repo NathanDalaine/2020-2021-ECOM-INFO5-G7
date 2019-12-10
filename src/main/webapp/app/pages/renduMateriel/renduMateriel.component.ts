@@ -26,10 +26,10 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
   currentAccount: any;
   private success: boolean;
   checked: boolean;
-  harnais: boolean = false;
-  voile: boolean = false;
-  combinaison: boolean = false;
-  planche: boolean = false;
+  harnais = false;
+  voile = false;
+  combinaison = false;
+  planche = false;
 
   constructor(
     protected reservationService: ReservationService,
@@ -64,6 +64,7 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
     this.reservation.dateRendu = moment();
     this.secondreservation = new Reservation();
     this.secondreservation.dateReservation = moment();
+    this.secondreservation.userProfileId = this.reservation.userProfile.id;
     if (!this.combinaison && this.reservation.combinaison != null) {
       this.secondreservation.combinaisonId = this.reservation.combinaison.id;
       this.reservation.combinaison = null;
@@ -81,26 +82,35 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
       this.secondreservation.harnaisId = this.reservation.harnais.id;
       this.reservation.harnais = null;
     }
-    if (
-      this.secondreservation.voileId != null ||
-      this.secondreservation.plancheId != null ||
-      this.secondreservation.combinaisonId != null ||
-      this.secondreservation.harnaisId != null
-    ) {
-      this.subscribeToSaveResponse(this.reservationService.create(this.secondreservation));
-    }
-    this.subscribeToSaveResponse(this.reservationService.updateFull(this.reservation));
+    this.reservationService.updateFull(this.reservation).subscribe(
+      () => {
+        this.success = true;
+        if (
+          this.secondreservation.voileId != null ||
+          this.secondreservation.plancheId != null ||
+          this.secondreservation.combinaisonId != null ||
+          this.secondreservation.harnaisId != null
+        ) {
+          this.subscribeToSaveResponse(this.reservationService.create(this.secondreservation));
+        }
+        this.onSuccess('ecomgucvoileApp.renduMateriel.validation');
+      },
+      () => {
+        this.success = false;
+        this.onError('Rendu Impossible');
+      }
+    );
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IReservation>>) {
     result.subscribe(
       () => {
         this.success = true;
-        this.onSuccess('ecomgucvoileApp.renduMateriel.validation');
+        this.onSuccess('ecomgucvoileApp.renduMateriel.validationsplit');
       },
       () => {
         this.success = false;
-        this.onError('Rendu Impossible');
+        this.onError('Rendu Partagé Impossible');
       }
     );
   }
