@@ -7,6 +7,7 @@
       "reservationList": "Liste des réservations",
       "reservation": "Réservation",
       "materialList": "Liste du matériel",
+      "reinscription": "Reinscription",
       "members": "Membres",
       "aboutToReserve": "Vous êtes sur le point de réserver ",
       "1combinaison": "une combinaison",
@@ -108,7 +109,10 @@
         "invalidAuthority": "Vous n'avez pas les droits nécesssaires pour créer ce type d'utilisateur!",
         "noWetsuitAvailable": "Il n'y a pas de combinaison à votre taille de disponible.",
         "noReservationDone": "Une erreur est survenue, la réservation n'a pas été effectuée.",
-        "noHarnessAvailable": "Il n'y a pas d'harnais à votre taille de disponible."
+        "noHarnessAvailable": "Il n'y a pas d'harnais à votre taille de disponible.",
+        "alreadyReserved": "Vous avez déjà une réservation en cours",
+        "dueDatePassed": "La date d'échéance est passée",
+        "fail": "Erreur inconnu."
       },
       "validate": {
         "newpassword": {

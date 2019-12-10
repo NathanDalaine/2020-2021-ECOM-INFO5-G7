@@ -36,6 +36,14 @@
                     </span>
                 </a>
             </li>
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="reinscription" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="list"></fa-icon>
+                        <span jhiTranslate="global.menu.reinscription">reinscription</span>
+                    </span>
+                </a>
+            </li>
             <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
                 <a class="nav-link" routerLink="account/register" routerLinkActive="active" (click)="collapseNavbar()">
                     <fa-icon icon="user-plus" fixedWidth="true"></fa-icon>
@@ -199,9 +207,7 @@
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
                   <span *ngIf="!getImageUrl()">
                     <fa-icon icon="user"></fa-icon>
-                    <span jhiTranslate="global.menu.account.main">
-                      Account
-                    </span>
+                    <span *ngIf="account"> {{account.login}} </span>
                   </span>
                     <span *ngIf="getImageUrl()">
                       <img [src]="getImageUrl()" class="profile-image rounded-circle" alt="Avatar">
@@ -232,13 +238,6 @@
                         <a class="dropdown-item" (click)="login()" id="login">
                             <fa-icon icon="sign-in-alt" fixedWidth="true"></fa-icon>
                             <span jhiTranslate="global.menu.account.login">Sign in</span>
-                        </a>
-                    </li>
-                    <li *ngSwitchCase="false">
-                        <a class="dropdown-item" routerLink="account/register" routerLinkActive="active"
-                           (click)="collapseNavbar()">
-                            <fa-icon icon="user-plus" fixedWidth="true"></fa-icon>
-                            <span jhiTranslate="global.menu.account.register">Register</span>
                         </a>
                     </li>
                 </ul>

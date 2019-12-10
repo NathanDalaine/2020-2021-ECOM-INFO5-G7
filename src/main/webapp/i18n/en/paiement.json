@@ -1,0 +1,14 @@
+{
+  "ecomgucvoileApp": {
+    "paiement": {
+      "home": {
+        "title": "Resubscription",
+        "description": "Select your new subscription"
+      },
+      "etudiant": "Student: 50€",
+      "adulte": "Adult: 80€",
+      "famille": "Family: 120€",
+      "journee": "Daily: 20€"
+    }
+  }
+}
