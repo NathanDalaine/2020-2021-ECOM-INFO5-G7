@@ -11,6 +11,8 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr>
+                <th><span jhiTranslate="ecomgucvoileApp.members.adhesiondate">Date d'adhésion</span></th>
+                <th><span jhiTranslate="ecomgucvoileApp.members.echeancedate">Date d'échéance</span></th>
                 <th><span jhiTranslate="ecomgucvoileApp.members.firstname">Prénom</span></th>
                 <th><span jhiTranslate="ecomgucvoileApp.members.name">Nom</span></th>
                 <th><span jhiTranslate="ecomgucvoileApp.members.address">Adresse</span></th>
@@ -22,6 +24,8 @@
             </thead>
             <tbody>
             <tr *ngFor="let userProfile of userProfiles ;trackBy: trackId">
+                <td>{{userProfile.dateAdhesion | date:"medium"}}</td>
+                <td>{{userProfile.dateEcheance | date:"medium"}}</td>
                 <td>{{userProfile.user.firstName}}</td>
                 <td>{{userProfile.user.lastName}}</td>
                 <td>{{userProfile.adresse}}</td>
