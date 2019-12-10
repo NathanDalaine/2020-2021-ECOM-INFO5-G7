@@ -16,6 +16,7 @@ import com.group6.app.web.rest.errors.AlreadyReservedExeception;
 import com.group6.app.web.rest.errors.BadRequestAlertException;
 import com.group6.app.service.dto.ReservationDTO;
 
+import com.group6.app.web.rest.errors.DueDatePassedException;
 import com.group6.app.web.rest.errors.NoHarnessAvailableException;
 import com.group6.app.web.rest.errors.NoWetsuitAvailableException;
 import io.github.jhipster.web.util.HeaderUtil;
@@ -30,6 +31,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import java.util.Iterator;
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -94,6 +97,10 @@ public class ReservationResource {
                 if(res.getDateRendu() == null && res.getDateReservation() != null){
                     throw new AlreadyReservedExeception();
                 }
+            }
+            Instant d = Instant.now();
+            if(user.get().getDateEcheance().compareTo(d) < 0){
+                throw new DueDatePassedException();
             }
         }
         ReservationDTO result = reservationService.save(reservationDTO);

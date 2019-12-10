@@ -109,7 +109,7 @@ public class UserProfileService {
             userProfile.setDateAdhesion(Instant.now());
         }
         if (userProfile.getDateEcheance() == null) {
-            userProfile.setDateEcheance(Instant.now().plus(365, ChronoUnit.DAYS));
+            userProfile.setDateEcheance(Instant.now().minus(365, ChronoUnit.DAYS));
         }
         userProfile.setUser(newUser.get());
         userProfile = userProfileRepository.save(userProfile);
@@ -184,7 +184,7 @@ public class UserProfileService {
             userProfile.setDateAdhesion(Instant.now());
         }
         if (userProfile.getDateEcheance() == null) {
-            userProfile.setDateEcheance(Instant.now().plus(365, ChronoUnit.DAYS));
+            userProfile.setDateEcheance(Instant.now().minus(365, ChronoUnit.DAYS));
         }
         userProfile.setUser(newUser);
         userProfile = userProfileRepository.save(userProfile);

@@ -6,3 +6,4 @@ export const INVALID_AUTHORITY = PROBLEM_BASE_URL + '/invalid-authority';
 export const NO_HARNESS_AVAILABLE = PROBLEM_BASE_URL + '/no-harness-available';
 export const NO_WETSUIT_AVAILABLE = PROBLEM_BASE_URL + '/no-wetsuit-available';
 export const ALREADY_RESERVED = PROBLEM_BASE_URL + '/already-reserved';
+export const DUE_DATE_PASSED = PROBLEM_BASE_URL + '/due-date-passed';

@@ -104,6 +104,7 @@
         "noWetsuitAvailable": "There is no wetsuit fitting your size available.",
         "noReservationDone": "An error occur, no reservation has been made.",
         "noHarnessAvailable": "There is no harness fitting your size available.",
+        "dueDatePassed": "Due date has passed",
         "alreadyReserved": "You still have a reservation in progress"
       },
       "validate": {

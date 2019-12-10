@@ -12,7 +12,7 @@ import { ReservationService } from 'app/entities/reservation/reservation.service
 import { ConfirmService } from 'app/shared/confirm/confirm.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ViewEncapsulation } from '@angular/core';
-import { ALREADY_RESERVED, NO_HARNESS_AVAILABLE, NO_WETSUIT_AVAILABLE } from 'app/shared/constants/error.constants';
+import { ALREADY_RESERVED, NO_HARNESS_AVAILABLE, NO_WETSUIT_AVAILABLE, DUE_DATE_PASSED } from 'app/shared/constants/error.constants';
 import { IUserProfile } from 'app/shared/model/user-profile.model';
 import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
 
@@ -44,6 +44,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
   errorNoWetSuitAvailable: string;
   errorNoHarnessAvailable: string;
   errorAlreadyReserved: string;
+  errorDueDatePassed: string;
   error: string;
 
   constructor(
@@ -94,6 +95,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     this.errorNoWetSuitAvailable = null;
     this.errorNoHarnessAvailable = null;
     this.errorAlreadyReserved = null;
+    this.errorDueDatePassed = null;
     this.reservationService.create(this.registerForm.value).subscribe(
       () => {
         this.success = true;
@@ -223,6 +225,8 @@ export class MaterialListComponent implements OnInit, OnDestroy {
       this.errorNoHarnessAvailable = 'ERROR';
     } else if (response.status === 400 && response.error.type === ALREADY_RESERVED) {
       this.errorAlreadyReserved = 'ERROR';
+    } else if (response.status === 400 && response.error.type === DUE_DATE_PASSED) {
+      this.errorDueDatePassed = 'ERROR';
     } else {
       this.error = 'ERROR';
     }

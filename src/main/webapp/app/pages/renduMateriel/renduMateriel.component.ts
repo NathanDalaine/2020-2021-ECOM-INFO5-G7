@@ -62,6 +62,11 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
 
   confirm() {
     this.reservation.dateRendu = moment();
+    if (this.reservation.userProfile.dateEcheance < moment()) {
+      this.subscribeToSaveResponse(this.reservationService.updateFull(this.reservation));
+      return;
+    }
+
     this.secondreservation = new Reservation();
     this.secondreservation.dateReservation = moment();
     this.secondreservation.userProfileId = this.reservation.userProfile.id;
