@@ -74,7 +74,8 @@ maven-package:
     expire_in: 1 day
 
 docker-push:
-  only: master
+  only:
+    - master
   stage: release
   variables:
     REGISTRY_URL: registry.gitlab.com
