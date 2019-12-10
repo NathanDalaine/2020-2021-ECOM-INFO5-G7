@@ -109,6 +109,7 @@
         "noWetsuitAvailable": "Il n'y a pas de combinaison à votre taille de disponible.",
         "noReservationDone": "Une erreur est survenue, la réservation n'a pas été effectuée.",
         "noHarnessAvailable": "Il n'y a pas d'harnais à votre taille de disponible.",
+        "alreadyReserved": "Vous avez déjà une réservation en cours",
         "dueDatePassed": "La date d'échéance est passée",
         "fail": "Erreur inconnu."
       },

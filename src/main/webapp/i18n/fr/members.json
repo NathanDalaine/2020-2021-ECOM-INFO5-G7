@@ -10,7 +10,9 @@
       "address": "Adresse",
       "email": "Email",
       "phonenumber": "Téléphone",
-      "level": "Niveau"
+      "level": "Niveau",
+      "adhesiondate": "Date d'adhésion",
+      "echeancedate": "Date d'échéance"
     }
   }
 }
