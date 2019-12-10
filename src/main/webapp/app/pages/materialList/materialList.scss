@@ -8,20 +8,16 @@
   color: black;
 }
 
-.mat-tab-label {
+/deep/ .mat-tab-label {
   min-width: 25px !important;
-  max-width: 150px !important;
-  padding: 5px;
-  background-color: transparent;
+  max-width: 80px !important;
+  margin-right: 10px !important;
   color: black;
   font-weight: 700;
 }
 
+
 .mat-tab-label.mat-tab-label-active {
-  min-width: 25px !important;
-  max-width: 80px !important;
-  padding: 5px;
-  background-color: transparent;
   color: #2a62bc;
   font-weight: 700;
 }
