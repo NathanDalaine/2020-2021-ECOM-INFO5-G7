@@ -5,6 +5,8 @@
         "title": "Reservations",
         "createLabel": "Créer un nouveau Reservation",
         "createOrEditLabel": "Créer ou éditer un Reservation",
+        "yourHistoryNotFound": "Il n'y a aucune réservation dans votre historique.",
+        "totalHistoryNotFound": "Aucune réservation dans l'historique des réservations.",
         "notFound": "Il n'y aucune réservation en cours."
       },
       "created": "Un nouveau Reservation a été créé avec l'identifiant {{ param }}",

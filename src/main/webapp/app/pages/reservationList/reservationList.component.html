@@ -66,6 +66,9 @@
                     </tr>
                     </tbody>
                 </table>
+                <div class="alert alert-warning" *ngIf="(pastReservation | valuehistory)?.length === 0">
+                    <span jhiTranslate="ecomgucvoileApp.reservation.home.yourHistoryNotFound">There is no past reservation</span>
+                </div>
             </mat-tab>
             <mat-tab *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']" label="{{'reservationList.allPastReservations' | translate}}">
                 <table class="table table-striped" aria-describedby="page-heading">
@@ -93,7 +96,11 @@
                     </tr>
                     </tbody>
                 </table>
+                <div class="alert alert-warning" *ngIf="(reservations | valuehistory)?.length === 0">
+                    <span jhiTranslate="ecomgucvoileApp.reservation.home.totalHistoryNotFound">There is no past reservation</span>
+                </div>
             </mat-tab>
         </mat-tab-group>
+
     </div>
 </div>
