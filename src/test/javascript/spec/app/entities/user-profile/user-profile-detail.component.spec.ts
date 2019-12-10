@@ -10,7 +10,7 @@ describe('Component Tests', () => {
   describe('UserProfile Management Detail Component', () => {
     let comp: UserProfileDetailComponent;
     let fixture: ComponentFixture<UserProfileDetailComponent>;
-    const route = ({ data: of({ userProfile: new UserProfile() }) } as any) as ActivatedRoute;
+    const route = ({ data: of({ userProfile: new UserProfile(null, 123) }) } as any) as ActivatedRoute;
 
     beforeEach(() => {
       TestBed.configureTestingModule({

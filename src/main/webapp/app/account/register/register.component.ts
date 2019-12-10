@@ -31,7 +31,9 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   niveaux: SelectItem[];
 
   registerForm = this.fb.group({
-    authoritie: [MEMBRE],
+    activated: false,
+    remarque: '',
+    role: [MEMBRE],
     langKey: ['fr'],
     password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
@@ -87,27 +89,27 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       { label: 'Performance', value: Niveau.PERF },
       { label: 'Funboard', value: Niveau.FUNBOARD }
     ];
-    this.authoritiesAvailable();
   }
 
   ngAfterViewInit() {
+    this.authoritiesAvailable();
     this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#login'), 'focus', []);
   }
 
   authoritiesAvailable() {
-      if (this.accountService.hasAnyAuthority([ADMINISTRATEUR])) {
-        this.roles = [
-          { label: 'Membre', value: MEMBRE },
-          { label: 'Gestionnaire', value: GESTIONNAIRE },
-          { label: 'Administrateur', value: ADMINISTRATEUR }
-        ];
+    if (this.accountService.hasAnyAuthority([ADMINISTRATEUR])) {
+      this.roles = [
+        { label: 'Membre', value: MEMBRE },
+        { label: 'Gestionnaire', value: GESTIONNAIRE },
+        { label: 'Administrateur', value: ADMINISTRATEUR }
+      ];
+    } else {
+      if (this.accountService.hasAnyAuthority([GESTIONNAIRE])) {
+        this.roles = [{ label: 'Membre', value: MEMBRE }, { label: 'Gestionnaire', value: GESTIONNAIRE }];
       } else {
-        if(this.accountService.hasAnyAuthority([GESTIONNAIRE])){
-          this.roles = [{ label: 'Membre', value: MEMBRE }, { label: 'Gestionnaire', value: GESTIONNAIRE }];
-        }else{
-          this.roles = [{ label: 'Membre', value: MEMBRE }];
-        }
+        this.roles = [{ label: 'Membre', value: MEMBRE }];
       }
+    }
   }
 
   register() {
@@ -120,10 +122,22 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       this.errorUserExists = null;
       this.errorEmailExists = null;
       this.errorInvalidAuthority = null;
-      this.registerForm.get("user").get("login").setValue(this.registerForm.get("login").value);
-      this.registerForm.get("user").get("email").setValue(this.registerForm.get("email").value);
-      this.registerForm.get("user").get("firstName").setValue(this.registerForm.get("firstName").value);
-      this.registerForm.get("user").get("lastName").setValue(this.registerForm.get("lastName").value);
+      this.registerForm
+        .get('user')
+        .get('login')
+        .setValue(this.registerForm.get('login').value);
+      this.registerForm
+        .get('user')
+        .get('email')
+        .setValue(this.registerForm.get('email').value);
+      this.registerForm
+        .get('user')
+        .get('firstName')
+        .setValue(this.registerForm.get('firstName').value);
+      this.registerForm
+        .get('user')
+        .get('lastName')
+        .setValue(this.registerForm.get('lastName').value);
       this.userProfileService.create(this.registerForm.value).subscribe(
         () => {
           this.success = true;
