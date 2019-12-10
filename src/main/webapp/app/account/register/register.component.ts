@@ -89,10 +89,11 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       { label: 'Performance', value: Niveau.PERF },
       { label: 'Funboard', value: Niveau.FUNBOARD }
     ];
+
+    this.authoritiesAvailable();
   }
 
   ngAfterViewInit() {
-    this.authoritiesAvailable();
     this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#login'), 'focus', []);
   }
 
