@@ -17,6 +17,7 @@ public final class ErrorConstants {
     public static final URI INVALID_AUTHORITY_TYPE = URI.create(PROBLEM_BASE_URL + "/invalid-authority");
     public static final URI NO_HARNESS_AVAILABLE = URI.create(PROBLEM_BASE_URL + "/no-harness-available");
     public static final URI NO_WETSUIT_AVAILABLE = URI.create(PROBLEM_BASE_URL + "/no-wetsuit-available");
+    public static final URI ALREADY_RESERVED = URI.create(PROBLEM_BASE_URL + "/already-reserved");
 
     private ErrorConstants() {
     }
