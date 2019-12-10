@@ -11,6 +11,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   imports: [EcomgucvoileSharedModule, RouterModule.forChild([RESERVATIONLIST_ROUTE]), MatTabsModule],
-  declarations: [ReservationListComponent, ValuesFullPipe, ValuesHistoryPipe, ValuesPipe]
+  declarations: [ReservationListComponent, ValuesFullPipe, ValuesHistoryPipe]
 })
 export class EcomgucvoileReservationListModule {}

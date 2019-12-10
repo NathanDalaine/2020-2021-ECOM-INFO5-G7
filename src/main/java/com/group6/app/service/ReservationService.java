@@ -69,9 +69,9 @@ public class ReservationService {
         reservation.setDateReservation(Instant.now());      //à modifier lors de l'ajout de la date de réservation
         if (SecurityUtils.getCurrentUserLogin().isPresent()) {
             reservation.setCreatedBy(SecurityUtils.getCurrentUserLogin().get());
-            reservation.setUserProfile(userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()));
-            Taille tailleHarnais = userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()).getTailleHarnais();
-            Taille tailleCombinaison = userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()).getTailleCombinaison();
+            Optional<UserProfile> user = userProfileRepository.findById(reservationDTO.getUserProfileId());
+            Taille tailleHarnais = user.get().getTailleHarnais();
+            Taille tailleCombinaison = user.get().getTailleCombinaison();
             if (reservationDTO.getHarnaisId() != null) {
                 Harnais harnais = harnaisRepository.findDistinctFirstByTailleAndReservationsIsNull(tailleHarnais);
                 reservation.setHarnais(harnais);
@@ -91,23 +91,11 @@ public class ReservationService {
         log.debug("Request to save Reservation : {}", reservationDTO);
 
         Reservation reservation = reservationFullMapper.toEntity(reservationDTO);
-        reservation.setCreatedAt(Instant.now());
-        reservation.setDateReservation(Instant.now());      //à modifier lors de l'ajout de la date de réservation
+        reservation.setUpdatedAt(Instant.now()); //à modifier lors de l'ajout de la date de réservation
         if (SecurityUtils.getCurrentUserLogin().isPresent()) {
-            reservation.setCreatedBy(SecurityUtils.getCurrentUserLogin().get());
-            reservation.setUserProfile(userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()));
-            Taille tailleHarnais = userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()).getTailleHarnais();
-            Taille tailleCombinaison = userProfileRepository.findByUserLogin(SecurityUtils.getCurrentUserLogin().get()).getTailleCombinaison();
-            if (reservationDTO.getHarnais() != null) {
-                Harnais harnais = harnaisRepository.findDistinctFirstByTailleAndReservationsIsNull(tailleHarnais);
-                reservation.setHarnais(harnais);
-            }
-            if (reservationDTO.getCombinaison() != null) {
-                Combinaison combi = combinaisonRepository.findDistinctFirstByTailleAndReservationsIsNull(tailleCombinaison);
-                reservation.setCombinaison(combi);
-            }
+            reservation.setUpdatedBy(SecurityUtils.getCurrentUserLogin().get());
         } else {
-            reservation.setCreatedBy("Anonymoususer");
+            reservation.setUpdatedBy("Anonymoususer");
         }
 
         reservation = reservationRepository.save(reservation);
