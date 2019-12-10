@@ -77,7 +77,7 @@ Vacances de la Toussaint
 - Finalisation de la pop up de confirmation de reservation (avec détail)
 - Ajout d'un champ niveau pour le materiel (des entités planche et voile)
 
-# Semaine 03/12 - 10/12 Sprint 3
+# Semaine 03/12 - 9/12 Sprint 3
 
 - Préparation de l'audit
 - Merge de toutes les taches en cours
@@ -87,3 +87,15 @@ Vacances de la Toussaint
 - Authentification gestionnaire
 - Gestionnaire peut créer des comptes gestionnaires
 - Elaboration du wiki
+
+# Semaine 10/12 - 17/12 Sprint 3
+
+- Correction de la navbar
+- Correction de bug en front end
+- Elaboration du paiement pour le renouvellement de licence
+- Elaboration des statistiques
+- Finalisation du rendu de materiel
+- Correction pour la reservation et le rendu (désormais qu'une seule par membre)
+- Elaboraration du Diapo
+- Finalisation de l'application
+- Mise en production de l'application
