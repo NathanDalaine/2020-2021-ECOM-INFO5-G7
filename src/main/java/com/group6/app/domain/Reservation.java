@@ -50,7 +50,7 @@ public class Reservation implements Serializable {
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JsonIgnoreProperties("reservations")
     private Voile voile;
 
@@ -66,7 +66,7 @@ public class Reservation implements Serializable {
     @JsonIgnoreProperties("reservations")
     private Harnais harnais;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JsonIgnoreProperties("reservations")
     private Planche planche;
 

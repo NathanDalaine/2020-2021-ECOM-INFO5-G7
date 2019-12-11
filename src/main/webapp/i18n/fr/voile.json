@@ -5,7 +5,7 @@
         "title": "Voiles",
         "createLabel": "Créer un nouveau Voile",
         "createOrEditLabel": "Créer ou éditer un Voile",
-        "notFound": "Aucun Voile trouvé"
+        "notFound": "Aucune voile trouvée"
       },
       "created": "Un nouveau Voile a été créé avec l'identifiant {{ param }}",
       "updated": "Le Voile avec l'identifiant {{ param }} a été mis à jour",

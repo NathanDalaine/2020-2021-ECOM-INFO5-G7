@@ -81,6 +81,7 @@
       "subscription.placeholder": "Select the subscription",
       "level.label": "Level",
       "role.label": "Role",
+      "person": "Person",
       "level.placeholder": "Select the level",
       "technicalMaterialAutorization.label": "Technical material authorization",
       "birthday.label": "Birthday"
