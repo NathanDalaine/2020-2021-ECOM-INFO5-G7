@@ -25,7 +25,7 @@
           "pattern": "Votre prénom ne peut contenir que des lettres minuscules ou des nombres."
         }
       },
-      "success": "<strong>Compte enregistré !</strong> Merci de vérifier votre email de confirmation.",
+      "success": "<strong>Compte enregistré !</strong>",
       "successactivate": "<strong>Compte enregistré !</strong>",
       "error": {
         "fail": "<strong>Compte non créé !</strong> Merci d'essayer à nouveau plus tard.",

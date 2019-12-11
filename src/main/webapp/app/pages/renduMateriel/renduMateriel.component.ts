@@ -25,7 +25,10 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
   voile = false;
   combinaison = false;
   planche = false;
-
+  degatPlanche = false;
+  degatVoile = false;
+  textDegatPlanche = "";
+  textDegatVoile = "";
   constructor(
     protected reservationService: ReservationService,
     protected jhiAlertService: JhiAlertService,
@@ -56,7 +59,6 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
       this.subscribeToSaveResponse(this.reservationService.updateFull(this.reservation));
       return;
     }
-
     this.secondreservation = new Reservation();
     this.secondreservation.dateReservation = moment();
     this.secondreservation.userProfileId = this.reservation.userProfile.id;
@@ -67,12 +69,16 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
     if (!this.planche && this.reservation.planche != null) {
       this.secondreservation.plancheId = this.reservation.planche.id;
       this.reservation.planche = null;
+    }else if(this.degatPlanche){
+      this.reservation.planche.etat = this.textDegatPlanche;
     }
-
     if (!this.voile && this.reservation.voile != null) {
       this.secondreservation.voileId = this.reservation.voile.id;
       this.reservation.voile = null;
+    }else if(this.degatVoile){
+      this.reservation.voile.etat = this.textDegatVoile;
     }
+
     if (!this.harnais && this.reservation.harnais != null) {
       this.secondreservation.harnaisId = this.reservation.harnais.id;
       this.reservation.harnais = null;
@@ -116,9 +122,5 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
 
   protected onSuccess(sucessMessage: string) {
     this.jhiAlertService.success(sucessMessage, null, null);
-  }
-
-  checkboxdamage() {
-    this.checked = !this.checked;
   }
 }

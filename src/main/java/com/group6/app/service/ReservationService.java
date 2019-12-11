@@ -1,14 +1,10 @@
 package com.group6.app.service;
 
-import com.group6.app.domain.Combinaison;
-import com.group6.app.domain.Harnais;
-import com.group6.app.domain.Reservation;
-import com.group6.app.domain.UserProfile;
+import com.group6.app.config.Constants;
+import com.group6.app.domain.*;
 import com.group6.app.domain.enumeration.Taille;
-import com.group6.app.repository.CombinaisonRepository;
-import com.group6.app.repository.HarnaisRepository;
-import com.group6.app.repository.ReservationRepository;
-import com.group6.app.repository.UserProfileRepository;
+import com.group6.app.repository.*;
+import com.group6.app.security.AuthoritiesConstants;
 import com.group6.app.security.SecurityUtils;
 import com.group6.app.service.dto.ReservationDTO;
 import com.group6.app.service.dto.ReservationFullDTO;
@@ -41,11 +37,14 @@ public class ReservationService {
     private final UserProfileRepository userProfileRepository;
     private final HarnaisRepository harnaisRepository;
     private final CombinaisonRepository combinaisonRepository;
+    private final AuthorityRepository authorityRepository;
 
     private final ReservationMapper reservationMapper;
     private final ReservationFullMapper reservationFullMapper;
 
-    public ReservationService(ReservationRepository reservationRepository, CombinaisonRepository combinaisonRepository, HarnaisRepository harnaisRepository,ReservationFullMapper reservationFullMapper, UserProfileRepository userProfileRepository, UserProfileService userProfileService, ReservationMapper reservationMapper) {
+    private final MailService mailService;
+
+    public ReservationService(ReservationRepository reservationRepository, CombinaisonRepository combinaisonRepository, HarnaisRepository harnaisRepository,ReservationFullMapper reservationFullMapper, UserProfileRepository userProfileRepository, UserProfileService userProfileService, ReservationMapper reservationMapper,MailService mailService,AuthorityRepository authorityRepository) {
         this.reservationRepository = reservationRepository;
         this.reservationMapper = reservationMapper;
         this.userProfileService = userProfileService;
@@ -53,6 +52,8 @@ public class ReservationService {
         this.harnaisRepository = harnaisRepository;
         this.combinaisonRepository = combinaisonRepository;
         this.reservationFullMapper = reservationFullMapper;
+        this.mailService = mailService;
+        this.authorityRepository = authorityRepository;
     }
 
     /**
@@ -99,6 +100,45 @@ public class ReservationService {
         }
 
         reservation = reservationRepository.save(reservation);
+        boolean declaredDamage = false;
+        String damages =  "<!DOCTYPE html>\n" +
+            "<html xmlns:th=\"http://www.thymeleaf.org\">\n" +
+            "    <head>\n" +
+            "        <title th:text=\"#{email.activation.title}\">JHipster activation</title>\n" +
+            "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n" +
+            "        <link rel=\"shortcut icon\" th:href=\"@{|${baseUrl}/favicon.ico|}\" />\n" +
+            "    </head>\n" +
+            "    <body>\n";
+
+
+         damages += "<p>\n" +
+             reservation.getUpdatedBy() + " : "+
+            "        </p>\n";
+
+        if(reservationDTO.getVoile() != null && reservationDTO.getVoile().getEtat() != null){
+            declaredDamage = true;
+            damages += "<p>\n" +
+                reservationDTO.getVoile().getLibelle() + " : " + reservationDTO.getVoile().getEtat()+
+                "        </p>\n";
+        }
+        if(reservationDTO.getPlanche() != null && reservationDTO.getPlanche().getEtat() != null){
+            declaredDamage = true;
+            damages += "<p>\n" +
+                reservationDTO.getPlanche().getLibelle()+ " : "+reservationDTO.getPlanche().getEtat()+
+                "        </p>\n";
+        }
+
+
+        if(declaredDamage){
+            List<UserProfile> users = userProfileRepository.findByUserAuthoritiesNameEquals(AuthoritiesConstants.GESTIONNAIRE);
+            damages += "    </body>\n" +
+                "</html>";
+            String finalDamages = damages;
+            users.forEach(user ->{
+                mailService.sendEmail(user.getUser().getEmail(),"Reservation "+reservationDTO.getId(), finalDamages,false,true);
+            });
+
+        }
         return reservationFullMapper.toDto(reservation);
     }
 

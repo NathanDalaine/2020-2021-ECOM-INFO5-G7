@@ -5,53 +5,64 @@
             <hr>
             <jhi-alert></jhi-alert>
             <dt class="row-md jh-entity-details">
-                <dt><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></dt>
-                <dd>
-                    <span>{{reservation.dateReservation | date: 'medium'}}</span>
-                </dd>
-                <dt *ngIf="reservation.planche"><span jhiTranslate="ecomgucvoileApp.reservation.planche">Planche</span></dt>
-                <dd *ngIf="reservation.planche">
-                    <input type="checkbox" id="planche" name="planche" [(ngModel)]="planche">
-                    <label for=planche>{{reservation.planche.libelle}}</label>
-                </dd>
-                <dt *ngIf="reservation.voile"><span jhiTranslate="ecomgucvoileApp.reservation.voile">Voile</span></dt>
-                <dd *ngIf="reservation.voile">
+            <dt><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></dt>
+            <dd>
+                <span>{{reservation.dateReservation | date: 'medium'}}</span>
+            </dd>
+            <div *ngIf="reservation.planche">
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.planche">Planche</span></dt>
+                <input type="checkbox" id="planche" name="planche" [(ngModel)]="planche">
+                <label for=planche>{{reservation.planche.libelle}}</label>
+                <div *ngIf="planche">
+                    <input type="checkbox" name="damageboard" id="damageboard" [(ngModel)]="degatPlanche">
+                    <label for="damageboard" jhiTranslate="ecomgucvoileApp.renduMateriel.damage">Le
+                        materiel rendu est endommagé.</label>
+                    <div *ngIf="degatPlanche">
+                        <label jhiTranslate="ecomgucvoileApp.renduMateriel.descriptiondamagetext">Description du dommage
+                            :</label>
+                        <div>
+                            <textarea name="descriptiondamage" cols="40" rows="5" [(ngModel)]="textDegatPlanche"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="reservation.voile">
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.voile">Voile</span></dt>
                     <input type="checkbox" id="voile" name="voile" [(ngModel)]="voile">
                     <label for=voile>{{reservation.voile.libelle}}</label>
-
-                </dd>
-                <dt *ngIf="reservation.harnais"><span jhiTranslate="ecomgucvoileApp.reservation.harnais">Harnais</span></dt>
-                <dd *ngIf="reservation.harnais">
+                <div *ngIf="voile">
+                    <input type="checkbox" name="damagesail" id="damagesail" [(ngModel)]="degatVoile">
+                    <label for="damageboard" jhiTranslate="ecomgucvoileApp.renduMateriel.damage">Le
+                        materiel rendu est endommagé.</label>
+                    <div *ngIf="degatVoile">
+                        <label jhiTranslate="ecomgucvoileApp.renduMateriel.descriptiondamagetext">Description du dommage
+                            :</label>
+                        <div>
+                            <textarea name="descriptiondamage" cols="40" rows="5" [(ngModel)]="textDegatVoile"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="reservation.harnais">
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.harnais">Harnais</span></dt>
+                <dd>
                     <input type="checkbox" id="Harnais" name="Harnais" [(ngModel)]="harnais">
                     <label for=Harnais>{{reservation.harnais.taille}}</label>
                 </dd>
-                <dt *ngIf="reservation.combinaison"><span jhiTranslate="ecomgucvoileApp.reservation.combinaison">Combinaison</span></dt>
-                <dd *ngIf="reservation.combinaison">
+            </div>
+            <div *ngIf="reservation.combinaison">
+                <dt><span
+                    jhiTranslate="ecomgucvoileApp.reservation.combinaison">Combinaison</span></dt>
+                <dd>
                     <input type="checkbox" id="Combinaison" name="Combinaison" [(ngModel)]="combinaison">
                     <label for=Combinaison>{{reservation.combinaison.taille}}</label>
                 </dd>
-                <button type="button" [disabled]="!planche && !voile && !combinaison && !harnais"
+            </div>
+            <button type="button" [disabled]="!planche && !voile && !combinaison && !harnais"
                     (click)="confirm()"
                     class="btn btn-info">
-                    <span jhiTranslate="ecomgucvoileApp.renduMateriel.confirmation"> Back</span>
+                <span jhiTranslate="ecomgucvoileApp.renduMateriel.confirmation"> Back</span>
             </button>
-
-            <div>
-                <input type="checkbox" name="damage" id="damage"
-                       unchecked>
-                <label for="damage" jhiTranslate="ecomgucvoileApp.renduMateriel.damage" onchange="checkboxdamage()">Le materiel rendu est endommagé.</label>
-              </div>
-
-            <br>
-            <br>
-            <br>
-
-            <p><label jhiTranslate="ecomgucvoileApp.renduMateriel.descriptiondamagetext" >Description du dommage :</label></p>
-            <p><textarea name="descriptiondamage" cols="40" rows="5" ></textarea>  </p>
-            <p><label jhiTranslate="ecomgucvoileApp.renduMateriel.circonstancedamagetext">Circonstances du dommage :</label></p>
-            <p><textarea name="circonstancedamage" cols="40" rows="5" ></textarea></p>
-
-        <div></div>
+        </div>
     </div>
-</div>
 </div>
