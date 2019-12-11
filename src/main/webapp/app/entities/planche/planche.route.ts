@@ -45,7 +45,7 @@ export const plancheRoute: Routes = [
       planche: PlancheResolve
     },
     data: {
-      authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
+      authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN', 'ROLE_USER'],
       pageTitle: 'ecomgucvoileApp.planche.home.title'
     },
     canActivate: [UserRouteAccessService]
