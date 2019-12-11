@@ -15,21 +15,25 @@
             <div class="alert alert-danger" *ngIf="error" jhiTranslate="global.messages.error.fail">
                 <strong></strong>
             </div>
-            <div class="alert alert-danger" *ngIf="errorNoHarnessAvailable" jhiTranslate="global.messages.error.noHarnessAvailable">
+            <div class="alert alert-danger" *ngIf="errorNoHarnessAvailable"
+                 jhiTranslate="global.messages.error.noHarnessAvailable">
                 <strong></strong>
             </div>
-            <div class="alert alert-danger" *ngIf="errorNoWetSuitAvailable" jhiTranslate="global.messages.error.noWetsuitAvailable">
+            <div class="alert alert-danger" *ngIf="errorNoWetSuitAvailable"
+                 jhiTranslate="global.messages.error.noWetsuitAvailable">
                 <strong></strong>
             </div>
-            <div class="alert alert-danger" *ngIf="errorAlreadyReserved" jhiTranslate="global.messages.error.alreadyReserved">
+            <div class="alert alert-danger" *ngIf="errorAlreadyReserved"
+                 jhiTranslate="global.messages.error.alreadyReserved">
                 <strong></strong>
             </div>
-            <div class="alert alert-danger" *ngIf="errorDueDatePassed" jhiTranslate="global.messages.error.dueDatePassed">
+            <div class="alert alert-danger" *ngIf="errorDueDatePassed"
+                 jhiTranslate="global.messages.error.dueDatePassed">
                 <strong></strong>
             </div>
         </div>
     </div>
-    <div class="form-group"*jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
+    <div class="form-group" *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
         <label class="form-control-label" jhiTranslate="global.form.role.label">Roles</label>
         <select class="form-control" id="userProfileId" name="userProfileId" formControlName="userProfileId">
             <option *ngFor="let r of users" [value]="r.id">{{r.user.firstName}} {{r.user.lastName}}</option>
@@ -37,11 +41,13 @@
     </div>
     <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="2%">
         <div>
-            <label class="form-control-label" jhiTranslate="ecomgucvoileApp.reservation.harnais" style="font-weight:bold">Harness</label>
+            <label class="form-control-label" jhiTranslate="ecomgucvoileApp.reservation.harnais"
+                   style="font-weight:bold">Harness</label>
             <input formControlName="harnais" type="checkbox">
         </div>
         <div>
-            <label class="form-control-label" jhiTranslate="ecomgucvoileApp.reservation.combinaison" style="font-weight:bold">Wetsuit</label>
+            <label class="form-control-label" jhiTranslate="ecomgucvoileApp.reservation.combinaison"
+                   style="font-weight:bold">Wetsuit</label>
             <input formControlName="combinaison" type="checkbox">
         </div>
     </div>
@@ -49,60 +55,83 @@
     <div fxLayoutGap="2%">
         <mat-tab-group mat-align-tabs="left">
             <mat-tab label="{{'ecomgucvoileApp.reservation.lesVoiles' | translate}}">
-                    <div class="alert alert-warning" *ngIf="voiles?.length === 0">
-                        <span jhiTranslate="ecomgucvoileApp.voile.home.notFound">No voiles found</span>
-                    </div>
-                    <div>
-                        <input #searchTextVoile type="text" (input)="searchVoile(searchTextVoile.value)"
-                               placeholder="{{'ecomgucvoileApp.reservation.rechercheVoile' | translate}}"/>
-                    </div>
-                    <div class="t+able-responsive" *ngIf="voiles?.length > 0">
-                        <table class="table table-striped" aria-describedby="page-heading">
-                            <thead>
-                            <tr>
-                                <th style="width:5%;"></th>
-                                <th><span jhiTranslate="ecomgucvoileApp.voile.reservationLibelle">Libelle</span></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr *ngFor="let voile of voiles | orderBy: 'libelle' ;trackBy: trackIdVoile">
-                                <td>
-                                    <input [checked]="this.registerForm.get('voileId').value == voile.id"
-                                           (click)="selectVoile(voile)" type="radio">
-                                </td>
-                                <td><a [routerLink]="['/voile', voile.id, 'view' ]">{{voile.libelle}}</a></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="alert alert-warning" *ngIf="voiles?.length === 0">
+                    <span jhiTranslate="ecomgucvoileApp.voile.home.notFound">No voiles found</span>
+                </div>
+                <div>
+                    <input #searchTextVoile type="text" (input)="searchVoile(searchTextVoile.value)"
+                           placeholder="{{'ecomgucvoileApp.reservation.rechercheVoile' | translate}}"/></div>
+                <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="2%">
+                    <button type="button" fxLayoutAlign="center"
+                            (click)="sortTypeVoile = 'libelle';"
+                            class="btn btn-primary" jhiTranslate="ecomgucvoileApp.reservation.sortName">
+                        Trier par nom
+                    </button>
+                    <button type="button" fxLayoutAlign="center"
+                            (click)="sortTypeVoile = 'surface';"
+                            class="btn btn-primary" jhiTranslate="ecomgucvoileApp.reservation.sortSurface">
+                        Trier par surface
+                    </button>
+                </div>
+                <div class="t+able-responsive" *ngIf="voiles?.length > 0">
+                    <table class="table table-striped" aria-describedby="page-heading">
+                        <thead>
+                        <tr>
+                            <th style="width:5%;"></th>
+                            <th><span jhiTranslate="ecomgucvoileApp.voile.reservationLibelle">Libelle</span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let voile of voiles | orderBy: sortTypeVoile;">
+                            <td>
+                                <input [checked]="this.registerForm.get('voileId').value == voile.id"
+                                       (click)="selectVoile(voile)" type="radio">
+                            </td>
+                            <td><a [routerLink]="['/voile', voile.id, 'view' ]">{{voile.libelle}}</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </mat-tab>
             <mat-tab label="{{'ecomgucvoileApp.reservation.lesPlanches' | translate}}">
-                    <div class="alert alert-warning" *ngIf="planches?.length === 0">
-                        <span jhiTranslate="ecomgucvoileApp.planche.home.notFound">No planches found</span>
-                    </div>
-                    <div>
-                        <input #searchTextPlanche type="text" (input)="searchPlanche(searchTextPlanche.value)"
-                               placeholder="{{'ecomgucvoileApp.reservation.recherchePlanche' | translate}}"/>
-                    </div>
-                    <div class="table-responsive" *ngIf="planches?.length > 0">
-                        <table class="table table-striped" aria-describedby="page-heading">
-                            <thead>
-                            <tr>
-                                <th style="width:5%;"></th>
-                                <th><span jhiTranslate="ecomgucvoileApp.planche.reservationLibelle">Libelle</span></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr *ngFor="let planche of planches | orderBy: 'libelle'; trackBy: trackIdPlanche">
-                                <td>
-                                    <input [checked]="this.registerForm.get('plancheId').value == planche.id"
-                                           (click)="selectPlanche(planche)" type="radio">
-                                </td>
-                                <td><a [routerLink]="['/planche', planche.id, 'view' ]">{{planche.libelle}}</a></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="alert alert-warning" *ngIf="planches?.length === 0">
+                    <span jhiTranslate="ecomgucvoileApp.planche.home.notFound">No planches found</span>
+                </div>
+                <div>
+                    <input #searchTextPlanche type="text" (input)="searchPlanche(searchTextPlanche.value)"
+                           placeholder="{{'ecomgucvoileApp.reservation.recherchePlanche' | translate}}"/>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="2%">
+                    <button type="button" fxLayoutAlign="center"
+                            (click)="sortTypePlanche = 'libelle';"
+                            class="btn btn-primary" jhiTranslate="ecomgucvoileApp.reservation.sortName">
+                        Trier par nom
+                    </button>
+                    <button type="button" fxLayoutAlign="center"
+                            (click)="sortTypePlanche = 'volume';"
+                            class="btn btn-primary" jhiTranslate="ecomgucvoileApp.reservation.sortVolume">
+                        Trier par volume
+                    </button>
+                </div>
+                <div class="table-responsive" *ngIf="planches?.length > 0">
+                    <table class="table table-striped" aria-describedby="page-heading">
+                        <thead>
+                        <tr>
+                            <th style="width:5%;"></th>
+                            <th><span jhiTranslate="ecomgucvoileApp.planche.reservationLibelle">Libelle</span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let planche of planches | orderBy: sortTypePlanche;">
+                            <td>
+                                <input [checked]="this.registerForm.get('plancheId').value == planche.id"
+                                       (click)="selectPlanche(planche)" type="radio">
+                            </td>
+                            <td><a [routerLink]="['/planche', planche.id, 'view' ]">{{planche.libelle}}</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </mat-tab>
         </mat-tab-group>
     </div>

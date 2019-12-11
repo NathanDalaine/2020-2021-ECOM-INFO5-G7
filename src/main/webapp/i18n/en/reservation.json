@@ -36,6 +36,9 @@
       "lesVoiles": "Sails",
       "lesPlanches": "Boards",
       "reserve": "Make a reservation",
+      "sortName": "Sort by name",
+      "sortSurface": "Sort by surface",
+      "sortVolume": "Sort by volume",
       "reservationSuccess": "Your reservation was made successfully"
     }
   }
