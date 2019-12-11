@@ -36,7 +36,9 @@ export class GestionMaterielComponent implements OnInit {
       );
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadAll();
+  }
 
   searchPlanche(text: string) {
     if (text !== '') {
