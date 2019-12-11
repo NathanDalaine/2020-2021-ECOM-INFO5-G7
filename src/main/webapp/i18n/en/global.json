@@ -29,6 +29,7 @@
         "userProfile": "User Profile",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
+      "manage": "Management",
       "account": {
         "main": "Account",
         "settings": "Settings",
