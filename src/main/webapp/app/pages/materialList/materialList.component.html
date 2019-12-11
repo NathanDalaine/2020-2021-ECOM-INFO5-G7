@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="form-group"*jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
-        <label class="form-control-label" jhiTranslate="global.form.role.label" style="font-weight:bold">Roles</label>
+        <label class="form-control-label" jhiTranslate="global.form.person" style="font-weight:bold">Roles</label>
         <select class="form-control" id="userProfileId" name="userProfileId" formControlName="userProfileId">
             <option *ngFor="let r of users" [value]="r.id">{{r.user.firstName}} {{r.user.lastName}}</option>
         </select>
