@@ -79,7 +79,7 @@
       "subscription.placeholder": "Selectionner l'abonnement",
       "level.label": "Niveau",
       "role.label": "Role",
-      "person" : "Personne",
+      "person": "Personne",
       "level.placeholder": "Selectionner le niveau",
       "technicalMaterialAutorization.label": "Materiel technique autorise",
       "birthday.label": "Date de naissance"
