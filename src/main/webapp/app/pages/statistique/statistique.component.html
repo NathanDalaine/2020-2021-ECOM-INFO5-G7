@@ -1,3 +1,11 @@
-<div class="row justify-content-center">
-    
+<div>
+    <span>{{'ecomgucvoileApp.statistique.home.description'|translate}}</span>
+    <p>Nombre de combinaison (Taille S) :</p>   
+    <p>Nombre de combinaison (Taille M) : </p>   
+    <p>Nombre de combinaison (Taille L) : </p>
+    <p>Nombre de combinaison (Taille XL) : </p>
+
+    <tr *ngFor="let reservation of (reservations | combiS); let i = index; let last = last " >
+            <div id="counter_id" *ngIf="last">{{index + 1}} results</div>
+    </div>
 </div>

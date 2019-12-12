@@ -19,7 +19,30 @@ import { TypeAbonnement } from 'app/shared/model/enumerations/type-abonnement.mo
   styleUrls: ['statistique.scss']
 })
 export class StatistiqueComponent implements OnInit {
-  constructor() {}
+  reservations: IReservationFull[];
 
-  ngOnInit() {}
+  constructor(protected reservationService: ReservationService, protected jhiAlertService: JhiAlertService) {}
+
+  ngOnInit() {
+    this.loadAll();
+  }
+
+  loadAll() {
+    this.reservationService
+      .getAllFullReservation()
+      .pipe(
+        filter((res: HttpResponse<IReservationFull[]>) => res.ok),
+        map((res: HttpResponse<IReservationFull[]>) => res.body)
+      )
+      .subscribe(
+        (res: IReservationFull[]) => {
+          this.reservations = res;
+        },
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
+  }
+
+  protected onError(errorMessage: string) {
+    this.jhiAlertService.error(errorMessage, null, null);
+  }
 }
