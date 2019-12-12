@@ -90,6 +90,12 @@ public class PlancheResource {
         return plancheService.findAll();
     }
 
+    @GetMapping("/planches/damaged")
+    public List<PlancheDTO> getAllDamagedPlanches() {
+        log.debug("REST request to get all Planches");
+        return plancheService.findAllDamaged();
+    }
+
     /**
      * {@code GET  /planches/:id} : get the "id" planche.
      *

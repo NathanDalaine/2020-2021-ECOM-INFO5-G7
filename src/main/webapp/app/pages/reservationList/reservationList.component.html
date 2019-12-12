@@ -45,7 +45,7 @@
                     <thead>
                     <tr>
                         <th><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></th>
-                        <th><span jhiTranslate="ecomgucvoileApp.reservation.user">Utilisateur</span></th>
+                        <th><span jhiTranslate="ecomgucvoileApp.reservation.dateRendu">Date Rendu</span></th>
                         <th><span jhiTranslate="ecomgucvoileApp.reservation.voile">Voile</span></th>
                         <th><span jhiTranslate="ecomgucvoileApp.reservation.planche">Planche</span></th>
                         <th><span jhiTranslate="ecomgucvoileApp.reservation.combinaison">Combinaison</span></th>
@@ -55,8 +55,7 @@
                     <tbody>
                     <tr *ngFor="let reservation of (pastReservation | valuehistory) ;trackBy: trackDate " >
                         <td>{{reservation.dateReservation | date:'medium'}}</td>
-                        <td *ngIf="!reservation.userProfile"></td>
-                        <td *ngIf="reservation.userProfile">{{reservation.userProfile.user.login}}</td>
+                        <td>{{reservation.dateRendu | date:'medium'}}</td>
                         <td><a *ngIf="reservation.voile" [routerLink]="['/voile', reservation.voile.id, 'view' ]">{{reservation.voile.libelle}}</a></td>
                         <td><a *ngIf="reservation.planche" [routerLink]="['/planche', reservation.planche.id, 'view' ]">{{reservation.planche.libelle}}</a></td>
                         <td *ngIf="reservation.combinaison">{{reservation.combinaison.taille}}</td>
@@ -75,6 +74,7 @@
                     <thead>
                     <tr>
                         <th><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></th>
+                        <th><span jhiTranslate="ecomgucvoileApp.reservation.dateRendu">Date Rendu</span></th>
                         <th><span jhiTranslate="ecomgucvoileApp.reservation.user">Utilisateur</span></th>
                         <th><span jhiTranslate="ecomgucvoileApp.reservation.voile">Voile</span></th>
                         <th><span jhiTranslate="ecomgucvoileApp.reservation.planche">Planche</span></th>
@@ -85,6 +85,7 @@
                     <tbody>
                     <tr *ngFor="let reservation of (reservations | valuehistory) ;trackBy: trackDate " >
                         <td>{{reservation.dateReservation | date:'medium'}}</td>
+                        <td>{{reservation.dateRendu | date:'medium'}}</td>
                         <td *ngIf="!reservation.userProfile"></td>
                         <td *ngIf="reservation.userProfile">{{reservation.userProfile.user.login}}</td>
                         <td><a *ngIf="reservation.voile" [routerLink]="['/voile', reservation.voile.id, 'view' ]">{{reservation.voile.libelle}}</a></td>

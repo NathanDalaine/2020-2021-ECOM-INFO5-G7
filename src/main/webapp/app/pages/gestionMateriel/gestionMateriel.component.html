@@ -1,3 +1,78 @@
-<div class="row justify-content-center">
-    
+<div fxLayoutGap="2%">
+    <mat-tab-group mat-align-tabs="left">
+        <mat-tab label="{{'ecomgucvoileApp.reservation.lesVoiles' | translate}}">
+            <div class="t+able-responsive">
+                <table class="table table-striped" aria-describedby="page-heading">
+                    <thead>
+                    <tr>
+                        <th>
+                            <div>
+                                <input #searchTextVoile type="text" (input)="searchVoile(searchTextVoile.value)"
+                                       class="form-control"
+                                       placeholder="{{'ecomgucvoileApp.reservation.rechercheVoile' | translate}}"/>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr *ngIf="voiles?.length === 0">
+                        <th>
+                            <div class="alert alert-warning">
+                                <span jhiTranslate="ecomgucvoileApp.voile.home.notFound">No voiles found</span>
+                            </div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody *ngIf="voiles?.length > 0">
+                    <tr *ngFor="let voile of voiles | orderBy: 'libelle' ;trackBy: trackIdVoile">
+                        <td><a [routerLink]="['/voile', voile.id, 'view' ]">{{voile.libelle}}</a></td>
+                        <td>{{voile.etat}}</td>
+                        <td>
+                            <button type="submit"
+                                    class="btn btn-info btn-sm" (click)="setVoileEnEtat(voile)">
+                                <fa-icon [icon]="'wrench'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.return">Rendre</span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </mat-tab>
+        <mat-tab label="{{'ecomgucvoileApp.reservation.lesPlanches' | translate}}">
+            <div class="t+able-responsive">
+                <table class="table table-striped" aria-describedby="page-heading">
+                    <thead>
+                    <tr>
+                        <th>
+                            <div>
+                                <input #searchTextVoile type="text" (input)="searchPlanche(searchTextVoile.value)"
+                                       class="form-control"
+                                       placeholder="{{'ecomgucvoileApp.reservation.recherchePlanche' | translate}}"/>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr *ngIf="planches?.length === 0">
+                        <th>
+                            <div class="alert alert-warning">
+                                <span jhiTranslate="ecomgucvoileApp.planche.home.notFound">No boards found</span>
+                            </div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody *ngIf="planches?.length > 0">
+                    <tr *ngFor="let planche of planches | orderBy: 'libelle' ;trackBy: trackIdPlanche">
+                        <td><a [routerLink]="['/planche', planche.id, 'view' ]">{{planche.libelle}}</a></td>
+                        <td>{{planche.etat}}</td>
+                        <td>
+                            <button type="submit"
+                                    class="btn btn-info btn-sm" (click)="setPlancheEnEtat(planche)">
+                                <fa-icon [icon]="'wrench'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.return">Rendre</span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
 </div>

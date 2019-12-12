@@ -79,7 +79,9 @@
       "subscription.label": "Abonnement",
       "subscription.placeholder": "Selectionner l'abonnement",
       "level.label": "Niveau",
+      "equipmentManagement" : "Gestion des équipements",
       "role.label": "Role",
+      "person" : "Personne",
       "level.placeholder": "Selectionner le niveau",
       "technicalMaterialAutorization.label": "Materiel technique autorise",
       "birthday.label": "Date de naissance"
