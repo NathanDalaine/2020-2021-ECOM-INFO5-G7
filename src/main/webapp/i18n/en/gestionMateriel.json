@@ -1,0 +1,12 @@
+{
+  "ecomgucvoileApp": {
+    "gestionMateriel": {
+      "home": {
+        "title": "Material management"
+      },
+      "utilisable": "Usable",
+      "action" :  "Action",
+      "etat": "State"
+    }
+  }
+}

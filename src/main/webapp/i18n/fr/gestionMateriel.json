@@ -1,0 +1,12 @@
+{
+  "ecomgucvoileApp": {
+    "gestionMateriel": {
+      "home": {
+        "title": "Gestion du matériel"
+      },
+      "utilisable": "Utilisable",
+      "action" :  "Action",
+      "etat": "Etat"
+    }
+  }
+}
