@@ -7,7 +7,7 @@ import { ReservationService } from 'app/entities/reservation/reservation.service
 import * as moment from 'moment';
 import { Observable } from 'rxjs';
 import { IReservationFull } from 'app/shared/model/reservationFull.model';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'jhi-rendumateriel',
@@ -20,6 +20,8 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
   secondreservation: IReservation;
   currentAccount: any;
   private success: boolean;
+  private error = false;
+  private splitError = false;
   checked: boolean;
   harnais = false;
   voile = false;
@@ -34,7 +36,8 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
     protected jhiAlertService: JhiAlertService,
     protected eventManager: JhiEventManager,
     protected accountService: AccountService,
-    protected activatedRoute: ActivatedRoute
+    protected activatedRoute: ActivatedRoute,
+    protected router: Router
   ) {}
 
   loadAll() {
@@ -94,11 +97,14 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
         ) {
           this.subscribeToSaveResponse(this.reservationService.create(this.secondreservation));
         }
-        this.onSuccess('ecomgucvoileApp.renduMateriel.validation');
+        setTimeout(() => {
+          this.router.navigate(['reservationList']);
+        },3000);
       },
       () => {
         this.success = false;
-        this.onError('Rendu Impossible');
+        this.error = true;
+        this.splitError = false;
       }
     );
   }
@@ -107,20 +113,14 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
     result.subscribe(
       () => {
         this.success = true;
-        this.onSuccess('ecomgucvoileApp.renduMateriel.validationsplit');
+        this.error = false;
+        this.splitError = false;
       },
       () => {
         this.success = false;
-        this.onError('Rendu Partagé Impossible');
+        this.splitError = true;
+        this.error = false;
       }
     );
-  }
-
-  protected onError(errorMessage: string) {
-    this.jhiAlertService.error(errorMessage, null, null);
-  }
-
-  protected onSuccess(sucessMessage: string) {
-    this.jhiAlertService.success(sucessMessage, null, null);
   }
 }
