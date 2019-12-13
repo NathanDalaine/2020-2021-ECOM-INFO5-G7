@@ -21,6 +21,8 @@ import { Taille } from 'app/shared/model/enumerations/taille.model';
 })
 export class StatistiqueComponent implements OnInit {
   reservations: IReservationFull[];
+  reservationsInProgress: IReservationFull[];
+
   reservationsCombiS: IReservationFull[];
   reservationsCombiM: IReservationFull[];
   reservationsCombiL: IReservationFull[];
@@ -72,6 +74,7 @@ export class StatistiqueComponent implements OnInit {
           this.reservationsHarnaisXL = this.reservations.filter(
             reservations => reservations.harnais != null && reservations.harnais.taille === Taille.XL
           );
+          this.reservationsInProgress = this.reservations.filter(reservation => !reservation.dateRendu);
         },
         (res: HttpErrorResponse) => this.onError(res.message)
       );

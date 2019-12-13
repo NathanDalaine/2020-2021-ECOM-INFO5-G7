@@ -3,8 +3,22 @@
     "statistique": {
       "home": {
         "title": "Statistics",
-        "description": "Here is the statistics :"
-      }
+        "description": "Here are the statistics on all reservations:"
+      },
+
+      "Thereis": "There is a total of ",
+      "reservations": " reservation(s)",
+      "encours": " in progress",
+
+      "combinaisonS": "Number of wetsuits (Size S) :",
+      "combinaisonM": "Number of wetsuits (Size M) :",
+      "combinaisonL": "Number of wetsuits (Size L) :",
+      "combinaisonXL": "Number of wetsuits (Size XL) :",
+
+      "harnaisS": "Number of harness (Size S) :",
+      "harnaisM": "Number of harness (Size M) :",
+      "harnaisL": "Number of harness (Size L) :",
+      "harnaisXL": "Number of harness (Size XL) :"
     }
   }
 }
