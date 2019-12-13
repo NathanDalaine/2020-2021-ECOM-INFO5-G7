@@ -12,6 +12,7 @@ import { IReservationFull } from 'app/shared/model/reservationFull.model';
 import { ActivatedRoute } from '@angular/router';
 import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
 import { TypeAbonnement } from 'app/shared/model/enumerations/type-abonnement.model';
+import { Taille } from 'app/shared/model/enumerations/taille.model';
 
 @Component({
   selector: 'jhi-statistique',
@@ -20,6 +21,15 @@ import { TypeAbonnement } from 'app/shared/model/enumerations/type-abonnement.mo
 })
 export class StatistiqueComponent implements OnInit {
   reservations: IReservationFull[];
+  reservationsCombiS: IReservationFull[];
+  reservationsCombiM: IReservationFull[];
+  reservationsCombiL: IReservationFull[];
+  reservationsCombiXL: IReservationFull[];
+
+  reservationsHarnaisS: IReservationFull[];
+  reservationsHarnaisM: IReservationFull[];
+  reservationsHarnaisL: IReservationFull[];
+  reservationsHarnaisXL: IReservationFull[];
 
   constructor(protected reservationService: ReservationService, protected jhiAlertService: JhiAlertService) {}
 
@@ -37,6 +47,31 @@ export class StatistiqueComponent implements OnInit {
       .subscribe(
         (res: IReservationFull[]) => {
           this.reservations = res;
+          this.reservationsCombiS = this.reservations.filter(
+            reservations => reservations.combinaison != null && reservations.combinaison.taille === Taille.S
+          );
+          this.reservationsCombiM = this.reservations.filter(
+            reservations => reservations.combinaison != null && reservations.combinaison.taille === Taille.M
+          );
+          this.reservationsCombiL = this.reservations.filter(
+            reservations => reservations.combinaison != null && reservations.combinaison.taille === Taille.L
+          );
+          this.reservationsCombiXL = this.reservations.filter(
+            reservations => reservations.combinaison != null && reservations.combinaison.taille === Taille.XL
+          );
+
+          this.reservationsHarnaisS = this.reservations.filter(
+            reservations => reservations.harnais != null && reservations.harnais.taille === Taille.S
+          );
+          this.reservationsHarnaisM = this.reservations.filter(
+            reservations => reservations.harnais != null && reservations.harnais.taille === Taille.M
+          );
+          this.reservationsHarnaisL = this.reservations.filter(
+            reservations => reservations.harnais != null && reservations.harnais.taille === Taille.L
+          );
+          this.reservationsHarnaisXL = this.reservations.filter(
+            reservations => reservations.harnais != null && reservations.harnais.taille === Taille.XL
+          );
         },
         (res: HttpErrorResponse) => this.onError(res.message)
       );

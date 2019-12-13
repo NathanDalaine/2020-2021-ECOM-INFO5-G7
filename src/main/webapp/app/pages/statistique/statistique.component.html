@@ -1,11 +1,13 @@
 <div>
     <span>{{'ecomgucvoileApp.statistique.home.description'|translate}}</span>
-    <p>Nombre de combinaison (Taille S) :</p>   
-    <p>Nombre de combinaison (Taille M) : </p>   
-    <p>Nombre de combinaison (Taille L) : </p>
-    <p>Nombre de combinaison (Taille XL) : </p>
 
-    <tr *ngFor="let reservation of (reservations | combiS); let i = index; let last = last " >
-            <div id="counter_id" *ngIf="last">{{index + 1}} results</div>
-    </div>
+    <p><br>Nombre de combinaison (Taille S) : {{reservationsCombiS.length}}</p>
+    <p>Nombre de combinaison (Taille M) : {{reservationsCombiM.length}}</p>
+    <p>Nombre de combinaison (Taille L) : {{reservationsCombiL.length}}</p>
+    <p>Nombre de combinaison (Taille XL) : {{reservationsCombiXL.length}}</p>
+
+    <p><br>Nombre de harnais (Taille S) : {{reservationsHarnaisS.length}}</p>
+    <p>Nombre de harnais (Taille M) : {{reservationsHarnaisM.length}}</p>
+    <p>Nombre de harnais (Taille L) : {{reservationsHarnaisL.length}}</p>
+    <p>Nombre de harnais (Taille XL) : {{reservationsHarnaisXL.length}}</p>
 </div>
