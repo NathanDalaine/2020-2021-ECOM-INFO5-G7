@@ -47,6 +47,9 @@ export class MaterialListComponent implements OnInit, OnDestroy {
   errorDueDatePassed: string;
   error: string;
 
+  sortTypeVoile = 'libelle';
+  sortTypePlanche = 'libelle';
+
   constructor(
     protected voileService: VoileService,
     protected plancheService: PlancheService,
@@ -187,7 +190,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     this.voiles = new Array<Voile>();
     if (voiles != null) {
       voiles.forEach(v => {
-        if(v.etat !== ""){
+        if (v.etat !== '') {
           keep = false;
         } else if (v.reservations != null) {
           v.reservations.forEach(r => {
@@ -213,6 +216,14 @@ export class MaterialListComponent implements OnInit, OnDestroy {
 
   trackIdPlanche(index: number, item: IPlanche) {
     return item.id;
+  }
+
+  trackVolumePlanche(index: number, item: IPlanche) {
+    return item.volume;
+  }
+
+  trackSurfaceVoile(index: number, item: IVoile) {
+    return item.surface;
   }
 
   protected onError(errorMessage: string) {
@@ -261,9 +272,9 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     this.planches = new Array<Planche>();
     if (planches != null) {
       planches.forEach(v => {
-        if(v.etat !== ""){
+        if (v.etat !== '') {
           keep = false;
-        }else if (v.reservations != null) {
+        } else if (v.reservations != null) {
           v.reservations.forEach(r => {
             if (r.dateRendu == null) {
               keep = false;

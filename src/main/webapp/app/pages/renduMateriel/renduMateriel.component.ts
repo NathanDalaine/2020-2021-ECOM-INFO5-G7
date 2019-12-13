@@ -27,8 +27,8 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
   planche = false;
   degatPlanche = false;
   degatVoile = false;
-  textDegatPlanche = "";
-  textDegatVoile = "";
+  textDegatPlanche = '';
+  textDegatVoile = '';
   constructor(
     protected reservationService: ReservationService,
     protected jhiAlertService: JhiAlertService,
@@ -69,13 +69,13 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
     if (!this.planche && this.reservation.planche != null) {
       this.secondreservation.plancheId = this.reservation.planche.id;
       this.reservation.planche = null;
-    }else if(this.degatPlanche){
+    } else if (this.degatPlanche) {
       this.reservation.planche.etat = this.textDegatPlanche;
     }
     if (!this.voile && this.reservation.voile != null) {
       this.secondreservation.voileId = this.reservation.voile.id;
       this.reservation.voile = null;
-    }else if(this.degatVoile){
+    } else if (this.degatVoile) {
       this.reservation.voile.etat = this.textDegatVoile;
     }
 

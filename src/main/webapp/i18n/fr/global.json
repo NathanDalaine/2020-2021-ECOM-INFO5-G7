@@ -80,7 +80,7 @@
       "level.label": "Niveau",
       "equipmentManagement" : "Gestion des équipements",
       "role.label": "Role",
-      "person" : "Personne",
+      "person": "Personne",
       "level.placeholder": "Selectionner le niveau",
       "technicalMaterialAutorization.label": "Materiel technique autorise",
       "birthday.label": "Date de naissance"
