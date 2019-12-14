@@ -8,6 +8,8 @@
       "materialList": "Material List",
       "members": "Members",
       "aboutToReserve": "You are about to reserve ",
+      "warningTooHigLevelBoard": "<strong>Warning</strong> : The board selected is reserved for peoples with a highest level than you. You should take an other board.",
+      "warningTooHigLevelSail": "<strong>Warning</strong> : The sail selected is reserved for peoples with a highest level than you. You should take an other sail.",
       "1combinaison": "a wetsuit",
       "1voile": "A sail ",
       "1planche": "A board ",

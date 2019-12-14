@@ -1,5 +1,5 @@
 <div class="alert alert-success" *ngIf="success" jhiTranslate="ecomgucvoileApp.reservation.reservationSuccess">
-    <strong>Registration saved!</strong>reservationSuccess
+    reservationSuccess
 </div>
 <jhi-alert-error></jhi-alert-error>
 <form name="form" role="form" (ngSubmit)="openConfirmationDialog()" [formGroup]="registerForm" *ngIf="!success">

@@ -35,6 +35,9 @@
       "updatedBy": "Updated By",
       "deletedAt": "Deleted At",
       "deletedBy": "Deleted By",
+      "succes": "Réservation rendue avec succès. Vous allez être redirigé vers la page des réservations.",
+      "error": "Rendu impossible.",
+      "splitError": "Rendu en partie impossible.",
       "reservation": "Reservation"
     }
   }
