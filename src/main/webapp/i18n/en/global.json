@@ -8,6 +8,8 @@
       "materialList": "Material List",
       "members": "Members",
       "aboutToReserve": "You are about to reserve ",
+      "warningTooHigLevelBoard": "<strong>Warning</strong> : The board selected is reserved for peoples with a highest level than you. You should take an other board.",
+      "warningTooHigLevelSail": "<strong>Warning</strong> : The sail selected is reserved for peoples with a highest level than you. You should take an other sail.",
       "1combinaison": "a wetsuit",
       "1voile": "A sail ",
       "1planche": "A board ",
@@ -30,6 +32,7 @@
         "userProfile": "User Profile",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
+      "manage": "Management",
       "account": {
         "main": "Account",
         "settings": "Settings",
@@ -81,7 +84,7 @@
       "subscription.label": "Subscription",
       "subscription.placeholder": "Select the subscription",
       "level.label": "Level",
-      "equipmentManagement" : "EquipmentManagement",
+      "equipmentManagement": "EquipmentManagement",
       "role.label": "Role",
       "person": "Person",
       "level.placeholder": "Select the level",

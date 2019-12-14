@@ -10,6 +10,8 @@
       "reinscription": "Reinscription",
       "members": "Membres",
       "aboutToReserve": "Vous êtes sur le point de réserver ",
+      "warningTooHigLevelBoard": "<strong>Attention</strong> : la planche que vous avez choisi est réservée pour les personnes d'un niveau supérieur au votre. Vous devriez prendre une autre planche.",
+      "warningTooHigLevelSail": "<strong>Attention</strong> : la voile que vous avez choisi est réservée pour les personnes d'un niveau supérieur au votre. Vous devriez prendre une autre voile.",
       "1combinaison": "une combinaison",
       "1voile": "une voile ",
       "1planche": "une planche ",
@@ -28,6 +30,7 @@
         "userProfile": "User Profile",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
+      "manage": "Gestion",
       "account": {
         "main": "Compte",
         "settings": "Profil",
@@ -79,7 +82,7 @@
       "subscription.label": "Abonnement",
       "subscription.placeholder": "Selectionner l'abonnement",
       "level.label": "Niveau",
-      "equipmentManagement" : "Gestion des équipements",
+      "equipmentManagement": "Gestion des équipements",
       "role.label": "Role",
       "person": "Personne",
       "level.placeholder": "Selectionner le niveau",

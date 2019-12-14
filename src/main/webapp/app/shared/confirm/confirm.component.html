@@ -8,9 +8,15 @@
     <span jhiTranslate="global.menu.aboutToReserve">You are about to reserve</span>:
     <div *ngIf="voile != null">
         - <span jhiTranslate="global.menu.1voile"></span>  {{voile.libelle}}
+        <div *ngIf="!voileOK">
+            <span jhiTranslate="global.menu.warningTooHigLevelSail">NOPE</span>
+        </div>
     </div>
     <div *ngIf="planche != null">
         - <span jhiTranslate="global.menu.1planche"></span> {{planche.libelle}}
+        <div *ngIf="!plancheOK">
+            <span jhiTranslate="global.menu.warningTooHigLevelBoard">NOPE</span>
+        </div>
     </div>
     <div *ngIf="combinaison">
         - <span jhiTranslate="global.menu.1combinaison"></span>

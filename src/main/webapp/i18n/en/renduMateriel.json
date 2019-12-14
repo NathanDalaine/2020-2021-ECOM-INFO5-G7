@@ -35,6 +35,10 @@
       "updatedBy": "Updated By",
       "deletedAt": "Deleted At",
       "deletedBy": "Deleted By",
+      "succes": "Reservation return with success. You are going to be redirected on the reservation page",
+      "succesold": "Réservation rendue avec succès. Vous allez être redirigé vers la page des réservations.",
+      "error": "Impossible to return the reservation",
+      "splitError": "Impossible to return part of the reservation.",
       "reservation": "Reservation"
     }
   }

@@ -47,7 +47,7 @@ export class VoileService {
   queryDamaged(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http
-      .get<IVoile[]>(this.resourceUrl+"/damaged", { params: options, observe: 'response' })
+      .get<IVoile[]>(this.resourceUrl + '/damaged', { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 
