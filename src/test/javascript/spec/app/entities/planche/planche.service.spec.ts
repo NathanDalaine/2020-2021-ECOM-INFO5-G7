@@ -1,8 +1,6 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { take, map } from 'rxjs/operators';
-import * as moment from 'moment';
-import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { PlancheService } from 'app/entities/planche/planche.service';
 import { IPlanche, Planche } from 'app/shared/model/planche.model';
 import { Niveau } from 'app/shared/model/enumerations/niveau.model';
@@ -14,7 +12,6 @@ describe('Service Tests', () => {
     let httpMock: HttpTestingController;
     let elemDefault: IPlanche;
     let expectedResult;
-    let currentDate: moment.Moment;
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [HttpClientTestingModule]
@@ -23,7 +20,6 @@ describe('Service Tests', () => {
       injector = getTestBed();
       service = injector.get(PlancheService);
       httpMock = injector.get(HttpTestingController);
-      currentDate = moment();
 
       elemDefault = new Planche(
         0,
@@ -46,14 +42,7 @@ describe('Service Tests', () => {
 
     describe('Service methods', () => {
       it('should find an element', () => {
-        const returnedFromService = Object.assign(
-          {
-            createdAt: currentDate.format(DATE_TIME_FORMAT),
-            updatedAt: currentDate.format(DATE_TIME_FORMAT),
-            deletedAt: currentDate.format(DATE_TIME_FORMAT)
-          },
-          elemDefault
-        );
+        const returnedFromService = Object.assign({}, elemDefault);
         service
           .find(123)
           .pipe(take(1))
@@ -67,21 +56,11 @@ describe('Service Tests', () => {
       it('should create a Planche', () => {
         const returnedFromService = Object.assign(
           {
-            id: 0,
-            createdAt: currentDate.format(DATE_TIME_FORMAT),
-            updatedAt: currentDate.format(DATE_TIME_FORMAT),
-            deletedAt: currentDate.format(DATE_TIME_FORMAT)
+            id: 0
           },
           elemDefault
         );
-        const expected = Object.assign(
-          {
-            createdAt: currentDate,
-            updatedAt: currentDate,
-            deletedAt: currentDate
-          },
-          returnedFromService
-        );
+        const expected = Object.assign({}, returnedFromService);
         service
           .create(new Planche(null))
           .pipe(take(1))
@@ -101,7 +80,9 @@ describe('Service Tests', () => {
             etat: 'BBBBBB',
             libelle: 'BBBBBB',
             volume: 1,
+            createdAt: 'BBBBBB',
             createdBy: 'BBBBBB',
+            updatedAt: 'BBBBBB',
             updatedBy: 'BBBBBB',
             deletedBy: 'BBBBBB',
             createdAt: currentDate.format(DATE_TIME_FORMAT),
@@ -112,14 +93,7 @@ describe('Service Tests', () => {
           elemDefault
         );
 
-        const expected = Object.assign(
-          {
-            createdAt: currentDate,
-            updatedAt: currentDate,
-            deletedAt: currentDate
-          },
-          returnedFromService
-        );
+        const expected = Object.assign({}, returnedFromService);
         service
           .update(expected)
           .pipe(take(1))
@@ -139,7 +113,9 @@ describe('Service Tests', () => {
             etat: 'BBBBBB',
             libelle: 'BBBBBB',
             volume: 1,
+            createdAt: 'BBBBBB',
             createdBy: 'BBBBBB',
+            updatedAt: 'BBBBBB',
             updatedBy: 'BBBBBB',
             deletedBy: 'BBBBBB',
             createdAt: currentDate.format(DATE_TIME_FORMAT),
@@ -149,14 +125,7 @@ describe('Service Tests', () => {
           },
           elemDefault
         );
-        const expected = Object.assign(
-          {
-            createdAt: currentDate,
-            updatedAt: currentDate,
-            deletedAt: currentDate
-          },
-          returnedFromService
-        );
+        const expected = Object.assign({}, returnedFromService);
         service
           .query(expected)
           .pipe(

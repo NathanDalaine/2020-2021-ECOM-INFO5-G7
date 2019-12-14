@@ -1,11 +1,11 @@
 {
   "home": {
-    "title": "Bienvenue sur GUC Voile !",
-    "subtitle": "Voici notre page d'accueil",
+    "title": "Bienvenue, Java Hipster !",
+    "subtitle": "Ceci est votre page d'accueil",
     "logged": {
       "message": "Vous êtes connecté en tant que \"{{username}}\"."
     },
-    "question": "Sur notre site vous pouvez :",
+    "question": "Si vous avez des questions à propos de JHipster :",
     "link": {
       "voiles": "Voir la liste des voiles",
       "planches": "Voir la liste des planches",
@@ -13,6 +13,7 @@
       "rendu": "Rendre votre materiel emprunté",
       "follow": "Suivez nous sur Facebook !"
     },
-    "like": "Si vous aimez GUC Voile, donnez nous une étoile sur"
+    "like": "Si vous aimez JHipster, donnez nous une étoile sur",
+    "github": "GitHub "
   }
 }

@@ -61,18 +61,6 @@ public class ReservationResourceIT {
     private static final String DEFAULT_DELETED_BY = "Anonymoususer";
     private static final String UPDATED_DELETED_BY = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_CREATED_AT = Instant.ofEpochMilli(-1L);
-
-    private static final Instant DEFAULT_UPDATED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_UPDATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_UPDATED_AT = Instant.ofEpochMilli(-1L);
-
-    private static final Instant DEFAULT_DELETED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_DELETED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_DELETED_AT = Instant.ofEpochMilli(-1L);
-
     @Autowired
     private ReservationRepository reservationRepository;
 
@@ -136,12 +124,12 @@ public class ReservationResourceIT {
             .dateReservation(DEFAULT_DATE_RESERVATION)
             .dateRendu(DEFAULT_DATE_RENDU)
             .remarques(DEFAULT_REMARQUES)
-            .createdBy(DEFAULT_CREATED_BY)
-            .updatedBy(DEFAULT_UPDATED_BY)
-            .deletedBy(DEFAULT_DELETED_BY)
             .createdAt(DEFAULT_CREATED_AT)
+            .createdBy(DEFAULT_CREATED_BY)
             .updatedAt(DEFAULT_UPDATED_AT)
-            .deletedAt(DEFAULT_DELETED_AT);
+            .updatedBy(DEFAULT_UPDATED_BY)
+            .deletedAt(DEFAULT_DELETED_AT)
+            .deletedBy(DEFAULT_DELETED_BY);
         return reservation;
     }
     /**
@@ -155,12 +143,12 @@ public class ReservationResourceIT {
             .dateReservation(UPDATED_DATE_RESERVATION)
             .dateRendu(UPDATED_DATE_RENDU)
             .remarques(UPDATED_REMARQUES)
-            .createdBy(UPDATED_CREATED_BY)
-            .updatedBy(UPDATED_UPDATED_BY)
-            .deletedBy(UPDATED_DELETED_BY)
             .createdAt(UPDATED_CREATED_AT)
+            .createdBy(UPDATED_CREATED_BY)
             .updatedAt(UPDATED_UPDATED_AT)
-            .deletedAt(UPDATED_DELETED_AT);
+            .updatedBy(UPDATED_UPDATED_BY)
+            .deletedAt(UPDATED_DELETED_AT)
+            .deletedBy(UPDATED_DELETED_BY);
         return reservation;
     }
 
@@ -231,12 +219,12 @@ public class ReservationResourceIT {
             .andExpect(jsonPath("$.[*].dateReservation").value(hasItem(DEFAULT_DATE_RESERVATION.toString())))
             .andExpect(jsonPath("$.[*].dateRendu").value(hasItem(DEFAULT_DATE_RENDU.toString())))
             .andExpect(jsonPath("$.[*].remarques").value(hasItem(DEFAULT_REMARQUES.toString())))
-            .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY.toString())))
-            .andExpect(jsonPath("$.[*].updatedBy").value(hasItem(DEFAULT_UPDATED_BY.toString())))
-            .andExpect(jsonPath("$.[*].deletedBy").value(hasItem(DEFAULT_DELETED_BY.toString())))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
+            .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
-            .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())));
+            .andExpect(jsonPath("$.[*].updatedBy").value(hasItem(DEFAULT_UPDATED_BY.toString())))
+            .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())))
+            .andExpect(jsonPath("$.[*].deletedBy").value(hasItem(DEFAULT_DELETED_BY.toString())));
     }
 
     @Test
@@ -253,12 +241,12 @@ public class ReservationResourceIT {
             .andExpect(jsonPath("$.dateReservation").value(DEFAULT_DATE_RESERVATION.toString()))
             .andExpect(jsonPath("$.dateRendu").value(DEFAULT_DATE_RENDU.toString()))
             .andExpect(jsonPath("$.remarques").value(DEFAULT_REMARQUES.toString()))
-            .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY.toString()))
-            .andExpect(jsonPath("$.updatedBy").value(DEFAULT_UPDATED_BY.toString()))
-            .andExpect(jsonPath("$.deletedBy").value(DEFAULT_DELETED_BY.toString()))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
+            .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
-            .andExpect(jsonPath("$.deletedAt").value(DEFAULT_DELETED_AT.toString()));
+            .andExpect(jsonPath("$.updatedBy").value(DEFAULT_UPDATED_BY.toString()))
+            .andExpect(jsonPath("$.deletedAt").value(DEFAULT_DELETED_AT.toString()))
+            .andExpect(jsonPath("$.deletedBy").value(DEFAULT_DELETED_BY.toString()));
     }
 
     @Test
@@ -285,12 +273,12 @@ public class ReservationResourceIT {
             .dateReservation(UPDATED_DATE_RESERVATION)
             .dateRendu(UPDATED_DATE_RENDU)
             .remarques(UPDATED_REMARQUES)
-            .createdBy(UPDATED_CREATED_BY)
-            .updatedBy(UPDATED_UPDATED_BY)
-            .deletedBy(UPDATED_DELETED_BY)
             .createdAt(UPDATED_CREATED_AT)
+            .createdBy(UPDATED_CREATED_BY)
             .updatedAt(UPDATED_UPDATED_AT)
-            .deletedAt(UPDATED_DELETED_AT);
+            .updatedBy(UPDATED_UPDATED_BY)
+            .deletedAt(UPDATED_DELETED_AT)
+            .deletedBy(UPDATED_DELETED_BY);
         ReservationDTO reservationDTO = reservationMapper.toDto(updatedReservation);
 
         restReservationMockMvc.perform(put("/api/reservations")

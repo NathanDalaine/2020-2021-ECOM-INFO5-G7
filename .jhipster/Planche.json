@@ -1,14 +1,5 @@
 {
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "relationships": [
-        {
-            "relationshipName": "reservation",
-            "otherEntityName": "reservation",
-            "relationshipType": "one-to-many",
-            "otherEntityRelationshipName": "planche"
-        }
-    ],
+    "name": "Planche",
     "fields": [
         {
             "fieldName": "marque",
@@ -39,7 +30,15 @@
             "fieldType": "Integer"
         },
         {
+            "fieldName": "createdAt",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedAt",
             "fieldType": "String"
         },
         {
@@ -47,16 +46,8 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "deletedBy",
+            "fieldName": "deletedAt",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "createdAt",
-            "fieldType": "Instant"
-        },
-        {
-            "fieldName": "updatedAt",
-            "fieldType": "Instant"
         },
         {
             "fieldName": "deletedAt",
@@ -68,12 +59,22 @@
             "fieldValues": "DEBUTANT,DEBUTANTPLUS,FUNBOARD,PERF"
         }
     ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "reservation",
+            "otherEntityRelationshipName": "planche",
+            "relationshipName": "reservation",
+            "otherEntityField": "id"
+        }
+    ],
     "changelogDate": "20191015084205",
-    "dto": "mapstruct",
-    "searchEngine": false,
-    "service": "serviceClass",
     "entityTableName": "planche",
-    "databaseType": "sql",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
     "jpaMetamodelFiltering": false,
-    "pagination": "no"
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
 }

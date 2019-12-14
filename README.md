@@ -1,6 +1,12 @@
 # ecomgucvoile
 
-This application was generated using JHipster 6.3.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.3.0](https://www.jhipster.tech/documentation-archive/v6.3.0).
+L'application est développé par Jérémy Masson, Nathan Dalaine, Baptise Betend, Maxence Brès, Antoine Rivoire et Tom Solvery.
+
+Cette application est à destination du GUC Voile et met en place un système de réservation en ligne de planche à voile.
+
+L'application a été généré par Jhipster (Angular/Spring/PostgreSQL).
+
+Ce dépôt reflète l'avancement du projet.
 
 ## Development
 

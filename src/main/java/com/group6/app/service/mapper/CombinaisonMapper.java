@@ -8,12 +8,13 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Combinaison} and its DTO {@link CombinaisonDTO}.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {ReservationMapper.class})
 public interface CombinaisonMapper extends EntityMapper<CombinaisonDTO, Combinaison> {
 
+    @Mapping(source = "reservation.id", target = "reservationId")
+    CombinaisonDTO toDto(Combinaison combinaison);
 
-    @Mapping(target = "reservations", ignore = true)
-    @Mapping(target = "removeReservation", ignore = true)
+    @Mapping(source = "reservationId", target = "reservation")
     Combinaison toEntity(CombinaisonDTO combinaisonDTO);
 
     default Combinaison fromId(Long id) {

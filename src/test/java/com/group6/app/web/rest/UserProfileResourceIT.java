@@ -33,6 +33,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.group6.app.domain.enumeration.Taille;
 import com.group6.app.domain.enumeration.TypeAbonnement;
 import com.group6.app.domain.enumeration.Taille;
 import com.group6.app.domain.enumeration.Taille;
@@ -42,6 +43,9 @@ import com.group6.app.domain.enumeration.Niveau;
  */
 @SpringBootTest(classes = EcomgucvoileApp.class)
 public class UserProfileResourceIT {
+
+    private static final String DEFAULT_LOCALISATION = "AAAAAAAAAA";
+    private static final String UPDATED_LOCALISATION = "BBBBBBBBBB";
 
     private static final Instant DEFAULT_DATE_ECHEANCE = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_DATE_ECHEANCE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
@@ -54,6 +58,9 @@ public class UserProfileResourceIT {
     private static final Instant DEFAULT_DATE_ADHESION = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_DATE_ADHESION = Instant.now().truncatedTo(ChronoUnit.MILLIS);
     private static final Instant SMALLER_DATE_ADHESION = Instant.ofEpochMilli(-1L);
+
+    private static final Taille DEFAULT_PREF_TAILLE = Taille.S;
+    private static final Taille UPDATED_PREF_TAILLE = Taille.M;
 
     private static final String DEFAULT_ADRESSE = "AAAAAAAAAA";
     private static final String UPDATED_ADRESSE = "BBBBBBBBBB";
@@ -130,9 +137,11 @@ public class UserProfileResourceIT {
      */
     public static UserProfile createEntity(EntityManager em) {
         UserProfile userProfile = new UserProfile()
+            .localisation(DEFAULT_LOCALISATION)
             .dateEcheance(DEFAULT_DATE_ECHEANCE)
             .dateNaissance(DEFAULT_DATE_NAISSANCE)
             .dateAdhesion(DEFAULT_DATE_ADHESION)
+            .prefTaille(DEFAULT_PREF_TAILLE)
             .adresse(DEFAULT_ADRESSE)
             .telephone(DEFAULT_TELEPHONE)
             .typeAbonnement(DEFAULT_TYPE_ABONNEMENT)
@@ -151,9 +160,11 @@ public class UserProfileResourceIT {
      */
     public static UserProfile createUpdatedEntity(EntityManager em) {
         UserProfile userProfile = new UserProfile()
+            .localisation(UPDATED_LOCALISATION)
             .dateEcheance(UPDATED_DATE_ECHEANCE)
             .dateNaissance(UPDATED_DATE_NAISSANCE)
             .dateAdhesion(UPDATED_DATE_ADHESION)
+            .prefTaille(UPDATED_PREF_TAILLE)
             .adresse(UPDATED_ADRESSE)
             .telephone(UPDATED_TELEPHONE)
             .typeAbonnement(UPDATED_TYPE_ABONNEMENT)
@@ -189,6 +200,7 @@ public class UserProfileResourceIT {
         assertThat(testUserProfile.getDateEcheance()).isEqualTo(DEFAULT_DATE_ECHEANCE);
         assertThat(testUserProfile.getDateNaissance()).isEqualTo(DEFAULT_DATE_NAISSANCE);
         assertThat(testUserProfile.getDateAdhesion()).isEqualTo(DEFAULT_DATE_ADHESION);
+        assertThat(testUserProfile.getPrefTaille()).isEqualTo(DEFAULT_PREF_TAILLE);
         assertThat(testUserProfile.getAdresse()).isEqualTo(DEFAULT_ADRESSE);
         assertThat(testUserProfile.getTelephone()).isEqualTo(DEFAULT_TELEPHONE);
         assertThat(testUserProfile.getTypeAbonnement()).isEqualTo(DEFAULT_TYPE_ABONNEMENT);
@@ -230,9 +242,11 @@ public class UserProfileResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(userProfile.getId().intValue())))
+            .andExpect(jsonPath("$.[*].localisation").value(hasItem(DEFAULT_LOCALISATION.toString())))
             .andExpect(jsonPath("$.[*].dateEcheance").value(hasItem(DEFAULT_DATE_ECHEANCE.toString())))
             .andExpect(jsonPath("$.[*].dateNaissance").value(hasItem(DEFAULT_DATE_NAISSANCE.toString())))
             .andExpect(jsonPath("$.[*].dateAdhesion").value(hasItem(DEFAULT_DATE_ADHESION.toString())))
+            .andExpect(jsonPath("$.[*].prefTaille").value(hasItem(DEFAULT_PREF_TAILLE.toString())))
             .andExpect(jsonPath("$.[*].adresse").value(hasItem(DEFAULT_ADRESSE.toString())))
             .andExpect(jsonPath("$.[*].telephone").value(hasItem(DEFAULT_TELEPHONE.toString())))
             .andExpect(jsonPath("$.[*].typeAbonnement").value(hasItem(DEFAULT_TYPE_ABONNEMENT.toString())))
@@ -254,9 +268,11 @@ public class UserProfileResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(userProfile.getId().intValue()))
+            .andExpect(jsonPath("$.localisation").value(DEFAULT_LOCALISATION.toString()))
             .andExpect(jsonPath("$.dateEcheance").value(DEFAULT_DATE_ECHEANCE.toString()))
             .andExpect(jsonPath("$.dateNaissance").value(DEFAULT_DATE_NAISSANCE.toString()))
             .andExpect(jsonPath("$.dateAdhesion").value(DEFAULT_DATE_ADHESION.toString()))
+            .andExpect(jsonPath("$.prefTaille").value(DEFAULT_PREF_TAILLE.toString()))
             .andExpect(jsonPath("$.adresse").value(DEFAULT_ADRESSE.toString()))
             .andExpect(jsonPath("$.telephone").value(DEFAULT_TELEPHONE.toString()))
             .andExpect(jsonPath("$.typeAbonnement").value(DEFAULT_TYPE_ABONNEMENT.toString()))
@@ -288,9 +304,11 @@ public class UserProfileResourceIT {
         // Disconnect from session so that the updates on updatedUserProfile are not directly saved in db
         em.detach(updatedUserProfile);
         updatedUserProfile
+            .localisation(UPDATED_LOCALISATION)
             .dateEcheance(UPDATED_DATE_ECHEANCE)
             .dateNaissance(UPDATED_DATE_NAISSANCE)
             .dateAdhesion(UPDATED_DATE_ADHESION)
+            .prefTaille(UPDATED_PREF_TAILLE)
             .adresse(UPDATED_ADRESSE)
             .telephone(UPDATED_TELEPHONE)
             .typeAbonnement(UPDATED_TYPE_ABONNEMENT)

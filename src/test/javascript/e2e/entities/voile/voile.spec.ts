@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { browser, ExpectedConditions as ec, protractor, promise } from 'protractor';
+import { browser, ExpectedConditions as ec, promise } from 'protractor';
 import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -48,8 +48,11 @@ describe('Voile e2e test', () => {
       voileUpdatePage.setLocalisationInput('localisation'),
       voileUpdatePage.setEtatInput('etat'),
       voileUpdatePage.setLibelleInput('libelle'),
+      voileUpdatePage.setCreatedAtInput('createdAt'),
       voileUpdatePage.setCreatedByInput('createdBy'),
+      voileUpdatePage.setUpdatedAtInput('updatedAt'),
       voileUpdatePage.setUpdatedByInput('updatedBy'),
+      voileUpdatePage.setDeletedAtInput('deletedAt'),
       voileUpdatePage.setDeletedByInput('deletedBy'),
       voileUpdatePage.setCreatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
       voileUpdatePage.setUpdatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
@@ -71,12 +74,12 @@ describe('Voile e2e test', () => {
       await voileUpdatePage.getGreeInput().click();
       expect(await voileUpdatePage.getGreeInput().isSelected(), 'Expected gree to be selected').to.be.true;
     }
+    expect(await voileUpdatePage.getCreatedAtInput()).to.eq('createdAt', 'Expected CreatedAt value to be equals to createdAt');
     expect(await voileUpdatePage.getCreatedByInput()).to.eq('createdBy', 'Expected CreatedBy value to be equals to createdBy');
+    expect(await voileUpdatePage.getUpdatedAtInput()).to.eq('updatedAt', 'Expected UpdatedAt value to be equals to updatedAt');
     expect(await voileUpdatePage.getUpdatedByInput()).to.eq('updatedBy', 'Expected UpdatedBy value to be equals to updatedBy');
+    expect(await voileUpdatePage.getDeletedAtInput()).to.eq('deletedAt', 'Expected DeletedAt value to be equals to deletedAt');
     expect(await voileUpdatePage.getDeletedByInput()).to.eq('deletedBy', 'Expected DeletedBy value to be equals to deletedBy');
-    expect(await voileUpdatePage.getCreatedAtInput()).to.contain('2001-01-01T02:30', 'Expected createdAt value to be equals to 2000-12-31');
-    expect(await voileUpdatePage.getUpdatedAtInput()).to.contain('2001-01-01T02:30', 'Expected updatedAt value to be equals to 2000-12-31');
-    expect(await voileUpdatePage.getDeletedAtInput()).to.contain('2001-01-01T02:30', 'Expected deletedAt value to be equals to 2000-12-31');
     await voileUpdatePage.save();
     expect(await voileUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
 

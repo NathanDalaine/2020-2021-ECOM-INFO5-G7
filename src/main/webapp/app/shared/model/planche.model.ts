@@ -11,8 +11,11 @@ export interface IPlanche {
   etat?: string;
   libelle?: string;
   volume?: number;
+  createdAt?: string;
   createdBy?: string;
+  updatedAt?: string;
   updatedBy?: string;
+  deletedAt?: string;
   deletedBy?: string;
   createdAt?: Moment;
   updatedAt?: Moment;
@@ -31,8 +34,11 @@ export class Planche implements IPlanche {
     public etat?: string,
     public libelle?: string,
     public volume?: number,
+    public createdAt?: string,
     public createdBy?: string,
+    public updatedAt?: string,
     public updatedBy?: string,
+    public deletedAt?: string,
     public deletedBy?: string,
     public createdAt?: Moment,
     public updatedAt?: Moment,

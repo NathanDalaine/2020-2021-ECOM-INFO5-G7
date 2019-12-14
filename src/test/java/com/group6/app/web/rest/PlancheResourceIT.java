@@ -22,8 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static com.group6.app.web.rest.TestUtil.createFormattingConversionService;
@@ -61,11 +59,20 @@ public class PlancheResourceIT {
     private static final Integer UPDATED_VOLUME = 2;
     private static final Integer SMALLER_VOLUME = 1 - 1;
 
+    private static final String DEFAULT_CREATED_AT = "AAAAAAAAAA";
+    private static final String UPDATED_CREATED_AT = "BBBBBBBBBB";
+
     private static final String DEFAULT_CREATED_BY = "AAAAAAAAAA";
     private static final String UPDATED_CREATED_BY = "BBBBBBBBBB";
 
+    private static final String DEFAULT_UPDATED_AT = "AAAAAAAAAA";
+    private static final String UPDATED_UPDATED_AT = "BBBBBBBBBB";
+
     private static final String DEFAULT_UPDATED_BY = "AAAAAAAAAA";
     private static final String UPDATED_UPDATED_BY = "BBBBBBBBBB";
+
+    private static final String DEFAULT_DELETED_AT = "AAAAAAAAAA";
+    private static final String UPDATED_DELETED_AT = "BBBBBBBBBB";
 
     private static final String DEFAULT_DELETED_BY = "AAAAAAAAAA";
     private static final String UPDATED_DELETED_BY = "BBBBBBBBBB";
@@ -140,10 +147,8 @@ public class PlancheResourceIT {
             .etat(DEFAULT_ETAT)
             .libelle(DEFAULT_LIBELLE)
             .volume(DEFAULT_VOLUME)
-            .createdBy(DEFAULT_CREATED_BY)
-            .updatedBy(DEFAULT_UPDATED_BY)
-            .deletedBy(DEFAULT_DELETED_BY)
             .createdAt(DEFAULT_CREATED_AT)
+            .createdBy(DEFAULT_CREATED_BY)
             .updatedAt(DEFAULT_UPDATED_AT)
             .deletedAt(DEFAULT_DELETED_AT)
             .niveaurequis(DEFAULT_NIVEAUREQUIS);
@@ -164,10 +169,8 @@ public class PlancheResourceIT {
             .etat(UPDATED_ETAT)
             .libelle(UPDATED_LIBELLE)
             .volume(UPDATED_VOLUME)
-            .createdBy(UPDATED_CREATED_BY)
-            .updatedBy(UPDATED_UPDATED_BY)
-            .deletedBy(UPDATED_DELETED_BY)
             .createdAt(UPDATED_CREATED_AT)
+            .createdBy(UPDATED_CREATED_BY)
             .updatedAt(UPDATED_UPDATED_AT)
             .deletedAt(UPDATED_DELETED_AT)
             .niveaurequis(UPDATED_NIVEAUREQUIS);
@@ -202,11 +205,10 @@ public class PlancheResourceIT {
         assertThat(testPlanche.getEtat()).isEqualTo(DEFAULT_ETAT);
         assertThat(testPlanche.getLibelle()).isEqualTo(DEFAULT_LIBELLE);
         assertThat(testPlanche.getVolume()).isEqualTo(DEFAULT_VOLUME);
-        assertThat(testPlanche.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
-        assertThat(testPlanche.getUpdatedBy()).isEqualTo(DEFAULT_UPDATED_BY);
-        assertThat(testPlanche.getDeletedBy()).isEqualTo(DEFAULT_DELETED_BY);
         assertThat(testPlanche.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
+        assertThat(testPlanche.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
         assertThat(testPlanche.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
+        assertThat(testPlanche.getUpdatedBy()).isEqualTo(DEFAULT_UPDATED_BY);
         assertThat(testPlanche.getDeletedAt()).isEqualTo(DEFAULT_DELETED_AT);
         assertThat(testPlanche.getNiveaurequis()).isEqualTo(DEFAULT_NIVEAUREQUIS);
     }
@@ -250,10 +252,8 @@ public class PlancheResourceIT {
             .andExpect(jsonPath("$.[*].etat").value(hasItem(DEFAULT_ETAT.toString())))
             .andExpect(jsonPath("$.[*].libelle").value(hasItem(DEFAULT_LIBELLE.toString())))
             .andExpect(jsonPath("$.[*].volume").value(hasItem(DEFAULT_VOLUME)))
-            .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY.toString())))
-            .andExpect(jsonPath("$.[*].updatedBy").value(hasItem(DEFAULT_UPDATED_BY.toString())))
-            .andExpect(jsonPath("$.[*].deletedBy").value(hasItem(DEFAULT_DELETED_BY.toString())))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
+            .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
             .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())))
             .andExpect(jsonPath("$.[*].niveaurequis").value(hasItem(DEFAULT_NIVEAUREQUIS.toString())));
@@ -277,10 +277,8 @@ public class PlancheResourceIT {
             .andExpect(jsonPath("$.etat").value(DEFAULT_ETAT.toString()))
             .andExpect(jsonPath("$.libelle").value(DEFAULT_LIBELLE.toString()))
             .andExpect(jsonPath("$.volume").value(DEFAULT_VOLUME))
-            .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY.toString()))
-            .andExpect(jsonPath("$.updatedBy").value(DEFAULT_UPDATED_BY.toString()))
-            .andExpect(jsonPath("$.deletedBy").value(DEFAULT_DELETED_BY.toString()))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
+            .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
             .andExpect(jsonPath("$.deletedAt").value(DEFAULT_DELETED_AT.toString()))
             .andExpect(jsonPath("$.niveaurequis").value(DEFAULT_NIVEAUREQUIS.toString()));
@@ -314,10 +312,8 @@ public class PlancheResourceIT {
             .etat(UPDATED_ETAT)
             .libelle(UPDATED_LIBELLE)
             .volume(UPDATED_VOLUME)
-            .createdBy(UPDATED_CREATED_BY)
-            .updatedBy(UPDATED_UPDATED_BY)
-            .deletedBy(UPDATED_DELETED_BY)
             .createdAt(UPDATED_CREATED_AT)
+            .createdBy(UPDATED_CREATED_BY)
             .updatedAt(UPDATED_UPDATED_AT)
             .deletedAt(UPDATED_DELETED_AT)
             .niveaurequis(UPDATED_NIVEAUREQUIS);
@@ -339,11 +335,10 @@ public class PlancheResourceIT {
         assertThat(testPlanche.getEtat()).isEqualTo(UPDATED_ETAT);
         assertThat(testPlanche.getLibelle()).isEqualTo(UPDATED_LIBELLE);
         assertThat(testPlanche.getVolume()).isEqualTo(UPDATED_VOLUME);
-        assertThat(testPlanche.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
-        assertThat(testPlanche.getUpdatedBy()).isEqualTo(UPDATED_UPDATED_BY);
-        assertThat(testPlanche.getDeletedBy()).isEqualTo(UPDATED_DELETED_BY);
         assertThat(testPlanche.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testPlanche.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
         assertThat(testPlanche.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
+        assertThat(testPlanche.getUpdatedBy()).isEqualTo(UPDATED_UPDATED_BY);
         assertThat(testPlanche.getDeletedAt()).isEqualTo(UPDATED_DELETED_AT);
         assertThat(testPlanche.getNiveaurequis()).isEqualTo(UPDATED_NIVEAUREQUIS);
     }

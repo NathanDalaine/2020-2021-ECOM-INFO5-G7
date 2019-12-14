@@ -1,5 +1,4 @@
 package com.group6.app.domain;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -7,6 +6,8 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A Reservation.
@@ -38,8 +39,14 @@ public class Reservation implements Serializable {
     @Column(name = "created_by")
     private String createdBy;
 
+    @Column(name = "updated_at")
+    private String updatedAt;
+
     @Column(name = "updated_by")
     private String updatedBy;
+
+    @Column(name = "deleted_at")
+    private String deletedAt;
 
     @Column(name = "deleted_by")
     private String deletedBy;
@@ -47,16 +54,17 @@ public class Reservation implements Serializable {
     @Column(name = "updated_at")
     private Instant updatedAt;
 
-    @Column(name = "deleted_at")
-    private Instant deletedAt;
+    @OneToMany(mappedBy = "reservation")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Combinaison> combinaisons = new HashSet<>();
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JsonIgnoreProperties("reservations")
     private Voile voile;
 
-    @ManyToOne
-    @JsonIgnoreProperties("reservations")
-    private UserProfile userProfile;
+    @OneToMany(mappedBy = "reservation")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Planche> planches = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties("reservations")
@@ -144,6 +152,19 @@ public class Reservation implements Serializable {
         this.createdBy = createdBy;
     }
 
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public Reservation updatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+        return this;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     public String getUpdatedBy() {
         return updatedBy;
     }
@@ -155,6 +176,19 @@ public class Reservation implements Serializable {
 
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
+    }
+
+    public String getDeletedAt() {
+        return deletedAt;
+    }
+
+    public Reservation deletedAt(String deletedAt) {
+        this.deletedAt = deletedAt;
+        return this;
+    }
+
+    public void setDeletedAt(String deletedAt) {
+        this.deletedAt = deletedAt;
     }
 
     public String getDeletedBy() {
@@ -175,91 +209,108 @@ public class Reservation implements Serializable {
         return updatedAt;
     }
 
-    public Reservation updatedAt(Instant updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setVoiles(Set<Voile> voiles) {
+        this.voiles = voiles;
+    }
+
+    public Set<UserProfile> getUsers() {
+        return users;
+    }
+
+    public Reservation users(Set<UserProfile> userProfiles) {
+        this.users = userProfiles;
         return this;
     }
 
-    public void setUpdatedAt(Instant updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Instant getDeletedAt() {
-        return deletedAt;
-    }
-
-    public Reservation deletedAt(Instant deletedAt) {
-        this.deletedAt = deletedAt;
+    public Reservation addUser(UserProfile userProfile) {
+        this.users.add(userProfile);
+        userProfile.setReservation(this);
         return this;
     }
 
-    public void setDeletedAt(Instant deletedAt) {
-        this.deletedAt = deletedAt;
-    }
-
-    public Voile getVoile() {
-        return voile;
-    }
-
-    public Reservation voile(Voile voile) {
-        this.voile = voile;
+    public Reservation removeUser(UserProfile userProfile) {
+        this.users.remove(userProfile);
+        userProfile.setReservation(null);
         return this;
     }
 
-    public void setVoile(Voile voile) {
-        this.voile = voile;
+    public void setUsers(Set<UserProfile> userProfiles) {
+        this.users = userProfiles;
     }
 
-    public UserProfile getUserProfile() {
-        return userProfile;
+    public Set<Combinaison> getCombinaisons() {
+        return combinaisons;
     }
 
-    public Reservation userProfile(UserProfile userProfile) {
-        this.userProfile = userProfile;
+    public Reservation combinaisons(Set<Combinaison> combinaisons) {
+        this.combinaisons = combinaisons;
         return this;
     }
 
-    public void setUserProfile(UserProfile userProfile) {
-        this.userProfile = userProfile;
-    }
-
-    public Combinaison getCombinaison() {
-        return combinaison;
-    }
-
-    public Reservation combinaison(Combinaison combinaison) {
-        this.combinaison = combinaison;
+    public Reservation addCombinaison(Combinaison combinaison) {
+        this.combinaisons.add(combinaison);
+        combinaison.setReservation(this);
         return this;
     }
 
-    public void setCombinaison(Combinaison combinaison) {
-        this.combinaison = combinaison;
+    public Reservation removeCombinaison(Combinaison combinaison) {
+        this.combinaisons.remove(combinaison);
+        combinaison.setReservation(null);
+        return this;
     }
 
-    public Harnais getHarnais() {
+    public void setCombinaisons(Set<Combinaison> combinaisons) {
+        this.combinaisons = combinaisons;
+    }
+
+    public Set<Harnais> getHarnais() {
         return harnais;
     }
 
-    public Reservation harnais(Harnais harnais) {
+    public Reservation harnais(Set<Harnais> harnais) {
         this.harnais = harnais;
         return this;
     }
 
-    public void setHarnais(Harnais harnais) {
-        this.harnais = harnais;
-    }
-
-    public Planche getPlanche() {
-        return planche;
-    }
-
-    public Reservation planche(Planche planche) {
-        this.planche = planche;
+    public Reservation addHarnais(Harnais harnais) {
+        this.harnais.add(harnais);
+        harnais.setReservation(this);
         return this;
     }
 
-    public void setPlanche(Planche planche) {
-        this.planche = planche;
+    public Reservation removeHarnais(Harnais harnais) {
+        this.harnais.remove(harnais);
+        harnais.setReservation(null);
+        return this;
+    }
+
+    public void setHarnais(Set<Harnais> harnais) {
+        this.harnais = harnais;
+    }
+
+    public Set<Planche> getPlanches() {
+        return planches;
+    }
+
+    public Reservation planches(Set<Planche> planches) {
+        this.planches = planches;
+        return this;
+    }
+
+    public Reservation addPlanche(Planche planche) {
+        this.planches.add(planche);
+        planche.setReservation(this);
+        return this;
+    }
+
+    public Reservation removePlanche(Planche planche) {
+        this.planches.remove(planche);
+        planche.setReservation(null);
+        return this;
+    }
+
+    public void setPlanches(Set<Planche> planches) {
+        this.planches = planches;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -286,12 +337,12 @@ public class Reservation implements Serializable {
             ", dateReservation='" + getDateReservation() + "'" +
             ", dateRendu='" + getDateRendu() + "'" +
             ", remarques='" + getRemarques() + "'" +
-            ", createdBy='" + getCreatedBy() + "'" +
-            ", updatedBy='" + getUpdatedBy() + "'" +
-            ", deletedBy='" + getDeletedBy() + "'" +
             ", createdAt='" + getCreatedAt() + "'" +
+            ", createdBy='" + getCreatedBy() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
+            ", updatedBy='" + getUpdatedBy() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
+            ", deletedBy='" + getDeletedBy() + "'" +
             "}";
     }
 }

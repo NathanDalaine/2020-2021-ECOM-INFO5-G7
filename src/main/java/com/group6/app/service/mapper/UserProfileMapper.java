@@ -11,9 +11,10 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {UserMapper.class})
 public interface UserProfileMapper extends EntityMapper<UserProfileDTO, UserProfile> {
 
+    @Mapping(source = "reservation.id", target = "reservationId")
+    UserProfileDTO toDto(UserProfile userProfile);
 
-    @Mapping(target = "reservations", ignore = true)
-    @Mapping(target = "removeReservation", ignore = true)
+    @Mapping(source = "reservationId", target = "reservation")
     UserProfile toEntity(UserProfileDTO userProfileDTO);
 
     default UserProfile fromId(Long id) {

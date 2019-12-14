@@ -1,9 +1,6 @@
 package com.group6.app.service;
 
-import com.group6.app.domain.Authority;
-import com.group6.app.domain.User;
 import com.group6.app.domain.UserProfile;
-import com.group6.app.repository.AuthorityRepository;
 import com.group6.app.repository.UserProfileRepository;
 import com.group6.app.repository.UserRepository;
 import com.group6.app.security.AuthoritiesConstants;
@@ -14,11 +11,9 @@ import com.group6.app.service.dto.UserProfileDTO;
 import com.group6.app.service.mapper.ReservationFullMapper;
 import com.group6.app.service.mapper.ReservationMapper;
 import com.group6.app.service.mapper.UserProfileMapper;
-import com.group6.app.service.util.RandomUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -22,8 +22,11 @@
       "updatedBy": "Updated By",
       "deletedBy": "Deleted By",
       "createdAt": "Created At",
+      "createdBy": "Created By",
       "updatedAt": "Updated At",
+      "updatedBy": "Updated By",
       "deletedAt": "Deleted At",
+      "deletedBy": "Deleted By",
       "reservation": "Reservation"
     }
   }

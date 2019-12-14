@@ -12,8 +12,11 @@ export interface IVoile {
   etat?: string;
   libelle?: string;
   gree?: boolean;
+  createdAt?: string;
   createdBy?: string;
+  updatedAt?: string;
   updatedBy?: string;
+  deletedAt?: string;
   deletedBy?: string;
   createdAt?: Moment;
   updatedAt?: Moment;
@@ -33,8 +36,11 @@ export class Voile implements IVoile {
     public etat?: string,
     public libelle?: string,
     public gree?: boolean,
+    public createdAt?: string,
     public createdBy?: string,
+    public updatedAt?: string,
     public updatedBy?: string,
+    public deletedAt?: string,
     public deletedBy?: string,
     public createdAt?: Moment,
     public updatedAt?: Moment,

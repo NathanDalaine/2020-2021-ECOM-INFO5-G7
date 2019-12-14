@@ -14,6 +14,10 @@ import { UserProfileService } from 'app/entities/user-profile/user-profile.servi
 import { ADMINISTRATEUR, GESTIONNAIRE, MEMBRE } from 'app/shared/constants/roles.constants';
 import { AccountService } from 'app/core/auth/account.service';
 
+import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from 'app/shared/constants/error.constants';
+import { LoginModalService } from 'app/core/login/login-modal.service';
+import { Register } from './register.service';
+
 @Component({
   selector: 'jhi-register',
   templateUrl: './register.component.html'
@@ -117,6 +121,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     if (password !== this.registerForm.get(['confirmPassword']).value) {
       this.doNotMatch = 'ERROR';
     } else {
+      registerAccount = { ...registerAccount, login, email, password };
       this.doNotMatch = null;
       this.error = null;
       this.errorUserExists = null;

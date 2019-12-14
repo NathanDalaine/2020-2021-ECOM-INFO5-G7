@@ -99,9 +99,7 @@
         "cgu": "Conditions générales d'utilisation",
         "register": {
           "noaccount": "Vous n'avez pas encore de compte ?",
-          "alreadyaccount": "Vous souhaitez vous connecter a votre compte ?",
-          "link": "Créer un compte",
-          "connect": "Connectez-vous"
+          "link": "Créer un compte"
         }
       },
       "confirm": {

@@ -53,11 +53,6 @@ public class CacheConfiguration {
             createCache(cm, com.group6.app.domain.Reservation.class.getName() + ".harnais");
             createCache(cm, com.group6.app.domain.Reservation.class.getName() + ".planches");
             createCache(cm, com.group6.app.domain.UserProfile.class.getName());
-            createCache(cm, com.group6.app.domain.Voile.class.getName() + ".reservations");
-            createCache(cm, com.group6.app.domain.UserProfile.class.getName() + ".reservations");
-            createCache(cm, com.group6.app.domain.Planche.class.getName() + ".reservations");
-            createCache(cm, com.group6.app.domain.Harnais.class.getName() + ".reservations");
-            createCache(cm, com.group6.app.domain.Combinaison.class.getName() + ".reservations");
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -11,6 +11,8 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {ReservationMapper.class})
 public interface VoileMapper extends EntityMapper<VoileDTO, Voile> {
 
+    @Mapping(source = "reservation.id", target = "reservationId")
+    VoileDTO toDto(Voile voile);
 
     //@Mapping(target = "reservations", ignore = true)
     @Mapping(target = "removeReservation", ignore = true)

@@ -25,11 +25,10 @@
       "libelle": "Libelle",
       "reservationLibelle": "Sails",
       "gree": "Gree",
-      "createdBy": "Created By",
-      "updatedBy": "Updated By",
-      "deletedBy": "Deleted By",
       "createdAt": "Created At",
+      "createdBy": "Created By",
       "updatedAt": "Updated At",
+      "updatedBy": "Updated By",
       "deletedAt": "Deleted At",
       "niveaurequis": "Level required",
       "reservation": "Reservation"

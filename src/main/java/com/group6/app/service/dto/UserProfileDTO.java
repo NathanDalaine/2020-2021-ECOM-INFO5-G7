@@ -6,10 +6,6 @@ import java.util.Objects;
 import com.group6.app.domain.User;
 import com.group6.app.domain.enumeration.TypeAbonnement;
 import com.group6.app.domain.enumeration.Niveau;
-import com.group6.app.domain.enumeration.Taille;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Size;
 
 /**
  * A DTO for the {@link com.group6.app.domain.UserProfile} entity.
@@ -23,6 +19,8 @@ public class UserProfileDTO implements Serializable {
 
     private Instant dateAdhesion;
 
+    private Taille prefTaille;
+
     private String adresse;
 
     private String telephone;
@@ -33,9 +31,8 @@ public class UserProfileDTO implements Serializable {
 
     private String remarque;
 
-    private Taille tailleHarnais;
 
-    private Taille tailleCombinaison;
+    private Long reservationId;
 
     private Niveau niveau;
 
@@ -89,6 +86,14 @@ public class UserProfileDTO implements Serializable {
         this.dateAdhesion = dateAdhesion;
     }
 
+    public Taille getPrefTaille() {
+        return prefTaille;
+    }
+
+    public void setPrefTaille(Taille prefTaille) {
+        this.prefTaille = prefTaille;
+    }
+
     public String getAdresse() {
         return adresse;
     }
@@ -129,12 +134,12 @@ public class UserProfileDTO implements Serializable {
         this.remarque = remarque;
     }
 
-    public Taille getTailleHarnais() {
-        return tailleHarnais;
+    public Long getReservationId() {
+        return reservationId;
     }
 
-    public void setTailleHarnais(Taille tailleHarnais) {
-        this.tailleHarnais = tailleHarnais;
+    public void setReservationId(Long reservationId) {
+        this.reservationId = reservationId;
     }
 
     public Taille getTailleCombinaison() {
@@ -178,9 +183,11 @@ public class UserProfileDTO implements Serializable {
     public String toString() {
         return "UserProfileDTO{" +
             "id=" + getId() +
+            ", localisation='" + getLocalisation() + "'" +
             ", dateEcheance='" + getDateEcheance() + "'" +
             ", dateNaissance='" + getDateNaissance() + "'" +
             ", dateAdhesion='" + getDateAdhesion() + "'" +
+            ", prefTaille='" + getPrefTaille() + "'" +
             ", adresse='" + getAdresse() + "'" +
             ", telephone='" + getTelephone() + "'" +
             ", typeAbonnement='" + getTypeAbonnement() + "'" +
