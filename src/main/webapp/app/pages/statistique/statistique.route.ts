@@ -8,10 +8,10 @@ import { filter, map } from 'rxjs/operators';
 import { HttpResponse } from '@angular/common/http';
 
 export const STATISTIQUE_ROUTE: Route = {
-  path: 'reinscription',
+  path: 'statistique',
   component: StatistiqueComponent,
   data: {
-    authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_GESTIONNAIRE'],
+    authorities: ['ROLE_ADMIN', 'ROLE_GESTIONNAIRE'],
     pageTitle: 'ecomgucvoileApp.statistique.home.title'
   },
   canActivate: [UserRouteAccessService]

@@ -57,6 +57,12 @@
                 </a>
             </li>
             <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
+                <a class="nav-link" routerLink="statistique" routerLinkActive="active" (click)="collapseNavbar()">
+                    <fa-icon icon="chart-bar" fixedWidth="true"></fa-icon>
+                    <span jhiTranslate="global.menu.statistique">statistique</span>
+                </a>
+            </li>
+            <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
                 <a class="nav-link" routerLink="members" routerLinkActive="active" (click)="collapseNavbar()">
                     <fa-icon icon="user-friends" fixedWidth="true"></fa-icon>
                     <span jhiTranslate="global.menu.members">Membres</span>

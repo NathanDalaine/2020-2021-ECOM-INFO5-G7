@@ -1,0 +1,24 @@
+{
+  "ecomgucvoileApp": {
+    "statistique": {
+      "home": {
+        "title": "Statistique",
+        "description": "Voici les statistiques sur toutes les réservations :"
+      },
+
+      "Thereis": "Il y a un total de ",
+      "reservations": " reservation(s)",
+      "encours": " en cours",
+
+      "combinaisonS": "Nombre de combinaison (Taille S) :",
+      "combinaisonM": "Nombre de combinaison (Taille M) :",
+      "combinaisonL": "Nombre de combinaison (Taille L) :",
+      "combinaisonXL": "Nombre de combinaison (Taille XL) :",
+
+      "harnaisS": "Nombre de harnais (Taille S) :",
+      "harnaisM": "Nombre de harnais (Taille M) :",
+      "harnaisL": "Nombre de harnais (Taille L) :",
+      "harnaisXL": "Nombre de harnais (Taille XL) :"
+    }
+  }
+}
