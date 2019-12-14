@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewEncapsulation} from '@angular/core';
 import { AccountService } from 'app/core/auth/account.service';
 import { JhiAlertService } from 'ng-jhipster';
 import { ReservationService } from 'app/entities/reservation/reservation.service';
@@ -12,7 +12,8 @@ import { ADMINISTRATEUR, GESTIONNAIRE } from 'app/shared/constants/roles.constan
 @Component({
   selector: 'jhi-reservationlist',
   templateUrl: './reservationList.component.html',
-  styleUrls: ['reservationList.scss']
+  styleUrls: ['reservationList.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ReservationListComponent implements OnInit, OnDestroy {
   currentAccount: any;
