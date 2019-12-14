@@ -28,6 +28,7 @@
         "userProfile": "User Profile",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
+      "manage": "Gestion",
       "account": {
         "main": "Compte",
         "settings": "Profil",
@@ -79,7 +80,7 @@
       "subscription.label": "Abonnement",
       "subscription.placeholder": "Selectionner l'abonnement",
       "level.label": "Niveau",
-      "equipmentManagement" : "Gestion des équipements",
+      "equipmentManagement": "Gestion des équipements",
       "role.label": "Role",
       "person": "Personne",
       "level.placeholder": "Selectionner le niveau",

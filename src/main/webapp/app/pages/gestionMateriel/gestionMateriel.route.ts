@@ -1,4 +1,4 @@
-import {Route } from '@angular/router';
+import { Route } from '@angular/router';
 
 import { GestionMaterielComponent } from './gestionMateriel.component';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';

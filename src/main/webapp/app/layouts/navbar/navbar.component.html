@@ -20,7 +20,8 @@
                     </span>
                 </a>
             </li>
-            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="materialList" (click)="collapseNavbar()">
                     <span>
                         <fa-icon icon="calendar-check"></fa-icon>
@@ -28,7 +29,8 @@
                     </span>
                 </a>
             </li>
-            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="reservationList" (click)="collapseNavbar()">
                     <span>
                         <fa-icon icon="list"></fa-icon>
@@ -36,7 +38,8 @@
                     </span>
                 </a>
             </li>
-            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="reinscription" (click)="collapseNavbar()">
                     <span>
                         <fa-icon icon="file-invoice"></fa-icon>
@@ -44,41 +47,46 @@
                     </span>
                 </a>
             </li>
-            <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
-                <a class="nav-link" routerLink="gestionMateriel" routerLinkActive="active" (click)="collapseNavbar()">
-                    <fa-icon icon="tools" fixedWidth="true"></fa-icon>
-                    <span jhiTranslate="global.form.equipmentManagement">Gestion Materiel</span>
-                </a>
-            </li>
-            <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
-                <a class="nav-link" routerLink="account/register" routerLinkActive="active" (click)="collapseNavbar()">
-                    <fa-icon icon="user-plus" fixedWidth="true"></fa-icon>
-                    <span jhiTranslate="global.menu.account.register">Register</span>
-                </a>
-            </li>
-            <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
-                <a class="nav-link" routerLink="statistique" routerLinkActive="active" (click)="collapseNavbar()">
-                    <fa-icon icon="chart-bar" fixedWidth="true"></fa-icon>
-                    <span jhiTranslate="global.menu.statistique">statistique</span>
-                </a>
-            </li>
-            <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
-                <a class="nav-link" routerLink="members" routerLinkActive="active" (click)="collapseNavbar()">
-                    <fa-icon icon="user-friends" fixedWidth="true"></fa-icon>
-                    <span jhiTranslate="global.menu.members">Membres</span>
-                </a>
-            </li>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-            <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']"ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
+            <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']" ngbDropdown class="nav-item dropdown pointer"
+                display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="manage-menu">
                     <span>
-                        <fa-icon icon="th-list"></fa-icon>
-                        <span jhiTranslate="global.menu.entities.main">
-                            Entities
+                        <fa-icon icon="palette"></fa-icon>
+                        <span jhiTranslate="global.menu.manage">
+                            Management
                         </span>
                     </span>
                 </a>
                 <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+                    <li>
+                        <a class="dropdown-item" routerLink="account/register"
+                           [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="user-plus" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.account.register">Register</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="statistique" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="chart-bar" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.statistique">statistique</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="gestionMateriel" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="tools" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.form.equipmentManagement">Gestion Materiel</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="members" routerLinkActive="active" (click)="collapseNavbar()"
+                           [routerLinkActiveOptions]="{ exact: true }" >
+                            <fa-icon icon="user-friends" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.members">Membres</span>
+                        </a>
+                    </li>
                     <li>
                         <a class="dropdown-item" routerLink="combinaison" routerLinkActive="active"
                            [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
@@ -107,6 +115,21 @@
                             <span jhiTranslate="global.menu.entities.voile">Voile</span>
                         </a>
                     </li>
+                </ul>
+            </li>
+
+            <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
+            <li *jhiHasAnyAuthority="['ROLE_ADMIN']" ngbDropdown class="nav-item dropdown pointer"
+                display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
+                    <span>
+                        <fa-icon icon="th-list"></fa-icon>
+                        <span jhiTranslate="global.menu.entities.main">
+                            Entities
+                        </span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
                     <li>
                         <a class="dropdown-item" routerLink="reservation" routerLinkActive="active"
                            [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
@@ -215,7 +238,8 @@
                     </span>
                 </a>
             </li>
-            <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
                   <span *ngIf="!getImageUrl()">
                     <fa-icon icon="user"></fa-icon>

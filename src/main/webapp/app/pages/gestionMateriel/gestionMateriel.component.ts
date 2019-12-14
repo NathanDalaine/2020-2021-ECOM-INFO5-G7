@@ -1,11 +1,11 @@
-import { Component, OnInit} from '@angular/core';
-import {IPlanche} from "app/shared/model/planche.model";
-import {IVoile} from "app/shared/model/voile.model";
-import {VoileService} from "app/entities/voile/voile.service";
-import {filter, map} from "rxjs/operators";
-import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
-import {JhiAlertService} from "ng-jhipster";
-import {PlancheService} from "app/entities/planche/planche.service";
+import { Component, OnInit } from '@angular/core';
+import { IPlanche } from 'app/shared/model/planche.model';
+import { IVoile } from 'app/shared/model/voile.model';
+import { VoileService } from 'app/entities/voile/voile.service';
+import { filter, map } from 'rxjs/operators';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { JhiAlertService } from 'ng-jhipster';
+import { PlancheService } from 'app/entities/planche/planche.service';
 
 @Component({
   selector: 'jhi-gestionmateriel',
@@ -18,8 +18,7 @@ export class GestionMaterielComponent implements OnInit {
   voiles: IVoile[];
   planches: IPlanche[];
 
-
-  constructor(protected voileService : VoileService, protected plancheService : PlancheService, protected jhiAlertService: JhiAlertService) {}
+  constructor(protected voileService: VoileService, protected plancheService: PlancheService, protected jhiAlertService: JhiAlertService) {}
 
   loadAll() {
     this.voileService
@@ -85,18 +84,14 @@ export class GestionMaterielComponent implements OnInit {
     return item.id;
   }
 
-  setVoileEnEtat(voile: IVoile){
-    voile.etat="";
-    this.voileService.update(voile).subscribe(
-      () => this.loadAll()
-    );
+  setVoileEnEtat(voile: IVoile) {
+    voile.etat = '';
+    this.voileService.update(voile).subscribe(() => this.loadAll());
   }
 
-  setPlancheEnEtat(planche: IPlanche){
-    planche.etat="";
-    this.plancheService.update(planche).subscribe(
-      () => this.loadAll()
-    );
+  setPlancheEnEtat(planche: IPlanche) {
+    planche.etat = '';
+    this.plancheService.update(planche).subscribe(() => this.loadAll());
   }
 
   protected onError(errorMessage: string) {

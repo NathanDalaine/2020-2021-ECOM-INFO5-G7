@@ -5,7 +5,7 @@
         "title": "Gestion du matériel"
       },
       "utilisable": "Utilisable",
-      "action" :  "Action",
+      "action": "Action",
       "etat": "Etat"
     }
   }

@@ -5,7 +5,7 @@
         "title": "Material management"
       },
       "utilisable": "Usable",
-      "action" :  "Action",
+      "action": "Action",
       "etat": "State"
     }
   }
