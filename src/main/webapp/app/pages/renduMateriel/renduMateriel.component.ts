@@ -19,9 +19,9 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
   reservation: IReservationFull;
   secondreservation: IReservation;
   currentAccount: any;
-  private success: boolean;
-  private error = false;
-  private splitError = false;
+  success: boolean;
+  error = false;
+  splitError = false;
   checked: boolean;
   harnais = false;
   voile = false;
