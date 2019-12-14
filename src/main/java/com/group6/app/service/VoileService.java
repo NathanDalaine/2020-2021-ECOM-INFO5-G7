@@ -59,6 +59,14 @@ public class VoileService {
             .collect(Collectors.toCollection(LinkedList::new));
     }
 
+    @Transactional(readOnly = true)
+    public List<VoileDTO> findAllDamaged() {
+        log.debug("Request to get all Voiles");
+        return voileRepository.findByEtatNot("").stream()
+            .map(voileMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
+
 
     /**
      * Get one voile by id.

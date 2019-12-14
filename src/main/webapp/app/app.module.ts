@@ -12,6 +12,10 @@ import { EcomgucvoileAppRoutingModule } from './app-routing.module';
 import { EcomgucvoileHomeModule } from './home/home.module';
 import { EcomgucvoileRenduMaterielModule } from './pages/renduMateriel/renduMateriel.module';
 import { EcomgucvoileReservationListModule } from './pages/reservationList/reservationList.module';
+import { EcomgucvoilePaiementModule } from './pages/paiement/paiement.module';
+import { EcomgucvoileStatistiqueModule } from './pages/statistique/statistique.module';
+import { EcomgucvoileGestionMaterielModule } from './pages/gestionMateriel/gestionMateriel.module';
+
 import { EcomgucvoileHelpPageModule } from './pages/helpPage/helpPage.module';
 import { EcomgucvoileMembersModule } from './pages/members/members.module';
 
@@ -38,6 +42,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     EcomgucvoileReservationListModule,
     EcomgucvoileMaterialListModule,
     EcomgucvoileRenduMaterielModule,
+    EcomgucvoilePaiementModule,
+    EcomgucvoileStatistiqueModule,
+    EcomgucvoileGestionMaterielModule,
     EcomgucvoileHelpPageModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     EcomgucvoileEntityModule,

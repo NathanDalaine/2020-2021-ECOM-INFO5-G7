@@ -5,7 +5,7 @@
         "title": "Planches",
         "createLabel": "Créer un nouveau Planche",
         "createOrEditLabel": "Créer ou éditer un Planche",
-        "notFound": "Aucun Planche trouvé"
+        "notFound": "Aucune planche trouvée"
       },
       "created": "Un nouveau Planche a été créé avec l'identifiant {{ param }}",
       "updated": "Le Planche avec l'identifiant {{ param }} a été mis à jour",

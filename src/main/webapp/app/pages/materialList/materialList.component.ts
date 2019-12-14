@@ -1,23 +1,20 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {AccountService} from 'app/core/auth/account.service';
-import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
-import {filter, map} from 'rxjs/operators';
-import {JhiEventManager, JhiAlertService} from 'ng-jhipster';
-import {IVoile, Voile} from 'app/shared/model/voile.model';
-import {IPlanche, Planche} from 'app/shared/model/planche.model';
-import {VoileService} from '../../entities/voile/voile.service';
-import {PlancheService} from '../../entities/planche/planche.service';
-import {FormBuilder} from '@angular/forms';
-import {ReservationService} from 'app/entities/reservation/reservation.service';
-import {ConfirmService} from 'app/shared/confirm/confirm.service';
-import {TranslateService} from '@ngx-translate/core';
-import {ViewEncapsulation} from '@angular/core';
-import {
-  NO_HARNESS_AVAILABLE,
-  NO_WETSUIT_AVAILABLE
-} from 'app/shared/constants/error.constants';
-import {IUserProfile} from "app/shared/model/user-profile.model";
-import {UserProfileService} from "app/entities/user-profile/user-profile.service";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AccountService } from 'app/core/auth/account.service';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { filter, map } from 'rxjs/operators';
+import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import { IVoile, Voile } from 'app/shared/model/voile.model';
+import { IPlanche, Planche } from 'app/shared/model/planche.model';
+import { VoileService } from '../../entities/voile/voile.service';
+import { PlancheService } from '../../entities/planche/planche.service';
+import { FormBuilder } from '@angular/forms';
+import { ReservationService } from 'app/entities/reservation/reservation.service';
+import { ConfirmService } from 'app/shared/confirm/confirm.service';
+import { TranslateService } from '@ngx-translate/core';
+import { ViewEncapsulation } from '@angular/core';
+import { ALREADY_RESERVED, NO_HARNESS_AVAILABLE, NO_WETSUIT_AVAILABLE, DUE_DATE_PASSED } from 'app/shared/constants/error.constants';
+import { IUserProfile } from 'app/shared/model/user-profile.model';
+import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
 
 @Component({
   selector: 'jhi-materiallist',
@@ -42,11 +39,16 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     combinaison: [false],
     harnaisId: null,
     combinaisonId: null,
-    userProfileId: [null],
+    userProfileId: [null]
   });
   errorNoWetSuitAvailable: string;
   errorNoHarnessAvailable: string;
+  errorAlreadyReserved: string;
+  errorDueDatePassed: string;
   error: string;
+
+  sortTypeVoile = 'libelle';
+  sortTypePlanche = 'libelle';
 
   constructor(
     protected voileService: VoileService,
@@ -59,8 +61,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     protected confirmService: ConfirmService,
     protected accountService: AccountService,
     protected userProfileService: UserProfileService
-  ) {
-  }
+  ) {}
 
   selectVoile(voile: IVoile) {
     if (this.registerForm.get('voileId').value === voile.id) {
@@ -96,6 +97,8 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     this.error = null;
     this.errorNoWetSuitAvailable = null;
     this.errorNoHarnessAvailable = null;
+    this.errorAlreadyReserved = null;
+    this.errorDueDatePassed = null;
     this.reservationService.create(this.registerForm.value).subscribe(
       () => {
         this.success = true;
@@ -161,7 +164,8 @@ export class MaterialListComponent implements OnInit, OnDestroy {
         },
         (res: HttpErrorResponse) => this.onError(res.message)
       );
-    this.userProfileService.findCurrentUser()
+    this.userProfileService
+      .findCurrentUser()
       .pipe(
         filter((res: HttpResponse<IUserProfile>) => res.ok),
         map((res: HttpResponse<IUserProfile>) => res.body)
@@ -186,7 +190,9 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     this.voiles = new Array<Voile>();
     if (voiles != null) {
       voiles.forEach(v => {
-        if (v.reservations != null) {
+        if (v.etat !== '') {
+          keep = false;
+        } else if (v.reservations != null) {
           v.reservations.forEach(r => {
             if (r.dateRendu == null) {
               keep = false;
@@ -202,8 +208,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     this.allVoiles = this.voiles;
   }
 
-  ngOnDestroy() {
-  }
+  ngOnDestroy() {}
 
   trackIdVoile(index: number, item: IVoile) {
     return item.id;
@@ -211,6 +216,14 @@ export class MaterialListComponent implements OnInit, OnDestroy {
 
   trackIdPlanche(index: number, item: IPlanche) {
     return item.id;
+  }
+
+  trackVolumePlanche(index: number, item: IPlanche) {
+    return item.volume;
+  }
+
+  trackSurfaceVoile(index: number, item: IVoile) {
+    return item.surface;
   }
 
   protected onError(errorMessage: string) {
@@ -223,6 +236,10 @@ export class MaterialListComponent implements OnInit, OnDestroy {
       this.errorNoWetSuitAvailable = 'ERROR';
     } else if (response.status === 400 && response.error.type === NO_HARNESS_AVAILABLE) {
       this.errorNoHarnessAvailable = 'ERROR';
+    } else if (response.status === 400 && response.error.type === ALREADY_RESERVED) {
+      this.errorAlreadyReserved = 'ERROR';
+    } else if (response.status === 400 && response.error.type === DUE_DATE_PASSED) {
+      this.errorDueDatePassed = 'ERROR';
     } else {
       this.error = 'ERROR';
     }
@@ -255,7 +272,9 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     this.planches = new Array<Planche>();
     if (planches != null) {
       planches.forEach(v => {
-        if (v.reservations != null) {
+        if (v.etat !== '') {
+          keep = false;
+        } else if (v.reservations != null) {
           v.reservations.forEach(r => {
             if (r.dateRendu == null) {
               keep = false;

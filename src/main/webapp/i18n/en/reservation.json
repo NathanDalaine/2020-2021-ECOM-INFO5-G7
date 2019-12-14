@@ -5,6 +5,8 @@
         "title": "Reservations",
         "createLabel": "Create a new Reservation",
         "createOrEditLabel": "Create or edit a Reservation",
+        "yourHistoryNotFound": "There is no reservation in your history.",
+        "totalHistoryNotFound": "There is no reservation in the history.",
         "notFound": "There is no reservation in progress."
       },
       "created": "A new Reservation is created with identifier {{ param }}",
@@ -36,6 +38,9 @@
       "lesVoiles": "Sails",
       "lesPlanches": "Boards",
       "reserve": "Make a reservation",
+      "sortName": "Sort by name",
+      "sortSurface": "Sort by surface",
+      "sortVolume": "Sort by volume",
       "reservationSuccess": "Your reservation was made successfully"
     }
   }

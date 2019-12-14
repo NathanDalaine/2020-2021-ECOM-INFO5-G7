@@ -17,6 +17,8 @@
       "reservation": "Reservation",
       "materialList": "Equipment List",
       "renduMateriel": "Equipment Return",
+      "statistique": "Statistics",
+      "reinscription": "Resubscription",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
@@ -79,7 +81,9 @@
       "subscription.label": "Subscription",
       "subscription.placeholder": "Select the subscription",
       "level.label": "Level",
+      "equipmentManagement" : "EquipmentManagement",
       "role.label": "Role",
+      "person": "Person",
       "level.placeholder": "Select the level",
       "technicalMaterialAutorization.label": "Technical material authorization",
       "birthday.label": "Birthday"
@@ -103,7 +107,9 @@
         "invalidAuthority": "You don't have the authority to create this kind of user!",
         "noWetsuitAvailable": "There is no wetsuit fitting your size available.",
         "noReservationDone": "An error occur, no reservation has been made.",
-        "noHarnessAvailable": "There is no harness fitting your size available."
+        "noHarnessAvailable": "There is no harness fitting your size available.",
+        "dueDatePassed": "Due date has passed",
+        "alreadyReserved": "You still have a reservation in progress"
       },
       "validate": {
         "newpassword": {

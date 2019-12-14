@@ -1,17 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AccountService } from 'app/core/auth/account.service';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { filter, map } from 'rxjs/operators';
+import { HttpResponse } from '@angular/common/http';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { IReservation, Reservation } from 'app/shared/model/reservation.model';
 import { ReservationService } from 'app/entities/reservation/reservation.service';
 import * as moment from 'moment';
 import { Observable } from 'rxjs';
-import { IUserProfile } from 'app/shared/model/user-profile.model';
 import { IReservationFull } from 'app/shared/model/reservationFull.model';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
-import { MEMBRE } from 'app/shared/constants/roles.constants';
 
 @Component({
   selector: 'jhi-rendumateriel',
@@ -22,15 +18,17 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
   reservations: IReservation[];
   reservation: IReservationFull;
   secondreservation: IReservation;
-  reservationNonRendu: IReservation[];
   currentAccount: any;
   private success: boolean;
   checked: boolean;
-  harnais: boolean = false;
-  voile: boolean = false;
-  combinaison: boolean = false;
-  planche: boolean = false;
-
+  harnais = false;
+  voile = false;
+  combinaison = false;
+  planche = false;
+  degatPlanche = false;
+  degatVoile = false;
+  textDegatPlanche = '';
+  textDegatVoile = '';
   constructor(
     protected reservationService: ReservationService,
     protected jhiAlertService: JhiAlertService,
@@ -55,15 +53,15 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {}
 
-  confirmAll() {
-    this.reservation.dateRendu = moment();
-    this.subscribeToSaveResponse(this.reservationService.updateFull(this.reservation));
-  }
-
   confirm() {
     this.reservation.dateRendu = moment();
+    if (this.reservation.userProfile.dateEcheance < moment()) {
+      this.subscribeToSaveResponse(this.reservationService.updateFull(this.reservation));
+      return;
+    }
     this.secondreservation = new Reservation();
     this.secondreservation.dateReservation = moment();
+    this.secondreservation.userProfileId = this.reservation.userProfile.id;
     if (!this.combinaison && this.reservation.combinaison != null) {
       this.secondreservation.combinaisonId = this.reservation.combinaison.id;
       this.reservation.combinaison = null;
@@ -71,36 +69,49 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
     if (!this.planche && this.reservation.planche != null) {
       this.secondreservation.plancheId = this.reservation.planche.id;
       this.reservation.planche = null;
+    } else if (this.degatPlanche) {
+      this.reservation.planche.etat = this.textDegatPlanche;
     }
-
     if (!this.voile && this.reservation.voile != null) {
       this.secondreservation.voileId = this.reservation.voile.id;
       this.reservation.voile = null;
+    } else if (this.degatVoile) {
+      this.reservation.voile.etat = this.textDegatVoile;
     }
+
     if (!this.harnais && this.reservation.harnais != null) {
       this.secondreservation.harnaisId = this.reservation.harnais.id;
       this.reservation.harnais = null;
     }
-    if (
-      this.secondreservation.voileId != null ||
-      this.secondreservation.plancheId != null ||
-      this.secondreservation.combinaisonId != null ||
-      this.secondreservation.harnaisId != null
-    ) {
-      this.subscribeToSaveResponse(this.reservationService.create(this.secondreservation));
-    }
-    this.subscribeToSaveResponse(this.reservationService.updateFull(this.reservation));
+    this.reservationService.updateFull(this.reservation).subscribe(
+      () => {
+        this.success = true;
+        if (
+          this.secondreservation.voileId != null ||
+          this.secondreservation.plancheId != null ||
+          this.secondreservation.combinaisonId != null ||
+          this.secondreservation.harnaisId != null
+        ) {
+          this.subscribeToSaveResponse(this.reservationService.create(this.secondreservation));
+        }
+        this.onSuccess('ecomgucvoileApp.renduMateriel.validation');
+      },
+      () => {
+        this.success = false;
+        this.onError('Rendu Impossible');
+      }
+    );
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IReservation>>) {
     result.subscribe(
       () => {
         this.success = true;
-        this.onSuccess('ecomgucvoileApp.renduMateriel.validation');
+        this.onSuccess('ecomgucvoileApp.renduMateriel.validationsplit');
       },
       () => {
         this.success = false;
-        this.onError('Rendu Impossible');
+        this.onError('Rendu Partagé Impossible');
       }
     );
   }
@@ -111,13 +122,5 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
 
   protected onSuccess(sucessMessage: string) {
     this.jhiAlertService.success(sucessMessage, null, null);
-  }
-
-  checkboxdamage() {
-    this.checked = !this.checked;
-  }
-
-  isChecked() {
-    return this.checked;
   }
 }

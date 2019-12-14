@@ -66,7 +66,7 @@ describe('Component Tests', () => {
           materielTechniqueAutorise: false,
           niveau: '',
           remarque: '',
-          role: 'ROLE_USER',
+          authoritie: 'ROLE_USER',
           tailleCombinaison: '',
           tailleHarnais: '',
           telephone: '',

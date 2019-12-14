@@ -5,6 +5,8 @@
         "title": "Reservations",
         "createLabel": "Créer un nouveau Reservation",
         "createOrEditLabel": "Créer ou éditer un Reservation",
+        "yourHistoryNotFound": "Il n'y a aucune réservation dans votre historique.",
+        "totalHistoryNotFound": "Aucune réservation dans l'historique des réservations.",
         "notFound": "Il n'y aucune réservation en cours."
       },
       "created": "Un nouveau Reservation a été créé avec l'identifiant {{ param }}",
@@ -32,6 +34,9 @@
       "harnais": "Harnais",
       "planche": "Planche",
       "reserve": "Réserver",
+      "sortName": "Trier par nom",
+      "sortSurface": "Trier par surface",
+      "sortVolume": "Trier par volume",
       "reservationSuccess": "Votre réservation a été effectué avec succès.",
       "rechercheVoile": "Rechercher une voile",
       "recherchePlanche": "Rechercher une planche",

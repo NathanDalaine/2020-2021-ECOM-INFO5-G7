@@ -2,6 +2,7 @@ package com.group6.app.web.rest;
 
 import com.group6.app.domain.Combinaison;
 import com.group6.app.domain.Harnais;
+import com.group6.app.domain.Reservation;
 import com.group6.app.domain.UserProfile;
 import com.group6.app.repository.CombinaisonRepository;
 import com.group6.app.repository.HarnaisRepository;
@@ -11,9 +12,11 @@ import com.group6.app.security.SecurityUtils;
 import com.group6.app.security.SecurityUtils;
 import com.group6.app.service.ReservationService;
 import com.group6.app.service.dto.ReservationFullDTO;
+import com.group6.app.web.rest.errors.AlreadyReservedExeception;
 import com.group6.app.web.rest.errors.BadRequestAlertException;
 import com.group6.app.service.dto.ReservationDTO;
 
+import com.group6.app.web.rest.errors.DueDatePassedException;
 import com.group6.app.web.rest.errors.NoHarnessAvailableException;
 import com.group6.app.web.rest.errors.NoWetsuitAvailableException;
 import io.github.jhipster.web.util.HeaderUtil;
@@ -27,8 +30,12 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.util.Iterator;
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * REST controller for managing {@link com.group6.app.domain.Reservation}.
@@ -81,6 +88,19 @@ public class ReservationResource {
                 if(combi == null){
                     throw new NoWetsuitAvailableException();
                 }
+            }
+            Set<Reservation> reservations = user.get().getReservations();
+            Iterator iter = reservations.iterator();
+            Reservation res;
+            while(iter.hasNext()){
+                res = (Reservation) iter.next();
+                if(res.getDateRendu() == null && res.getDateReservation() != null){
+                    throw new AlreadyReservedExeception();
+                }
+            }
+            Instant d = Instant.now();
+            if(user.get().getDateEcheance().compareTo(d) < 0){
+                throw new DueDatePassedException();
             }
         }
         ReservationDTO result = reservationService.save(reservationDTO);
