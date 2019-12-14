@@ -1,20 +1,25 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AccountService } from 'app/core/auth/account.service';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { filter, map } from 'rxjs/operators';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
-import { IVoile, Voile } from 'app/shared/model/voile.model';
-import { IPlanche, Planche } from 'app/shared/model/planche.model';
-import { VoileService } from '../../entities/voile/voile.service';
-import { PlancheService } from '../../entities/planche/planche.service';
-import { FormBuilder } from '@angular/forms';
-import { ReservationService } from 'app/entities/reservation/reservation.service';
-import { ConfirmService } from 'app/shared/confirm/confirm.service';
-import { TranslateService } from '@ngx-translate/core';
-import { ViewEncapsulation } from '@angular/core';
-import { ALREADY_RESERVED, NO_HARNESS_AVAILABLE, NO_WETSUIT_AVAILABLE, DUE_DATE_PASSED } from 'app/shared/constants/error.constants';
-import { IUserProfile } from 'app/shared/model/user-profile.model';
-import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {AccountService} from 'app/core/auth/account.service';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {filter, map} from 'rxjs/operators';
+import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
+import {IVoile, Voile} from 'app/shared/model/voile.model';
+import {IPlanche, Planche} from 'app/shared/model/planche.model';
+import {VoileService} from '../../entities/voile/voile.service';
+import {PlancheService} from '../../entities/planche/planche.service';
+import {FormBuilder} from '@angular/forms';
+import {ReservationService} from 'app/entities/reservation/reservation.service';
+import {ConfirmService} from 'app/shared/confirm/confirm.service';
+import {TranslateService} from '@ngx-translate/core';
+import {
+  ALREADY_RESERVED,
+  DUE_DATE_PASSED,
+  NO_HARNESS_AVAILABLE,
+  NO_WETSUIT_AVAILABLE
+} from 'app/shared/constants/error.constants';
+import {IUserProfile} from 'app/shared/model/user-profile.model';
+import {UserProfileService} from 'app/entities/user-profile/user-profile.service';
+import {Niveau} from "app/shared/model/enumerations/niveau.model";
 
 @Component({
   selector: 'jhi-materiallist',
@@ -107,15 +112,71 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     );
   }
 
+  private checkLevelPlanche(planche:IPlanche): boolean{
+    if(planche != null) {
+      const id = Number(this.registerForm.get('userProfileId').value);
+      const thisuser: IUserProfile = this.users.find(user => user.id === id);
+      switch (planche.niveaurequis) {
+        case Niveau.DEBUTANT:
+          break;
+        case Niveau.DEBUTANTPLUS:
+          if (thisuser.niveau === Niveau.DEBUTANT) {
+            return false;
+          }
+          break;
+        case Niveau.PERF:
+          if (thisuser.niveau === Niveau.DEBUTANT || thisuser.niveau === Niveau.DEBUTANTPLUS) {
+            return false;
+          }
+          break;
+        case Niveau.FUNBOARD:
+          if (thisuser.niveau !== Niveau.FUNBOARD) {
+            return false;
+          }
+          break;
+      }
+    }
+    return true;
+  }
+
+  private checkLevelVoile(voile:IVoile): boolean{
+    if(voile != null) {
+      const id = Number(this.registerForm.get('userProfileId').value);
+      const thisuser: IUserProfile = this.users.find(element => element.id === id);
+      switch (voile.niveaurequis) {
+        case Niveau.DEBUTANT:
+          break;
+        case Niveau.DEBUTANTPLUS:
+          if (thisuser.niveau === Niveau.DEBUTANT) {
+            return false;
+          }
+          break;
+        case Niveau.PERF:
+          if (thisuser.niveau === Niveau.DEBUTANT || thisuser.niveau === Niveau.DEBUTANTPLUS) {
+            return false;
+          }
+          break;
+        case Niveau.FUNBOARD:
+          if (thisuser.niveau !== Niveau.FUNBOARD) {
+            return false;
+          }
+          break;
+      }
+    }
+    return true;
+  }
+
   public openConfirmationDialog() {
     this.confirmService
       .confirm(
         this.translate.instant('global.messages.confirm.pleaseConfirm'),
         '',
-        this.selectedPlanche,
         this.selectedVoile,
+        this.selectedPlanche,
         this.registerForm.get('combinaison').value,
-        this.registerForm.get('harnais').value
+        this.registerForm.get('harnais').value,
+        this.checkLevelVoile(this.selectedVoile).valueOf(),
+        this.checkLevelPlanche(this.selectedPlanche).valueOf(),
       )
       .then(confirmed => {
         if (confirmed) {

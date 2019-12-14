@@ -7,7 +7,7 @@
 <div class="alert alert-success" *ngIf="error" jhiTranslate="ecomgucvoileApp.renduMateriel.splitError">
     split error
 </div>
-<div class="row justify-content-center">
+<div  *ngIf="!success" class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="reservation">
             <h2><span jhiTranslate="ecomgucvoileApp.renduMateriel.home.title">Rendu Materiel</span></h2>

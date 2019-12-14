@@ -13,6 +13,8 @@ export class ConfirmComponent implements OnInit {
   @Input() voile: Voile;
   @Input() planche: Planche;
   @Input() combinaison = false;
+  @Input() voileOK = true;
+  @Input() plancheOK = true;
   @Input() harnais = false;
   @Input() btnOkText: string;
   @Input() btnCancelText: string;
