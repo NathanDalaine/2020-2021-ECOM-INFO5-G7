@@ -16,6 +16,7 @@
       "1harnais": "un harnais",
       "doYouConfirm": "Vous confirmez?",
       "renduMateriel": "Rendu matériel",
+      "statistique": "Statistiques",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entités",
@@ -79,6 +80,7 @@
       "subscription.label": "Abonnement",
       "subscription.placeholder": "Selectionner l'abonnement",
       "level.label": "Niveau",
+      "equipmentManagement": "Gestion des équipements",
       "role.label": "Role",
       "person": "Personne",
       "level.placeholder": "Selectionner le niveau",

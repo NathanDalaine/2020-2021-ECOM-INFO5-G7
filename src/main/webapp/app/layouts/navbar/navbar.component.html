@@ -42,7 +42,7 @@
                 [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="reinscription" (click)="collapseNavbar()">
                     <span>
-                        <fa-icon icon="list"></fa-icon>
+                        <fa-icon icon="file-invoice"></fa-icon>
                         <span jhiTranslate="global.menu.reinscription">reinscription</span>
                     </span>
                 </a>
@@ -51,6 +51,33 @@
             <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']" ngbDropdown class="nav-item dropdown pointer"
                 display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="manage-menu">
+            <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
+                <a class="nav-link" routerLink="gestionMateriel" routerLinkActive="active" (click)="collapseNavbar()">
+                    <fa-icon icon="tools" fixedWidth="true"></fa-icon>
+                    <span jhiTranslate="global.form.equipmentManagement">Gestion Materiel</span>
+                </a>
+            </li>
+            <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
+                <a class="nav-link" routerLink="account/register" routerLinkActive="active" (click)="collapseNavbar()">
+                    <fa-icon icon="user-plus" fixedWidth="true"></fa-icon>
+                    <span jhiTranslate="global.menu.account.register">Register</span>
+                </a>
+            </li>
+            <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
+                <a class="nav-link" routerLink="statistique" routerLinkActive="active" (click)="collapseNavbar()">
+                    <fa-icon icon="chart-bar" fixedWidth="true"></fa-icon>
+                    <span jhiTranslate="global.menu.statistique">statistique</span>
+                </a>
+            </li>
+            <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']">
+                <a class="nav-link" routerLink="members" routerLinkActive="active" (click)="collapseNavbar()">
+                    <fa-icon icon="user-friends" fixedWidth="true"></fa-icon>
+                    <span jhiTranslate="global.menu.members">Membres</span>
+                </a>
+            </li>
+            <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
+            <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']"ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
                     <span>
                         <fa-icon icon="palette"></fa-icon>
                         <span jhiTranslate="global.menu.manage">

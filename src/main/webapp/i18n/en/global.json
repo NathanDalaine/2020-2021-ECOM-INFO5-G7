@@ -17,6 +17,7 @@
       "reservation": "Reservation",
       "materialList": "Equipment List",
       "renduMateriel": "Equipment Return",
+      "statistique": "Statistics",
       "reinscription": "Resubscription",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
@@ -81,6 +82,7 @@
       "subscription.label": "Subscription",
       "subscription.placeholder": "Select the subscription",
       "level.label": "Level",
+      "equipmentManagement": "EquipmentManagement",
       "role.label": "Role",
       "person": "Person",
       "level.placeholder": "Select the level",

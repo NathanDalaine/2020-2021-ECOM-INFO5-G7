@@ -90,6 +90,12 @@ public class VoileResource {
         return voileService.findAll();
     }
 
+    @GetMapping("/voiles/damaged")
+    public List<VoileDTO> getAllDamagedVoiles() {
+        log.debug("REST request to get all Voiles");
+        return voileService.findAllDamaged();
+    }
+
     /**
      * {@code GET  /voiles/:id} : get the "id" voile.
      *
