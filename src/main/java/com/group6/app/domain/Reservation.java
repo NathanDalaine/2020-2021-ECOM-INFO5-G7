@@ -34,7 +34,7 @@ public class Reservation implements Serializable {
     private String remarques;
 
     @Column(name = "created_at")
-    private String createdAt;
+    private Instant createdAt;
 
     @Column(name = "created_by")
     private String createdBy;
@@ -51,25 +51,32 @@ public class Reservation implements Serializable {
     @Column(name = "deleted_by")
     private String deletedBy;
 
-    @OneToMany(mappedBy = "reservation")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Voile> voiles = new HashSet<>();
-
-    @OneToMany(mappedBy = "reservation")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<UserProfile> users = new HashSet<>();
+    @Column(name = "updated_at")
+    private Instant updatedAt;
 
     @OneToMany(mappedBy = "reservation")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Combinaison> combinaisons = new HashSet<>();
 
-    @OneToMany(mappedBy = "reservation")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Harnais> harnais = new HashSet<>();
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JsonIgnoreProperties("reservations")
+    private Voile voile;
 
     @OneToMany(mappedBy = "reservation")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Planche> planches = new HashSet<>();
+
+    @ManyToOne
+    @JsonIgnoreProperties("reservations")
+    private Combinaison combinaison;
+
+    @ManyToOne
+    @JsonIgnoreProperties("reservations")
+    private Harnais harnais;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JsonIgnoreProperties("reservations")
+    private Planche planche;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -119,16 +126,16 @@ public class Reservation implements Serializable {
         this.remarques = remarques;
     }
 
-    public String getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public Reservation createdAt(String createdAt) {
+    public Reservation createdAt(Instant createdAt) {
         this.createdAt = createdAt;
         return this;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -197,25 +204,9 @@ public class Reservation implements Serializable {
         this.deletedBy = deletedBy;
     }
 
-    public Set<Voile> getVoiles() {
-        return voiles;
-    }
 
-    public Reservation voiles(Set<Voile> voiles) {
-        this.voiles = voiles;
-        return this;
-    }
-
-    public Reservation addVoile(Voile voile) {
-        this.voiles.add(voile);
-        voile.setReservation(this);
-        return this;
-    }
-
-    public Reservation removeVoile(Voile voile) {
-        this.voiles.remove(voile);
-        voile.setReservation(null);
-        return this;
+    public Instant getUpdatedAt() {
+        return updatedAt;
     }
 
     public void setVoiles(Set<Voile> voiles) {

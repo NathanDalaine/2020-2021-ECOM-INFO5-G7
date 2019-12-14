@@ -3,6 +3,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { take, map } from 'rxjs/operators';
 import { VoileService } from 'app/entities/voile/voile.service';
 import { IVoile, Voile } from 'app/shared/model/voile.model';
+import { Niveau } from 'app/shared/model/enumerations/niveau.model';
 
 describe('Service Tests', () => {
   describe('Voile Service', () => {
@@ -33,9 +34,10 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA'
+        currentDate,
+        currentDate,
+        currentDate,
+        Niveau.DEBUTANT
       );
     });
 
@@ -84,8 +86,11 @@ describe('Service Tests', () => {
             createdBy: 'BBBBBB',
             updatedAt: 'BBBBBB',
             updatedBy: 'BBBBBB',
-            deletedAt: 'BBBBBB',
-            deletedBy: 'BBBBBB'
+            deletedBy: 'BBBBBB',
+            createdAt: currentDate.format(DATE_TIME_FORMAT),
+            updatedAt: currentDate.format(DATE_TIME_FORMAT),
+            deletedAt: currentDate.format(DATE_TIME_FORMAT),
+            niveaurequis: 'BBBBBB'
           },
           elemDefault
         );
@@ -115,8 +120,11 @@ describe('Service Tests', () => {
             createdBy: 'BBBBBB',
             updatedAt: 'BBBBBB',
             updatedBy: 'BBBBBB',
-            deletedAt: 'BBBBBB',
-            deletedBy: 'BBBBBB'
+            deletedBy: 'BBBBBB',
+            createdAt: currentDate.format(DATE_TIME_FORMAT),
+            updatedAt: currentDate.format(DATE_TIME_FORMAT),
+            deletedAt: currentDate.format(DATE_TIME_FORMAT),
+            niveaurequis: 'BBBBBB'
           },
           elemDefault
         );

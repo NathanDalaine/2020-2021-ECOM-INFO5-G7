@@ -33,7 +33,6 @@ export class AccountService {
     if (!this.authenticated || !this.userIdentity || !this.userIdentity.authorities) {
       return false;
     }
-
     return authorities.some((authority: string) => this.userIdentity.authorities.includes(authority));
   }
 

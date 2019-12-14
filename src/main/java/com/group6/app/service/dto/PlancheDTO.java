@@ -1,6 +1,9 @@
 package com.group6.app.service.dto;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
+
+import com.group6.app.domain.enumeration.Niveau;
 
 /**
  * A DTO for the {@link com.group6.app.domain.Planche} entity.
@@ -37,6 +40,13 @@ public class PlancheDTO implements Serializable {
 
 
     private Long reservationId;
+
+    private Instant deletedAt;
+
+    private Niveau niveaurequis;
+
+    private Set<ReservationDTO> reservations;
+
 
     public Long getId() {
         return id;
@@ -158,6 +168,34 @@ public class PlancheDTO implements Serializable {
         this.reservationId = reservationId;
     }
 
+    public Instant getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Instant getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt(Instant deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
+    public Niveau getNiveaurequis() {
+        return niveaurequis;
+    }
+
+    public void setNiveaurequis(Niveau niveaurequis) {
+        this.niveaurequis = niveaurequis;
+    }
+
+    public Set<ReservationDTO> getReservations(){ return reservations;}
+
+    public void setReservations(Set<ReservationDTO> reservations) { this.reservations = reservations;}
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -196,7 +234,10 @@ public class PlancheDTO implements Serializable {
             ", updatedBy='" + getUpdatedBy() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
             ", deletedBy='" + getDeletedBy() + "'" +
-            ", reservation=" + getReservationId() +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", updatedAt='" + getUpdatedAt() + "'" +
+            ", deletedAt='" + getDeletedAt() + "'" +
+            ", niveaurequis='" + getNiveaurequis() + "'" +
             "}";
     }
 }

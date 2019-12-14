@@ -7,7 +7,6 @@ Navbar
 
 .navbar-version {
   font-size: 0.65em;
-  color: $navbar-dark-color;
 }
 
 .profile-image {
@@ -17,6 +16,7 @@ Navbar
 
 .navbar {
   padding: 0.2rem 1rem;
+  background-color: #2b6ca3;
 
   ul.navbar-nav {
     .nav-item {
@@ -33,9 +33,9 @@ Navbar
 Logo styles
 ========================================================================== */
 .logo-img {
-  height: 45px;
-  width: 45px;
-  display: inline-block;
+  height: 55px;
+  width: 55px;
+  display: contents;
   vertical-align: middle;
   background: url('../../../content/images/logo-jhipster.png') no-repeat center center;
   background-size: contain;

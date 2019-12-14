@@ -4,6 +4,21 @@
     "browsehappy": "Vous utilisez un <strong>ancien</strong> navigateur. Veuillez <a href=\"http://browsehappy.com/?locale=fr\">mettre à jour votre navigateur</a> pour une meilleure expérience.",
     "menu": {
       "home": "Accueil",
+      "reservationList": "Liste des réservations",
+      "reservation": "Réservation",
+      "materialList": "Liste du matériel",
+      "reinscription": "Reinscription",
+      "members": "Membres",
+      "aboutToReserve": "Vous êtes sur le point de réserver ",
+      "warningTooHigLevelBoard": "<strong>Attention</strong> : la planche que vous avez choisi est réservée pour les personnes d'un niveau supérieur au votre. Vous devriez prendre une autre planche.",
+      "warningTooHigLevelSail": "<strong>Attention</strong> : la voile que vous avez choisi est réservée pour les personnes d'un niveau supérieur au votre. Vous devriez prendre une autre voile.",
+      "1combinaison": "une combinaison",
+      "1voile": "une voile ",
+      "1planche": "une planche ",
+      "1harnais": "un harnais",
+      "doYouConfirm": "Vous confirmez?",
+      "renduMateriel": "Rendu matériel",
+      "statistique": "Statistiques",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entités",
@@ -11,10 +26,11 @@
         "harnais": "Harnais",
         "planche": "Planche",
         "voile": "Voile",
-        "reservation": "Reservation",
+        "reservation": "Réservation",
         "userProfile": "User Profile",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
+      "manage": "Gestion",
       "account": {
         "main": "Compte",
         "settings": "Profil",
@@ -49,7 +65,29 @@
       "confirmpassword.label": "Confirmation du nouveau mot de passe",
       "confirmpassword.placeholder": "Confirmation du nouveau mot de passe",
       "email.label": "Email",
-      "email.placeholder": "Votre email"
+      "email.placeholder": "Votre email",
+      "taillecombinaison.label": "Taille de combinaison",
+      "taillecombinaison.placeholder": "Choisir la taille de combinaison",
+      "tailleharnais.label": "Taille de harnais",
+      "tailleharnais.placeholder": "Choisir la taille de harnais",
+      "telephone.label": "Numéro de telephone",
+      "telephone.placeholder": "Telephone",
+      "firstname.label": "Prenom",
+      "firstname.placeholder": "Votre Prenom",
+      "lastname.label": "Nom",
+      "lastname.placeholder": "Votre Nom",
+      "activated.label": "Activer",
+      "address.label": "Adresse",
+      "remark.label": "Remarque",
+      "subscription.label": "Abonnement",
+      "subscription.placeholder": "Selectionner l'abonnement",
+      "level.label": "Niveau",
+      "equipmentManagement": "Gestion des équipements",
+      "role.label": "Role",
+      "person": "Personne",
+      "level.placeholder": "Selectionner le niveau",
+      "technicalMaterialAutorization.label": "Materiel technique autorise",
+      "birthday.label": "Date de naissance"
     },
     "messages": {
       "info": {
@@ -58,13 +96,28 @@
           "link": "connecter",
           "suffix": ", vous pouvez utiliser les comptes par défaut : <br/> - Administrateur (nom d'utilisateur=\"admin\" et mot de passe =\"admin\") <br/> - Utilisateur (nom d'utilisateur=\"user\" et mot de passe =\"user\")."
         },
+        "cgu": "Conditions générales d'utilisation",
         "register": {
           "noaccount": "Vous n'avez pas encore de compte ?",
           "link": "Créer un compte"
         }
       },
+      "confirm": {
+        "pleaseConfirm": "Veuillez confirmer",
+        "board": "la planche",
+        "sail": "la voile",
+        "wetsuit": "une combinaison",
+        "harness": "un harnais"
+      },
       "error": {
-        "dontmatch": "Le nouveau mot de passe et sa confirmation ne sont pas égaux !"
+        "dontmatch": "Le nouveau mot de passe et sa confirmation ne sont pas égaux !",
+        "invalidAuthority": "Vous n'avez pas les droits nécesssaires pour créer ce type d'utilisateur!",
+        "noWetsuitAvailable": "Il n'y a pas de combinaison à votre taille de disponible.",
+        "noReservationDone": "Une erreur est survenue, la réservation n'a pas été effectuée.",
+        "noHarnessAvailable": "Il n'y a pas d'harnais à votre taille de disponible.",
+        "alreadyReserved": "Vous avez déjà une réservation en cours",
+        "dueDatePassed": "La date d'échéance est passée",
+        "fail": "Erreur inconnu."
       },
       "validate": {
         "newpassword": {
@@ -83,6 +136,22 @@
           "minlength": "Votre email doit comporter au moins 5 caractères.",
           "maxlength": "Votre email ne doit pas comporter plus de 50 caractères.",
           "invalid": "Votre email n'est pas valide."
+        },
+        "wetsuit": {
+          "required": "Une taille de combinaison est requise"
+        },
+        "harness": {
+          "required": "Une taille de harnais est requise"
+        },
+        "level": {
+          "required": "Un niveau est requis"
+        },
+        "typeAbonnement": {
+          "required": "Un type d'abonnement est requis"
+        },
+        "phone": {
+          "required": "Votre numero de telephone est requis",
+          "invalid": "Votre numero de telephone n'est pas valide"
         }
       }
     },
@@ -104,7 +173,8 @@
       "delete": "Supprimer",
       "open": "Ouvrir",
       "save": "Sauvegarder",
-      "view": "Voir"
+      "view": "Voir",
+      "return": "Rendre"
     },
     "detail": {
       "field": "Champs",
@@ -137,5 +207,5 @@
     "idexists": "Une nouvelle entité {{entityName}} ne peut pas avoir d'ID !",
     "idnull": "Invalid ID"
   },
-  "footer": "Ceci est votre pied de page"
+  "footer": "RIVOIRE Antoine - MASSON Jeremy - SOLVERY Tom - DALAINE Nathan - BRES Maxence - BETEND Baptiste  <br> Site réalisé en 2019 à Polytech-Grenoble, Promotion RICM5"
 }

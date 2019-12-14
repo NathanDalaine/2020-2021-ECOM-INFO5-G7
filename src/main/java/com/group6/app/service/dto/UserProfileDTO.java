@@ -2,7 +2,8 @@ package com.group6.app.service.dto;
 import java.time.Instant;
 import java.io.Serializable;
 import java.util.Objects;
-import com.group6.app.domain.enumeration.Taille;
+
+import com.group6.app.domain.User;
 import com.group6.app.domain.enumeration.TypeAbonnement;
 import com.group6.app.domain.enumeration.Niveau;
 
@@ -10,11 +11,8 @@ import com.group6.app.domain.enumeration.Niveau;
  * A DTO for the {@link com.group6.app.domain.UserProfile} entity.
  */
 public class UserProfileDTO implements Serializable {
-
     private Long id;
-
-    private String localisation;
-
+    private String authoritie;
     private Instant dateEcheance;
 
     private Instant dateNaissance;
@@ -29,14 +27,24 @@ public class UserProfileDTO implements Serializable {
 
     private TypeAbonnement typeAbonnement;
 
-    private Niveau niveau;
-
     private Boolean materielTechniqueAutorise;
 
     private String remarque;
 
 
     private Long reservationId;
+
+    private Niveau niveau;
+
+    private UserDTO user;
+
+    public void setUser(UserDTO user){
+        this.user = user;
+    }
+
+    public UserDTO getUser(){
+        return user;
+    }
 
     public Long getId() {
         return id;
@@ -46,20 +54,20 @@ public class UserProfileDTO implements Serializable {
         this.id = id;
     }
 
-    public String getLocalisation() {
-        return localisation;
-    }
-
-    public void setLocalisation(String localisation) {
-        this.localisation = localisation;
-    }
-
     public Instant getDateEcheance() {
         return dateEcheance;
     }
 
     public void setDateEcheance(Instant dateEcheance) {
         this.dateEcheance = dateEcheance;
+    }
+
+    public String getAuthoritie(){
+        return authoritie;
+    }
+
+    public void setAuthoritie(String authoritie) {
+        this.authoritie = authoritie;
     }
 
     public Instant getDateNaissance() {
@@ -110,14 +118,6 @@ public class UserProfileDTO implements Serializable {
         this.typeAbonnement = typeAbonnement;
     }
 
-    public Niveau getNiveau() {
-        return niveau;
-    }
-
-    public void setNiveau(Niveau niveau) {
-        this.niveau = niveau;
-    }
-
     public Boolean isMaterielTechniqueAutorise() {
         return materielTechniqueAutorise;
     }
@@ -140,6 +140,22 @@ public class UserProfileDTO implements Serializable {
 
     public void setReservationId(Long reservationId) {
         this.reservationId = reservationId;
+    }
+
+    public Taille getTailleCombinaison() {
+        return tailleCombinaison;
+    }
+
+    public void setTailleCombinaison(Taille tailleCombinaison) {
+        this.tailleCombinaison = tailleCombinaison;
+    }
+
+    public Niveau getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(Niveau niveau) {
+        this.niveau = niveau;
     }
 
     @Override
@@ -175,10 +191,11 @@ public class UserProfileDTO implements Serializable {
             ", adresse='" + getAdresse() + "'" +
             ", telephone='" + getTelephone() + "'" +
             ", typeAbonnement='" + getTypeAbonnement() + "'" +
-            ", niveau='" + getNiveau() + "'" +
             ", materielTechniqueAutorise='" + isMaterielTechniqueAutorise() + "'" +
             ", remarque='" + getRemarque() + "'" +
-            ", reservation=" + getReservationId() +
+            ", tailleHarnais='" + getTailleHarnais() + "'" +
+            ", tailleCombinaison='" + getTailleCombinaison() + "'" +
+            ", niveau='" + getNiveau() + "'" +
             "}";
     }
 }

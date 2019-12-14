@@ -14,6 +14,11 @@ public final class ErrorConstants {
     public static final URI EMAIL_ALREADY_USED_TYPE = URI.create(PROBLEM_BASE_URL + "/email-already-used");
     public static final URI LOGIN_ALREADY_USED_TYPE = URI.create(PROBLEM_BASE_URL + "/login-already-used");
     public static final URI EMAIL_NOT_FOUND_TYPE = URI.create(PROBLEM_BASE_URL + "/email-not-found");
+    public static final URI INVALID_AUTHORITY_TYPE = URI.create(PROBLEM_BASE_URL + "/invalid-authority");
+    public static final URI NO_HARNESS_AVAILABLE = URI.create(PROBLEM_BASE_URL + "/no-harness-available");
+    public static final URI NO_WETSUIT_AVAILABLE = URI.create(PROBLEM_BASE_URL + "/no-wetsuit-available");
+    public static final URI DUE_DATE_PASSED = URI.create(PROBLEM_BASE_URL + "/due-date-passed");
+    public static final URI ALREADY_RESERVED = URI.create(PROBLEM_BASE_URL + "/already-reserved");
 
     private ErrorConstants() {
     }

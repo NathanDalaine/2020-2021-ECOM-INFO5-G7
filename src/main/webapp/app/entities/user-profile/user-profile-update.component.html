@@ -17,19 +17,19 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ecomgucvoileApp.userProfile.dateEcheance" for="field_dateEcheance">Date Echeance</label>
                     <div class="d-flex">
-                        <input id="field_dateEcheance" type="datetime-local" class="form-control" name="dateEcheance" formControlName="dateEcheance" placeholder="YYYY-MM-DD HH:mm"/>
+                        <input id="field_dateEcheance" type="datetime-local" class="form-control" name="dateEcheance" formControlName="dateEcheance" placeholder="YYYY-MM-DD HH:mm" readonly/>
                     </div>
                 </div>
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label class="form-control-label" jhiTranslate="ecomgucvoileApp.userProfile.dateNaissance" for="field_dateNaissance">Date Naissance</label>
                     <div class="d-flex">
-                        <input id="field_dateNaissance" type="datetime-local" class="form-control" name="dateNaissance" formControlName="dateNaissance" placeholder="YYYY-MM-DD HH:mm"/>
+                        <input id="field_dateNaissance" type="datetime-local" class="form-control" name="dateNaissance" formControlName="dateNaissance" placeholder="YYYY-MM-DD HH:mm" readonly/>
                     </div>
-                </div>
+                </div>-->
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ecomgucvoileApp.userProfile.dateAdhesion" for="field_dateAdhesion">Date Adhesion</label>
                     <div class="d-flex">
-                        <input id="field_dateAdhesion" type="datetime-local" class="form-control" name="dateAdhesion" formControlName="dateAdhesion" placeholder="YYYY-MM-DD HH:mm"/>
+                        <input id="field_dateAdhesion" type="datetime-local" class="form-control" name="dateAdhesion" formControlName="dateAdhesion" placeholder="YYYY-MM-DD HH:mm" readonly/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -44,12 +44,12 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ecomgucvoileApp.userProfile.adresse" for="field_adresse">Adresse</label>
                     <input type="text" class="form-control" name="adresse" id="field_adresse"
-                           formControlName="adresse"/>
+                           formControlName="adresse" readonly/>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ecomgucvoileApp.userProfile.telephone" for="field_telephone">Telephone</label>
                     <input type="text" class="form-control" name="telephone" id="field_telephone"
-                           formControlName="telephone"/>
+                           formControlName="telephone" readonly/>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ecomgucvoileApp.userProfile.typeAbonnement" for="field_typeAbonnement">Type Abonnement</label>
@@ -61,25 +61,15 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.userProfile.niveau" for="field_niveau">Niveau</label>
-                    <select class="form-control" name="niveau" formControlName="niveau" id="field_niveau">
-                        <option value="DEBUTANT">{{'ecomgucvoileApp.Niveau.DEBUTANT' | translate}}</option>
-                        <option value="DUBUTANTPLUS">{{'ecomgucvoileApp.Niveau.DUBUTANTPLUS' | translate}}</option>
-                        <option value="FUNBOARD">{{'ecomgucvoileApp.Niveau.FUNBOARD' | translate}}</option>
-                        <option value="PERF">{{'ecomgucvoileApp.Niveau.PERF' | translate}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ecomgucvoileApp.userProfile.materielTechniqueAutorise" for="field_materielTechniqueAutorise">Materiel Technique Autorise</label>
                     <input type="checkbox" class="form-control" name="materielTechniqueAutorise" id="field_materielTechniqueAutorise"
                            formControlName="materielTechniqueAutorise"/>
                 </div>
-                <div class="form-group">
+                <!--div class="form-group">
                     <label class="form-control-label" jhiTranslate="ecomgucvoileApp.userProfile.remarque" for="field_remarque">Remarque</label>
                     <input type="text" class="form-control" name="remarque" id="field_remarque"
                            formControlName="remarque"/>
-                </div>
-
+                </div-->
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ecomgucvoileApp.userProfile.reservation" for="field_reservation">Reservation</label>
                     <select class="form-control" id="field_reservation" name="reservation" formControlName="reservationId">
@@ -87,6 +77,25 @@
                         <option [ngValue]="reservationOption.id" *ngFor="let reservationOption of reservations; trackBy: trackReservationById">{{reservationOption.id}}</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.userProfile.tailleCombinaison" for="field_tailleCombinaison">Taille Combinaison</label>
+                    <select class="form-control" name="tailleCombinaison" formControlName="tailleCombinaison" id="field_tailleCombinaison">
+                        <option value="S">{{'ecomgucvoileApp.Taille.S' | translate}}</option>
+                        <option value="M">{{'ecomgucvoileApp.Taille.M' | translate}}</option>
+                        <option value="L">{{'ecomgucvoileApp.Taille.L' | translate}}</option>
+                        <option value="XL">{{'ecomgucvoileApp.Taille.XL' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ecomgucvoileApp.userProfile.niveau" for="field_niveau">Niveau</label>
+                    <select class="form-control" name="niveau" formControlName="niveau" id="field_niveau">
+                        <option value="DEBUTANT">{{'ecomgucvoileApp.Niveau.DEBUTANT' | translate}}</option>
+                        <option value="DEBUTANTPLUS">{{'ecomgucvoileApp.Niveau.DEBUTANTPLUS' | translate}}</option>
+                        <option value="FUNBOARD">{{'ecomgucvoileApp.Niveau.FUNBOARD' | translate}}</option>
+                        <option value="PERF">{{'ecomgucvoileApp.Niveau.PERF' | translate}}</option>
+                    </select>
+                </div>
+
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

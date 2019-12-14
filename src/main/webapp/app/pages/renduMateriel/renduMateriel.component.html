@@ -1,0 +1,77 @@
+<div class="alert alert-success" *ngIf="success" jhiTranslate="ecomgucvoileApp.renduMateriel.succes">
+    reservationSuccess
+</div>
+<div class="alert alert-success" *ngIf="error" jhiTranslate="ecomgucvoileApp.renduMateriel.error">
+    error
+</div>
+<div class="alert alert-success" *ngIf="error" jhiTranslate="ecomgucvoileApp.renduMateriel.splitError">
+    split error
+</div>
+<div  *ngIf="!success" class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="reservation">
+            <h2><span jhiTranslate="ecomgucvoileApp.renduMateriel.home.title">Rendu Materiel</span></h2>
+            <hr>
+
+            <dt class="row-md jh-entity-details">
+            <dt><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></dt>
+            <dd>
+                <span>{{reservation.dateReservation | date: 'medium'}}</span>
+            </dd>
+            <div *ngIf="reservation.planche">
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.planche">Planche</span></dt>
+                <input type="checkbox" id="planche" name="planche" [(ngModel)]="planche">
+                <label for=planche>{{reservation.planche.libelle}}</label>
+                <div *ngIf="planche">
+                    <input type="checkbox" name="damageboard" id="damageboard" [(ngModel)]="degatPlanche">
+                    <label for="damageboard" jhiTranslate="ecomgucvoileApp.renduMateriel.damage">Le
+                        materiel rendu est endommagé.</label>
+                    <div *ngIf="degatPlanche">
+                        <label jhiTranslate="ecomgucvoileApp.renduMateriel.descriptiondamagetext">Description du dommage
+                            :</label>
+                        <div>
+                            <textarea name="descriptiondamage" cols="40" rows="5" [(ngModel)]="textDegatPlanche"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="reservation.voile">
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.voile">Voile</span></dt>
+                    <input type="checkbox" id="voile" name="voile" [(ngModel)]="voile">
+                    <label for=voile>{{reservation.voile.libelle}}</label>
+                <div *ngIf="voile">
+                    <input type="checkbox" name="damagesail" id="damagesail" [(ngModel)]="degatVoile">
+                    <label for="damageboard" jhiTranslate="ecomgucvoileApp.renduMateriel.damage">Le
+                        materiel rendu est endommagé.</label>
+                    <div *ngIf="degatVoile">
+                        <label jhiTranslate="ecomgucvoileApp.renduMateriel.descriptiondamagetext">Description du dommage
+                            :</label>
+                        <div>
+                            <textarea name="descriptiondamage" cols="40" rows="5" [(ngModel)]="textDegatVoile"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="reservation.harnais">
+                <dt><span jhiTranslate="ecomgucvoileApp.reservation.harnais">Harnais</span></dt>
+                <dd>
+                    <input type="checkbox" id="Harnais" name="Harnais" [(ngModel)]="harnais">
+                    <label for=Harnais>{{reservation.harnais.taille}}</label>
+                </dd>
+            </div>
+            <div *ngIf="reservation.combinaison">
+                <dt><span
+                    jhiTranslate="ecomgucvoileApp.reservation.combinaison">Combinaison</span></dt>
+                <dd>
+                    <input type="checkbox" id="Combinaison" name="Combinaison" [(ngModel)]="combinaison">
+                    <label for=Combinaison>{{reservation.combinaison.taille}}</label>
+                </dd>
+            </div>
+            <button type="button" [disabled]="!planche && !voile && !combinaison && !harnais"
+                    (click)="confirm()"
+                    class="btn btn-info">
+                <span jhiTranslate="ecomgucvoileApp.renduMateriel.confirmation"> Back</span>
+            </button>
+        </div>
+    </div>
+</div>

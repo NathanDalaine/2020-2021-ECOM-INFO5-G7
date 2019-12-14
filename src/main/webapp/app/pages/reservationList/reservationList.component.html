@@ -1,0 +1,107 @@
+<div class="row">
+    <br/>
+    <div class="table-responsive">
+        <h1>{{'reservationList.currentReservation'|translate}}</h1>
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+                <th><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></th>
+                <th><span jhiTranslate="ecomgucvoileApp.reservation.user">Utilisateur</span></th>
+                <th><span jhiTranslate="ecomgucvoileApp.reservation.voile">Voile</span></th>
+                <th><span jhiTranslate="ecomgucvoileApp.reservation.planche">Planche</span></th>
+                <th><span jhiTranslate="ecomgucvoileApp.reservation.combinaison">Combinaison</span></th>
+                <th><span jhiTranslate="ecomgucvoileApp.reservation.harnais">Harnais</span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let reservation of (reservations | valuefull) ;trackBy: trackDate " >
+                <td>{{reservation.dateReservation | date:'medium'}}</td>
+                <td>{{reservation.userProfile.user.login}}</td>
+                <td><a *ngIf="reservation.voile" [routerLink]="['/voile', reservation.voile.id, 'view' ]">{{reservation.voile.libelle}}</a></td>
+                <td><a *ngIf="reservation.planche" [routerLink]="['/planche', reservation.planche.id, 'view' ]">{{reservation.planche.libelle}}</a></td>
+                <td *ngIf="reservation.combinaison">{{reservation.combinaison.taille}}</td>
+                <td *ngIf="reservation.combinaison === null"></td>
+                <td *ngIf="reservation.harnais">{{reservation.harnais.taille}}</td>
+                <td *ngIf="reservation.harnais === null"></td>
+                <td>
+                    <button *ngIf ="checkUserReservation(reservation,currentUserProfile)" type="submit"
+                            [routerLink]="['/renduMateriel', reservation.id, 'view' ]"
+                            class="btn btn-info btn-sm">
+                        <fa-icon [icon]="'hands'"></fa-icon>
+                        <span class="d-none d-md-inline" jhiTranslate="entity.action.return">Rendre</span>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="alert alert-warning" *ngIf="(reservations | valuefull)?.length === 0">
+            <span jhiTranslate="ecomgucvoileApp.reservation.home.notFound">There is no reservation in progress.</span>
+        </div>
+        <h1>{{'reservationList.reservationHistory'|translate}}</h1>
+        <mat-tab-group>
+            <mat-tab label="{{'reservationList.myReservations' | translate}}">
+                <table class="table table-striped" aria-describedby="page-heading">
+                    <thead>
+                    <tr>
+                        <th><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></th>
+                        <th><span jhiTranslate="ecomgucvoileApp.reservation.dateRendu">Date Rendu</span></th>
+                        <th><span jhiTranslate="ecomgucvoileApp.reservation.voile">Voile</span></th>
+                        <th><span jhiTranslate="ecomgucvoileApp.reservation.planche">Planche</span></th>
+                        <th><span jhiTranslate="ecomgucvoileApp.reservation.combinaison">Combinaison</span></th>
+                        <th><span jhiTranslate="ecomgucvoileApp.reservation.harnais">Harnais</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let reservation of (pastReservation | valuehistory) ;trackBy: trackDate " >
+                        <td>{{reservation.dateReservation | date:'medium'}}</td>
+                        <td>{{reservation.dateRendu | date:'medium'}}</td>
+                        <td><a *ngIf="reservation.voile" [routerLink]="['/voile', reservation.voile.id, 'view' ]">{{reservation.voile.libelle}}</a></td>
+                        <td><a *ngIf="reservation.planche" [routerLink]="['/planche', reservation.planche.id, 'view' ]">{{reservation.planche.libelle}}</a></td>
+                        <td *ngIf="reservation.combinaison">{{reservation.combinaison.taille}}</td>
+                        <td *ngIf="reservation.combinaison === null"></td>
+                        <td *ngIf="reservation.harnais">{{reservation.harnais.taille}}</td>
+                        <td *ngIf="reservation.harnais === null"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="alert alert-warning" *ngIf="(pastReservation | valuehistory)?.length === 0">
+                    <span jhiTranslate="ecomgucvoileApp.reservation.home.yourHistoryNotFound">There is no past reservation</span>
+                </div>
+            </mat-tab>
+            <mat-tab *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_GESTIONNAIRE']" label="{{'reservationList.allPastReservations' | translate}}">
+                <table class="table table-striped" aria-describedby="page-heading">
+                    <thead>
+                    <tr>
+                        <th><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></th>
+                        <th><span jhiTranslate="ecomgucvoileApp.reservation.dateRendu">Date Rendu</span></th>
+                        <th><span jhiTranslate="ecomgucvoileApp.reservation.user">Utilisateur</span></th>
+                        <th><span jhiTranslate="ecomgucvoileApp.reservation.voile">Voile</span></th>
+                        <th><span jhiTranslate="ecomgucvoileApp.reservation.planche">Planche</span></th>
+                        <th><span jhiTranslate="ecomgucvoileApp.reservation.combinaison">Combinaison</span></th>
+                        <th><span jhiTranslate="ecomgucvoileApp.reservation.harnais">Harnais</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let reservation of (reservations | valuehistory) ;trackBy: trackDate " >
+                        <td>{{reservation.dateReservation | date:'medium'}}</td>
+                        <td>{{reservation.dateRendu | date:'medium'}}</td>
+                        <td *ngIf="!reservation.userProfile"></td>
+                        <td *ngIf="reservation.userProfile">{{reservation.userProfile.user.login}}</td>
+                        <td><a *ngIf="reservation.voile" [routerLink]="['/voile', reservation.voile.id, 'view' ]">{{reservation.voile.libelle}}</a></td>
+                        <td><a *ngIf="reservation.planche" [routerLink]="['/planche', reservation.planche.id, 'view' ]">{{reservation.planche.libelle}}</a></td>
+                        <td *ngIf="reservation.combinaison">{{reservation.combinaison.taille}}</td>
+                        <td *ngIf="reservation.combinaison === null"></td>
+                        <td *ngIf="reservation.harnais">{{reservation.harnais.taille}}</td>
+                        <td *ngIf="reservation.harnais === null"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="alert alert-warning" *ngIf="(reservations | valuehistory)?.length === 0">
+                    <span jhiTranslate="ecomgucvoileApp.reservation.home.totalHistoryNotFound">There is no past reservation</span>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+
+    </div>
+</div>

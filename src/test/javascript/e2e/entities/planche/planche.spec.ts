@@ -54,7 +54,10 @@ describe('Planche e2e test', () => {
       plancheUpdatePage.setUpdatedByInput('updatedBy'),
       plancheUpdatePage.setDeletedAtInput('deletedAt'),
       plancheUpdatePage.setDeletedByInput('deletedBy'),
-      plancheUpdatePage.reservationSelectLastOption()
+      plancheUpdatePage.setCreatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
+      plancheUpdatePage.setUpdatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
+      plancheUpdatePage.setDeletedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
+      plancheUpdatePage.niveaurequisSelectLastOption()
     ]);
     expect(await plancheUpdatePage.getMarqueInput()).to.eq('marque', 'Expected Marque value to be equals to marque');
     expect(await plancheUpdatePage.getModeleInput()).to.eq('modele', 'Expected Modele value to be equals to modele');

@@ -17,14 +17,14 @@
         "title": "Harnais"
       },
       "taille": "Taille",
-      "etat": "Etat",
-      "createdAt": "Created At",
-      "createdBy": "Created By",
-      "updatedAt": "Updated At",
-      "updatedBy": "Updated By",
-      "deletedAt": "Deleted At",
-      "deletedBy": "Deleted By",
-      "reservation": "Reservation"
+      "etat": "État",
+      "createdBy": "Créé par",
+      "updatedBy": "Mis à jour par",
+      "deletedBy": "Supprimé par",
+      "createdAt": "Créé le",
+      "updatedAt": "Mis à jour le",
+      "deletedAt": "Supprimé le",
+      "reservation": "Réservation"
     }
   }
 }

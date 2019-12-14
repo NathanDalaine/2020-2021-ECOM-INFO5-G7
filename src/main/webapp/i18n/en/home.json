@@ -7,11 +7,11 @@
     },
     "question": "If you have any question on JHipster:",
     "link": {
-      "homepage": "JHipster homepage",
-      "stackoverflow": "JHipster on Stack Overflow",
-      "bugtracker": "JHipster bug tracker",
-      "chat": "JHipster public chat room",
-      "follow": "follow @java_hipster on Twitter"
+      "voiles": "See the sails list",
+      "planches": "See the boards list ",
+      "reservation": "Borrow equipment",
+      "rendu": "Return borrowed equipment",
+      "follow": "Follow us on Facebook, Instagram and Snapchat"
     },
     "like": "If you like JHipster, don't forget to give us a star on",
     "github": "GitHub"

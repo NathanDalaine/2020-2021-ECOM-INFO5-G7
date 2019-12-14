@@ -1,5 +1,7 @@
 package com.group6.app.repository;
 import com.group6.app.domain.Combinaison;
+import com.group6.app.domain.Harnais;
+import com.group6.app.domain.enumeration.Taille;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -11,4 +13,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CombinaisonRepository extends JpaRepository<Combinaison, Long> {
 
+    Combinaison findDistinctFirstByTailleAndReservationsIsNull(Taille taille);
 }

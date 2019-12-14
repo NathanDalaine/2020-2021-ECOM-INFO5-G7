@@ -54,8 +54,13 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "deletedBy",
-            "fieldType": "String"
+            "fieldName": "deletedAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "niveaurequis",
+            "fieldType": "Niveau",
+            "fieldValues": "DEBUTANT,DEBUTANTPLUS,FUNBOARD,PERF"
         }
     ],
     "relationships": [

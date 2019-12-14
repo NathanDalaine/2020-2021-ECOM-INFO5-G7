@@ -34,10 +34,11 @@ export class UserProfileUpdatePage {
   adresseInput = element(by.id('field_adresse'));
   telephoneInput = element(by.id('field_telephone'));
   typeAbonnementSelect = element(by.id('field_typeAbonnement'));
-  niveauSelect = element(by.id('field_niveau'));
   materielTechniqueAutoriseInput = element(by.id('field_materielTechniqueAutorise'));
   remarqueInput = element(by.id('field_remarque'));
-  reservationSelect = element(by.id('field_reservation'));
+  tailleHarnaisSelect = element(by.id('field_tailleHarnais'));
+  tailleCombinaisonSelect = element(by.id('field_tailleCombinaison'));
+  niveauSelect = element(by.id('field_niveau'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -121,21 +122,6 @@ export class UserProfileUpdatePage {
       .click();
   }
 
-  async setNiveauSelect(niveau) {
-    await this.niveauSelect.sendKeys(niveau);
-  }
-
-  async getNiveauSelect() {
-    return await this.niveauSelect.element(by.css('option:checked')).getText();
-  }
-
-  async niveauSelectLastOption(timeout?: number) {
-    await this.niveauSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
-  }
-
   getMaterielTechniqueAutoriseInput(timeout?: number) {
     return this.materielTechniqueAutoriseInput;
   }
@@ -164,6 +150,21 @@ export class UserProfileUpdatePage {
 
   async getReservationSelectedOption() {
     return await this.reservationSelect.element(by.css('option:checked')).getText();
+  }
+
+  async setNiveauSelect(niveau) {
+    await this.niveauSelect.sendKeys(niveau);
+  }
+
+  async getNiveauSelect() {
+    return await this.niveauSelect.element(by.css('option:checked')).getText();
+  }
+
+  async niveauSelectLastOption(timeout?: number) {
+    await this.niveauSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
   }
 
   async save(timeout?: number) {

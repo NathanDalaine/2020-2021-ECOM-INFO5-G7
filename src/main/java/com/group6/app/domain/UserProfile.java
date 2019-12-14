@@ -12,6 +12,8 @@ import com.group6.app.domain.enumeration.Taille;
 
 import com.group6.app.domain.enumeration.TypeAbonnement;
 
+import com.group6.app.domain.enumeration.Taille;
+
 import com.group6.app.domain.enumeration.Niveau;
 
 /**
@@ -55,10 +57,6 @@ public class UserProfile implements Serializable {
     @Column(name = "type_abonnement")
     private TypeAbonnement typeAbonnement;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "niveau")
-    private Niveau niveau;
-
     @Column(name = "materiel_technique_autorise")
     private Boolean materielTechniqueAutorise;
 
@@ -68,6 +66,17 @@ public class UserProfile implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("users")
     private Reservation reservation;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "taille_combinaison")
+    private Taille tailleCombinaison;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "niveau")
+    private Niveau niveau;
+
+    @OneToMany(mappedBy = "userProfile",fetch = FetchType.EAGER)
+    private Set<Reservation> reservations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -182,19 +191,6 @@ public class UserProfile implements Serializable {
         this.typeAbonnement = typeAbonnement;
     }
 
-    public Niveau getNiveau() {
-        return niveau;
-    }
-
-    public UserProfile niveau(Niveau niveau) {
-        this.niveau = niveau;
-        return this;
-    }
-
-    public void setNiveau(Niveau niveau) {
-        this.niveau = niveau;
-    }
-
     public Boolean isMaterielTechniqueAutorise() {
         return materielTechniqueAutorise;
     }
@@ -233,6 +229,57 @@ public class UserProfile implements Serializable {
     public void setReservation(Reservation reservation) {
         this.reservation = reservation;
     }
+
+    public Taille getTailleCombinaison() {
+        return tailleCombinaison;
+    }
+
+    public UserProfile tailleCombinaison(Taille tailleCombinaison) {
+        this.tailleCombinaison = tailleCombinaison;
+        return this;
+    }
+
+    public void setTailleCombinaison(Taille tailleCombinaison) {
+        this.tailleCombinaison = tailleCombinaison;
+    }
+
+    public Niveau getNiveau() {
+        return niveau;
+    }
+
+    public UserProfile niveau(Niveau niveau) {
+        this.niveau = niveau;
+        return this;
+    }
+
+    public void setNiveau(Niveau niveau) {
+        this.niveau = niveau;
+    }
+
+    public Set<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public UserProfile reservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
+        return this;
+    }
+
+    public UserProfile addReservation(Reservation reservation) {
+        this.reservations.add(reservation);
+        reservation.setUserProfile(this);
+        return this;
+    }
+
+    public UserProfile removeReservation(Reservation reservation) {
+        this.reservations.remove(reservation);
+        reservation.setUserProfile(null);
+        return this;
+    }
+
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -263,9 +310,11 @@ public class UserProfile implements Serializable {
             ", adresse='" + getAdresse() + "'" +
             ", telephone='" + getTelephone() + "'" +
             ", typeAbonnement='" + getTypeAbonnement() + "'" +
-            ", niveau='" + getNiveau() + "'" +
             ", materielTechniqueAutorise='" + isMaterielTechniqueAutorise() + "'" +
             ", remarque='" + getRemarque() + "'" +
+            ", tailleHarnais='" + getTailleHarnais() + "'" +
+            ", tailleCombinaison='" + getTailleCombinaison() + "'" +
+            ", niveau='" + getNiveau() + "'" +
             "}";
     }
 }

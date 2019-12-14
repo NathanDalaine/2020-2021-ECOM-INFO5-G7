@@ -5,7 +5,9 @@
         "title": "Reservations",
         "createLabel": "Create a new Reservation",
         "createOrEditLabel": "Create or edit a Reservation",
-        "notFound": "No Reservations found"
+        "yourHistoryNotFound": "There is no reservation in your history.",
+        "totalHistoryNotFound": "There is no reservation in the history.",
+        "notFound": "There is no reservation in progress."
       },
       "created": "A new Reservation is created with identifier {{ param }}",
       "updated": "A Reservation is updated with identifier {{ param }}",
@@ -16,20 +18,32 @@
       "detail": {
         "title": "Reservation"
       },
-      "dateReservation": "Date Reservation",
-      "dateRendu": "Date Rendu",
-      "remarques": "Remarques",
+      "dateReservation": "Reservation date",
+      "dateRendu": "Return date",
+      "remarques": "Observations",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "deletedBy": "Deleted By",
       "createdAt": "Created At",
       "createdBy": "Created By",
       "updatedAt": "Updated At",
       "updatedBy": "Updated By",
       "deletedAt": "Deleted At",
-      "deletedBy": "Deleted By",
-      "voile": "Voile",
+      "voile": "Sail",
       "user": "User",
-      "combinaison": "Combinaison",
-      "harnais": "Harnais",
-      "planche": "Planche"
+      "userProfile": "User Profile",
+      "combinaison": "Wetsuit",
+      "harnais": "Harness",
+      "planche": "Board",
+      "rechercheVoile": "Search for a sail",
+      "recherchePlanche": "Search for a board",
+      "lesVoiles": "Sails",
+      "lesPlanches": "Boards",
+      "reserve": "Make a reservation",
+      "sortName": "Sort by name",
+      "sortSurface": "Sort by surface",
+      "sortVolume": "Sort by volume",
+      "reservationSuccess": "Your reservation was made successfully"
     }
   }
 }

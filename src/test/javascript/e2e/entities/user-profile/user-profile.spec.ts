@@ -49,9 +49,10 @@ describe('UserProfile e2e test', () => {
       userProfileUpdatePage.setAdresseInput('adresse'),
       userProfileUpdatePage.setTelephoneInput('telephone'),
       userProfileUpdatePage.typeAbonnementSelectLastOption(),
-      userProfileUpdatePage.niveauSelectLastOption(),
       userProfileUpdatePage.setRemarqueInput('remarque'),
-      userProfileUpdatePage.reservationSelectLastOption()
+      userProfileUpdatePage.tailleHarnaisSelectLastOption(),
+      userProfileUpdatePage.tailleCombinaisonSelectLastOption(),
+      userProfileUpdatePage.niveauSelectLastOption()
     ]);
     expect(await userProfileUpdatePage.getLocalisationInput()).to.eq(
       'localisation',

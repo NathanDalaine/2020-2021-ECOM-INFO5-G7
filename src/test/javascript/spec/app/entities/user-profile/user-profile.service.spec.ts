@@ -7,7 +7,9 @@ import { UserProfileService } from 'app/entities/user-profile/user-profile.servi
 import { IUserProfile, UserProfile } from 'app/shared/model/user-profile.model';
 import { Taille } from 'app/shared/model/enumerations/taille.model';
 import { TypeAbonnement } from 'app/shared/model/enumerations/type-abonnement.model';
+import { Taille } from 'app/shared/model/enumerations/taille.model';
 import { Niveau } from 'app/shared/model/enumerations/niveau.model';
+import { User } from 'app/core/user/user.model';
 
 describe('Service Tests', () => {
   describe('UserProfile Service', () => {
@@ -28,6 +30,7 @@ describe('Service Tests', () => {
       currentDate = moment();
 
       elemDefault = new UserProfile(
+        new User(0),
         0,
         'AAAAAAA',
         currentDate,
@@ -37,9 +40,10 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         TypeAbonnement.JOURNALIER,
-        Niveau.DEBUTANT,
         false,
-        'AAAAAAA'
+        Taille.S,
+        Taille.S,
+        Niveau.DEBUTANT
       );
     });
 
@@ -101,9 +105,11 @@ describe('Service Tests', () => {
             adresse: 'BBBBBB',
             telephone: 'BBBBBB',
             typeAbonnement: 'BBBBBB',
-            niveau: 'BBBBBB',
             materielTechniqueAutorise: true,
-            remarque: 'BBBBBB'
+            remarque: 'BBBBBB',
+            tailleHarnais: 'BBBBBB',
+            tailleCombinaison: 'BBBBBB',
+            niveau: 'BBBBBB'
           },
           elemDefault
         );
@@ -136,9 +142,11 @@ describe('Service Tests', () => {
             adresse: 'BBBBBB',
             telephone: 'BBBBBB',
             typeAbonnement: 'BBBBBB',
-            niveau: 'BBBBBB',
             materielTechniqueAutorise: true,
-            remarque: 'BBBBBB'
+            remarque: 'BBBBBB',
+            tailleHarnais: 'BBBBBB',
+            tailleCombinaison: 'BBBBBB',
+            niveau: 'BBBBBB'
           },
           elemDefault
         );

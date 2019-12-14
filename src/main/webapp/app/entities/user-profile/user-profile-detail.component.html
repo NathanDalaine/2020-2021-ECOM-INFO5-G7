@@ -37,23 +37,27 @@
                 <dd>
                     <span jhiTranslate="{{'ecomgucvoileApp.TypeAbonnement.' + userProfile.typeAbonnement}}">{{userProfile.typeAbonnement}}</span>
                 </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.niveau">Niveau</span></dt>
-                <dd>
-                    <span jhiTranslate="{{'ecomgucvoileApp.Niveau.' + userProfile.niveau}}">{{userProfile.niveau}}</span>
-                </dd>
                 <dt><span jhiTranslate="ecomgucvoileApp.userProfile.materielTechniqueAutorise">Materiel Technique Autorise</span></dt>
                 <dd>
                     <span>{{userProfile.materielTechniqueAutorise}}</span>
-                </dd>
+                </dd><!--
                 <dt><span jhiTranslate="ecomgucvoileApp.userProfile.remarque">Remarque</span></dt>
                 <dd>
                     <span>{{userProfile.remarque}}</span>
-                </dd>
-                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.reservation">Reservation</span></dt>
+                </dd>-->
+                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.tailleHarnais">Taille Harnais</span></dt>
                 <dd>
                     <div *ngIf="userProfile.reservationId">
                         <a [routerLink]="['/reservation', userProfile.reservationId, 'view']">{{userProfile.reservationId}}</a>
                     </div>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.tailleCombinaison">Taille Combinaison</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'ecomgucvoileApp.Taille.' + userProfile.tailleCombinaison}}">{{userProfile.tailleCombinaison}}</span>
+                </dd>
+                <dt><span jhiTranslate="ecomgucvoileApp.userProfile.niveau">Niveau</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'ecomgucvoileApp.Niveau.' + userProfile.niveau}}">{{userProfile.niveau}}</span>
                 </dd>
             </dl>
 

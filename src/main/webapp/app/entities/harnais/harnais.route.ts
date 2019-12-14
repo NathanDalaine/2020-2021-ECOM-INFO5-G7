@@ -33,7 +33,7 @@ export const harnaisRoute: Routes = [
     path: '',
     component: HarnaisComponent,
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.harnais.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const harnaisRoute: Routes = [
       harnais: HarnaisResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.harnais.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -57,7 +57,7 @@ export const harnaisRoute: Routes = [
       harnais: HarnaisResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.harnais.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -69,7 +69,7 @@ export const harnaisRoute: Routes = [
       harnais: HarnaisResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.harnais.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -84,7 +84,7 @@ export const harnaisPopupRoute: Routes = [
       harnais: HarnaisResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.harnais.home.title'
     },
     canActivate: [UserRouteAccessService],

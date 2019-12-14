@@ -11,9 +11,22 @@
           "minlength": "Votre nom d'utilisateur doit contenir plus d'un caractère.",
           "maxlength": "Votre nom d'utilisateur ne peut pas contenir plus de 50 caractères.",
           "pattern": "Votre nom d'utilisateur ne peut contenir que des lettres minuscules ou des nombres."
+        },
+        "lastName": {
+          "required": "Votre nom de famille est obligatoire.",
+          "minlength": "Votre nom de famille doit contenir plus d'un caractère.",
+          "maxlength": "Votre nom de famille ne peut pas contenir plus de 50 caractères.",
+          "pattern": "Votre nom de famille ne peut contenir que des lettres minuscules ou des nombres."
+        },
+        "firstName": {
+          "required": "Votre prénom est obligatoire.",
+          "minlength": "Votre prénom doit contenir plus d'un caractère.",
+          "maxlength": "Votre prénom ne peut pas contenir plus de 50 caractères.",
+          "pattern": "Votre prénom ne peut contenir que des lettres minuscules ou des nombres."
         }
       },
-      "success": "<strong>Compte enregistré !</strong> Merci de vérifier votre email de confirmation.",
+      "success": "<strong>Compte enregistré !</strong>",
+      "successactivate": "<strong>Compte enregistré !</strong>",
       "error": {
         "fail": "<strong>Compte non créé !</strong> Merci d'essayer à nouveau plus tard.",
         "userexists": "<strong>Ce compte utilisateur existe déjà !</strong> Veuillez en choisir un autre.",

@@ -6,7 +6,11 @@
 Bootstrap tweaks
 ===============================================================*/
 
-body,
+body {
+  background-image: url('../images/background.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+}
 h1,
 h2,
 h3,

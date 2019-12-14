@@ -1,0 +1,35 @@
+{
+  "ecomgucvoileApp": {
+    "materialList": {
+      "home": {
+        "title": "Liste du matériel",
+        "createLabel": "Create a new Planche",
+        "createOrEditLabel": "Create or edit a Planche",
+        "notFound": "No Planches found"
+      },
+      "created": "A new Planche is created with identifier {{ param }}",
+      "updated": "A Planche is updated with identifier {{ param }}",
+      "deleted": "A Planche is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Planche {{ id }}?"
+      },
+      "detail": {
+        "title": "Planche"
+      },
+      "marque": "Marque",
+      "modele": "Modèle",
+      "numero": "Numéro",
+      "localisation": "Localisation",
+      "etat": "État",
+      "libelle": "Libellé",
+      "volume": "Volume",
+      "createdAt": "Créé let",
+      "createdBy": "Créé par",
+      "updatedAt": "Mis à jour le",
+      "updatedBy": "Mis à jour par",
+      "deletedAt": "Supprimé le",
+      "deletedBy": "Supprimé par",
+      "reservation": "Réservation"
+    }
+  }
+}

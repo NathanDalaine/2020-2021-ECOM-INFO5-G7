@@ -3,7 +3,7 @@
     "TypeAbonnement": {
       "null": "",
       "JOURNALIER": "JOURNALIER",
-      "ETUDIANT": "ETUDIANT",
+      "ETUDIANT": "ÉTUDIANT",
       "ADULTE": "ADULTE",
       "FAMILLE": "FAMILLE"
     }

@@ -1,9 +1,12 @@
 import { Moment } from 'moment';
 import { Taille } from 'app/shared/model/enumerations/taille.model';
 import { TypeAbonnement } from 'app/shared/model/enumerations/type-abonnement.model';
+import { Taille } from 'app/shared/model/enumerations/taille.model';
 import { Niveau } from 'app/shared/model/enumerations/niveau.model';
+import { IUser } from 'app/core/user/user.model';
 
 export interface IUserProfile {
+  user?: IUser;
   id?: number;
   localisation?: string;
   dateEcheance?: Moment;
@@ -13,14 +16,16 @@ export interface IUserProfile {
   adresse?: string;
   telephone?: string;
   typeAbonnement?: TypeAbonnement;
-  niveau?: Niveau;
   materielTechniqueAutorise?: boolean;
-  remarque?: string;
-  reservationId?: number;
+  tailleHarnais?: Taille;
+  tailleCombinaison?: Taille;
+  niveau?: Niveau;
+  reservations?: IReservation[];
 }
 
 export class UserProfile implements IUserProfile {
   constructor(
+    public user?: IUser,
     public id?: number,
     public localisation?: string,
     public dateEcheance?: Moment,
@@ -30,10 +35,11 @@ export class UserProfile implements IUserProfile {
     public adresse?: string,
     public telephone?: string,
     public typeAbonnement?: TypeAbonnement,
-    public niveau?: Niveau,
     public materielTechniqueAutorise?: boolean,
-    public remarque?: string,
-    public reservationId?: number
+    public tailleHarnais?: Taille,
+    public tailleCombinaison?: Taille,
+    public niveau?: Niveau,
+    public reservations?: IReservation[]
   ) {
     this.materielTechniqueAutorise = this.materielTechniqueAutorise || false;
   }

@@ -2,22 +2,25 @@
   "ecomgucvoileApp": {
     "combinaison": {
       "home": {
-        "title": "Combinaisons",
-        "createLabel": "Create a new Combinaison",
-        "createOrEditLabel": "Create or edit a Combinaison",
-        "notFound": "No Combinaisons found"
+        "title": "Wetsuits",
+        "createLabel": "Create a new Wetsuit",
+        "createOrEditLabel": "Create or edit a Wetsuit",
+        "notFound": "No Wetsuits found"
       },
-      "created": "A new Combinaison is created with identifier {{ param }}",
-      "updated": "A Combinaison is updated with identifier {{ param }}",
-      "deleted": "A Combinaison is deleted with identifier {{ param }}",
+      "created": "A new Wetsuit is created with identifier {{ param }}",
+      "updated": "A Wetsuit is updated with identifier {{ param }}",
+      "deleted": "A Wetsuit is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Combinaison {{ id }}?"
+        "question": "Are you sure you want to delete Wetsuit {{ id }}?"
       },
       "detail": {
-        "title": "Combinaison"
+        "title": "Wetsuit"
       },
-      "taille": "Taille",
-      "etat": "Etat",
+      "taille": "Size",
+      "etat": "State",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "deletedBy": "Deleted By",
       "createdAt": "Created At",
       "createdBy": "Created By",
       "updatedAt": "Updated At",

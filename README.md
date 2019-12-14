@@ -6,9 +6,7 @@ Cette application est à destination du GUC Voile et met en place un système de
 
 L'application a été généré par Jhipster (Angular/Spring/PostgreSQL).
 
-Ce dépôt reflète l'avancement du projet. 
-
-
+Ce dépôt reflète l'avancement du projet.
 
 ## Development
 

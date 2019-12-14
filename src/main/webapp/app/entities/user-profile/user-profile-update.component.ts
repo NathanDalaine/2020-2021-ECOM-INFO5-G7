@@ -31,12 +31,15 @@ export class UserProfileUpdateComponent implements OnInit {
     dateAdhesion: [],
     prefTaille: [],
     adresse: [],
+    //authoritie:[],
     telephone: [],
     typeAbonnement: [],
-    niveau: [],
     materielTechniqueAutorise: [],
     remarque: [],
-    reservationId: []
+    tailleHarnais: [],
+    tailleCombinaison: [],
+    niveau: [],
+    user: []
   });
 
   constructor(
@@ -70,12 +73,14 @@ export class UserProfileUpdateComponent implements OnInit {
       dateAdhesion: userProfile.dateAdhesion != null ? userProfile.dateAdhesion.format(DATE_TIME_FORMAT) : null,
       prefTaille: userProfile.prefTaille,
       adresse: userProfile.adresse,
+      //authoritie: userProfile.user.authorities[0],
       telephone: userProfile.telephone,
       typeAbonnement: userProfile.typeAbonnement,
-      niveau: userProfile.niveau,
       materielTechniqueAutorise: userProfile.materielTechniqueAutorise,
-      remarque: userProfile.remarque,
-      reservationId: userProfile.reservationId
+      tailleHarnais: userProfile.tailleHarnais,
+      tailleCombinaison: userProfile.tailleCombinaison,
+      niveau: userProfile.niveau,
+      user: userProfile.user
     });
   }
 
@@ -108,12 +113,14 @@ export class UserProfileUpdateComponent implements OnInit {
         this.editForm.get(['dateAdhesion']).value != null ? moment(this.editForm.get(['dateAdhesion']).value, DATE_TIME_FORMAT) : undefined,
       prefTaille: this.editForm.get(['prefTaille']).value,
       adresse: this.editForm.get(['adresse']).value,
+      //authoritie: this.editForm.get(['authoritie']).value,
       telephone: this.editForm.get(['telephone']).value,
       typeAbonnement: this.editForm.get(['typeAbonnement']).value,
-      niveau: this.editForm.get(['niveau']).value,
       materielTechniqueAutorise: this.editForm.get(['materielTechniqueAutorise']).value,
-      remarque: this.editForm.get(['remarque']).value,
-      reservationId: this.editForm.get(['reservationId']).value
+      tailleHarnais: this.editForm.get(['tailleHarnais']).value,
+      tailleCombinaison: this.editForm.get(['tailleCombinaison']).value,
+      niveau: this.editForm.get(['niveau']).value,
+      user: this.editForm.get(['user']).value
     };
   }
 

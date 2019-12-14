@@ -59,6 +59,14 @@ public class PlancheService {
             .collect(Collectors.toCollection(LinkedList::new));
     }
 
+    @Transactional(readOnly = true)
+    public List<PlancheDTO> findAllDamaged() {
+        log.debug("Request to get all Planches");
+        return plancheRepository.findByEtatNot("").stream()
+            .map(plancheMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
+
 
     /**
      * Get one planche by id.

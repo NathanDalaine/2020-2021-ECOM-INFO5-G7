@@ -7,6 +7,8 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 
+import com.group6.app.domain.enumeration.Niveau;
+
 /**
  * A Voile.
  */
@@ -67,6 +69,20 @@ public class Voile implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("voiles")
     private Reservation reservation;
+
+    @Column(name = "updated_at")
+    private Instant updatedAt;
+
+    @Column(name = "deleted_at")
+    private Instant deletedAt;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "niveaurequis")
+    private Niveau niveaurequis;
+
+    @OneToMany(mappedBy = "voile")
+    //@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Reservation> reservations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -246,8 +262,21 @@ public class Voile implements Serializable {
         this.deletedAt = deletedAt;
     }
 
-    public String getDeletedBy() {
-        return deletedBy;
+    public Niveau getNiveaurequis() {
+        return niveaurequis;
+    }
+
+    public Voile niveaurequis(Niveau niveaurequis) {
+        this.niveaurequis = niveaurequis;
+        return this;
+    }
+
+    public void setNiveaurequis(Niveau niveaurequis) {
+        this.niveaurequis = niveaurequis;
+    }
+
+    public Set<Reservation> getReservations() {
+        return reservations;
     }
 
     public Voile deletedBy(String deletedBy) {
@@ -306,7 +335,7 @@ public class Voile implements Serializable {
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", updatedBy='" + getUpdatedBy() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
-            ", deletedBy='" + getDeletedBy() + "'" +
+            ", niveaurequis='" + getNiveaurequis() + "'" +
             "}";
     }
 }

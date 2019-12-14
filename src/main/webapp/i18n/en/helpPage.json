@@ -1,0 +1,31 @@
+{
+  "helpPage": {
+    "title": "Help",
+    "subtitle": "This is your homepage",
+    "logged": {
+      "message": "You are logged in as user \"{{username}}\"."
+    },
+    "question": "If you have any question on JHipster:",
+    "link": {
+      "homepage": "JHipster homepage",
+      "stackoverflow": "JHipster on Stack Overflow",
+      "bugtracker": "JHipster bug tracker",
+      "chat": "JHipster public chat room",
+      "follow": "follow @java_hipster on Twitter"
+    },
+    "like": "If you like JHipster, don't forget to give us a star on",
+    "github": "GitHub",
+    "explanation": {
+      "text1": "Hello,",
+      "text2": "This page is here to explain how to use this application.",
+      "text3": "This application allows you to make a reservation for a sail and a board, for a specific time slot.",
+      "text4": "It's really simple!",
+      "text7": "Demander la création d'un compte par l'un des gestionnaire et une fois connecté, dirigez sur l'onglet Réservation.",
+      "text7": "Ask to an administrator for the creation of an accout and when connected to your account, go to Réservation.",
+      "text8": "On this page you will be able to chose a timeslot, and then one of the boards and sails currently available",
+      "text9": "You can also make a reservation for a harness and a wetsuit on this page, if you need one",
+      "text10": "When your reservation is done, you just have to come to GUC Voile to get your equipment!",
+      "text11": "For more information on GUC Voile, you can check our website :&nbsp;  <a href=\"https://www.guc-voile.com/\" style=\"background-color: rgb(255, 255, 255);\">https://www.guc-voile.com/</a>&nbsp;"
+    }
+  }
+}

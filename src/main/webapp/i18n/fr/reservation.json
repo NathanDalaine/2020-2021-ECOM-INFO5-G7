@@ -3,33 +3,45 @@
     "reservation": {
       "home": {
         "title": "Reservations",
-        "createLabel": "Créer un nouveau Reservation",
-        "createOrEditLabel": "Créer ou éditer un Reservation",
-        "notFound": "Aucun Reservation trouvé"
+        "createLabel": "Créer une nouvelle réservation",
+        "createOrEditLabel": "Créer ou éditer une réservation",
+        "yourHistoryNotFound": "Il n'y a aucune réservation dans votre historique.",
+        "totalHistoryNotFound": "Aucune réservation dans l'historique des réservations.",
+        "notFound": "Il n'y aucune réservation en cours."
       },
-      "created": "Un nouveau Reservation a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Reservation avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Reservation avec l'identifiant {{ param }} a été supprimé",
+      "created": "Une nouvelle réservation a été créé avec l'identifiant {{ param }}",
+      "updated": "La réservation avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "La réservation avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Reservation {{ id }} ?"
+        "question": "Etes-vous certain de vouloir supprimer la réservation {{ id }} ?"
       },
       "detail": {
         "title": "Reservation"
       },
-      "dateReservation": "Date Reservation",
-      "dateRendu": "Date Rendu",
+      "dateReservation": "Date de réservation",
+      "dateRendu": "Date de rendu",
       "remarques": "Remarques",
-      "createdAt": "Created At",
-      "createdBy": "Created By",
-      "updatedAt": "Updated At",
-      "updatedBy": "Updated By",
-      "deletedAt": "Deleted At",
-      "deletedBy": "Deleted By",
+      "createdBy": "Créé par",
+      "updatedBy": "Mis à jour par",
+      "deletedBy": "Supprimé par",
+      "createdAt": "Créé le",
+      "updatedAt": "Mis à jour le",
+      "deletedAt": "Supprimé le",
       "voile": "Voile",
-      "user": "User",
+      "user": "Utilisateur",
+      "userProfile": "User Profile",
       "combinaison": "Combinaison",
       "harnais": "Harnais",
-      "planche": "Planche"
+      "planche": "Planche",
+      "reserve": "Réserver",
+      "sortName": "Trier par nom",
+      "sortSurface": "Trier par surface",
+      "sortVolume": "Trier par volume",
+      "reservationSuccess": "Votre réservation a été effectué avec succès.",
+      "rechercheVoile": "Rechercher une voile",
+      "recherchePlanche": "Rechercher une planche",
+      "lesVoiles": "Les voiles",
+      "lesPlanches": "Les planches"
     }
   }
 }

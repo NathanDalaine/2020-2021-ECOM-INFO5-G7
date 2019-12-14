@@ -1,0 +1,44 @@
+{
+  "ecomgucvoileApp": {
+    "renduMateriel": {
+      "home": {
+        "title": "Rendu du matériel",
+        "createLabel": "Create a new Planche",
+        "createOrEditLabel": "Create or edit a Planche",
+        "notFound": "No Planches found"
+      },
+      "confirmation": "Confirmer le rendu",
+      "damage": "Le materiel rendu est endommagé",
+      "descriptiondamagetext": "Description du dommage :",
+      "circonstancedamagetext": "Circonstances du dommage :",
+      "validation": "Rendu validé",
+      "validationsplit": "Nouvelle Réservation créée",
+      "created": "A new Planche is created with identifier {{ param }}",
+      "updated": "A Planche is updated with identifier {{ param }}",
+      "deleted": "A Planche is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Planche {{ id }}?"
+      },
+      "detail": {
+        "title": "Planche"
+      },
+      "marque": "Marque",
+      "modele": "Modele",
+      "numero": "Numero",
+      "localisation": "Localisation",
+      "etat": "Etat",
+      "libelle": "Libelle",
+      "volume": "Volume",
+      "createdAt": "Created At",
+      "createdBy": "Created By",
+      "updatedAt": "Updated At",
+      "updatedBy": "Updated By",
+      "deletedAt": "Deleted At",
+      "deletedBy": "Deleted By",
+      "succes": "Réservation rendue avec succès. Vous allez être redirigé vers la page des réservations.",
+      "error": "Rendu impossible.",
+      "splitError": "Rendu en partie impossible.",
+      "reservation": "Reservation"
+    }
+  }
+}

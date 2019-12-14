@@ -36,7 +36,10 @@ export class PlancheUpdateComponent implements OnInit {
     updatedBy: [],
     deletedAt: [],
     deletedBy: [],
-    reservationId: []
+    createdAt: [],
+    updatedAt: [],
+    deletedAt: [],
+    niveaurequis: []
   });
 
   constructor(
@@ -77,7 +80,10 @@ export class PlancheUpdateComponent implements OnInit {
       updatedBy: planche.updatedBy,
       deletedAt: planche.deletedAt,
       deletedBy: planche.deletedBy,
-      reservationId: planche.reservationId
+      createdAt: planche.createdAt != null ? planche.createdAt.format(DATE_TIME_FORMAT) : null,
+      updatedAt: planche.updatedAt != null ? planche.updatedAt.format(DATE_TIME_FORMAT) : null,
+      deletedAt: planche.deletedAt != null ? planche.deletedAt.format(DATE_TIME_FORMAT) : null,
+      niveaurequis: planche.niveaurequis
     });
   }
 
@@ -112,7 +118,13 @@ export class PlancheUpdateComponent implements OnInit {
       updatedBy: this.editForm.get(['updatedBy']).value,
       deletedAt: this.editForm.get(['deletedAt']).value,
       deletedBy: this.editForm.get(['deletedBy']).value,
-      reservationId: this.editForm.get(['reservationId']).value
+      createdAt:
+        this.editForm.get(['createdAt']).value != null ? moment(this.editForm.get(['createdAt']).value, DATE_TIME_FORMAT) : undefined,
+      updatedAt:
+        this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
+      deletedAt:
+        this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
+      niveaurequis: this.editForm.get(['niveaurequis']).value
     };
   }
 

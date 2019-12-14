@@ -58,21 +58,23 @@ public class UserDTO {
     }
 
     public UserDTO(User user) {
-        this.id = user.getId();
-        this.login = user.getLogin();
-        this.firstName = user.getFirstName();
-        this.lastName = user.getLastName();
-        this.email = user.getEmail();
-        this.activated = user.getActivated();
-        this.imageUrl = user.getImageUrl();
-        this.langKey = user.getLangKey();
-        this.createdBy = user.getCreatedBy();
-        this.createdDate = user.getCreatedDate();
-        this.lastModifiedBy = user.getLastModifiedBy();
-        this.lastModifiedDate = user.getLastModifiedDate();
-        this.authorities = user.getAuthorities().stream()
-            .map(Authority::getName)
-            .collect(Collectors.toSet());
+        if (user != null) {
+            this.id = user.getId();
+            this.login = user.getLogin();
+            this.firstName = user.getFirstName();
+            this.lastName = user.getLastName();
+            this.email = user.getEmail();
+            this.activated = user.getActivated();
+            this.imageUrl = user.getImageUrl();
+            this.langKey = user.getLangKey();
+            this.createdBy = user.getCreatedBy();
+            this.createdDate = user.getCreatedDate();
+            this.lastModifiedBy = user.getLastModifiedBy();
+            this.lastModifiedDate = user.getLastModifiedDate();
+            this.authorities = user.getAuthorities().stream()
+                .map(Authority::getName)
+                .collect(Collectors.toSet());
+        }
     }
 
     public Long getId() {
@@ -81,6 +83,10 @@ public class UserDTO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public boolean getActivated(){
+        return activated;
     }
 
     public String getLogin() {
