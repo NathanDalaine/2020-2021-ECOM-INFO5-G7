@@ -96,6 +96,7 @@
           "link": "connecter",
           "suffix": ", vous pouvez utiliser les comptes par défaut : <br/> - Administrateur (nom d'utilisateur=\"admin\" et mot de passe =\"admin\") <br/> - Utilisateur (nom d'utilisateur=\"user\" et mot de passe =\"user\")."
         },
+        "cgu": "Conditions générales d'utilisation",
         "register": {
           "noaccount": "Vous n'avez pas encore de compte ?",
           "alreadyaccount": "Vous souhaitez vous connecter a votre compte ?",
