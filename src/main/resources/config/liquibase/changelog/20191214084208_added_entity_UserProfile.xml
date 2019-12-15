@@ -12,6 +12,7 @@
                   separator=";"
                   tableName="user_profile">
             <column name="id" type="numeric"/>
+            <column name="user_id" type="numeric"/>
             <column name="date_echeance" type="datetime"/>
             <column name="date_naissance" type="datetime"/>
             <column name="date_adhesion" type="datetime"/>
