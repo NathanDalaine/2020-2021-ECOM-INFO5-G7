@@ -6,7 +6,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <changeSet id="20191015084208-1-data" author="jhipster" context="faker">
+    <changeSet id="20191015084208-1-data" author="jhipster">
         <loadData
                   file="config/liquibase/fake-data/user_profile.csv"
                   separator=";"
