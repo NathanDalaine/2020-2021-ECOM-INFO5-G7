@@ -4,10 +4,7 @@ import com.group6.app.domain.Combinaison;
 import com.group6.app.domain.Harnais;
 import com.group6.app.domain.Reservation;
 import com.group6.app.domain.UserProfile;
-import com.group6.app.repository.CombinaisonRepository;
-import com.group6.app.repository.HarnaisRepository;
-import com.group6.app.repository.UserProfileRepository;
-import com.group6.app.repository.UserRepository;
+import com.group6.app.repository.*;
 import com.group6.app.security.SecurityUtils;
 import com.group6.app.security.SecurityUtils;
 import com.group6.app.service.ReservationService;
@@ -53,13 +50,15 @@ public class ReservationResource {
     private final UserProfileRepository userProfileRepository;
     private final HarnaisRepository harnaisRepository;
     private final CombinaisonRepository combinaisonRepository;
+    private final ReservationRepository reservationRepository;
     private final ReservationService reservationService;
 
-    public ReservationResource(ReservationService reservationService,UserProfileRepository userProfileRepository,HarnaisRepository harnaisRepository,CombinaisonRepository combinaisonRepository) {
+    public ReservationResource(ReservationService reservationService,UserProfileRepository userProfileRepository,ReservationRepository reservationRepository,HarnaisRepository harnaisRepository,CombinaisonRepository combinaisonRepository) {
         this.reservationService = reservationService;
         this.userProfileRepository = userProfileRepository;
         this.harnaisRepository = harnaisRepository;
         this.combinaisonRepository = combinaisonRepository;
+        this.reservationRepository = reservationRepository;
     }
 
     /**
@@ -77,15 +76,31 @@ public class ReservationResource {
         }
         if (SecurityUtils.getCurrentUserLogin().isPresent()) {
             Optional<UserProfile> user = userProfileRepository.findById(reservationDTO.getUserProfileId());
-            Harnais harnais = harnaisRepository.findDistinctFirstByTailleAndReservationsIsNull(user.get().getTailleHarnais());
+            Harnais har = new Harnais();
+            List<Harnais> harnais = harnaisRepository.findByTaille(user.get().getTailleHarnais());
+            for (Harnais h: harnais) {
+                Reservation r = reservationRepository.findDistinctFirstByHarnaisAndDateRenduIsNull(h);
+                if(r == null){
+                    har = h;
+                    break;
+                }
+            }
             if (reservationDTO.getHarnaisId() != null) {
-                if(harnais == null){
+                if(har == null){
                     throw new NoHarnessAvailableException();
                 }
             }
             if (reservationDTO.getCombinaisonId() != null) {
-                Combinaison combi = combinaisonRepository.findDistinctFirstByTailleAndReservationsIsNull(user.get().getTailleCombinaison());
-                if(combi == null){
+                Combinaison com = new Combinaison();
+                List<Combinaison> combi = combinaisonRepository.findByTaille(user.get().getTailleCombinaison());
+                for (Combinaison h: combi) {
+                    Reservation r = reservationRepository.findDistinctFirstByCombinaisonAndDateRenduIsNull(h);
+                    if(r == null){
+                        com = h;
+                        break;
+                    }
+                }
+                if(com == null){
                     throw new NoWetsuitAvailableException();
                 }
             }

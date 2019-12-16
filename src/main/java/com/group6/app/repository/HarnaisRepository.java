@@ -4,6 +4,8 @@ import com.group6.app.domain.enumeration.Taille;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 /**
  * Spring Data  repository for the Harnais entity.
@@ -11,5 +13,5 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface HarnaisRepository extends JpaRepository<Harnais, Long> {
-    Harnais findDistinctFirstByTailleAndReservationsIsNull(Taille taille);
+    List<Harnais> findByTaille(Taille taille);
 }
