@@ -251,7 +251,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     this.voiles = new Array<Voile>();
     if (voiles != null) {
       voiles.forEach(v => {
-        if (v.etat !== '') {
+        if (v.etat !== null) {
           keep = false;
         } else if (v.reservations != null) {
           v.reservations.forEach(r => {
@@ -333,7 +333,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     this.planches = new Array<Planche>();
     if (planches != null) {
       planches.forEach(v => {
-        if (v.etat !== '') {
+        if (v.etat !== null) {
           keep = false;
         } else if (v.reservations != null) {
           v.reservations.forEach(r => {

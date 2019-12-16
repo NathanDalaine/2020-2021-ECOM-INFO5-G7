@@ -8,7 +8,8 @@
             <li jhiTranslate="home.link.planches">See the list of the board</li>
             <li jhiTranslate="home.link.reservation">See your reservation</li>
             <li jhiTranslate="home.link.rendu">Return your material</li>
-            <li><a href="https://www.facebook.com/GucVoile/" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.follow">follow us on Facbook</a></li>
+            <li><a href="https://www.facebook.com/GucVoile/" target="_blank" rel="noopener noreferrer"
+                   jhiTranslate="home.link.follow">follow us on Facbook</a></li>
         </ul>
     </div>
 
@@ -20,14 +21,18 @@
         <div [ngSwitch]="isAuthenticated()">
             <div class="alert alert-success" *ngSwitchCase="true">
                 <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"
-                    [translateValues]="{username: account.login}"> You are logged in as user "{{account.login}}". </span>
+                      [translateValues]="{username: account.login}"> You are logged in as user "{{account.login}}
+                    ". </span>
             </div>
             <br><br><br>
-            <!--span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>
-            <a class="alert-link" routerLink="account/register" jhiTranslate="global.messages.info.register.link">Register a new account</a><br-->
-            <span jhiTranslate="global.messages.info.register.alreadyaccount">You want to connect? </span>&nbsp;
-            <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.register.connect">Connect</a><br>
-            <a href="../../../content/cgu.pdf" target="_blank" rel="noopener noreferrer" jhiTranslate="global.messages.info.cgu">Condition générales d'utilisations</a>
+            <div *ngSwitchCase="false">
+                <!--span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>
+                <a class="alert-link" routerLink="account/register" jhiTranslate="global.messages.info.register.link">Register a new account</a><br-->
+                <span jhiTranslate="global.messages.info.register.alreadyaccount">You want to connect? </span>&nbsp;
+                <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.register.connect">Connect</a><br>
+            </div>
+            <a href="../../../content/cgu.pdf" target="_blank" rel="noopener noreferrer"
+               jhiTranslate="global.messages.info.cgu">Condition générales d'utilisations</a>
 
         </div>
     </div>
