@@ -96,6 +96,15 @@ Vacances de la Toussaint
 - Elaboration des statistiques
 - Finalisation du rendu de materiel
 - Correction pour la reservation et le rendu (désormais qu'une seule par membre)
-- Elaboraration du Diapo
+- Elaboraration du Diaporama
 - Finalisation de l'application
 - Mise en production de l'application
+- Ajout de documentation pour l'architecture
+- Tri du materiel selon d'autres critères (volume et surface)
+- Rendu du matériel avec dommage (email)
+- Rendu d'une partie du matériel
+- Création d'une boite email GUC Voile
+- Gestionnaire peut voir les reservations
+- Gestionnaire peut réserver et rendre les réservations
+- Gestion du materiel endommagé
+- Historique des réservations
