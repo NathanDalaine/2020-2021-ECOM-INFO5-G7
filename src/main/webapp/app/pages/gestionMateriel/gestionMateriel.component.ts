@@ -90,7 +90,7 @@ export class GestionMaterielComponent implements OnInit {
   }
 
   setPlancheEnEtat(planche: IPlanche) {
-    planche.etat = '';
+    planche.etat = null;
     this.plancheService.update(planche).subscribe(() => this.loadAll());
   }
 
