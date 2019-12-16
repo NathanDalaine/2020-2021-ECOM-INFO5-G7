@@ -4,10 +4,7 @@ import com.group6.app.domain.Combinaison;
 import com.group6.app.domain.Harnais;
 import com.group6.app.domain.Reservation;
 import com.group6.app.domain.UserProfile;
-import com.group6.app.repository.CombinaisonRepository;
-import com.group6.app.repository.HarnaisRepository;
-import com.group6.app.repository.UserProfileRepository;
-import com.group6.app.repository.UserRepository;
+import com.group6.app.repository.*;
 import com.group6.app.security.SecurityUtils;
 import com.group6.app.security.SecurityUtils;
 import com.group6.app.service.ReservationService;
@@ -54,12 +51,14 @@ public class ReservationResource {
     private final HarnaisRepository harnaisRepository;
     private final CombinaisonRepository combinaisonRepository;
     private final ReservationService reservationService;
+    private final ReservationRepository reservationRepository;
 
-    public ReservationResource(ReservationService reservationService,UserProfileRepository userProfileRepository,HarnaisRepository harnaisRepository,CombinaisonRepository combinaisonRepository) {
+    public ReservationResource(ReservationService reservationService, ReservationRepository reservationRepository,UserProfileRepository userProfileRepository, HarnaisRepository harnaisRepository, CombinaisonRepository combinaisonRepository) {
         this.reservationService = reservationService;
         this.userProfileRepository = userProfileRepository;
         this.harnaisRepository = harnaisRepository;
         this.combinaisonRepository = combinaisonRepository;
+        this.reservationRepository = reservationRepository;
     }
 
     /**
@@ -77,29 +76,45 @@ public class ReservationResource {
         }
         if (SecurityUtils.getCurrentUserLogin().isPresent()) {
             Optional<UserProfile> user = userProfileRepository.findById(reservationDTO.getUserProfileId());
-            Harnais harnais = harnaisRepository.findDistinctFirstByTailleAndReservationsIsNull(user.get().getTailleHarnais());
+            Harnais har = new Harnais();
+            List<Harnais> harnais = harnaisRepository.findByTaille(user.get().getTailleHarnais());
+            for (Harnais h : harnais) {
+                Reservation r = reservationRepository.findDistinctFirstByHarnaisAndDateRenduIsNull(h);
+                if (r == null) {
+                    har = h;
+                    break;
+                }
+            }
             if (reservationDTO.getHarnaisId() != null) {
-                if(harnais == null){
+                if (har == null) {
                     throw new NoHarnessAvailableException();
                 }
             }
             if (reservationDTO.getCombinaisonId() != null) {
-                Combinaison combi = combinaisonRepository.findDistinctFirstByTailleAndReservationsIsNull(user.get().getTailleCombinaison());
-                if(combi == null){
+                Combinaison com = new Combinaison();
+                List<Combinaison> combi = combinaisonRepository.findByTaille(user.get().getTailleCombinaison());
+                for (Combinaison h : combi) {
+                    Reservation r = reservationRepository.findDistinctFirstByCombinaisonAndDateRenduIsNull(h);
+                    if (r == null) {
+                        com = h;
+                        break;
+                    }
+                }
+                if (com == null) {
                     throw new NoWetsuitAvailableException();
                 }
             }
             Set<Reservation> reservations = user.get().getReservations();
             Iterator iter = reservations.iterator();
             Reservation res;
-            while(iter.hasNext()){
+            while (iter.hasNext()) {
                 res = (Reservation) iter.next();
-                if(res.getDateRendu() == null && res.getDateReservation() != null){
+                if (res.getDateRendu() == null && res.getDateReservation() != null) {
                     throw new AlreadyReservedExeception();
                 }
             }
             Instant d = Instant.now();
-            if(user.get().getDateEcheance().compareTo(d) < 0){
+            if (user.get().getDateEcheance().compareTo(d) < 0) {
                 throw new DueDatePassedException();
             }
         }
@@ -153,7 +168,6 @@ public class ReservationResource {
     /**
      * {@code GET  /reservations} : get all the reservations.
      *
-
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of reservations in body.
      */
     @GetMapping("/reservations")

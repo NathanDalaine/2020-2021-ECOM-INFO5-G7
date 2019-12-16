@@ -5,6 +5,8 @@ import com.group6.app.domain.enumeration.Taille;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 /**
  * Spring Data  repository for the Combinaison entity.
@@ -13,5 +15,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CombinaisonRepository extends JpaRepository<Combinaison, Long> {
 
-    Combinaison findDistinctFirstByTailleAndReservationsIsNull(Taille taille);
+    List<Combinaison> findByTaille(Taille taille);
 }

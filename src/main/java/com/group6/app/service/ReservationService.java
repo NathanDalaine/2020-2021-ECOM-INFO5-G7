@@ -74,12 +74,24 @@ public class ReservationService {
             Taille tailleHarnais = user.get().getTailleHarnais();
             Taille tailleCombinaison = user.get().getTailleCombinaison();
             if (reservationDTO.getHarnaisId() != null) {
-                Harnais harnais = harnaisRepository.findDistinctFirstByTailleAndReservationsIsNull(tailleHarnais);
-                reservation.setHarnais(harnais);
+                List<Harnais> harnais = harnaisRepository.findByTaille(tailleHarnais);
+                for (Harnais h: harnais) {
+                    Reservation r = reservationRepository.findDistinctFirstByHarnaisAndDateRenduIsNull(h);
+                    if(r == null){
+                        reservation.setHarnais(h);
+                        break;
+                    }
+                }
             }
             if (reservationDTO.getCombinaisonId() != null) {
-                Combinaison combi = combinaisonRepository.findDistinctFirstByTailleAndReservationsIsNull(tailleCombinaison);
-                reservation.setCombinaison(combi);
+                List<Combinaison> combi = combinaisonRepository.findByTaille(tailleCombinaison);
+                for (Combinaison h: combi) {
+                    Reservation r = reservationRepository.findDistinctFirstByCombinaisonAndDateRenduIsNull(h);
+                    if(r == null){
+                        reservation.setCombinaison(h);
+                        break;
+                    }
+                }
             }
         } else {
             reservation.setCreatedBy("Anonymoususer");
