@@ -8,6 +8,13 @@ L'application a été généré par Jhipster (Angular/Spring/PostgreSQL).
 
 Ce dépôt reflète l'avancement du projet. 
 
+Lien du site:
+https://guc-voile.westeurope.cloudapp.azure.com/
+
+Identifiant par défaut :
+- Login : gucvoile6
+- Mot de passe : GUCvoile6Polytech
+
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
