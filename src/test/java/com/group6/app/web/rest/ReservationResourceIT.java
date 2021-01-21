@@ -116,7 +116,11 @@ public class ReservationResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
+<<<<<<< HEAD
         final ReservationResource reservationResource = new ReservationResource(reservationService,userProfileRepository,reservationRepository,harnaisRepository,combinaisonRepository);
+=======
+        final ReservationResource reservationResource = new ReservationResource(reservationService,reservationRepository,userProfileRepository,harnaisRepository,combinaisonRepository);
+>>>>>>> 5489ded3dac65423b21f05a21e11c2a64deb298c
         this.restReservationMockMvc = MockMvcBuilders.standaloneSetup(reservationResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

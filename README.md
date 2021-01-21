@@ -6,7 +6,15 @@ Cette application est à destination du GUC Voile et met en place un système de
 
 L'application a été généré par Jhipster (Angular/Spring/PostgreSQL).
 
-Ce dépôt reflète l'avancement du projet. 
+Ce dépôt reflète l'avancement du projet.
+
+Lien du site:
+https://guc-voile.westeurope.cloudapp.azure.com/
+
+Identifiant par défaut :
+
+- Login : gucvoile6
+- Mot de passe : GUCvoile6Polytech
 
 ## Development
 

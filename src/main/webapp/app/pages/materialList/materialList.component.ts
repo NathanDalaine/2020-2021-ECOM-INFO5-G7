@@ -1,25 +1,20 @@
-import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
-import {AccountService} from 'app/core/auth/account.service';
-import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
-import {filter, map} from 'rxjs/operators';
-import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
-import {IVoile, Voile} from 'app/shared/model/voile.model';
-import {IPlanche, Planche} from 'app/shared/model/planche.model';
-import {VoileService} from '../../entities/voile/voile.service';
-import {PlancheService} from '../../entities/planche/planche.service';
-import {FormBuilder} from '@angular/forms';
-import {ReservationService} from 'app/entities/reservation/reservation.service';
-import {ConfirmService} from 'app/shared/confirm/confirm.service';
-import {TranslateService} from '@ngx-translate/core';
-import {
-  ALREADY_RESERVED,
-  DUE_DATE_PASSED,
-  NO_HARNESS_AVAILABLE,
-  NO_WETSUIT_AVAILABLE
-} from 'app/shared/constants/error.constants';
-import {IUserProfile} from 'app/shared/model/user-profile.model';
-import {UserProfileService} from 'app/entities/user-profile/user-profile.service';
-import {Niveau} from "app/shared/model/enumerations/niveau.model";
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { AccountService } from 'app/core/auth/account.service';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { filter, map } from 'rxjs/operators';
+import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
+import { IVoile, Voile } from 'app/shared/model/voile.model';
+import { IPlanche, Planche } from 'app/shared/model/planche.model';
+import { VoileService } from '../../entities/voile/voile.service';
+import { PlancheService } from '../../entities/planche/planche.service';
+import { FormBuilder } from '@angular/forms';
+import { ReservationService } from 'app/entities/reservation/reservation.service';
+import { ConfirmService } from 'app/shared/confirm/confirm.service';
+import { TranslateService } from '@ngx-translate/core';
+import { ALREADY_RESERVED, DUE_DATE_PASSED, NO_HARNESS_AVAILABLE, NO_WETSUIT_AVAILABLE } from 'app/shared/constants/error.constants';
+import { IUserProfile } from 'app/shared/model/user-profile.model';
+import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
+import { Niveau } from 'app/shared/model/enumerations/niveau.model';
 
 @Component({
   selector: 'jhi-materiallist',
@@ -112,8 +107,8 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     );
   }
 
-  private checkLevelPlanche(planche:IPlanche): boolean{
-    if(planche != null) {
+  private checkLevelPlanche(planche: IPlanche): boolean {
+    if (planche != null) {
       const id = Number(this.registerForm.get('userProfileId').value);
       const thisuser: IUserProfile = this.users.find(user => user.id === id);
       switch (planche.niveaurequis) {
@@ -139,8 +134,8 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     return true;
   }
 
-  private checkLevelVoile(voile:IVoile): boolean{
-    if(voile != null) {
+  private checkLevelVoile(voile: IVoile): boolean {
+    if (voile != null) {
       const id = Number(this.registerForm.get('userProfileId').value);
       const thisuser: IUserProfile = this.users.find(element => element.id === id);
       switch (voile.niveaurequis) {
@@ -176,7 +171,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
         this.registerForm.get('combinaison').value,
         this.registerForm.get('harnais').value,
         this.checkLevelVoile(this.selectedVoile).valueOf(),
-        this.checkLevelPlanche(this.selectedPlanche).valueOf(),
+        this.checkLevelPlanche(this.selectedPlanche).valueOf()
       )
       .then(confirmed => {
         if (confirmed) {
@@ -251,7 +246,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     this.voiles = new Array<Voile>();
     if (voiles != null) {
       voiles.forEach(v => {
-        if (v.etat !== null && v.etat !== "") {
+        if (v.etat !== null && v.etat !== '') {
           keep = false;
         } else if (v.reservations != null) {
           v.reservations.forEach(r => {
@@ -333,7 +328,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     this.planches = new Array<Planche>();
     if (planches != null) {
       planches.forEach(v => {
-        if (v.etat !== null && v.etat !== "") {
+        if (v.etat !== null && v.etat !== '') {
           keep = false;
         } else if (v.reservations != null) {
           v.reservations.forEach(r => {

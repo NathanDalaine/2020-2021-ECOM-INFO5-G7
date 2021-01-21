@@ -12,6 +12,8 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
+
     Reservation findDistinctFirstByHarnaisAndDateRenduIsNull(Harnais harnais);
     Reservation findDistinctFirstByCombinaisonAndDateRenduIsNull(Combinaison combinaison);
+
 }

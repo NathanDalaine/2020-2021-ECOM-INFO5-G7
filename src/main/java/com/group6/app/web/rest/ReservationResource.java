@@ -52,8 +52,11 @@ public class ReservationResource {
     private final CombinaisonRepository combinaisonRepository;
     private final ReservationRepository reservationRepository;
     private final ReservationService reservationService;
+    private final ReservationRepository reservationRepository;
+
 
     public ReservationResource(ReservationService reservationService,UserProfileRepository userProfileRepository,ReservationRepository reservationRepository,HarnaisRepository harnaisRepository,CombinaisonRepository combinaisonRepository) {
+
         this.reservationService = reservationService;
         this.userProfileRepository = userProfileRepository;
         this.harnaisRepository = harnaisRepository;
@@ -78,43 +81,63 @@ public class ReservationResource {
             Optional<UserProfile> user = userProfileRepository.findById(reservationDTO.getUserProfileId());
             Harnais har = new Harnais();
             List<Harnais> harnais = harnaisRepository.findByTaille(user.get().getTailleHarnais());
+<<<<<<< HEAD
             for (Harnais h: harnais) {
                 Reservation r = reservationRepository.findDistinctFirstByHarnaisAndDateRenduIsNull(h);
                 if(r == null){
+=======
+            for (Harnais h : harnais) {
+                Reservation r = reservationRepository.findDistinctFirstByHarnaisAndDateRenduIsNull(h);
+                if (r == null) {
+>>>>>>> 5489ded3dac65423b21f05a21e11c2a64deb298c
                     har = h;
                     break;
                 }
             }
             if (reservationDTO.getHarnaisId() != null) {
+<<<<<<< HEAD
                 if(har == null){
+=======
+                if (har == null) {
+>>>>>>> 5489ded3dac65423b21f05a21e11c2a64deb298c
                     throw new NoHarnessAvailableException();
                 }
             }
             if (reservationDTO.getCombinaisonId() != null) {
                 Combinaison com = new Combinaison();
                 List<Combinaison> combi = combinaisonRepository.findByTaille(user.get().getTailleCombinaison());
+<<<<<<< HEAD
                 for (Combinaison h: combi) {
                     Reservation r = reservationRepository.findDistinctFirstByCombinaisonAndDateRenduIsNull(h);
                     if(r == null){
+=======
+                for (Combinaison h : combi) {
+                    Reservation r = reservationRepository.findDistinctFirstByCombinaisonAndDateRenduIsNull(h);
+                    if (r == null) {
+>>>>>>> 5489ded3dac65423b21f05a21e11c2a64deb298c
                         com = h;
                         break;
                     }
                 }
+<<<<<<< HEAD
                 if(com == null){
+=======
+                if (com == null) {
+>>>>>>> 5489ded3dac65423b21f05a21e11c2a64deb298c
                     throw new NoWetsuitAvailableException();
                 }
             }
             Set<Reservation> reservations = user.get().getReservations();
             Iterator iter = reservations.iterator();
             Reservation res;
-            while(iter.hasNext()){
+            while (iter.hasNext()) {
                 res = (Reservation) iter.next();
-                if(res.getDateRendu() == null && res.getDateReservation() != null){
+                if (res.getDateRendu() == null && res.getDateReservation() != null) {
                     throw new AlreadyReservedExeception();
                 }
             }
             Instant d = Instant.now();
-            if(user.get().getDateEcheance().compareTo(d) < 0){
+            if (user.get().getDateEcheance().compareTo(d) < 0) {
                 throw new DueDatePassedException();
             }
         }
@@ -168,7 +191,6 @@ public class ReservationResource {
     /**
      * {@code GET  /reservations} : get all the reservations.
      *
-
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of reservations in body.
      */
     @GetMapping("/reservations")

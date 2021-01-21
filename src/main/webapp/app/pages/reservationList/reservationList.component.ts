@@ -1,4 +1,7 @@
-import {Component, OnInit, OnDestroy, ViewEncapsulation} from '@angular/core';
+import { Reservation } from './../../shared/model/reservation.model';
+import { moment } from 'moment/moment';
+import { IReservation } from './../../shared/model/reservation.model';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { AccountService } from 'app/core/auth/account.service';
 import { JhiAlertService } from 'ng-jhipster';
 import { ReservationService } from 'app/entities/reservation/reservation.service';
@@ -8,6 +11,9 @@ import { IReservationFull } from 'app/shared/model/reservationFull.model';
 import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
 import { IUserProfile } from 'app/shared/model/user-profile.model';
 import { ADMINISTRATEUR, GESTIONNAIRE } from 'app/shared/constants/roles.constants';
+import { ConfirmService } from 'app/shared/confirm/confirm.service';
+import { TranslateService } from '@ngx-translate/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'jhi-reservationlist',
@@ -20,12 +26,16 @@ export class ReservationListComponent implements OnInit, OnDestroy {
   reservations: IReservationFull[];
   pastReservation: IReservationFull[];
   currentUserProfile: IUserProfile;
+  newReservation: IReservation;
 
   constructor(
     protected accountService: AccountService,
     protected userProfileService: UserProfileService,
     protected reservationService: ReservationService,
-    protected jhiAlertService: JhiAlertService
+    protected jhiAlertService: JhiAlertService,
+    protected confirmService: ConfirmService,
+    protected translate: TranslateService,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit() {
@@ -33,6 +43,57 @@ export class ReservationListComponent implements OnInit, OnDestroy {
       this.currentAccount = account;
     });
     this.loadAll();
+  }
+
+  reserve(reservation: IReservationFull) {
+    this.reservationService.create(this.newReservation).subscribe(
+      () => {
+        this.success = true;
+      },
+      response => this.processError(response)
+    );
+  }
+
+  public openConfirmationDialog(reservation: IReservationFull) {
+    this.confirmService
+      .confirm(
+        this.translate.instant('global.messages.confirm.pleaseConfirm'),
+        '',
+        reservation.voile,
+        reservation.planche,
+        reservation.combinaison,
+        reservation.harnais,
+        true,
+        true
+      )
+      .then(confirmed => {
+        this.newReservation = new Reservation();
+        if (reservation.combinaison == null) {
+          this.newReservation.combinaisonId = null;
+        } else {
+          this.newReservation.combinaisonId = reservation.combinaison.id;
+        }
+        if (reservation.harnais == null) {
+          this.newReservation.harnaisId = null;
+        } else {
+          this.newReservation.harnaisId = reservation.harnais.id;
+        }
+        if (reservation.voile == null) {
+          this.newReservation.voileId = null;
+        } else {
+          this.newReservation.voileId = reservation.voile.id;
+        }
+        if (reservation.planche == null) {
+          this.newReservation.plancheId = null;
+        } else {
+          this.newReservation.plancheId = reservation.planche.id;
+        }
+        this.newReservation.userProfileId = reservation.userProfile.id;
+        if (confirmed) {
+          this.reserve();
+        }
+      })
+      .catch();
   }
 
   loadAll() {
