@@ -33,7 +33,7 @@ export const userProfileRoute: Routes = [
     path: '',
     component: UserProfileComponent,
     data: {
-      authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.userProfile.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const userProfileRoute: Routes = [
       userProfile: UserProfileResolve
     },
     data: {
-      authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'ecomgucvoileApp.userProfile.home.title'
     },
     canActivate: [UserRouteAccessService]

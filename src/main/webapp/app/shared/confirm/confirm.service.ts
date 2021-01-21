@@ -16,6 +16,8 @@ export class ConfirmService {
     planche: IPlanche = null,
     combinaison = false,
     harnais = false,
+    voileOK = true,
+    plancheOK= true,
     btnOkText = 'OK',
     btnCancelText = 'Cancel',
     dialogSize: 'sm' | 'lg' = 'sm'
@@ -27,6 +29,8 @@ export class ConfirmService {
     modalRef.componentInstance.planche = planche;
     modalRef.componentInstance.combinaison = combinaison;
     modalRef.componentInstance.harnais = harnais;
+    modalRef.componentInstance.voileOK = voileOK;
+    modalRef.componentInstance.plancheOK = plancheOK;
     modalRef.componentInstance.btnOkText = btnOkText;
     modalRef.componentInstance.btnCancelText = btnCancelText;
     return modalRef.result;

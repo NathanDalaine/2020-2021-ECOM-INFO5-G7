@@ -1,9 +1,18 @@
-<div class="row justify-content-center">
+<div class="alert alert-success" *ngIf="success" jhiTranslate="ecomgucvoileApp.renduMateriel.succes">
+    reservationSuccess
+</div>
+<div class="alert alert-success" *ngIf="error" jhiTranslate="ecomgucvoileApp.renduMateriel.error">
+    error
+</div>
+<div class="alert alert-success" *ngIf="error" jhiTranslate="ecomgucvoileApp.renduMateriel.splitError">
+    split error
+</div>
+<div  *ngIf="!success" class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="reservation">
             <h2><span jhiTranslate="ecomgucvoileApp.renduMateriel.home.title">Rendu Materiel</span></h2>
             <hr>
-            <jhi-alert></jhi-alert>
+
             <dt class="row-md jh-entity-details">
             <dt><span jhiTranslate="ecomgucvoileApp.reservation.dateReservation">Date Reservation</span></dt>
             <dd>

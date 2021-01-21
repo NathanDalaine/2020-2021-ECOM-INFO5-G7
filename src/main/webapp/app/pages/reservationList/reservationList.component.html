@@ -28,7 +28,7 @@
                     <button *ngIf ="checkUserReservation(reservation,currentUserProfile)" type="submit"
                             [routerLink]="['/renduMateriel', reservation.id, 'view' ]"
                             class="btn btn-info btn-sm">
-                        <fa-icon [icon]="'eye'"></fa-icon>
+                        <fa-icon [icon]="'hands'"></fa-icon>
                         <span class="d-none d-md-inline" jhiTranslate="entity.action.return">Rendre</span>
                     </button>
                 </td>
@@ -39,7 +39,7 @@
             <span jhiTranslate="ecomgucvoileApp.reservation.home.notFound">There is no reservation in progress.</span>
         </div>
         <h1>{{'reservationList.reservationHistory'|translate}}</h1>
-        <mat-tab-group dynamicHeight >
+        <mat-tab-group>
             <mat-tab label="{{'reservationList.myReservations' | translate}}">
                 <table class="table table-striped" aria-describedby="page-heading">
                     <thead>
@@ -50,6 +50,7 @@
                         <th><span jhiTranslate="ecomgucvoileApp.reservation.planche">Planche</span></th>
                         <th><span jhiTranslate="ecomgucvoileApp.reservation.combinaison">Combinaison</span></th>
                         <th><span jhiTranslate="ecomgucvoileApp.reservation.harnais">Harnais</span></th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -62,6 +63,12 @@
                         <td *ngIf="reservation.combinaison === null"></td>
                         <td *ngIf="reservation.harnais">{{reservation.harnais.taille}}</td>
                         <td *ngIf="reservation.harnais === null"></td>
+                        <td>   <button *ngIf ="checkUserReservation(reservation,currentUserProfile)" type="button" (click)="openConfirmationDialog(reservation)"
+                            class="btn btn-info btn-sm">
+                        	<fa-icon [icon]="'hands'"></fa-icon>
+                        	<span class="d-none d-md-inline" jhiTranslate="ecomgucvoileApp.reservation.reserve">Réserver</span>
+                    			</button>
+                    	</td>
                     </tr>
                     </tbody>
                 </table>
@@ -80,6 +87,7 @@
                         <th><span jhiTranslate="ecomgucvoileApp.reservation.planche">Planche</span></th>
                         <th><span jhiTranslate="ecomgucvoileApp.reservation.combinaison">Combinaison</span></th>
                         <th><span jhiTranslate="ecomgucvoileApp.reservation.harnais">Harnais</span></th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -94,11 +102,12 @@
                         <td *ngIf="reservation.combinaison === null"></td>
                         <td *ngIf="reservation.harnais">{{reservation.harnais.taille}}</td>
                         <td *ngIf="reservation.harnais === null"></td>
+
                     </tr>
                     </tbody>
                 </table>
                 <div class="alert alert-warning" *ngIf="(reservations | valuehistory)?.length === 0">
-                    <span jhiTranslate="ecomgucvoileApp.reservation.home.totalHistoryNotFound">There is no past reservation</span>
+                    <span jhiTranslate="ecomgucvoiledescribedbyApp.reservation.home.totalHistoryNotFound">There is no past reservation</span>
                 </div>
             </mat-tab>
         </mat-tab-group>

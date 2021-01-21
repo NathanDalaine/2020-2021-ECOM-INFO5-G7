@@ -3,15 +3,15 @@
     "planche": {
       "home": {
         "title": "Planches",
-        "createLabel": "Créer un nouveau Planche",
-        "createOrEditLabel": "Créer ou éditer un Planche",
+        "createLabel": "Créer une nouvelle planche",
+        "createOrEditLabel": "Créer ou éditer une planche",
         "notFound": "Aucune planche trouvée"
       },
-      "created": "Un nouveau Planche a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Planche avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Planche avec l'identifiant {{ param }} a été supprimé",
+      "created": "Une nouvelle planche a été créé avec l'identifiant {{ param }}",
+      "updated": "La Planche avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "La Planche avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Planche {{ id }} ?"
+        "question": "Etes-vous certain de vouloir supprimer la planche {{ id }} ?"
       },
       "detail": {
         "title": "Planche"

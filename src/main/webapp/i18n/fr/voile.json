@@ -3,15 +3,15 @@
     "voile": {
       "home": {
         "title": "Voiles",
-        "createLabel": "Créer un nouveau Voile",
-        "createOrEditLabel": "Créer ou éditer un Voile",
+        "createLabel": "Créer une nouvelle voile",
+        "createOrEditLabel": "Créer ou éditer une voile",
         "notFound": "Aucune voile trouvée"
       },
-      "created": "Un nouveau Voile a été créé avec l'identifiant {{ param }}",
+      "created": "Une nouvelle voile a été créée avec l'identifiant {{ param }}",
       "updated": "Le Voile avec l'identifiant {{ param }} a été mis à jour",
       "deleted": "Le Voile avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Voile {{ id }} ?"
+        "question": "Etes-vous certain de vouloir supprimer la Voile {{ id }} ?"
       },
       "detail": {
         "title": "Voile"

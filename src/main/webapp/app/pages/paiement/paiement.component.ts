@@ -102,14 +102,10 @@ export class PaiementComponent implements OnInit {
 
   protected onSaveSuccess() {
     this.isSaving = false;
-    this.previousState();
   }
 
   protected onSaveError() {
     this.isSaving = false;
   }
 
-  previousState() {
-    window.history.back();
-  }
 }

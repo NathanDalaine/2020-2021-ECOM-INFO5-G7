@@ -1,59 +1,60 @@
-id;marque;modele;surface;numero;gree;localisation;etat;libelle;created_by;updated_by;deleted_by;created_at;updated_at;deleted_at
-1;Gun Sails;Torro;5,7;GF1;oui;Ratellier Voile;En rep;GF1 Gun Sails Torro Surface 5,7m2;;;;;;
-2;Gun Sails;Torro;5,7;GF2;oui;Ratellier Voile;;GF2 Gun Sails Torro Surface 5,7m2;;;;;;
-3;Gun Sails;Torro;5,7;GF3;oui;Ratellier Voile;;GF3 Gun Sails Torro Surface 5,7m2;;;;;;
-4;North;Prisma;6;GF4;oui;;;GF4 North Prisma Surface 6m2;;;;;;
-5;Gun Sails;Torro;5,7;GF6;oui;Ratellier Voile;;GF6 Gun Sails Torro Surface 5,7m2;;;;;;
-6;Gun Sails;Torro;5,7;GF7;oui;Ratellier Voile;;GF7 Gun Sails Torro Surface 5,7m2;;;;;;
-7;Gun Sails;Beat;5,3;GF10;oui;Ratellier Voile;En rep;GF10 Gun Sails Beat Surface 5,3m2;;;;;;
-8;Gun Sails;Beat;5,3;GF11;oui;Ratellier Voile;;GF11 Gun Sails Beat Surface 5,3m2;;;;;;
-9;Gun Sails;Torro;6,6;GF16;oui;Ratellier Voile;;GF16 Gun Sails Torro Surface 6,6m2;;;;;;
-10;Gun Sails;Torro;6,6;GF17;oui;Ratellier Voile;;GF17 Gun Sails Torro Surface 6,6m2;;;;;;
-11;Equipe;Speed Slalom ;5,2;GF24;oui;Ratellier Voile;HS dégrée;GF24 Equipe Speed Slalom  Surface 5,2m2;;;;;;
-12;Ezzy;Wave;5;GF31;Oui;Ratellier Voile;;GF31 Ezzy Wave Surface 5m2;;;;;;
-14;Air Foil;Wave;4,6;GF33;oui;Ratellier Voile;;GF33 Air Foil Wave Surface 4,6m2;;;;;;
-15;Gun Sails;Top wave;5;GF34;oui;Ratellier Voile;;GF34 Gun Sails Top wave Surface 5,0m2;;;;;;
-16;North;Infinity;5;GF40;oui;Ratellier Voile;HS;GF40 North Infinity Surface 5,0m2;;;;;;
-17;Bob;Noname;4,5;GF41;oui;Ratellier Voile;;GF41 Bob Noname Surface 4,5m2;;;;;;
-18;North;Infinity;5;GF42;oui;Ratellier Voile;;GF42 North Infinity Surface 5,0m2;;;;;;
-19;North;Spectro;5;GF43;oui;;;GF43 North Spectro Surface 5m2;;;;;;
-20;North;Spectro;5;GF44;oui;;;GF44 North Spectro Surface 5m2;;;;;;
-21;Pryde;Raf;4,5;GF45;oui;Ratellier Voile;;GF45 Pryde Raf Surface 4,5m2;;;;;;
-22;North;Zeta;4,2;GF46;oui;Ratellier Voile;;GF46 North Zeta Surface 4,2m2;;;;;;
-23;North;Zeta;4;GF47;oui;Ratellier Voile;;GF47 North Zeta Surface 4,0m2;;;;;;
-24;Maui;Legend;4;GF48;oui;Ratellier Voile;;GF48 Maui Legend Surface 4m2 Réservé bon niveau;;;;;;
-25;Loft Sails;LIP;3,9;GF51;oui;Ratellier Voile;;GF51 Loft Sails LIP Surface 3,9m2;;;;;;
-26;Neilpryde;Warp;3,3;GF52;oui;Ratellier Voile;;GF52 Neilpryde Warp Surface 3,3m2;;;;;;
-27;Neilpryde;Warp;4,2;GF53;oui;Ratellier Voile;En rep;GF53 Neilpryde Warp Surface 4,2m2;;;;;;
-28;Neilpryde;Raf;3,7;GF54;oui;Ratellier Voile;;GF54 Neilpryde Raf Surface 3,7m2;;;;;;
-29;Gun Sails;Hammer;4;GF55;oui;Ratellier Voile;;GF55 Gun Sails Hammer Surface 4,0m2;;;;;;
-30;Simmer;Surflite;3,4;GF56;oui;Ratellier Voile;;GF56 Simmer Surflite Surface 3,4m2;;;;;;
-31;North;Zeta;4,2;GF57;oui;Ratellier Voile;;GF57 North Zeta Surface 4,2m2;;;;;;
-32;Gun Sails;Top wave;5;GF58;oui;Ratellier Voile;;GF58 Gun Sails Top wave Surface 5,0m2;;;;;;
-33;Arrows;Impact;3,6;GF59;oui;Ratellier Voile;;GF59 Arrows Impact Surface 3,6m2;;;;;;
-34;Gun Sails;Rapid;7,2;GF60;oui;Ratellier Voile;;GF60 Gun Sails Rapid Surface 7,2m2;;;;;;
-35;Gun Sails;Rapid;7,2;GF61;oui;;;GF61 Gun Sails Rapid Surface 7,2m2;;;;;;
-36;Neilpryde;V6;6;GF62;oui;Ratellier Voile;;GF62 Neilpryde V6 Surface 6m2 Réservé bon niveau;;;;;;
-37;Neilpryde;RS Slalom;6,7;GF63;non;;;GF63 Neilpryde RS Slalom Surface 6,7m2 RESERVE FUN++ ;;;;;;
-38;Loft Sails;Blade;8,5;GF64;non;;En rep;GF64 Loft Sails Blade Surface 8,5m2;;;;;;
-39;Loft Sails;O2;8,4;GF65;non;;;GF65 Loft Sails O2 Surface 8,4m2;;;;;;
-40;Gun Sails;GSR;8,7;GF66;non;;;GF66 Gun Sails GSR Surface 8,7m2;;;;;;
-41;Gun Sails;Mission;8;GF67;non;;En rep;GF67 Gun Sails Mission Surface 8,0m2;;;;;;
-42;Neilpryde;V8;10;GF68;non;;;GF68 Neilpryde V8 Surface 10m2;;;;;;
-43;Simmer ;Spark;5;GF69;Oui;Ratellier Voile;;GF69 Simmer  Spark Surface 5m2 Réservé bon niveau;;;;;;
-44;Gaastra;Remedy;5;GF70;oui;Ratellier Voile;;GF70 Gaastra Remedy Surface 5m2 Réservé bon niveau;;;;;;
-45;North;Style;5;GF71;oui;Ratellier Voile;;GF71 North Style Surface 5m2 Réservé bon niveau;;;;;;
-46;Gun Sails;Zoom;7;GF72;non;;;GF72 Gun Sails Zoom Surface 7m2;;;;;;
-47;Gaastra;;7;GF73;oui;;;GF73 Gaastra  Surface 7m2;;;;;;
-48;Gun ;Canon Ball;7;GF83;non;;;GF83 Gun  Canon Ball Surface 7m2;;;;;;
-49;Gun Sails;Dragon;4;GF100 enfant;oui;;;GF100 enfant Gun Sails Dragon Surface 4m2;;;;;;
-50;Neilpryde;Wavepro;5;GF5;oui;Ratellier Voile;;GF5 Neilpryde Wavepro Surface 5m2;;;;;;
-51;Naish;Force;5;GF8;;;;GF8 Naish Force Surface 5m2 Réservé bon niveau;;;;;;
-52;Moove;Yes;6;GF9;;;;GF9 Moove Yes Surface 6m2;;;;;;
-53;Gaastra;Pilot;6;GF12;;;;GF12 Gaastra Pilot Surface 6m2;;;;;;
-54;Gun Sails;Mission;7;GF13;;;;GF13 Gun Sails Mission Surface 7m2;;;;;;
-55;Tribord;RC4;8;GF14;;Rack du fond;;GF14 Tribord RC4 Surface 8m2;;;;;;
-56;North Sails;S Type;8;GF15;;;;GF15 North Sails S Type Surface 8m2;;;;;;
-57;Gun Sails;Cannonball;7;GF18;;;;GF18 Gun Sails Cannonball Surface 7m2;;;;;;
-58;Neilpryde;V8;7;GF19;;;;GF19 Neilpryde V8 Surface 7m2;;;;;;
-59;Neilpryde;V6;6;GF20;oui;Ratellier Voile;;GF20 Neilpryde V6 Surface 6m2;;;;;;
+id;marque;modele;surface;numero;gree;localisation;etat;libelle;created_by;updated_by;deleted_by;created_at;updated_at;deleted_at;niveaurequis
+1;Gun Sails;Torro;5.7;GF1;true;Ratellier Voile;En rep;GF1 Gun Sails Torro Surface 5.7m2;;;;;;;DEBUTANT
+2;Gun Sails;Torro;5.7;GF2;true;Ratellier Voile;;GF2 Gun Sails Torro Surface 5.7m2;;;;;;;DEBUTANT
+3;Gun Sails;Torro;5.7;GF3;true;Ratellier Voile;;GF3 Gun Sails Torro Surface 5.7m2;;;;;;;DEBUTANT
+4;North;Prisma;6;GF4;true;;;GF4 North Prisma Surface 6m2;;;;;;;DEBUTANT
+5;Gun Sails;Torro;5.7;GF6;true;Ratellier Voile;;GF6 Gun Sails Torro Surface 5.7m2;;;;;;;DEBUTANT
+6;Gun Sails;Torro;5.7;GF7;true;Ratellier Voile;;GF7 Gun Sails Torro Surface 5.7m2;;;;;;;DEBUTANT
+7;Gun Sails;Beat;5.3;GF10;true;Ratellier Voile;En rep;GF10 Gun Sails Beat Surface 5.3m2;;;;;;;DEBUTANT
+8;Gun Sails;Beat;5.3;GF11;true;Ratellier Voile;;GF11 Gun Sails Beat Surface 5.3m2;;;;;;;DEBUTANT
+9;Gun Sails;Torro;6.6;GF16;true;Ratellier Voile;;GF16 Gun Sails Torro Surface 6.6m2;;;;;;;DEBUTANT
+10;Gun Sails;Torro;6.6;GF17;true;Ratellier Voile;;GF17 Gun Sails Torro Surface 6.6m2;;;;;;;DEBUTANT
+11;Equipe;Speed Slalom ;5.2;GF24;true;Ratellier Voile;HS dégrée;GF24 Equipe Speed Slalom  Surface 5.2m2;;;;;;;DEBUTANT
+12;Ezzy;Wave;5;GF31;true;Ratellier Voile;;GF31 Ezzy Wave Surface 5m2;;;;;;;DEBUTANT
+14;Air Foil;Wave;4.6;GF33;true;Ratellier Voile;;GF33 Air Foil Wave Surface 4.6m2;;;;;;;DEBUTANT
+15;Gun Sails;Top wave;5;GF34;true;Ratellier Voile;;GF34 Gun Sails Top wave Surface 5.0m2;;;;;;;DEBUTANT
+16;North;Infinity;5;GF40;true;Ratellier Voile;HS;GF40 North Infinity Surface 5.0m2;;;;;;;DEBUTANT
+17;Bob;Falseame;4.5;GF41;true;Ratellier Voile;;GF41 Bob Falseame Surface 4.5m2;;;;;;;DEBUTANT
+18;North;Infinity;5;GF42;true;Ratellier Voile;;GF42 North Infinity Surface 5.0m2;;;;;;;DEBUTANT
+19;North;Spectro;5;GF43;true;;;GF43 North Spectro Surface 5m2;;;;;;;DEBUTANT
+20;North;Spectro;5;GF44;true;;;GF44 North Spectro Surface 5m2;;;;;;;DEBUTANT
+21;Pryde;Raf;4.5;GF45;true;Ratellier Voile;;GF45 Pryde Raf Surface 4.5m2;;;;;;;DEBUTANT
+22;North;Zeta;4.2;GF46;true;Ratellier Voile;;GF46 North Zeta Surface 4.2m2;;;;;;;DEBUTANT
+23;North;Zeta;4;GF47;true;Ratellier Voile;;GF47 North Zeta Surface 4.0m2;;;;;;;DEBUTANT
+24;Maui;Legend;4;GF48;true;Ratellier Voile;;GF48 Maui Legend Surface 4m2 Réservé DEBUTANTPLUS;;;;;;;DEBUTANTPLUS
+25;Loft Sails;LIP;3.9;GF51;true;Ratellier Voile;;GF51 Loft Sails LIP Surface 3.9m2;;;;;;;DEBUTANT
+26;Neilpryde;Warp;3.3;GF52;true;Ratellier Voile;;GF52 Neilpryde Warp Surface 3.3m2;;;;;;;DEBUTANT
+27;Neilpryde;Warp;4.2;GF53;true;Ratellier Voile;En rep;GF53 Neilpryde Warp Surface 4.2m2;;;;;;;DEBUTANT
+28;Neilpryde;Raf;3.7;GF54;true;Ratellier Voile;;GF54 Neilpryde Raf Surface 3.7m2;;;;;;;DEBUTANT
+29;Gun Sails;Hammer;4;GF55;true;Ratellier Voile;;GF55 Gun Sails Hammer Surface 4.0m2;;;;;;;DEBUTANT
+30;Simmer;Surflite;3.4;GF56;true;Ratellier Voile;;GF56 Simmer Surflite Surface 3.4m2;;;;;;;DEBUTANT
+31;North;Zeta;4.2;GF57;true;Ratellier Voile;;GF57 North Zeta Surface 4.2m2;;;;;;;DEBUTANT
+32;Gun Sails;Top wave;5;GF58;true;Ratellier Voile;;GF58 Gun Sails Top wave Surface 5.0m2;;;;;;;DEBUTANT
+33;Arrows;Impact;3.6;GF59;true;Ratellier Voile;;GF59 Arrows Impact Surface 3.6m2;;;;;;;DEBUTANT
+34;Gun Sails;Rapid;7.2;GF60;true;Ratellier Voile;;GF60 Gun Sails Rapid Surface 7.2m2;;;;;;;DEBUTANT
+35;Gun Sails;Rapid;7.2;GF61;true;;;GF61 Gun Sails Rapid Surface 7.2m2;;;;;;;DEBUTANT
+36;Neilpryde;V6;6;GF62;true;Ratellier Voile;;GF62 Neilpryde V6 Surface 6m2 PERF ;;;;;;;PERF
+37;Neilpryde;RS Slalom;6.7;GF63;false;;;GF63 Neilpryde RS Slalom Surface 6.7m2 FUNBOARD ;;;;;;;FUNBOARD
+38;Loft Sails;Blade;8.5;GF64;false;;En rep;GF64 Loft Sails Blade Surface 8.5m2;;;;;;;DEBUTANT
+39;Loft Sails;O2;8.4;GF65;false;;;GF65 Loft Sails O2 Surface 8.4m2;;;;;;;DEBUTANT
+40;Gun Sails;GSR;8.7;GF66;false;;;GF66 Gun Sails GSR Surface 8.7m2;;;;;;;DEBUTANT
+41;Gun Sails;Mission;8;GF67;false;;En rep;GF67 Gun Sails Mission Surface 8.0m2;;;;;;;DEBUTANT
+42;Neilpryde;V8;10;GF68;false;;;GF68 Neilpryde V8 Surface 10m2;;;;;;;DEBUTANT
+43;Simmer ;Spark;5;GF69;true;Ratellier Voile;;GF69 Simmer  Spark Surface 5m2 Réservé PERF;;;;;;;PERF
+44;Gaastra;Remedy;5;GF70;true;Ratellier Voile;;GF70 Gaastra Remedy Surface 5m2 Réservé FUNBOARD;;;;;;;FUNBOARD
+45;North;Style;5;GF71;true;Ratellier Voile;;GF71 North Style Surface 5m2 DEBUTANTPLUS ;;;;;;;DEBUTANTPLUS
+46;Gun Sails;Zoom;7;GF72;false;;;GF72 Gun Sails Zoom Surface 7m2;;;;;;;DEBUTANT
+47;Gaastra;;7;GF73;true;;;GF73 Gaastra  Surface 7m2;;;;;;;DEBUTANT
+48;Gun ;Canon Ball;7;GF83;false;;;GF83 Gun  Canon Ball Surface 7m2;;;;;;;DEBUTANT
+49;Gun Sails;Dragon;4;GF100 enfant;true;;;GF100 enfant Gun Sails Dragon Surface 4m2;;;;;;;DEBUTANT
+50;Neilpryde;Wavepro;5;GF5;true;Ratellier Voile;;GF5 Neilpryde Wavepro Surface 5m2;;;;;;;DEBUTANT
+51;Naish;Force;5;GF8;;;;GF8 Naish Force Surface 5m2 FUNBOARD;;;;;;;FUNBOARD
+52;Moove;Yes;6;GF9;;;;GF9 Moove Yes Surface 6m2;;;;;;;DEBUTANT
+53;Gaastra;Pilot;6;GF12;;;;GF12 Gaastra Pilot Surface 6m2;;;;;;;DEBUTANT
+54;Gun Sails;Mission;7;GF13;;;;GF13 Gun Sails Mission Surface 7m2;;;;;;;DEBUTANT
+55;Tribord;RC4;8;GF14;;Rack du fond;;GF14 Tribord RC4 Surface 8m2;;;;;;;DEBUTANT
+56;North Sails;S Type;8;GF15;;;;GF15 North Sails S Type Surface 8m2;;;;;;;DEBUTANT
+57;Gun Sails;Cannonball;7;GF18;;;;GF18 Gun Sails Cannonball Surface 7m2;;;;;;;DEBUTANT
+58;Neilpryde;V8;7;GF19;;;;GF19 Neilpryde V8 Surface 7m2;;;;;;;DEBUTANT
+59;Neilpryde;V6;6;GF20;true;Ratellier Voile;;GF20 Neilpryde V6 Surface 6m2;;;;;;;DEBUTANT
+

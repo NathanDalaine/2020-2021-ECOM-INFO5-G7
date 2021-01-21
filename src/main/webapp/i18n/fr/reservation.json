@@ -3,17 +3,17 @@
     "reservation": {
       "home": {
         "title": "Reservations",
-        "createLabel": "Créer un nouveau Reservation",
-        "createOrEditLabel": "Créer ou éditer un Reservation",
+        "createLabel": "Créer une nouvelle réservation",
+        "createOrEditLabel": "Créer ou éditer une réservation",
         "yourHistoryNotFound": "Il n'y a aucune réservation dans votre historique.",
         "totalHistoryNotFound": "Aucune réservation dans l'historique des réservations.",
         "notFound": "Il n'y aucune réservation en cours."
       },
-      "created": "Un nouveau Reservation a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Reservation avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Reservation avec l'identifiant {{ param }} a été supprimé",
+      "created": "Une nouvelle réservation a été créé avec l'identifiant {{ param }}",
+      "updated": "La réservation avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "La réservation avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Reservation {{ id }} ?"
+        "question": "Etes-vous certain de vouloir supprimer la réservation {{ id }} ?"
       },
       "detail": {
         "title": "Reservation"
@@ -34,6 +34,9 @@
       "harnais": "Harnais",
       "planche": "Planche",
       "reserve": "Réserver",
+      "sortName": "Trier par nom",
+      "sortSurface": "Trier par surface",
+      "sortVolume": "Trier par volume",
       "reservationSuccess": "Votre réservation a été effectué avec succès.",
       "rechercheVoile": "Rechercher une voile",
       "recherchePlanche": "Rechercher une planche",
