@@ -1,5 +1,8 @@
+import { DUE_DATE_PASSED } from './../../shared/constants/error.constants';
+import { ALREADY_RESERVED } from './../../shared/constants/error.constants';
+import { NO_HARNESS_AVAILABLE } from './../../shared/constants/error.constants';
+import { NO_WETSUIT_AVAILABLE } from './../../shared/constants/error.constants';
 import { Reservation } from './../../shared/model/reservation.model';
-import { moment } from 'moment/moment';
 import { IReservation } from './../../shared/model/reservation.model';
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { AccountService } from 'app/core/auth/account.service';
@@ -22,11 +25,18 @@ import { FormBuilder } from '@angular/forms';
   encapsulation: ViewEncapsulation.None
 })
 export class ReservationListComponent implements OnInit, OnDestroy {
+  success: boolean;
   currentAccount: any;
   reservations: IReservationFull[];
   pastReservation: IReservationFull[];
   currentUserProfile: IUserProfile;
   newReservation: IReservation;
+
+  errorNoWetSuitAvailable: string;
+  errorNoHarnessAvailable: string;
+  errorAlreadyReserved: string;
+  errorDueDatePassed: string;
+  error: string;
 
   constructor(
     protected accountService: AccountService,
@@ -45,13 +55,28 @@ export class ReservationListComponent implements OnInit, OnDestroy {
     this.loadAll();
   }
 
-  reserve(reservation: IReservationFull) {
+  reserve() {
     this.reservationService.create(this.newReservation).subscribe(
       () => {
         this.success = true;
       },
       response => this.processError(response)
     );
+  }
+
+  private processError(response: HttpErrorResponse) {
+    this.success = false;
+    if (response.status === 400 && response.error.type === NO_WETSUIT_AVAILABLE) {
+      this.errorNoWetSuitAvailable = 'ERROR';
+    } else if (response.status === 400 && response.error.type === NO_HARNESS_AVAILABLE) {
+      this.errorNoHarnessAvailable = 'ERROR';
+    } else if (response.status === 400 && response.error.type === ALREADY_RESERVED) {
+      this.errorAlreadyReserved = 'ERROR';
+    } else if (response.status === 400 && response.error.type === DUE_DATE_PASSED) {
+      this.errorDueDatePassed = 'ERROR';
+    } else {
+      this.error = 'ERROR';
+    }
   }
 
   public openConfirmationDialog(reservation: IReservationFull) {
@@ -61,8 +86,8 @@ export class ReservationListComponent implements OnInit, OnDestroy {
         '',
         reservation.voile,
         reservation.planche,
-        reservation.combinaison,
-        reservation.harnais,
+        !(reservation.combinaison == null),
+        !(reservation.harnais == null),
         true,
         true
       )

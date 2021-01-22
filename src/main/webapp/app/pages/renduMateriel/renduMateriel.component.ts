@@ -7,7 +7,7 @@ import { ReservationService } from 'app/entities/reservation/reservation.service
 import * as moment from 'moment';
 import { Observable } from 'rxjs';
 import { IReservationFull } from 'app/shared/model/reservationFull.model';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'jhi-rendumateriel',
@@ -81,7 +81,6 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
     } else if (this.degatVoile) {
       this.reservation.voile.etat = this.textDegatVoile;
     }
-
     if (!this.harnais && this.reservation.harnais != null) {
       this.secondreservation.harnaisId = this.reservation.harnais.id;
       this.reservation.harnais = null;
@@ -99,7 +98,7 @@ export class RenduMaterielComponent implements OnInit, OnDestroy {
         }
         setTimeout(() => {
           this.router.navigate(['reservationList']);
-        },3000);
+        }, 3000);
       },
       () => {
         this.success = false;
