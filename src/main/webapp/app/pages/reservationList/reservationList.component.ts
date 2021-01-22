@@ -16,7 +16,7 @@ import { IUserProfile } from 'app/shared/model/user-profile.model';
 import { ADMINISTRATEUR, GESTIONNAIRE } from 'app/shared/constants/roles.constants';
 import { ConfirmService } from 'app/shared/confirm/confirm.service';
 import { TranslateService } from '@ngx-translate/core';
-import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'jhi-reservationlist',
@@ -45,7 +45,7 @@ export class ReservationListComponent implements OnInit, OnDestroy {
     protected jhiAlertService: JhiAlertService,
     protected confirmService: ConfirmService,
     protected translate: TranslateService,
-    private fb: FormBuilder
+    protected router: Router
   ) {}
 
   ngOnInit() {
@@ -59,6 +59,10 @@ export class ReservationListComponent implements OnInit, OnDestroy {
     this.reservationService.create(this.newReservation).subscribe(
       () => {
         this.success = true;
+        location.reload();
+        setTimeout(() => {
+          this.router.navigate(['reservationList']);
+        }, 3000);
       },
       response => this.processError(response)
     );
