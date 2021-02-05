@@ -20,7 +20,8 @@
       "harnaisL": "Nombre de harnais (Taille L) :",
       "harnaisXL": "Nombre de harnais (Taille XL) :",
 
-      "voilesDommage": "Nombre de voiles endomagées :"
+      "voilesDommage": "Nombre de voiles endomagées :",
+      "planchesDommage": "Nombre de planches endomagées :"
     }
   }
 }

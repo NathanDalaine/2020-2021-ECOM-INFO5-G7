@@ -16,6 +16,7 @@ import { Taille } from 'app/shared/model/enumerations/taille.model';
 import { PlancheService } from 'app/entities/planche/planche.service';
 import { VoileService } from 'app/entities/voile/voile.service';
 import { IVoile } from 'app/shared/model/voile.model';
+import { IPlanche } from 'app/shared/model/planche.model';
 
 @Component({
   selector: 'jhi-statistique',
@@ -37,11 +38,13 @@ export class StatistiqueComponent implements OnInit {
   reservationsHarnaisXL: IReservationFull[];
 
   voilesDamaged: IVoile[];
+  planchesDamaged: IPlanche[];
 
   constructor(
     protected reservationService: ReservationService,
     protected jhiAlertService: JhiAlertService,
-    protected voileService: VoileService
+    protected voileService: VoileService,
+    protected plancheService: PlancheService
   ) {}
 
   ngOnInit() {
@@ -97,6 +100,19 @@ export class StatistiqueComponent implements OnInit {
       .subscribe(
         (voiles: IVoile[]) => {
           this.voilesDamaged = voiles;
+        },
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
+
+    this.plancheService
+      .queryDamaged()
+      .pipe(
+        filter((planches: HttpResponse<IPlanche[]>) => planches.ok),
+        map((planches: HttpResponse<IPlanche[]>) => planches.body)
+      )
+      .subscribe(
+        (planches: IPlanche[]) => {
+          this.planchesDamaged = planches;
         },
         (res: HttpErrorResponse) => this.onError(res.message)
       );

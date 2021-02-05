@@ -20,7 +20,8 @@
       "harnaisL": "Number of harness (Size L) :",
       "harnaisXL": "Number of harness (Size XL) :",
 
-      "VoilesDommage": "Number of damaged sail :"
+      "VoilesDommage": "Number of damaged sail :",
+      "VoilesDommage": "Number of damaged board :"
     }
   }
 }
