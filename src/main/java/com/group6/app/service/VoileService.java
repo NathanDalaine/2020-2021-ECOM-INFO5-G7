@@ -60,7 +60,7 @@ public class VoileService {
     }
 
     @Transactional(readOnly = true)
-    public List<VoileDTO> findAllDamaged() {
+	public List<VoileDTO> findAllDamaged() {
         log.debug("Request to get all Voiles");
         return voileRepository.findByEtatNot("").stream()
             .map(voileMapper::toDto)

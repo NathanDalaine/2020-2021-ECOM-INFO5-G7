@@ -1,3 +1,5 @@
+<jhi-alert-error></jhi-alert-error>
+
 <div class="row">
     <br/>
     <div class="table-responsive">
@@ -15,6 +17,29 @@
             </tr>
             </thead>
             <tbody>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="alert alert-danger" *ngIf="error" jhiTranslate="global.messages.error.fail">
+                <strong></strong>
+            </div>
+            <div class="alert alert-danger" *ngIf="errorNoHarnessAvailable"
+                 jhiTranslate="global.messages.error.noHarnessAvailable">
+                <strong></strong>
+            </div>
+            <div class="alert alert-danger" *ngIf="errorNoWetSuitAvailable"
+                 jhiTranslate="global.messages.error.noWetsuitAvailable">
+                <strong></strong>confirm
+            </div>
+            <div class="alert alert-danger" *ngIf="errorAlreadyReserved"
+                 jhiTranslate="global.messages.error.alreadyReserved">
+                <strong></strong>
+            </div>
+            <div class="alert alert-danger" *ngIf="errorDueDatePassed"
+                 jhiTranslate="global.messages.error.dueDatePassed">
+                <strong></strong>
+            </div>
+        </div>
+    </div>
             <tr *ngFor="let reservation of (reservations | valuefull) ;trackBy: trackDate " >
                 <td>{{reservation.dateReservation | date:'medium'}}</td>
                 <td>{{reservation.userProfile.user.login}}</td>

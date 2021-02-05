@@ -59,7 +59,6 @@ export class ReservationListComponent implements OnInit, OnDestroy {
     this.reservationService.create(this.newReservation).subscribe(
       () => {
         this.success = true;
-        location.reload();
         setTimeout(() => {
           this.router.navigate(['reservationList']);
         }, 3000);

@@ -18,7 +18,9 @@
       "harnaisS": "Number of harness (Size S) :",
       "harnaisM": "Number of harness (Size M) :",
       "harnaisL": "Number of harness (Size L) :",
-      "harnaisXL": "Number of harness (Size XL) :"
+      "harnaisXL": "Number of harness (Size XL) :",
+
+      "VoilesDommage": "Number of damaged sail :"
     }
   }
 }

@@ -18,7 +18,9 @@
       "harnaisS": "Nombre de harnais (Taille S) :",
       "harnaisM": "Nombre de harnais (Taille M) :",
       "harnaisL": "Nombre de harnais (Taille L) :",
-      "harnaisXL": "Nombre de harnais (Taille XL) :"
+      "harnaisXL": "Nombre de harnais (Taille XL) :",
+
+      "voilesDommage": "Nombre de voiles endomagées :"
     }
   }
 }
