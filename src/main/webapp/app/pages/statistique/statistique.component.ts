@@ -13,6 +13,10 @@ import { ActivatedRoute } from '@angular/router';
 import { UserProfileService } from 'app/entities/user-profile/user-profile.service';
 import { TypeAbonnement } from 'app/shared/model/enumerations/type-abonnement.model';
 import { Taille } from 'app/shared/model/enumerations/taille.model';
+import { PlancheService } from 'app/entities/planche/planche.service';
+import { VoileService } from 'app/entities/voile/voile.service';
+import { IVoile } from 'app/shared/model/voile.model';
+import { IPlanche } from 'app/shared/model/planche.model';
 
 @Component({
   selector: 'jhi-statistique',
@@ -33,7 +37,15 @@ export class StatistiqueComponent implements OnInit {
   reservationsHarnaisL: IReservationFull[];
   reservationsHarnaisXL: IReservationFull[];
 
-  constructor(protected reservationService: ReservationService, protected jhiAlertService: JhiAlertService) {}
+  voilesDamaged: IVoile[];
+  planchesDamaged: IPlanche[];
+
+  constructor(
+    protected reservationService: ReservationService,
+    protected jhiAlertService: JhiAlertService,
+    protected voileService: VoileService,
+    protected plancheService: PlancheService
+  ) {}
 
   ngOnInit() {
     this.loadAll();
@@ -75,6 +87,32 @@ export class StatistiqueComponent implements OnInit {
             reservations => reservations.harnais != null && reservations.harnais.taille === Taille.XL
           );
           this.reservationsInProgress = this.reservations.filter(reservation => !reservation.dateRendu);
+        },
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
+
+    this.voileService
+      .queryDamaged()
+      .pipe(
+        filter((voiles: HttpResponse<IVoile[]>) => voiles.ok),
+        map((voiles: HttpResponse<IVoile[]>) => voiles.body)
+      )
+      .subscribe(
+        (voiles: IVoile[]) => {
+          this.voilesDamaged = voiles;
+        },
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
+
+    this.plancheService
+      .queryDamaged()
+      .pipe(
+        filter((planches: HttpResponse<IPlanche[]>) => planches.ok),
+        map((planches: HttpResponse<IPlanche[]>) => planches.body)
+      )
+      .subscribe(
+        (planches: IPlanche[]) => {
+          this.planchesDamaged = planches;
         },
         (res: HttpErrorResponse) => this.onError(res.message)
       );
