@@ -1,8 +1,13 @@
 package com.group6.app.web.rest;
 
+import java.io.IOException;
+
 import com.group6.app.service.PlancheService;
 import com.group6.app.web.rest.errors.BadRequestAlertException;
 import com.group6.app.service.dto.PlancheDTO;
+import com.group6.app.service.util.WriteCsvToResponse;
+import javax.servlet.http.HttpServletResponse;
+
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -120,5 +125,23 @@ public class PlancheResource {
         log.debug("REST request to delete Planche : {}", id);
         plancheService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+    }
+    /**
+     * {@code GET  /planches/report/:reportName} : create a csv file with the resources
+     *
+     * @param reportname the name of the file to create.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+    @GetMapping(value = "/planches/report", produces = "text/csv")
+    public void generateReport(HttpServletResponse response) throws IOException {
+    		try {
+        	List<PlancheDTO> planches = (List<PlancheDTO>) plancheService.findAll();
+        	WriteCsvToResponse.writePlanches(response.getWriter(), planches);
+    		}
+        	catch(IOException e) {
+        		  e.printStackTrace();
+        		}
+
+
     }
 }

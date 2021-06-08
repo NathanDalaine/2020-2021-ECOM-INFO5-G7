@@ -58,6 +58,8 @@ public class PlancheService {
             .map(plancheMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }
+    
+
 
     @Transactional(readOnly = true)
     public List<PlancheDTO> findAllDamaged() {
@@ -90,4 +92,6 @@ public class PlancheService {
         log.debug("Request to delete Planche : {}", id);
         plancheRepository.deleteById(id);
     }
+    
+    
 }
