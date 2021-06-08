@@ -1,7 +1,7 @@
 version: '2'
 services:
   ecomgucvoile-app:
-    image: registry.gitlab.com/polytech-info5-2019-2020/g6/2019-2020-ecom-info5-root:master
+    image: ecomgucvoile
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=prod,swagger
