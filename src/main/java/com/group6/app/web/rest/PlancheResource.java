@@ -127,20 +127,27 @@ public class PlancheResource {
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
     /**
-     * {@code GET  /planches/report/:reportName} : create a csv file with the resources
+     * {@code GET  /planches/report/} : create a csv file with the resources
      *
-     * @param reportname the name of the file to create.
+     * 
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @GetMapping(value = "/planches/report", produces = "text/csv")
-    public void generateReport(HttpServletResponse response) throws IOException {
+    public ReponseEntity generateReport(HttpServletResponse response) throws IOException {
     		try {
-        	List<PlancheDTO> planches = (List<PlancheDTO>) plancheService.findAll();
-        	WriteCsvToResponse.writePlanches(response.getWriter(), planches);
-    		}
-        	catch(IOException e) {
-        		  e.printStackTrace();
-        		}
+    			
+    			List<PlancheDTO> planches = (List<PlancheDTO>) plancheService.findAll();
+    	        File file = WriteCsvToResponse.writePlanches(response.getWriter(), planches);
+
+    	        return ResponseEntity.ok()
+    	                .header("Content-Disposition", "attachment; filename=" + reportName + ".csv")
+    	                .contentLength(file.length())
+    	                .contentType(MediaType.parseMediaType("text/csv"))
+    	                .body(new FileSystemResource(file));
+    					
+    	    } catch (ReportServiceException ex) {
+    	        throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to generate report: " + reportName, ex);
+    	    } 
 
 
     }

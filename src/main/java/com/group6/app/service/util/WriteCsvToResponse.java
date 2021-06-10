@@ -18,7 +18,7 @@ public class WriteCsvToResponse {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WriteCsvToResponse.class);
 
-    public static void writePlanches(PrintWriter writer, List<PlancheDTO> planches) {
+    public static String writePlanches(PrintWriter writer, List<PlancheDTO> planches) {
 
         try {
 
@@ -36,7 +36,8 @@ public class WriteCsvToResponse {
                     .withSeparator(',')
                     .build();
 
-            btcsv.write(planches);
+           return btcsv.write(planches);
+               
 
         } catch (CsvException ex) {
 
