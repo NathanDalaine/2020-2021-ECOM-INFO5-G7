@@ -2,6 +2,7 @@ package com.group6.app.service.util;
 import com.group6.app.service.dto.PlancheDTO;
 
 
+import java.io.File;
 
 import com.opencsv.CSVWriter;
 import com.opencsv.bean.ColumnPositionMappingStrategy;
@@ -18,7 +19,7 @@ public class WriteCsvToResponse {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WriteCsvToResponse.class);
 
-    public static String writePlanches(PrintWriter writer, List<PlancheDTO> planches) {
+    public static void writePlanches(PrintWriter writer, List<PlancheDTO> planches) {
 
         try {
 
@@ -36,7 +37,7 @@ public class WriteCsvToResponse {
                     .withSeparator(',')
                     .build();
 
-           return btcsv.write(planches);
+            btcsv.write(planches);
                
 
         } catch (CsvException ex) {

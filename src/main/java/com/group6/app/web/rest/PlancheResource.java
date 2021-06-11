@@ -1,6 +1,17 @@
 package com.group6.app.web.rest;
 
 import java.io.IOException;
+import java.io.File;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.*;
+import org.springframework.http.MediaType;
+
+
+
+
+
+
+
 
 import com.group6.app.service.PlancheService;
 import com.group6.app.web.rest.errors.BadRequestAlertException;
@@ -133,22 +144,13 @@ public class PlancheResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @GetMapping(value = "/planches/report", produces = "text/csv")
-    public ReponseEntity generateReport(HttpServletResponse response) throws IOException {
-    		try {
-    			
+    public void generateReport(HttpServletResponse response) throws IOException {
+    	
     			List<PlancheDTO> planches = (List<PlancheDTO>) plancheService.findAll();
-    	        File file = WriteCsvToResponse.writePlanches(response.getWriter(), planches);
-
-    	        return ResponseEntity.ok()
-    	                .header("Content-Disposition", "attachment; filename=" + reportName + ".csv")
-    	                .contentLength(file.length())
-    	                .contentType(MediaType.parseMediaType("text/csv"))
-    	                .body(new FileSystemResource(file));
-    					
-    	    } catch (ReportServiceException ex) {
-    	        throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to generate report: " + reportName, ex);
-    	    } 
-
+    	        WriteCsvToResponse.writePlanches(response.getWriter(), planches);
+    	        
+    	        //return ResponseEntity.ok().response.;
+//    	        		.header("Content-Disposition", "attachment; filename=" + "report.csv").contentLength(file.length()).contentType(MediaType.parseMediaType("text/csv")).body(new FileSystemResource(file));
 
     }
 }
